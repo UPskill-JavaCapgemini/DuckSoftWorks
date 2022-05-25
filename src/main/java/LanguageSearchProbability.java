@@ -32,32 +32,52 @@ import java.util.*;
 
 import static org.apache.lucene.index.IndexOptions.DOCS_AND_FREQS;
 
+/**
+ * This application is one Proof of Concept  of Lucene library from Apache that
+ * can identify 3 languages (at this stage): Portuguese, Spanish and English.
+ * It is able to check from input on console or from txt file.
+ *
+ * @author - DuckSquad Team
+ * @author - Daniel Machado
+ * @author - Daniel Lima
+ * @author - Inês Clavel
+ * @author - João Figueiredo
+ * @author - Thales Lemos
+ */
+
 public class LanguageSearchProbability {
-    public static void main(String[] args) throws IOException, ParseException {
+    /**
+     * This method identifies the probable languages of an input from console.
+     *
+     * @param args does not receive any argument
+     * @throws IOException thrown by IndexReader class if some sort of I/O problem occurred
+     * @throws ParseException thrown by QueryParser it can occur when fail to parse a String that is ought to have a special format
+     */
+    public static void main(String[] args) throws ParseException, IOException {
 
-        //Classe que analisa o ficheiro e extrai as keywords (tokenizer)
-        //StandardAnalyzer é um tipo de analyser com filtro standard
-
+        //Lucene Analyzers are used to analyze text while indexing and searching documents
         Analyzer analyzer = new SimpleAnalyzer();
 
         /*Analyzer analyzer = CustomAnalyzer.builder()
                 .withTokenizer(NGramTokenizerFactory.class, "minGramSize", "2", "maxGramSize", "3")
                 .build();*/
 
-        //Classe que é usada para guardar os indices criados pelo analyser
-        //Neste caso estão a ser guardados localmente porque está preparado para ficheiros de grande
-        //dimensão, mas poderia ser apenas carregado na memória RAM com a Classe RAMDirectory
+        //A Directory provides an abstraction layer for storing a list of files that was analysed and to is meant to be searched
+        //FSDirectory allow Lucene to choose the best implementation given your system environment
 
         Directory directory = FSDirectory.open(Paths.get("indexedFiles"));
-        //Classe que configura como será indexado o documento
+
+        //Holds all the configuration that is used to create an IndexWriter
 
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         config.setSimilarity(new ClassicSimilarity());
-        //Classe responsável pela criação dos indices - Esta classe só "percebe" objetos da classe Document
+
+        //An IndexWriter creates and maintains an index.
 
         IndexWriter writer = new IndexWriter(directory, config);
         writer.deleteAll();
-        //Adição de documentos para indexação - Neste caso, os dicionários
+        //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
+        // A field may be stored with the document, in which case it is returned with search hits on the document.
         addDoc(writer, "english", Paths.get("inputFiles/en-common.wl"));
         addDoc(writer, "portuguese", Paths.get("inputFiles/pt_PT.wl"));
         addDoc(writer, "spanish", Paths.get("inputFiles/es.wl"));
@@ -67,33 +87,31 @@ public class LanguageSearchProbability {
         System.out.println("Insert text:");
         Scanner leitor = new Scanner(System.in);
 
-        //query - Leitor para verificação. Ou usar a linha que está comentada e passar um ficheiro .txt
         String query = leitor.nextLine();
         //String query = new String(Files.readAllBytes(Paths.get("inputFiles/por.txt")));
 
         String cleanedString = cleanUpInputText(query);
-        //Responsavel pela identificacao daquilo que será procurado
         Query q = new QueryParser("dictionary", analyzer).parse(cleanedString);
 
-        //search
+        //Initiate the search
         int hitsPerPage = 100;
-        //Classe responsável pela leitura dos indices(index)
+        //IndexReader is an abstract class, providing an interface for accessing a point-in-time view of an index.
         IndexReader reader = DirectoryReader.open(directory);
-        //Classe responsavel pela procura dos indices
+        //Implements search over a single IndexReader.
         IndexSearcher searcher = new IndexSearcher(reader);
-        //Classe responsavel por receber hits
+        //Represents hits returned by IndexSearcher
         TopDocs docs = searcher.search(q, hitsPerPage);
-        //docs.scoreDocs recebe o score dos hits em por cada documento que encontrou
+        //Stores hits in TopDocs.
         ScoreDoc[] hits = docs.scoreDocs;
 
         Map<String, Float> map = new TreeMap<>();
 
-        //results
-        //Indica em quantos documentos foram encontradas as palavras
+        //result
+        //Identifies how many hits were found
         System.out.println("Found in " + hits.length + " dictionaries.");
 
         Float valor = 0F;
-        //Adiciona num Map as linguagens e o score de cada linguagem
+        //Adds in Map the language and score for each language
         for (int i = 0; i < hits.length; ++i) {
             int docId = hits[i].doc;
             Document d = searcher.doc(docId);
@@ -103,32 +121,38 @@ public class LanguageSearchProbability {
             map.put(lang, score);
             valor = valor + score;
         }
-        //Novo Map ordenado por valores de score
+        //New Map sorted by descendent score value for each language
         Map<String, Float> sortedMap = sortByValue(map);
 
 
-        //Mapa iterado para calcular a percentagem para cada língua
+        //Iterate Map to calculate the percentage for each key on map
         for (Map.Entry<String, Float> entry : sortedMap.entrySet()) {
-            Float resultado = (entry.getValue() * 100) / valor;
-            Float maiorProbabilidade = 0F;
+            Float result = (entry.getValue() * 100) / valor;
+            Float biggerProbability = 0F;
             String key = null;
-            if (maiorProbabilidade < resultado) {
-                maiorProbabilidade = resultado;
+            if (biggerProbability < result) {
+                biggerProbability = result;
                 key = entry.getKey();
             }
-            System.out.printf("Probability of %s is %.2f %% \n", key, maiorProbabilidade);
+            System.out.printf("Probability of %s is %.2f %% \n", key, biggerProbability);
 
         }
     }
 
-    //Método de ordenação do mapa por valor(Float)
+    /**
+     * Sort a Map by descending order of each Value.
+     *
+     * @param unsortMap Map to be Sorted on descending order. It is required that key is a String and value a Float.
+     * @return ordered map by descending order of value(Float)
+     */
+
     private static Map<String, Float> sortByValue(Map<String, Float> unsortMap) {
 
-        // 1. Converter Map para Lista do Map
+        // 1. Convert Map to List
         List<Map.Entry<String, Float>> list =
                 new LinkedList<Map.Entry<String, Float>>(unsortMap.entrySet());
 
-        // 2. Ordenação com a classe Collections
+        // 2. Order with Collections class in descending order
         Collections.sort(list, new Comparator<Map.Entry<String, Float>>() {
             public int compare(Map.Entry<String, Float> o1,
                                Map.Entry<String, Float> o2) {
@@ -136,17 +160,16 @@ public class LanguageSearchProbability {
             }
         });
 
-        // 3. Loop para inserção do Map num novo ordenado
+        // 3. Loop for re-inserting data into Map
         Map<String, Float> sortedMap = new LinkedHashMap<String, Float>();
         for (Map.Entry<String, Float> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
 
-
         return sortedMap;
     }
 
-    //Necessário depois do Lucene 8 (?) para indicar de que forma os documentos sao guardados
+    //Describes the properties of a field.
     public static final FieldType TYPE_STORED = new FieldType();
 
     static {
@@ -159,19 +182,31 @@ public class LanguageSearchProbability {
 
     }
 
-    //Método de adicionar Documentos
+    /**
+     * Adds Documents, that are necessary to index and search.
+     * @param w one instance of IndexWriter
+     * @param language Identification of Field that is not indexed
+     * @param dictionary Path of a file that is tokenized and indexed
+     * @throws IOException Thrown if Field cannot read the Path that was provided
+     */
     private static void addDoc(IndexWriter w, String language, Path dictionary) throws IOException {
         Document doc = new Document();
 
-        // Apenas uma indicação para a forma como o documento é guardado - não é tokenizado nem criado vetores
+        //A field that is indexed but not tokenized: the entire String value is indexed as a single token.
         doc.add(new StringField("language", language, Field.Store.YES));
 
-        //Adição do conteudo dos ficheiros para indexar e tokenizar - Por ter "TYPE_STORED"
+        //A Field is a section of a document.
+        //This Field is stored in the index, it is later returned with hits on the document.
         Field field = new Field("dictionary",  new String(Files.readAllBytes(dictionary)), TYPE_STORED);
         doc.add(field);
         w.addDocument(doc);
     }
 
+    /**
+     * Strips input of punctuation, numbers and multiple white spaces.
+     * @param text - String input to be stripped
+     * @return stripped String
+     */
     private static String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
                 .replaceAll("\\p{P}", "") //PUNCTUATION
