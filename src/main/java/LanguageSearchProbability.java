@@ -64,16 +64,13 @@ public class LanguageSearchProbability {
 
         //A Directory provides an abstraction layer for storing a list of files that was analysed and to is meant to be searched
         //FSDirectory allow Lucene to choose the best implementation given your system environment
-
         Directory directory = FSDirectory.open(Paths.get("indexedFiles"));
 
         //Holds all the configuration that is used to create an IndexWriter
-
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         config.setSimilarity(new ClassicSimilarity());
 
         //An IndexWriter creates and maintains an index.
-
         IndexWriter writer = new IndexWriter(directory, config);
         writer.deleteAll();
         //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
@@ -84,73 +81,53 @@ public class LanguageSearchProbability {
 
         writer.close();
 
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Insert text:");
-        Scanner leitor = new Scanner(System.in);
+        String query = scanner.nextLine();
+        while(!query.equalsIgnoreCase("s")){
+            //String query = new String(Files.readAllBytes(Paths.get("inputFiles/por.txt")));
+            String cleanedString = cleanUpInputText(query);
+            Query q = new QueryParser("dictionary", analyzer).parse(cleanedString);
 
-        String query = leitor.nextLine();
-        //String query = new String(Files.readAllBytes(Paths.get("inputFiles/por.txt")));
+            //Initiate the search
+            int hitsPerPage = 100;
+            //IndexReader is an abstract class, providing an interface for accessing a point-in-time view of an index.
+            IndexReader reader = DirectoryReader.open(directory);
+            //Implements search over a single IndexReader.
+            IndexSearcher searcher = new IndexSearcher(reader);
+            //Represents hits returned by IndexSearcher
+            TopDocs docs = searcher.search(q, hitsPerPage);
+            //Stores hits in TopDocs.
+            ScoreDoc[] hits = docs.scoreDocs;
 
-        String cleanedString = cleanUpInputText(query);
-        Query q = new QueryParser("dictionary", analyzer).parse(cleanedString);
+            //result
+            //Identifies how many hits were found
+            System.out.println("Found in " + hits.length + " dictionaries.");
 
-        //Initiate the search
-        int hitsPerPage = 100;
-        //IndexReader is an abstract class, providing an interface for accessing a point-in-time view of an index.
-        IndexReader reader = DirectoryReader.open(directory);
-        //Implements search over a single IndexReader.
-        IndexSearcher searcher = new IndexSearcher(reader);
-        //Represents hits returned by IndexSearcher
-        TopDocs docs = searcher.search(q, hitsPerPage);
-        //Stores hits in TopDocs.
-        ScoreDoc[] hits = docs.scoreDocs;
+            //Adds in Map the language and score for each language
+            Map<String, Float> map = addToMap(hits, searcher);
 
-        Map<String, Float> map = new TreeMap<>();
+            //New Map sorted by descendant score value for each language
+            Map<String, Float> sortedMap = sortByValue(map);
 
-        //result
-        //Identifies how many hits were found
-        System.out.println("Found in " + hits.length + " dictionaries.");
+            showResults(sortedMap);
 
-        Float valor = 0F;
-        //Adds in Map the language and score for each language
-        for (int i = 0; i < hits.length; ++i) {
-            int docId = hits[i].doc;
-            Document d = searcher.doc(docId);
-            Float score = hits[i].score;
-            String lang = d.get("language");
-
-            map.put(lang, score);
-            valor = valor + score;
-        }
-        //New Map sorted by descendent score value for each language
-        Map<String, Float> sortedMap = sortByValue(map);
-
-
-        //Iterate Map to calculate the percentage for each key on map
-        for (Map.Entry<String, Float> entry : sortedMap.entrySet()) {
-            Float result = (entry.getValue() * 100) / valor;
-            Float biggerProbability = 0F;
-            String key = null;
-            if (biggerProbability < result) {
-                biggerProbability = result;
-                key = entry.getKey();
-            }
-            System.out.printf("Probability of %s is %.2f %% \n", key, biggerProbability);
-
+            System.out.println("\nType another text to identify language or 's' to exit");
+            query = scanner.nextLine();
         }
     }
 
     /**
      * Sort a Map by descending order of each Value.
      *
-     * @param unsortMap Map to be Sorted on descending order. It is required that key is a String and value a Float.
+     * @param unsortedMap Map to be Sorted on descending order. It is required that key is a String and value a Float.
      * @return ordered map by descending order of value(Float)
      */
-
-    private static Map<String, Float> sortByValue(Map<String, Float> unsortMap) {
+    private static Map<String, Float> sortByValue(Map<String, Float> unsortedMap) {
 
         // 1. Convert Map to List
         List<Map.Entry<String, Float>> list =
-                new LinkedList<Map.Entry<String, Float>>(unsortMap.entrySet());
+                new LinkedList<Map.Entry<String, Float>>(unsortedMap.entrySet());
 
         // 2. Order with Collections class in descending order
         Collections.sort(list, new Comparator<Map.Entry<String, Float>>() {
@@ -165,13 +142,11 @@ public class LanguageSearchProbability {
         for (Map.Entry<String, Float> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
-
         return sortedMap;
     }
 
     //Describes the properties of a field.
     public static final FieldType TYPE_STORED = new FieldType();
-
     static {
         TYPE_STORED.setIndexOptions(DOCS_AND_FREQS);
         TYPE_STORED.setTokenized(true);
@@ -179,7 +154,6 @@ public class LanguageSearchProbability {
         TYPE_STORED.setStoreTermVectors(true);
         TYPE_STORED.setStoreTermVectorPositions(true);
         TYPE_STORED.freeze();
-
     }
 
     /**
@@ -212,5 +186,56 @@ public class LanguageSearchProbability {
                 .replaceAll("\\p{P}", "") //PUNCTUATION
                 .replaceAll("\\p{N}", "") // NUMBERS
                 .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
+    }
+
+    /**
+     * Adds the language and the score result to a map based on the indexing and hits
+     * @param hits collected top scores with dictionary term comparison
+     * @param searcher instance of IndexSearcher to be able to find hits
+     * @return Map with languages on key and float score on value
+     * @throws IOException Thrown if IndexSearcher cannot read the document id
+     */
+    private static Map<String, Float> addToMap(ScoreDoc[] hits, IndexSearcher searcher) throws IOException {
+        Map<String, Float> map = new TreeMap<>();
+
+        for (int i = 0; i < hits.length; ++i) {
+            int docId = hits[i].doc;
+            Document d = searcher.doc(docId);
+            Float score = hits[i].score;
+            String lang = d.get("language");
+
+            map.put(lang, score);
+        }
+        return map;
+    }
+
+    /**
+     * Sums all the scores value for all languages on a reference
+     * @param map a map that has every language and scores
+     * @return float value of all scores for every language that was matched with dictionaries
+     */
+    private static Float totalScoreValue(Map<String, Float> map){
+        Float value = 0F;
+        for (Float aFloat : map.values()) {
+            value += aFloat;
+        }
+        return value;
+    }
+
+    /**
+     * Prints all the probabilities results for every language that exists on a sorted Map
+     * @param sortedMap Map already sorted that holds language and score values
+     */
+    private static void showResults(Map<String, Float> sortedMap){
+        for (Map.Entry<String, Float> entry : sortedMap.entrySet()) {
+            Float result = (entry.getValue() * 100) / totalScoreValue(sortedMap);
+            Float biggerProbability = 0F;
+            String key = null;
+            if (biggerProbability < result) {
+                biggerProbability = result;
+                key = entry.getKey();
+            }
+            System.out.printf("Probability of %s is %.2f %% \n", key, biggerProbability);
+        }
     }
 }
