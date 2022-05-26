@@ -9,11 +9,11 @@ public class TaskFactory implements ITaskFactory {
     // todo: is it really needed?
     @Override
     public Task createExample(String name) {
-        return new Task(name);
+        return new Task();
     }
 
     @Override
     public Task createExample(Long id, String name) {
-        return new Task(id, name);
+        return new Task();
     }
 }
