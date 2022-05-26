@@ -1,6 +1,7 @@
 package LanguageDetection.application.dtos.assemblers;
 
 import LanguageDetection.application.dtos.TaskDTO;
+import LanguageDetection.domain.ValueObjects.Language;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ public class TaskDomainDTOAssembler {
     private TaskDomainDTOAssembler() {
     }
 
-    public TaskDTO toDTO(String language, Date date) {
-        return new TaskDTO(language, date);
+    public TaskDTO toDTO(String inputText, Language language) {
+        return new TaskDTO(inputText, language);
     }
 }

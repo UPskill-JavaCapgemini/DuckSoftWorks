@@ -1,5 +1,6 @@
 package LanguageDetection.application.dtos;
 
+import LanguageDetection.domain.ValueObjects.Language;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -11,13 +12,13 @@ import java.util.Date;
 public class TaskDTO extends RepresentationModel<TaskDTO> {
 
     @Getter
-    Date date;
+    Language language;
 
     @Getter
     String inputText;
 
-    public TaskDTO(String inputText, Date date) {
+    public TaskDTO(String inputText, Language language) {
         this.inputText=inputText;
-        this.date = date;
+        this.language = language;
     }
 }
