@@ -5,7 +5,7 @@ import com.example.infrastructure.datamodel.ExampleJpa;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExampleDomainDataAssembler {
+public class TaskDomainDataAssembler {
 
 	public ExampleJpa toData(Example example ) {
 		return new ExampleJpa(example.getId(), example.getName());

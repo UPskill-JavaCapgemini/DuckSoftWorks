@@ -1,6 +1,6 @@
 package LanguageDetection.domain.factories;
 
-import com.example.domain.entities.example.Example;
+import LanguageDetection.domain.entities.example.Task;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,12 +8,12 @@ public class TaskFactory implements ITaskFactory {
 
     // todo: is it really needed?
     @Override
-    public Example createExample(String name) {
-        return new Example(name);
+    public Task createExample(String name) {
+        return new Task(name);
     }
 
     @Override
-    public Example createExample(Long id, String name) {
-        return new Example(id, name);
+    public Task createExample(Long id, String name) {
+        return new Task(id, name);
     }
 }

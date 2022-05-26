@@ -27,7 +27,7 @@ public class TaskController {
      * @param id the id of the Example
      * @return
      */
-    @GetMapping("/{id}")
+   /* @GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<Mono<TaskDTO>> getById(@PathVariable Long id) {
         Mono<TaskDTO> monoExample = service.getTaskById(id);
@@ -62,6 +62,6 @@ public class TaskController {
     public ResponseEntity<Object> createExample(@RequestBody NewExampleInfoDTO info) {
         TaskDTO example = service.createAndSaveExample(info.getName());
         return new ResponseEntity<>(example, HttpStatus.CREATED);
-    }
+    }*/
 }
 

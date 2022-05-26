@@ -13,13 +13,15 @@ import org.springframework.stereotype.Service;
 public class TaskService {
 
     @Autowired
-    ITaskFactory exampleFactory;
+    ITaskFactory taskFactory;
 
     @Autowired
-    TaskDomainDTOAssembler exampleDomainDTOAssembler;
+    TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    TaskRepository exampleRepository;
+    TaskRepository taskRepository;
+
+
 
 
 
