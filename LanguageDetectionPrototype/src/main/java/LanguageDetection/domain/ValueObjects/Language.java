@@ -2,8 +2,14 @@ package LanguageDetection.domain.ValueObjects;
 
 public enum Language {
 
-    ENGLISH,
-    PORTUGUESE,
-    SPANISH;
+    ENGLISH("English"),
+    PORTUGUESE("Portuguese"),
+    SPANISH("Spanish");
+
+    private final String LANGUAGE;
+
+    Language(String language){
+        this.LANGUAGE = language;
+    }
 
 }
