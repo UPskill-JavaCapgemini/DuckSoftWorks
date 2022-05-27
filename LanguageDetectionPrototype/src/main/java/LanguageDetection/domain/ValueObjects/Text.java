@@ -1,16 +1,25 @@
 package LanguageDetection.domain.ValueObjects;
 
+
 import LanguageDetection.domain.shared.ValueObject;
-import lombok.Getter;
+import LanguageDetection.domain.util.BusinessValidation;
+
 
 public class Text implements ValueObject {
-    @Getter
     private final String text;
 
-    public Text(String text) {
-        if (text == null || text.isEmpty())
-            throw new IllegalArgumentException("The text must have at least one character!");
-        this.text = text;
+    protected Text(String txt){
+        BusinessValidation.nonEmpty(txt,"Text for analises should neither be null nor empty");
+        this.text=txt;
+    }
+
+    /* For ORM purposes */
+    protected Text(){
+        this.text=null;
+    }
+
+    protected String getText(){
+        return this.text;
     }
 
 }
