@@ -13,18 +13,11 @@ public class Task implements AggregateRoot <Date>{
     Text text;
     Language lang;
 
-    public Task (Text txt, Language lg){
+    public Task (String txt, Language lg){
         this.date = new Date(System.currentTimeMillis());
-        this.text = txt;
+        this.text = new Text(txt);
         this.lang = lg;
     }
-
-
-
-
-
-
-
 
 
     @Override
@@ -33,12 +26,17 @@ public class Task implements AggregateRoot <Date>{
     }
 
     @Override
-    public Object identity() {
-        return null;
+    public int compareTo(Date other) {
+        return AggregateRoot.super.compareTo(other);
     }
 
     @Override
-    public int compareTo(@NotNull Object o) {
-        return 0;
+    public Date identity() {
+        return this.date;
+    }
+
+    @Override
+    public boolean hasIdentity(Date id) {
+        return AggregateRoot.super.hasIdentity(id);
     }
 }
