@@ -1,6 +1,7 @@
 package LanguageDetection.application.controllers;
 
 
+import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +28,22 @@ public class TaskController {
      * @param id the id of the Example
      * @return
      */
-   /* @GetMapping("/{id}")
+
+
+/*    @GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<Mono<TaskDTO>> getById(@PathVariable Long id) {
-        Mono<TaskDTO> monoExample = service.getTaskById(id);
-        return new ResponseEntity<>(monoExample, HttpStatus.OK);
+        Mono<TaskDTO> monoTask = service.getLanguage(id);
+        return new ResponseEntity<>(monoTask, HttpStatus.OK);
+    }*/
+
+    @PostMapping("")
+    public ResponseEntity<Object> createExample(@RequestBody NewTaskInfoDTO info) {
+        TaskDTO task = service.createTask(info);
+        return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
-
+/*
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<Flux<TaskDTO>> getAll(@RequestParam(required = false, name = "name") String name) {

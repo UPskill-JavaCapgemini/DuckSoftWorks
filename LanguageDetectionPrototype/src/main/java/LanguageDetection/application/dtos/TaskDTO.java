@@ -4,7 +4,6 @@ import LanguageDetection.domain.ValueObjects.Language;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.util.Date;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
