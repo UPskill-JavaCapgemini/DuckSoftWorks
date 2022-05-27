@@ -4,7 +4,6 @@ import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.Text;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 @Getter
