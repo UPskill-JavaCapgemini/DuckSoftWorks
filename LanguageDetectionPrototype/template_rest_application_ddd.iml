@@ -142,5 +142,6 @@
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queries:9.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-sandbox:9.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:9.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers-common:8.11.1" level="project" />
   </component>
 </module>

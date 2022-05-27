@@ -23,8 +23,10 @@
 hs_err_pid*
 
 # indexed files
-indexedFiles/*
-!indexedFiles/nothing.txt
+src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/*
+!src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+
+
 
 # IntelliJ config file
 .idea
