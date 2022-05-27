@@ -17,8 +17,7 @@ public class TaskDTO extends RepresentationModel<TaskDTO> {
     @Getter
     String inputText;
 
-    public TaskDTO(String inputText, Language language) {
-        this.inputText=inputText;
+    public TaskDTO(Language language) {
         this.language = language;
     }
 }

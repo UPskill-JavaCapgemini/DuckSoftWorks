@@ -4,6 +4,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.entities.example.Task;
 import LanguageDetection.domain.factories.TaskFactory;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
@@ -50,7 +51,7 @@ public class TaskService {
 
     private final int HITS_PER_PAGE = 100;
 
-    public TaskService() throws IOException, ParseException {
+    public TaskService() throws IOException {
         this.analyzer = new SimpleAnalyzer();
         this.directory = FSDirectory.open(Paths.get("/src/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
         this.config = new IndexWriterConfig();
@@ -63,18 +64,18 @@ public class TaskService {
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String language = analyse(string.getText());
         //todo: add language in TaskFactory method (ENUM)
-        Task task = taskFactory.createTask(string.getText());
-        TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLanguage());
+        Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
+        TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLang());
         return taskDTO;
     }
 
 
     private void dictionaries() throws IOException {
-        addDoc(writer, "english", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
+        addDoc(writer, "English", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
 
-        addDoc(writer, "portuguese", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl"));
+        addDoc(writer, "Portuguese", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl"));
 
-        addDoc(writer, "spanish", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl"));
+        addDoc(writer, "Spanish", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl"));
         writer.close();
     }
 
