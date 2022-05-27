@@ -4,12 +4,15 @@ package LanguageDetection.application.controllers;
 import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.services.TaskService;
+import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
+
+import java.io.IOException;
 
 @Controller
 @RestController
@@ -23,11 +26,7 @@ public class TaskController {
         this.service = service;
     }
 
-    /**
-     * Get a record of an Example
-     * @param id the id of the Example
-     * @return
-     */
+
 
 
 /*    @GetMapping("/{id}")
@@ -38,7 +37,7 @@ public class TaskController {
     }*/
 
     @PostMapping("")
-    public ResponseEntity<Object> createExample(@RequestBody NewTaskInfoDTO info) {
+    public ResponseEntity<Object> createExample(@RequestBody NewTaskInfoDTO info) throws ParseException, IOException {
         TaskDTO task = service.createTask(info);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
