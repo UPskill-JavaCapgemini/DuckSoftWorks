@@ -53,7 +53,7 @@ public class TaskService {
 
     public TaskService() throws IOException {
         this.analyzer = new SimpleAnalyzer();
-        this.directory = FSDirectory.open(Paths.get("/src/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
+        this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
         this.config = new IndexWriterConfig();
         config.setSimilarity(new ClassicSimilarity());
         this.writer = new IndexWriter(directory, config);
@@ -71,11 +71,11 @@ public class TaskService {
 
 
     private void dictionaries() throws IOException {
-        addDoc(writer, "English", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
+        addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
 
-        addDoc(writer, "Portuguese", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl"));
+        addDoc(writer, "PORTUGUESE", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl"));
 
-        addDoc(writer, "Spanish", Paths.get("/src/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl"));
+        addDoc(writer, "SPANISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl"));
         writer.close();
     }
 
