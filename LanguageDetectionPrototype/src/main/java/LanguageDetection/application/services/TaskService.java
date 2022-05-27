@@ -57,7 +57,7 @@ public class TaskService {
     }
 
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
-        String language = analyse(string.getText());
+        String language = ServiceAnalyzer.analyze(string.getText());
         //todo: add language in TaskFactory method (ENUM)
         Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
         TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLang());
@@ -65,24 +65,6 @@ public class TaskService {
     }
 
 
-
-    //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
-    // A field may be stored with the document, in which case it is returned with search hits on the document.
-
-
-    private String analyse(String query) throws ParseException, IOException {
-        BooleanQuery.setMaxClauseCount(2147483647);
-        reader = DirectoryReader.open(directory);
-        IndexSearcher searcher = new IndexSearcher(reader);
-        Query q = new QueryParser("dictionary", analyzer).parse(cleanUpInputText(query));
-
-
-        TopDocs docs = searcher.search(q, HITS_PER_PAGE);
-        ScoreDoc[] hits = docs.scoreDocs;
-
-        String language = searcher.doc(hits[0].doc).get("language");
-        return language;
-    }
 
 
 
