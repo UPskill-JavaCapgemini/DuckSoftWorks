@@ -1,6 +1,5 @@
 package LanguageDetection.application.services;
 
-import lombok.Getter;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
@@ -8,26 +7,19 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
-import org.apache.lucene.store.Directory;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+@Service
 public class ServiceAnalyzer {
-
     static Analyzer analyzer;
     static IndexReader reader;
     static IndexSearcher searcher;
 
 
     private static final int HITS_PER_PAGE = 100;
-    private static ServiceAnalyzer singleton = null;
 
-    protected static ServiceAnalyzer getInstance() throws IOException {
-        if (singleton == null)
-            singleton = new ServiceAnalyzer();
-
-        return singleton;
-    }
 
     public ServiceAnalyzer() throws IOException {
         analyzer = new SimpleAnalyzer();

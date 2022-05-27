@@ -31,7 +31,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static org.apache.lucene.index.IndexOptions.DOCS_AND_FREQS;
 
 
 @Service
@@ -43,11 +42,14 @@ public class TaskService {
     @Autowired
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
+    @Autowired
+    ServiceAnalyzer serviceAnalyzer;
+
 
 
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String cleanedUp = cleanUpInputText(string.getText());
-        String language = ServiceAnalyzer.getInstance().analyze(cleanedUp);
+        String language = serviceAnalyzer.analyze(cleanedUp);
         Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
         TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLang());
         return taskDTO;
