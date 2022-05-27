@@ -49,8 +49,6 @@ public class TaskService {
     private IndexWriterConfig config;
     private IndexReader reader;
 
-    private final int HITS_PER_PAGE = 100;
-
     public TaskService() throws IOException {
         this.analyzer = new SimpleAnalyzer();
         this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles"));

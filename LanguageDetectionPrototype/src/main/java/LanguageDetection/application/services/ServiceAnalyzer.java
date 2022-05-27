@@ -17,6 +17,10 @@ public class ServiceAnalyzer {
     private static Directory directory;
     private static IndexReader reader;
 
+  /*  public ServiceAnalyzer() {
+        this.analyzer = new SimpleAnalyzer();
+        this.directory = new Directory();
+    }*/
 
     //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
     // A field may be stored with the document, in which case it is returned with search hits on the document.
