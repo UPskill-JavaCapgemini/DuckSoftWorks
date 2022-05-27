@@ -45,13 +45,9 @@ public class TaskService {
 
 
 
-    public TaskService() throws IOException {
-        DictionaryService.getInstance().dictionaries();
-    }
-
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
-        String language = ServiceAnalyzer.analyze(string.getText());
-        //todo: add language in TaskFactory method (ENUM)
+        String cleanedUp = cleanUpInputText(string.getText());
+        String language = ServiceAnalyzer.getInstance().analyze(cleanedUp);
         Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
         TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLang());
         return taskDTO;
@@ -60,8 +56,9 @@ public class TaskService {
 
     private static String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
-                .replaceAll("\\p{P}", "") //PUNCTUATION
-                .replaceAll("\\p{N}", "") // NUMBERS
+                .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
+                //.replaceAll("\\p{P}", "") //PUNCTUATION
+                //.replaceAll("\\p{N}", "") // NUMBERS
                 .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
     }
 }
