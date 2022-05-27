@@ -14,20 +14,19 @@ public class ServiceAnalyzer {
 
     private static final int HITS_PER_PAGE = 100;
     private static SimpleAnalyzer analyzer;
-    private static Directory directory;
+    private static DictionaryService directory;
     private static IndexReader reader;
 
     public ServiceAnalyzer() throws IOException {
         this.analyzer = new SimpleAnalyzer();
-        this.directory = DictionaryService.getInstance().directory;
+        this.directory = DictionaryService.getInstance();
     }
 
     //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
     // A field may be stored with the document, in which case it is returned with search hits on the document.
-
     static String analyze(String query) throws ParseException, IOException {
         IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
-        reader = DirectoryReader.open(directory);
+            reader = DirectoryReader.open(DictionaryService.getInstance().directory);
         IndexSearcher searcher = new IndexSearcher(reader);
         Query q = new QueryParser("dictionary", analyzer).parse(query);
 
