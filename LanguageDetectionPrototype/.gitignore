@@ -23,8 +23,8 @@
 hs_err_pid*
 
 # indexed files
-indexedFiles/
-!nothing.txt
+indexedFiles/*
+!indexedFiles/nothing.txt
 
 # IntelliJ config file
 .idea
