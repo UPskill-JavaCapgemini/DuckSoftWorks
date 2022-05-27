@@ -11,7 +11,7 @@ public class TaskDomainDTOAssembler {
     private TaskDomainDTOAssembler() {
     }
 
-    public TaskDTO toDTO(String inputText, Language language) {
-        return new TaskDTO(inputText, language);
+    public TaskDTO toDTO(Language language) {
+        return new TaskDTO(language);
     }
 }

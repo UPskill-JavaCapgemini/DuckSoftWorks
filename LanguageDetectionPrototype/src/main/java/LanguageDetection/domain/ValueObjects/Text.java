@@ -8,17 +8,17 @@ import LanguageDetection.domain.util.BusinessValidation;
 public class Text implements ValueObject {
     private final String text;
 
-    protected Text(String txt){
+    public Text(String txt){
         BusinessValidation.nonEmpty(txt,"Text for analises should neither be null nor empty");
         this.text=txt;
     }
 
     /* For ORM purposes */
-    protected Text(){
+    public Text(){
         this.text=null;
     }
 
-    protected String getText(){
+    public String getText(){
         return this.text;
     }
 
