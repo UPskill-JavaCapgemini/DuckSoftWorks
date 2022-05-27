@@ -53,12 +53,7 @@ public class TaskService {
 
     public TaskService() throws IOException {
         this.analyzer = new SimpleAnalyzer();
-        this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
-        this.config = new IndexWriterConfig();
-        config.setSimilarity(new ClassicSimilarity());
-        this.writer = new IndexWriter(directory, config);
-        writer.deleteAll();
-        dictionaries();
+        DictionaryService.getInstance().dictionaries();
     }
 
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
@@ -70,14 +65,6 @@ public class TaskService {
     }
 
 
-    private void dictionaries() throws IOException {
-        addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
-
-        addDoc(writer, "PORTUGUESE", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl"));
-
-        addDoc(writer, "SPANISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl"));
-        writer.close();
-    }
 
     //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
     // A field may be stored with the document, in which case it is returned with search hits on the document.
@@ -98,30 +85,8 @@ public class TaskService {
     }
 
 
-    //Describes the properties of a field.
-    public static final FieldType TYPE_STORED = new FieldType();
 
-    static {
-        TYPE_STORED.setIndexOptions(DOCS_AND_FREQS);
-        TYPE_STORED.setTokenized(true);
-        TYPE_STORED.setStored(true);
-        TYPE_STORED.setStoreTermVectors(true);
-        TYPE_STORED.setStoreTermVectorPositions(true);
-        TYPE_STORED.freeze();
-    }
 
-    private static void addDoc(IndexWriter w, String language, Path dictionary) throws IOException {
-        Document doc = new Document();
-
-        //A field that is indexed but not tokenized: the entire String value is indexed as a single token.
-        doc.add(new StringField("language", language, Field.Store.YES));
-
-        //A Field is a section of a document.
-        //This Field is stored in the index, it is later returned with hits on the document.
-        Field field = new Field("dictionary", new String(Files.readAllBytes(dictionary)), TYPE_STORED);
-        doc.add(field);
-        w.addDocument(doc);
-    }
 
 
     private static String cleanUpInputText(String text) {
