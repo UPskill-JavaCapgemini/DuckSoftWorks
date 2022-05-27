@@ -38,4 +38,6 @@ public class Task implements AggregateRoot <Date>{
     public boolean hasIdentity(Date id) {
         return AggregateRoot.super.hasIdentity(id);
     }
+
+
 }
