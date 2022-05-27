@@ -1,5 +1,7 @@
 package LanguageDetection.application.services;
 
+import lombok.Getter;
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -12,29 +14,35 @@ import java.io.IOException;
 
 public class ServiceAnalyzer {
 
-    private static final int HITS_PER_PAGE = 100;
-    private static SimpleAnalyzer analyzer;
-    private static DictionaryService directory;
-    private static IndexReader reader;
+    static Analyzer analyzer;
+    static IndexReader reader;
+    static IndexSearcher searcher;
 
-    public ServiceAnalyzer() throws IOException {
-        this.analyzer = new SimpleAnalyzer();
-        this.directory = DictionaryService.getInstance();
+
+    private static final int HITS_PER_PAGE = 100;
+    private static ServiceAnalyzer singleton = null;
+
+    protected static ServiceAnalyzer getInstance() throws IOException {
+        if (singleton == null)
+            singleton = new ServiceAnalyzer();
+
+        return singleton;
     }
 
-    //Documents are the unit of indexing and search. A Document is a set of fields. Each field has a name and a textual value.
-    // A field may be stored with the document, in which case it is returned with search hits on the document.
-    static String analyze(String query) throws ParseException, IOException {
-        IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
-            reader = DirectoryReader.open(DictionaryService.getInstance().directory);
-        IndexSearcher searcher = new IndexSearcher(reader);
-        Query q = new QueryParser("dictionary", analyzer).parse(query);
+    public ServiceAnalyzer() throws IOException {
+        analyzer = new SimpleAnalyzer();
+        reader = DirectoryReader.open(DictionaryService.getInstance().directory);
+        searcher = new IndexSearcher(reader);
+    }
 
+    String analyze(String query) throws ParseException, IOException {
+        IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
+
+        Query q = new QueryParser("dictionary", analyzer).parse(query);
 
         TopDocs docs = searcher.search(q, HITS_PER_PAGE);
         ScoreDoc[] hits = docs.scoreDocs;
 
-        String language = searcher.doc(hits[0].doc).get("language");
-        return language;
+        return searcher.doc(hits[0].doc).get("language");
     }
 }

@@ -32,8 +32,8 @@ private static DictionaryService singleton = null;
         this.writer = new IndexWriter(directory, config);
         config.setSimilarity(new ClassicSimilarity());
         writer.deleteAll();
+        dictionaries();
     }
-
 
     protected void dictionaries() throws IOException {
         addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
