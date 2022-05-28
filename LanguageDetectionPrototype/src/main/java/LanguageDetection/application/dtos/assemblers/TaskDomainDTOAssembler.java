@@ -13,6 +13,6 @@ public class TaskDomainDTOAssembler {
     }
 
     public TaskDTO toDTO(Task task) {
-        return new TaskDTO(task.getLang());
+        return new TaskDTO(task);
     }
 }
