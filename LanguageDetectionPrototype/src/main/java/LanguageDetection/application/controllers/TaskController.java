@@ -25,23 +25,21 @@ public class TaskController {
         this.service = service;
     }
 
-
-
+    /**
+     * This method receives a NewTaskInfoDTO object, that is automatically created from a JSON by SpringFrameWork, the information is extracted
+     * from it and passed to an instance of TaskService that returns a TaskDTO with the info to be passed to the user in the ResponseEntity object.
+     *
+     * @param info receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
+     * @throws ParseException thrown by QueryParser it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException thrown by IndexReader class if some sort of I/O problem occurred
+     */
 
 
     @PostMapping("")
-    public ResponseEntity<Object> createExample(@RequestBody NewTaskInfoDTO info) throws ParseException, IOException {
+    public ResponseEntity<Object> createTaskFromInput(@RequestBody NewTaskInfoDTO info) throws ParseException, IOException {
         TaskDTO task = service.createTask(info);
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
-
-
-
-
-
-
-
-
 
 
 /*    @GetMapping("/{id}")
