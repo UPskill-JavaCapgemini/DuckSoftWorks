@@ -7,28 +7,11 @@ import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.entities.example.Task;
 import LanguageDetection.domain.factories.TaskFactory;
-import org.apache.lucene.analysis.core.SimpleAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.FieldType;
-import org.apache.lucene.document.StringField;
-import org.apache.lucene.index.DirectoryReader;
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.queryparser.classic.ParseException;
-import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.*;
-import org.apache.lucene.search.similarities.ClassicSimilarity;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 
@@ -43,13 +26,13 @@ public class TaskService {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    ServiceAnalyzer serviceAnalyzer;
+    AnalyzerService analyzerService;
 
 
 
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String cleanedUp = cleanUpInputText(string.getText());
-        String language = serviceAnalyzer.analyze(cleanedUp);
+        String language = analyzerService.analyze(cleanedUp);
         Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
         TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLang());
         return taskDTO;

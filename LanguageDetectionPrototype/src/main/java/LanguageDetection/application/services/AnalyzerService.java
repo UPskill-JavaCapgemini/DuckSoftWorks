@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class ServiceAnalyzer {
+public class AnalyzerService {
     static Analyzer analyzer;
     static IndexReader reader;
     static IndexSearcher searcher;
@@ -21,7 +21,7 @@ public class ServiceAnalyzer {
     private static final int HITS_PER_PAGE = 100;
 
 
-    public ServiceAnalyzer() throws IOException {
+    public AnalyzerService() throws IOException {
         analyzer = new SimpleAnalyzer();
         reader = DirectoryReader.open(DictionaryService.getInstance().directory);
         searcher = new IndexSearcher(reader);
