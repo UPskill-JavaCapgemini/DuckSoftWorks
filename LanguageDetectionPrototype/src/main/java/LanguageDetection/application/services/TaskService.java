@@ -34,8 +34,7 @@ public class TaskService {
         String cleanedUp = cleanUpInputText(string.getText());
         String language = analyzerService.analyze(cleanedUp);
         Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
-        TaskDTO taskDTO = taskDomainDTOAssembler.toDTO(task.getLang());
-        return taskDTO;
+        return taskDomainDTOAssembler.toDTO(task);
     }
 
 
