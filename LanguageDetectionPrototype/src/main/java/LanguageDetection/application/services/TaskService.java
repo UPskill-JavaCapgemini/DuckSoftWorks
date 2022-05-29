@@ -55,7 +55,7 @@ public class TaskService {
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String cleanedUp = cleanUpInputText(string.getText());
         String language = analyzerService.analyze(cleanedUp);
-        Task task = taskFactory.createTask(string.getText(), Task.Language.valueOf(language));
+        Task task = taskFactory.createTask(cleanedUp, Task.Language.valueOf(language));
         return taskDomainDTOAssembler.toDTO(task);
     }
 
