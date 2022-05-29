@@ -4,7 +4,6 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.entities.example.Task;
 import LanguageDetection.domain.factories.TaskFactory;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -56,7 +55,7 @@ public class TaskService {
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String cleanedUp = cleanUpInputText(string.getText());
         String language = analyzerService.analyze(cleanedUp);
-        Task task = taskFactory.createTask(string.getText(), Language.valueOf(language));
+        Task task = taskFactory.createTask(string.getText(), Task.Language.valueOf(language));
         return taskDomainDTOAssembler.toDTO(task);
     }
 
