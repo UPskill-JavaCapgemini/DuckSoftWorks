@@ -48,6 +48,8 @@ public class TaskService {
      * Cleans up the input text by calling cleanUpInputText() and
      * analyzes it with the service analyzer.
      *
+     * @throws ParseException - Signals that an error has been reached unexpectedly in the QueryParse
+     * @throws IOException - thrown by IndexReader class if some sort of I/O problem occurred
      * @param string the string containing the text within NewTaskInfoDTO.
      * @return  TaskDTO assembled by taskDomainDTOAssembler.
      */
@@ -63,7 +65,7 @@ public class TaskService {
      * Strips the string of multiple whitespaces through the use of a regex.
      *
      * @param text the string that is cleaned up with the regex.
-     * @return  the cleaned up text.    
+     * @return  the cleaned up text.
      */
     private static String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
