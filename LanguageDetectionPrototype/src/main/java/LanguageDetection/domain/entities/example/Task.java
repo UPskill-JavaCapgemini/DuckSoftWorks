@@ -1,6 +1,5 @@
 package LanguageDetection.domain.entities.example;
 
-import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.Text;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.Getter;
@@ -39,5 +38,10 @@ public class Task implements AggregateRoot <Date>{
         return AggregateRoot.super.hasIdentity(id);
     }
 
+    public enum Language {
+        ENGLISH,
+        PORTUGUESE,
+        SPANISH
+    }
 
 }
