@@ -1,7 +1,5 @@
 package LanguageDetection.Domain;
 
-import LanguageDetection.domain.ValueObjects.Language;
-import LanguageDetection.domain.ValueObjects.Text;
 import LanguageDetection.domain.entities.example.Task;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,18 +8,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
-public class ApplicationTest {
+public class TaskTest {
 
     @Test
     public void shouldCreateATaskWithCorrectAttributes() {
         //Arrange
         String text = "Olá é extraordinário como chegaste até aqui";
-        Language lg = Language.PORTUGUESE;
+        Task.Language lg = Task.Language.PORTUGUESE;
 
         Task task = new Task( text , lg);
+
+        //Assert
         assertNotEquals(task.getDate(),new Date(System.currentTimeMillis()) );
-        assertEquals(task.getLang(), Language.valueOf("PORTUGUESE"));
-        assertEquals(task.getText(), new Text(text));
+        assertEquals(task.getLang(), Task.Language.valueOf("PORTUGUESE"));
+        assertEquals(task.getText().toString(), "Olá é extraordinário como chegaste até aqui");
     }
 
 }
+
