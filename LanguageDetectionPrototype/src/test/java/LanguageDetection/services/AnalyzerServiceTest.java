@@ -1,3 +1,5 @@
+package LanguageDetection.services;
+
 import LanguageDetection.application.services.AnalyzerService;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.testng.Assert;
