@@ -1,18 +1,18 @@
 package LanguageDetection.domain.entities.example;
 
-import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.Text;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.Getter;
 
 import java.util.Date;
+
 @Getter
-public class Task implements AggregateRoot <Date>{
+public class Task implements AggregateRoot<Date> {
     Date date;
     Text text;
     Language lang;
 
-    public Task (String txt, Language lg){
+    public Task(String txt, Language lg) {
         this.date = new Date(System.currentTimeMillis());
         this.text = new Text(txt);
         this.lang = lg;
@@ -39,5 +39,11 @@ public class Task implements AggregateRoot <Date>{
         return AggregateRoot.super.hasIdentity(id);
     }
 
+
+    public enum Language {
+        ENGLISH,
+        PORTUGUESE,
+        SPANISH
+    }
 
 }

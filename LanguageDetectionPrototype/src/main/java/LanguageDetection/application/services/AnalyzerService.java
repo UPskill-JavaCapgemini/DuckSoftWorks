@@ -49,7 +49,7 @@ public class AnalyzerService {
      * @throws IOException - thrown by IndexReader class if some sort of I/O problem occurred
      */
 
-    public static String analyze(String query) throws ParseException, IOException {
+    public String analyze(String query) throws ParseException, IOException {
 
         //maximum value of an Integer to allow the most hits possible for an IndexSearcher
         IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
