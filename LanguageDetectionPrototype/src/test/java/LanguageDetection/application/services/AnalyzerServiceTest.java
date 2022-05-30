@@ -19,7 +19,7 @@ public class AnalyzerServiceTest {
         }
 
     @Test
-    void analyzWithPortugueseTest() throws ParseException, IOException {
+    void analyzeWithPortugueseTest() throws ParseException, IOException {
 
         AnalyzerService service = new AnalyzerService();
         String phrase = "Era uma vez uma menina que ficava muito irritada quando tinha de fazer muitos testes. Essa menina não sou eu.";
@@ -51,7 +51,7 @@ public class AnalyzerServiceTest {
         AnalyzerService service = new AnalyzerService();
         String phrase = "There was once upon a time a little girl that is annoyed by having to do a lot of unit tests. Esa chica no soy yo.";
         String result = service.analyze(phrase);
-        Assert.assertNotEquals(result, "PRTUGUESE");
+        Assert.assertNotEquals(result, "PORTUGUESE");
     }
 
 }
