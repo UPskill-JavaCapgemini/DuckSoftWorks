@@ -16,6 +16,7 @@ import java.util.*;
 
 /**
  * Represents the task service responsible for creating a task.
+ *
  * @author DuckSoftWorks
  */
 @Service
@@ -25,21 +26,21 @@ public class TaskService {
     /**
      * The taskFactory.
      */
-    TaskFactory taskFactory;
+            TaskFactory taskFactory;
 
 
     @Autowired
     /**
      * The domain DTO assembler for a task.
      */
-    TaskDomainDTOAssembler taskDomainDTOAssembler;
+            TaskDomainDTOAssembler taskDomainDTOAssembler;
 
 
     @Autowired
     /**
      * The Analyzer service.
      */
-    AnalyzerService analyzerService;
+            AnalyzerService analyzerService;
 
 
     /**
@@ -47,10 +48,10 @@ public class TaskService {
      * Cleans up the input text by calling cleanUpInputText() and
      * analyzes it with the service analyzer.
      *
-     * @throws ParseException - Signals that an error has been reached unexpectedly in the QueryParse
-     * @throws IOException - thrown by IndexReader class if some sort of I/O problem occurred
      * @param string the string containing the text within NewTaskInfoDTO.
-     * @return  TaskDTO assembled by taskDomainDTOAssembler.
+     * @return TaskDTO assembled by taskDomainDTOAssembler.
+     * @throws ParseException - Signals that an error has been reached unexpectedly in the QueryParse
+     * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
      */
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String cleanedUp = cleanUpInputText(string.getText());
@@ -64,9 +65,9 @@ public class TaskService {
      * Strips the string of multiple whitespaces through the use of a regex.
      *
      * @param text the string that is cleaned up with the regex.
-     * @return  the cleaned up text.
+     * @return the cleaned up text.
      */
-    private static String cleanUpInputText(String text) {
+    protected String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
                 //.replaceAll("\\p{P}", "") //PUNCTUATION
