@@ -9,8 +9,8 @@ public class TaskFactory implements ITaskFactory {
 
 
     @Override
-    public Task createTask(String string, Task.Language language) {
+    public Task createTask(String string, String language) {
 
-        return new Task(string, language);
+        return new Task(string, Task.Language.valueOf(language));
     }
 }

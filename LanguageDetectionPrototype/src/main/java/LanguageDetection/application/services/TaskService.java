@@ -55,7 +55,7 @@ public class TaskService {
     public TaskDTO createTask(NewTaskInfoDTO string) throws ParseException, IOException {
         String cleanedUp = cleanUpInputText(string.getText());
         String language = analyzerService.analyze(cleanedUp);
-        Task task = taskFactory.createTask(cleanedUp,Task.Language.valueOf(language));
+        Task task = taskFactory.createTask(cleanedUp, language);
         return taskDomainDTOAssembler.toDTO(task);
     }
 
@@ -66,7 +66,7 @@ public class TaskService {
      * @param text the string that is cleaned up with the regex.
      * @return  the cleaned up text.
      */
-    protected String cleanUpInputText(String text) {
+    private static String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
                 //.replaceAll("\\p{P}", "") //PUNCTUATION

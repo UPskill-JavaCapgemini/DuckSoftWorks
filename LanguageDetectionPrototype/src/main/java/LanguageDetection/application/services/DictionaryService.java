@@ -26,6 +26,13 @@ IndexWriterConfig config;
 IndexWriter writer;
 private static DictionaryService singleton = null;
 
+    /**
+     *This constructor creates an instance of DictionaryService.
+     *It uses a Directory that is the base class for Directory implementations that store index files in the file system.
+     *Uses a IndexWritterConfig that holds all the configuration that is used to create an IndexWriter of the Directory.
+     *@throws IOException thrown if some sort of I/O problem occurred.
+     */
+
     public DictionaryService() throws IOException {
         this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
         this.config = new IndexWriterConfig();
@@ -35,6 +42,10 @@ private static DictionaryService singleton = null;
         dictionaries();
     }
 
+    /**
+     * Adds the files of dictionaires to the IndexWritter
+     * @throws IOException if some sort of I/O problem occurred.
+     */
     protected void dictionaries() throws IOException {
         addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
 
@@ -44,6 +55,11 @@ private static DictionaryService singleton = null;
         writer.close();
     }
 
+    /**
+     * Method that returns a unique instance of DictionaryService
+     * @return a singleton DictionaryService instance
+     * @throws IOException thrown if some sort of I/O problem occurred
+     */
     protected static DictionaryService getInstance() throws IOException {
         if (singleton == null)
             singleton = new DictionaryService();
@@ -51,7 +67,9 @@ private static DictionaryService singleton = null;
         return singleton;
     }
 
-    //Describes the properties of a field.
+    /**
+     * Sets the properties of a field.
+     */
     public static final FieldType TYPE_STORED = new FieldType();
 
     static {
@@ -63,14 +81,20 @@ private static DictionaryService singleton = null;
         TYPE_STORED.freeze();
     }
 
+    /**
+     * Method for indexes documents and prepared them for later tokenization.
+     * It uses a StringField that is indexed but not tokenized: the entire String value is indexed.
+     * Creates a Field that is a section of a document and is stored in the index.
+     * @param w creates and maintains an index
+     * @param language defines the language of the dictionary
+     * @param dictionary defines the path to the file
+     * @throws IOException thrown if some sort of I/O problem occurred
+     */
     private static void addDoc(IndexWriter w, String language, Path dictionary) throws IOException {
         Document doc = new Document();
 
-        //A field that is indexed but not tokenized: the entire String value is indexed as a single token.
         doc.add(new StringField("language", language, Field.Store.YES));
 
-        //A Field is a section of a document.
-        //This Field is stored in the index, it is later returned with hits on the document.
         Field field = new Field("dictionary", new String(Files.readAllBytes(dictionary)), TYPE_STORED);
         doc.add(field);
         w.addDocument(doc);
