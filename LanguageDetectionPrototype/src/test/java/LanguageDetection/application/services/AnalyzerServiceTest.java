@@ -1,4 +1,4 @@
-package LanguageDetection.services;
+package LanguageDetection.application.services;
 
 import LanguageDetection.application.services.AnalyzerService;
 import org.apache.lucene.queryparser.classic.ParseException;
