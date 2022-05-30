@@ -34,40 +34,11 @@ public class TaskServiceTest {
 
     @InjectMocks
     TaskService taskService;
-    @Mock
-    AnalyzerService analyzerService;
-    @Mock
-    TaskFactory taskFactory;
-    @Mock
-    TaskDomainDTOAssembler taskDomainDTOAssembler;
+
 
     @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
-    }
-
-    @Test
-    public void shouldCreateANewTaskWhenInputIsGiven() throws IOException, ParseException {
-
-//        //Arrange
-//        NewTaskInfoDTO newTaskInfoDTO = new NewTaskInfoDTO();
-//        newTaskInfoDTO.setText("Sample text to be tested");
-////
-//
-//        when(analyzerService.analyze(anyString())).thenReturn("ENGLISH");
-//        when(taskFactory.createTask("cleaned up string", Task.Language.ENGLISH)).thenReturn(mock(Task.class));
-//        when(taskDomainDTOAssembler.toDTO(mock(Task.class))).thenReturn()
-////        //Act
-//        TaskDTO newTaskDTO= taskService.createTask(newTaskInfoDTO);
-////        //Assert
-//        Assert.assertNotNull(taskDTO);
-
-        NewTaskInfoDTO newTaskInfoDTO = new NewTaskInfoDTO();
-        newTaskInfoDTO.setText("sampletext");
-        TaskDTO taskDTO = taskService.createTask(newTaskInfoDTO);
-
-        Assert.assertNotNull(taskDTO);
-
     }
 
     @Test
