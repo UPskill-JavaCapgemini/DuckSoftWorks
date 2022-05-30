@@ -10,13 +10,30 @@ import java.io.IOException;
 public class AnalyzerServiceTest {
 
     @Test
-   void analyze() throws ParseException, IOException {
+   void analyzeWithEnglishTest() throws ParseException, IOException {
 
         AnalyzerService service = new AnalyzerService();
-        String phrase = "there was once upon a time a little girl that is annoyed by having to do a lot of unit tests.";
+        String phrase = "There was once upon a time a little girl that is annoyed by having to do a lot of unit tests. That little girl is not me.";
         String result = service.analyze(phrase);
         Assert.assertEquals(result, "ENGLISH");
         }
 
+    @Test
+    void analyzWithPortugueseTest() throws ParseException, IOException {
+
+        AnalyzerService service = new AnalyzerService();
+        String phrase = "Era uma vez uma menina que ficava muito irritada quando tinha de fazer muitos testes. Essa menina não sou eu.";
+        String result = service.analyze(phrase);
+        Assert.assertEquals(result, "PORTUGUESE");
+    }
+
+    @Test
+    void analyzeWithSpanishTest() throws ParseException, IOException {
+
+        AnalyzerService service = new AnalyzerService();
+        String phrase = "Érase una vez una niña que se enfadaba mucho cuando tenía que hacer muchos exámenes. Esa chica no soy yo.";
+        String result = service.analyze(phrase);
+        Assert.assertEquals(result, "SPANISH");
+    }
 
 }
