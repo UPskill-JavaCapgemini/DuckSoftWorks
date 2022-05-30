@@ -21,3 +21,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# indexed files
+src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/*
+!src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+
+
+
+# IntelliJ config file
+.idea
