@@ -66,7 +66,7 @@ public class TaskService {
      * @param text the string that is cleaned up with the regex.
      * @return  the cleaned up text.
      */
-    private String cleanUpInputText(String text) {
+    protected String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
                 //.replaceAll("\\p{P}", "") //PUNCTUATION

@@ -52,15 +52,14 @@ public class TaskServiceTest {
 //        //Arrange
 //        NewTaskInfoDTO newTaskInfoDTO = new NewTaskInfoDTO();
 //        newTaskInfoDTO.setText("Sample text to be tested");
-//        Task task = new Task(newTaskInfoDTO.getText(), Task.Language.ENGLISH);
-//        TaskDTO taskDTO = new TaskDTO(task);
+////
 //
 //        when(analyzerService.analyze(anyString())).thenReturn("ENGLISH");
 //        when(taskFactory.createTask("cleaned up string", Task.Language.ENGLISH)).thenReturn(mock(Task.class));
-//        when(taskDomainDTOAssembler.toDTO(new Task("cleaned up string", Task.Language.ENGLISH))).thenReturn(taskDTO);
-//        //Act
+//        when(taskDomainDTOAssembler.toDTO(mock(Task.class))).thenReturn()
+////        //Act
 //        TaskDTO newTaskDTO= taskService.createTask(newTaskInfoDTO);
-//        //Assert
+////        //Assert
 //        Assert.assertNotNull(taskDTO);
 
         NewTaskInfoDTO newTaskInfoDTO = new NewTaskInfoDTO();
@@ -70,4 +69,38 @@ public class TaskServiceTest {
         Assert.assertNotNull(taskDTO);
 
     }
+
+    @Test
+    public void shouldCleanUpAStringWithSpecialCharacters() {
+        //Arrange
+        String testString = "<%a# test>< ! ,string @ with no.. special? characters.";
+        String cleanedUpString;
+        //Act
+        cleanedUpString = taskService.cleanUpInputText(testString);
+        //Assert
+        Assert.assertEquals(" a test string with no special characters ", cleanedUpString);
+    }
+
+    @Test
+    public void shouldCleanUpAStringWithMultipleSpacing() {
+        //Arrange
+        String testString = " a         test         string   with    multiple    spaces       ";
+        String cleanedUpString;
+        //Act
+        cleanedUpString = taskService.cleanUpInputText(testString);
+        //Assert
+        Assert.assertEquals("a test string with multiple spaces", cleanedUpString);
+    }
+
+    @Test
+    public void shouldCleanUpAStringWithUpperCase() {
+        //Arrange
+        String testString = "A tEsT STRing WitH UpPEr CASE";
+        String lowerCaseString;
+        //Act
+        lowerCaseString = taskService.cleanUpInputText(testString);
+        //Assert
+        Assert.assertEquals("a test string with upper case", lowerCaseString);
+    }
+
 }
