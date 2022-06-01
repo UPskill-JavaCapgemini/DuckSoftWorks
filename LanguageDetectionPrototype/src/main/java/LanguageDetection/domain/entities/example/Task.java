@@ -1,11 +1,17 @@
 package LanguageDetection.domain.entities.example;
 
-import LanguageDetection.domain.ValueObjects.Text;
+import LanguageDetection.domain.ValueObjects.TimeOut;
+import LanguageDetection.domain.ValueObjects.URL;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -17,6 +23,14 @@ import java.util.Date;
 @EqualsAndHashCode
 @NoArgsConstructor
 public class Task implements AggregateRoot<Date> {
+
+    /**
+     * The autogenerate id of the task
+     */
+    @Getter
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long taskId;
     /**
      * The date of the task
      */
@@ -26,23 +40,40 @@ public class Task implements AggregateRoot<Date> {
      * The text of the task
      */
     @Getter
-    Text text;
+    URL text;
     /**
      * The language detected on the text
      */
     @Getter
     Language lang;
+    /**
+     * The actual state of the task
+     */
+    @Getter
+    CurrentStatus currentStatus;
+    /**
+     * The time task has to be concluded before it is automatically canceled
+     */
+    @Getter
+    TimeOut timeOut;
 
     /**
      * Constructor of the task that buidls the task receiving the text and the language detected
-     * @param txt  inserted text for be analyzed
-     * @param lg language that was detected in the text
+     *
+     * @param date inserted text for be analyzed
+     * @param   language that was detected in the text
      */
-    public Task (String txt, Language lg){
+
+    public Task(Date date, URL text, Language lang, TimeOut timeOut) {
+        // should id be here too??
         this.date = new Date(System.currentTimeMillis());
-        this.text = new Text(txt);
-        this.lang = lg;
+        this.text = text;
+        this.lang = lang;
+        this.currentStatus = CurrentStatus.Processing;
+        this.timeOut = timeOut;
     }
+
+
 
 
     @Override
@@ -57,6 +88,7 @@ public class Task implements AggregateRoot<Date> {
 
     /**
      * method that identify the task
+     *
      * @return the date of the task
      */
     @Override
@@ -75,4 +107,9 @@ public class Task implements AggregateRoot<Date> {
         SPANISH
     }
 
+    public enum CurrentStatus {
+        Concluded,
+        Canceled,
+        Processing
+    }
 }
