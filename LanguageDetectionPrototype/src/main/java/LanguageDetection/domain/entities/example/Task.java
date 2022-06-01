@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * This Class represents the tasks created to detect predominant language of the inserted text
+ * This Class represents the tasks created to detect predominant language of text present in the given URL
  *  * @author DuckSoftWorks
  */
 
@@ -40,7 +40,7 @@ public class Task implements AggregateRoot<Date> {
      * The text of the task
      */
     @Getter
-    URL text;
+    URL url;
     /**
      * The language detected on the text
      */
@@ -60,15 +60,17 @@ public class Task implements AggregateRoot<Date> {
     /**
      * Constructor of the task that buidls the task receiving the text and the language detected
      *
-     * @param date inserted text for be analyzed
-     * @param   language that was detected in the text
+     * @param date current time of the creation of the task
+     * @param url URL of the text to be analyzed
+     * @param lang language detected in the text of the url
+     * @param timeOut time limit to conclude the task
      */
 
-    public Task(Date date, URL text, Language lang, TimeOut timeOut) {
+    public Task(Date date, URL url, Language lang, TimeOut timeOut) {
         // should id be here too??
         this.date = new Date(System.currentTimeMillis());
-        this.text = text;
-        this.lang = lang;
+        this.url = url;
+        this.lang = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = timeOut;
     }
@@ -104,7 +106,8 @@ public class Task implements AggregateRoot<Date> {
     public enum Language {
         ENGLISH,
         PORTUGUESE,
-        SPANISH
+        SPANISH,
+        DETECTING
     }
 
     public enum CurrentStatus {
