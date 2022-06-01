@@ -1,15 +1,21 @@
 package LanguageDetection.domain.entities.example;
 
-import LanguageDetection.domain.ValueObjects.Text;
+import LanguageDetection.domain.ValueObjects.TimeOut;
+import LanguageDetection.domain.ValueObjects.URL;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * This Class represents the tasks created to detect predominant language of the inserted text
+ * This Class represents the tasks created to detect predominant language of text present in the given URL
  *  * @author DuckSoftWorks
  */
 
@@ -17,6 +23,8 @@ import java.util.Date;
 @EqualsAndHashCode
 @NoArgsConstructor
 public class Task implements AggregateRoot<Date> {
+
+
     /**
      * The date of the task
      */
@@ -26,22 +34,45 @@ public class Task implements AggregateRoot<Date> {
      * The text of the task
      */
     @Getter
-    Text text;
+    URL url;
     /**
      * The language detected on the text
      */
     @Getter
     Language lang;
+    /**
+     * The actual state of the task
+     */
+    @Getter
+    CurrentStatus currentStatus;
+    /**
+     * The time task has to be concluded before it is automatically canceled
+     */
+    @Getter
+    TimeOut timeOut;
+    /**
+     * The category defined by the user for the task
+     */
+    @Getter
+    Category category;
 
     /**
      * Constructor of the task that buidls the task receiving the text and the language detected
-     * @param txt  inserted text for be analyzed
-     * @param lg language that was detected in the text
+     *
+     * @param date current time of the creation of the task
+     * @param url URL of the text to be analyzed
+     * @param lang language detected in the text of the url
+     * @param timeOut time limit to conclude the task
      */
-    public Task (String txt, Language lg){
+
+    public Task(Date date, URL url, Language lang, TimeOut timeOut, Category category) {
+        // should id be here too??
         this.date = new Date(System.currentTimeMillis());
-        this.text = new Text(txt);
-        this.lang = lg;
+        this.url = url;
+        this.lang = Language.DETECTING;
+        this.currentStatus = CurrentStatus.Processing;
+        this.timeOut = timeOut;
+        this.category = category;
     }
 
 
@@ -57,6 +88,7 @@ public class Task implements AggregateRoot<Date> {
 
     /**
      * method that identify the task
+     *
      * @return the date of the task
      */
     @Override
@@ -72,7 +104,21 @@ public class Task implements AggregateRoot<Date> {
     public enum Language {
         ENGLISH,
         PORTUGUESE,
-        SPANISH
+        SPANISH,
+        DETECTING
     }
 
+    public enum CurrentStatus {
+        Concluded,
+        Canceled,
+        Processing
+    }
+
+    public enum Category {
+        Economics,
+        Philosophy,
+        Mechanics,
+        Nutrition,
+        Sport
+    }
 }
