@@ -24,13 +24,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Task implements AggregateRoot<Date> {
 
-    /**
-     * The autogenerate id of the task
-     */
-    @Getter
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long taskId;
+
     /**
      * The date of the task
      */
@@ -56,6 +50,11 @@ public class Task implements AggregateRoot<Date> {
      */
     @Getter
     TimeOut timeOut;
+    /**
+     * The category defined by the user for the task
+     */
+    @Getter
+    Category category;
 
     /**
      * Constructor of the task that buidls the task receiving the text and the language detected
@@ -66,16 +65,15 @@ public class Task implements AggregateRoot<Date> {
      * @param timeOut time limit to conclude the task
      */
 
-    public Task(Date date, URL url, Language lang, TimeOut timeOut) {
+    public Task(Date date, URL url, Language lang, TimeOut timeOut, Category category) {
         // should id be here too??
         this.date = new Date(System.currentTimeMillis());
         this.url = url;
         this.lang = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = timeOut;
+        this.category = category;
     }
-
-
 
 
     @Override
@@ -114,5 +112,13 @@ public class Task implements AggregateRoot<Date> {
         Concluded,
         Canceled,
         Processing
+    }
+
+    public enum Category {
+        Economics,
+        Philosophy,
+        Mechanics,
+        Nutrition,
+        Sport
     }
 }
