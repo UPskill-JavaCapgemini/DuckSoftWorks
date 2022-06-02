@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BlackListService {
@@ -29,4 +31,16 @@ public class BlackListService {
         return assembler.toDTO(savedBlackListItem);
     }
 
+    public List<BlackListDTO> findAll() {
+        List<BlackList> blackListItems = repository.findAll();
+
+        List<BlackListDTO> blackListDTOS = new ArrayList<>();
+
+        for (BlackList blackList : blackListItems) {
+            BlackListDTO blackListDTO = assembler.toDTO(blackList);
+            blackListDTOS.add(blackListDTO);
+        }
+
+        return blackListDTOS;
+    }
 }

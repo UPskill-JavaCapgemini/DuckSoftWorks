@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.net.MalformedURLException;
+import java.util.List;
 
 @Repository
 public class BlackListRepository {
@@ -26,4 +27,6 @@ public class BlackListRepository {
         return blackListAssembler.toDomain(savedBlackList);
     }
 
+    public List<BlackList> findAll() {
+    }
 }

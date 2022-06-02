@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RestController
@@ -23,6 +24,13 @@ public class BlackListController {
 
     public BlackListController(BlackListService blackListService) {
         this.blackListService = blackListService;
+    }
+
+    @GetMapping("")
+    @ResponseBody
+    public ResponseEntity<Object> findAll() throws ParseException, IOException {
+        List<BlackListDTO> blackListItems = blackListService.findAll();
+       return new ResponseEntity<>(blackListItems,HttpStatus.OK);
     }
 
     @PostMapping("")
