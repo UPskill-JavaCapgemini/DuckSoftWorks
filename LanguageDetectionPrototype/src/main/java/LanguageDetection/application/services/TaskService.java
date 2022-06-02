@@ -4,7 +4,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.entities.example.Task;
+import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factories.TaskFactory;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;

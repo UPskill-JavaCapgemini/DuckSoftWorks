@@ -1,6 +1,6 @@
 package LanguageDetection.application.dtos;
 
-import LanguageDetection.domain.entities.example.Task;
+import LanguageDetection.domain.entities.Task;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 

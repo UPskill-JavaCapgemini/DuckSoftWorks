@@ -1,5 +1,6 @@
 package LanguageDetection.application.dtos;
 
+import LanguageDetection.domain.ValueObjects.URL;
 import lombok.*;
 
 @AllArgsConstructor
@@ -7,5 +8,5 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = false)
 public class NewTaskInfoDTO {
     @Getter @Setter
-    String text;
+    URL url;
 }
