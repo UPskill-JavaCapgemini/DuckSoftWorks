@@ -19,8 +19,8 @@ public class TimeOut implements ValueObject {
         return String.valueOf(this.timeOut);
     }
 
-    public String getTimeOut(){
-        return String.valueOf(this.timeOut);
+    public int getTimeOut(){
+        return this.timeOut;
     }
 
 

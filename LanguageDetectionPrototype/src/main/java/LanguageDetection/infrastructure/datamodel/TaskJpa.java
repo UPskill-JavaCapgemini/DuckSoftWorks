@@ -23,11 +23,11 @@ public class TaskJpa {
 	@Getter
 	private Date date;
 	@Getter
-	private Task.Category category;
+	private String category;
 	@Getter
-	private Task.Language language;
+	private String language;
 	@Getter
-	private TimeOut timeOut;
+	private int timeOut;
 	@Getter
 	private String url;
 
@@ -35,7 +35,7 @@ public class TaskJpa {
 	@Getter
 	private Task.CurrentStatus currentStatus;
 
-	public TaskJpa(String url, TimeOut timeOut, Task.Category category) {
+	public TaskJpa(String url, int timeOut, String category) {
 		this.url = url;
 		this.timeOut = timeOut;
 		this.category = category;
