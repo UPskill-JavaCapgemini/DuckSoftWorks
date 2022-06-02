@@ -3,6 +3,7 @@ import LanguageDetection.domain.shared.ValueObject;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class InputUrl implements ValueObject, Comparable<InputUrl> {
@@ -11,8 +12,9 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
     private final java.net.URL url;
 
 
-    public InputUrl(java.net.URL url){
-        this.url=url;
+    public InputUrl(String url) throws MalformedURLException {
+
+        this.url= new URL(url);
     }
 
     @Override
