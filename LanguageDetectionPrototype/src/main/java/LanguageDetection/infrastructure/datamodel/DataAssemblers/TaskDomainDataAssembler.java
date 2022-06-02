@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 public class TaskDomainDataAssembler {
 
     public TaskJpa toData(Task task) {
-        return new TaskJpa(task.getUrl().getUrl(), task.getTimeOut().getTimeOut(), task.getCategory().toString());
+        return new TaskJpa(task.getUrl().getUrl(), task.getTimeOut().getTimeOut(), task.getCategory().toString(), task.getLanguage(), task.getCurrentStatus());
     }
 
     public Task toDomain(TaskJpa taskJpa) throws MalformedURLException {
