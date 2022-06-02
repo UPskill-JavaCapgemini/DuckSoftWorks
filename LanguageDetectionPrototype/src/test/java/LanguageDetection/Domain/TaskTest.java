@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 public class TaskTest {
-
+/*
     @Test
     public void shouldCreateATaskWithCorrectAttributes() {
         //Arrange
@@ -23,6 +23,8 @@ public class TaskTest {
         assertEquals(task.getLang(), Task.Language.valueOf("PORTUGUESE"));
         assertEquals(task.getText().toString(), "Olá é extraordinário como chegaste até aqui");
     }
+
+ */
 
 }
 
