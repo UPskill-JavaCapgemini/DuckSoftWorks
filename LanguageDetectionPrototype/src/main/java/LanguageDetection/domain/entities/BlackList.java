@@ -18,9 +18,8 @@ public class BlackList implements Entity<InputUrl> {
     private InputUrl url;
 
     public BlackList(String url) throws MalformedURLException {
-        this.url = new InputUrl(url);
+        this.url = new InputUrl(getHostNameFromUrl(url));
     }
-
 
     public boolean sameAs(Object otherBlackList) {
         return this.equals(otherBlackList);
@@ -40,5 +39,9 @@ public class BlackList implements Entity<InputUrl> {
     @Override
     public boolean hasIdentity(InputUrl id) {
         return Entity.super.hasIdentity(id);
+    }
+
+    private String getHostNameFromUrl(String url){
+         return this.url.getUrlObject().getHost();
     }
 }
