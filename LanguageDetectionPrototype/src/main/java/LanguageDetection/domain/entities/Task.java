@@ -1,7 +1,7 @@
 package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.ValueObjects.URL;
+import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -34,7 +31,7 @@ public class Task implements AggregateRoot<Date> {
      * The text of the task
      */
     @Getter
-    URL url;
+    InputUrl url;
     /**
      * The language detected on the text
      */
@@ -64,7 +61,7 @@ public class Task implements AggregateRoot<Date> {
      * @param category chosen by the client for a type of text
      */
 
-    public Task(URL url, TimeOut timeOut, Category category) {
+    public Task(InputUrl url, TimeOut timeOut, Category category) {
         // should id be here too??
         this.date = new Date(System.currentTimeMillis());
         this.url = url;

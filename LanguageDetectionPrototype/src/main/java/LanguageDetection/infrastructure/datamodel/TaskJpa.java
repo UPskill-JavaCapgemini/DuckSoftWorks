@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.datamodel;
 
 import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.ValueObjects.URL;
+import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.entities.Task;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +34,7 @@ public class TaskJpa {
 	private TimeOut timeOut;
 
 	@Getter
-	private URL url;
+	private InputUrl url;
 
 	@Getter
 	private Task.CurrentStatus currentStatus;
