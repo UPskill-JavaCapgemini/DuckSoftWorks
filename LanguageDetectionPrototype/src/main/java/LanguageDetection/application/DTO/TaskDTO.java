@@ -1,4 +1,4 @@
-package LanguageDetection.application.dtos;
+package LanguageDetection.application.DTO;
 
 import LanguageDetection.domain.entities.Task;
 import lombok.*;
@@ -14,6 +14,6 @@ public class TaskDTO extends RepresentationModel<TaskDTO> {
     Task.Language language;
 
     public TaskDTO(Task language) {
-        this.language = language.getLang();
+        this.language = language.getLanguage();
     }
 }

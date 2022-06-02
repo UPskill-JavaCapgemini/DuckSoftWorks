@@ -1,4 +1,4 @@
-package LanguageDetection.application.dtos;
+package LanguageDetection.application.DTO;
 
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.entities.BlackList;

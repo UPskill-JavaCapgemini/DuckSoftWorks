@@ -1,4 +1,4 @@
-package LanguageDetection.infrastructure.datamodel.assemblers;
+package LanguageDetection.infrastructure.datamodel.DataAssemblers;
 
 
 import LanguageDetection.domain.ValueObjects.InputUrl;
