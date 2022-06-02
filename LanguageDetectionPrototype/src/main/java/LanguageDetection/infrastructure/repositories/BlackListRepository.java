@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class BlackListRepository {
@@ -26,4 +28,15 @@ public class BlackListRepository {
         return blackListAssembler.toDomain(savedBlackList);
     }
 
+    public List<BlackList> findAll() throws MalformedURLException {
+        List<BlackListJPA> blackListJpaItems = (List<BlackListJPA>) blackListRepository.findAll();
+
+        List<BlackList> blackListItems = new ArrayList<>();
+        for (BlackListJPA blackListJPA : blackListJpaItems) {
+            BlackList blackList = blackListAssembler.toDomain(blackListJPA);
+            blackListItems.add(blackList);
+        }
+
+        return blackListItems;
+    }
 }
