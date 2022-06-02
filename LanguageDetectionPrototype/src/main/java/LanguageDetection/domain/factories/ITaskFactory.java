@@ -5,11 +5,11 @@ import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Task;
 
-import java.util.Date;
+import java.net.MalformedURLException;
 
 
 public interface ITaskFactory {
 
-    public Task createTask(InputUrl url, Task.Category category, TimeOut timeOut);
+    public Task createTask(String url, int timeOut, String category) throws MalformedURLException;
 
 }

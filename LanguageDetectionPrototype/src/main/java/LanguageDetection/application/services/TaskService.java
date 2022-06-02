@@ -60,7 +60,7 @@ public class TaskService {
     public TaskDTO createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
 //        String cleanedUp = cleanUpInputText(string.getText());
 //        String language = analyzerService.analyze(cleanedUp);
-        Task task = taskFactory.createTask(userInput.getUrl(), userInput.getCategory(), userInput.getTimeOut());
+        Task task = taskFactory.createTask(userInput.getUrl(), userInput.getTimeOut(), userInput.getCategory());
         Task taskRepo = taskRepository.save(task);
         return taskDomainDTOAssembler.toDTO(taskRepo);
     }
