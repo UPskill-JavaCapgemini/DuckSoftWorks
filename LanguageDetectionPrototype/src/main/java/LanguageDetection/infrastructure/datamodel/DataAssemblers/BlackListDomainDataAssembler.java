@@ -6,7 +6,6 @@ import LanguageDetection.infrastructure.datamodel.BlackListJPA;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
 @Service
 public class BlackListDomainDataAssembler {
