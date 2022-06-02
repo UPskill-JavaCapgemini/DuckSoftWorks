@@ -1,9 +1,10 @@
+/*
 package LanguageDetection.application.controllers;
 import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
-import LanguageDetection.application.services.AnalyzerService;
-import LanguageDetection.application.services.DictionaryService;
+import LanguageDetection.domain.DomainService.AnalyzerService;
+import LanguageDetection.domain.DomainService.DictionaryService;
 import LanguageDetection.application.services.TaskService;
 import LanguageDetection.domain.entities.Task;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -70,4 +71,4 @@ public class TaskControllerTest {
         assertEquals(responseEntity.getStatusCodeValue(), 201);
     }
 
-}
+}*/

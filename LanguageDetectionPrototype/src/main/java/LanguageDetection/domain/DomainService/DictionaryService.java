@@ -1,6 +1,5 @@
-package LanguageDetection.application.services;
+package LanguageDetection.domain.DomainService;
 
-import lombok.Getter;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;

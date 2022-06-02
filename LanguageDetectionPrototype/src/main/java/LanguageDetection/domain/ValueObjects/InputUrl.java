@@ -45,6 +45,6 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     @Override
     public int compareTo(@NotNull InputUrl o) {
-        return url.getPath().compareTo(o.getUrl().getPath());
+        return url.getPath().compareTo(o.getUrlObject().getPath());
     }
 }
