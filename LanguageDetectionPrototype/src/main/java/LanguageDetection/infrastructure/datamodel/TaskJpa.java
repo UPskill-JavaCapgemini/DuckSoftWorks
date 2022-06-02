@@ -16,8 +16,10 @@ import java.util.Date;
 @Table(name="task")
 public class TaskJpa {
 
+	@Getter
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	@Getter
 	private Date date;
 	@Getter
@@ -31,4 +33,10 @@ public class TaskJpa {
 	@Getter
 	private Task.CurrentStatus currentStatus;
 
+	public TaskJpa(URL url, TimeOut timeOut, Task.Category category) {
+		this.url = url;
+		this.timeOut = timeOut;
+		this.category = category;
+
+	}
 }
