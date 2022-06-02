@@ -1,4 +1,4 @@
-package LanguageDetection.domain.entities.example;
+package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.ValueObjects.URL;
@@ -59,13 +59,12 @@ public class Task implements AggregateRoot<Date> {
     /**
      * Constructor of the task that buidls the task receiving the text and the language detected
      *
-     * @param date current time of the creation of the task
      * @param url URL of the text to be analyzed
-     * @param lang language detected in the text of the url
      * @param timeOut time limit to conclude the task
+     * @param category chosen by the client for a type of text
      */
 
-    public Task(Date date, URL url, Language lang, TimeOut timeOut, Category category) {
+    public Task(URL url, TimeOut timeOut, Category category) {
         // should id be here too??
         this.date = new Date(System.currentTimeMillis());
         this.url = url;

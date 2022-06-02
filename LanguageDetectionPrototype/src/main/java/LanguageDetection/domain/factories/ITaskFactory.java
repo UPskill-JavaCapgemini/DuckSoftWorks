@@ -1,7 +1,7 @@
 package LanguageDetection.domain.factories;
 
 
-import LanguageDetection.domain.entities.example.Task;
+import LanguageDetection.domain.entities.Task;
 
 
 public interface ITaskFactory {

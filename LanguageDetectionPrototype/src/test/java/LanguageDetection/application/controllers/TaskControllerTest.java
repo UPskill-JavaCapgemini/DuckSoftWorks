@@ -5,7 +5,7 @@ import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
 import LanguageDetection.application.services.AnalyzerService;
 import LanguageDetection.application.services.DictionaryService;
 import LanguageDetection.application.services.TaskService;
-import LanguageDetection.domain.entities.example.Task;
+import LanguageDetection.domain.entities.Task;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

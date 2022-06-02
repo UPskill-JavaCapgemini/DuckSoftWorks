@@ -1,6 +1,6 @@
 package LanguageDetection.Domain;
 
-import LanguageDetection.domain.entities.example.Task;
+import LanguageDetection.domain.entities.Task;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Date;
