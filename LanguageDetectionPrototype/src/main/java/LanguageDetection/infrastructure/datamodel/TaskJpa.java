@@ -1,15 +1,19 @@
 package LanguageDetection.infrastructure.datamodel;
 
+import LanguageDetection.domain.ValueObjects.TimeOut;
+import LanguageDetection.domain.ValueObjects.URL;
+import LanguageDetection.domain.entities.Task;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="countries")
+@Table(name="task")
 public class TaskJpa {
 
 	// todo: if it's a value object use: @EmbeddedId
@@ -18,8 +22,21 @@ public class TaskJpa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter
-	private Long id;
+	private Date date;
 
 	@Getter
-	private String name;
+	private Task.Category category;
+
+	@Getter
+	private Task.Language language;
+
+	@Getter
+	private TimeOut timeOut;
+
+	@Getter
+	private URL url;
+
+	@Getter
+	private Task.CurrentStatus currentStatus;
+
 }
