@@ -20,8 +20,7 @@ public class BlackListDomainDataAssembler {
 
     public BlackList toDomain(BlackListJPA blackListJPA) throws MalformedURLException {
         String input = blackListJPA.getUrl();
-        URL url = new URL(input);
-        InputUrl inputUrl = new InputUrl(url);
+        InputUrl inputUrl = new InputUrl(input);
         return new BlackList(inputUrl);
     }
 
