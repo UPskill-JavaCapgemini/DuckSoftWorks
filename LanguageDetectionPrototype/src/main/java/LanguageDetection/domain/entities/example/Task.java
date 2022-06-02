@@ -88,7 +88,6 @@ public class Task implements AggregateRoot<Date> {
 
     /**
      * method that identify the task
-     *
      * @return the date of the task
      */
     @Override
