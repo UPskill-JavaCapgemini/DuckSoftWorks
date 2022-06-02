@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.application.services;
 
 import org.junit.Assert;
@@ -58,3 +59,4 @@ public class TaskServiceTest {
     }
 
 }
+*/

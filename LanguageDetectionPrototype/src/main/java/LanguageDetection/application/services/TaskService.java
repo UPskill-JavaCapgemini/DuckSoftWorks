@@ -4,6 +4,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.DomainService.AnalyzerService;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factories.TaskFactory;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -60,21 +61,6 @@ public class TaskService {
         return taskDomainDTOAssembler.toDTO(task);
     }
 
-
-    /**
-     * Cleans up the string received via input.
-     * Strips the string of multiple whitespaces through the use of a regex.
-     *
-     * @param text the string that is cleaned up with the regex.
-     * @return the cleaned up text.
-     */
-    protected String cleanUpInputText(String text) {
-        return text.trim().toLowerCase(Locale.ROOT)
-                .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
-                //.replaceAll("\\p{P}", "") //PUNCTUATION
-                //.replaceAll("\\p{N}", "") // NUMBERS
-                .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
-    }
 }
 
 
