@@ -9,5 +9,5 @@ import lombok.*;
 public class NewBlackListInfoDTO {
     @Getter
     @Setter
-    InputUrl url;
+    String url;
 }

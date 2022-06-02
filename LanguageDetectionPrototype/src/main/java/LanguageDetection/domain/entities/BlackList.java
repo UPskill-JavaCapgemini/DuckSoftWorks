@@ -9,14 +9,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.MalformedURLException;
+
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
 public class BlackList implements Entity<InputUrl> {
     private InputUrl url;
 
-    public BlackList(InputUrl url) {
-        this.url = url;
+    public BlackList(String url) throws MalformedURLException {
+        this.url = new InputUrl(url);
     }
 
 
