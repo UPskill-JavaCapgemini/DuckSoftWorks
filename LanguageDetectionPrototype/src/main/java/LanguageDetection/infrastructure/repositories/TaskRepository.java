@@ -9,7 +9,7 @@ public class TaskRepository {
 
 
 	@Autowired
-	TaskDomainDataAssembler exampleAssembler;
+	TaskDomainDataAssembler Assembler;
 
 
 }
