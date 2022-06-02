@@ -32,7 +32,8 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
     }
 
     @Override
-    public boolean equals(InputUrl url) {
+    public boolean equals(Object otherURL) {
+        InputUrl url = (InputUrl) otherURL;
         if (url.getUrlObject().getHost() == this.getUrlObject().getHost()) {
             return true;
         } else return false;
