@@ -28,7 +28,7 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
     }
 
     public String getUrl(){
-        return this.url.getPath();
+        return this.url.toString();
     }
 
     public URL getUrlObject(){
@@ -50,6 +50,6 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     @Override
     public int compareTo(@NotNull InputUrl o) {
-        return url.getPath().compareTo(o.getUrlObject().getPath());
+        return url.getPath().compareTo(o.getUrlObject().toString());
     }
 }
