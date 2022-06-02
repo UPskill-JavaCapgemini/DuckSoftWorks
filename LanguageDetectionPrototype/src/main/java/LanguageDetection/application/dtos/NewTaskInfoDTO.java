@@ -11,6 +11,10 @@ import lombok.*;
 public class NewTaskInfoDTO {
     @Getter @Setter
     URL url;
+    @Getter
     Task.Category category;
+    @Getter
     TimeOut timeOut;
+
+
 }

@@ -39,7 +39,7 @@ public class Task implements AggregateRoot<Date> {
      * The language detected on the text
      */
     @Getter
-    Language lang;
+    Language language;
     /**
      * The actual state of the task
      */
@@ -68,7 +68,7 @@ public class Task implements AggregateRoot<Date> {
         // should id be here too??
         this.date = new Date(System.currentTimeMillis());
         this.url = url;
-        this.lang = Language.DETECTING;
+        this.language = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = timeOut;
         this.category = category;

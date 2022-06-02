@@ -10,6 +10,6 @@ import java.util.Date;
 
 public interface ITaskFactory {
 
-    public Task createTask(Task.Category category, TimeOut timeOut, URL url);
+    public Task createTask(URL url, Task.Category category, TimeOut timeOut);
 
 }

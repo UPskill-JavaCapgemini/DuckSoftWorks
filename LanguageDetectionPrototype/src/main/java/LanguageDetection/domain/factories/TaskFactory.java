@@ -11,10 +11,8 @@ import java.util.Date;
 public class TaskFactory implements ITaskFactory {
 
 
-
     @Override
-    public Task createTask(Task.Category category, TimeOut timeOut, URL url) {
-
-        return new Task(url, timeOut, category);
+    public Task createTask(URL url, Task.Category category, TimeOut timeOut) {
+        return null;
     }
 }
