@@ -24,6 +24,7 @@ import java.util.Date;
 public class Task implements AggregateRoot<Date> {
 
 
+    Long id;
     /**
      * The date of the task
      */
@@ -64,8 +65,8 @@ public class Task implements AggregateRoot<Date> {
      */
 
     public Task(String url, int timeOut, String category) throws MalformedURLException {
-        // should id be here too??
-        this.date = new Date(System.currentTimeMillis());
+        this.id = null;
+        this.date = null;
         this.url = new InputUrl(url);
         this.language = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
