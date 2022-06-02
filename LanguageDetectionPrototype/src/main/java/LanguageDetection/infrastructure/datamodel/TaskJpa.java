@@ -19,6 +19,8 @@ public class TaskJpa {
 	// todo: if it's a value object use: @EmbeddedId
 	// todo: the class must be @Embeddable and uses the value object directly from the domain
 	// todo: if it's a generated value, it must implement the EntityId and Serializable interfaces
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter
