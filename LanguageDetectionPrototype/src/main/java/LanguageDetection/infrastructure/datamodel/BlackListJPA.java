@@ -18,5 +18,5 @@ public class BlackListJPA {
     @Getter
     long id;
     @Getter
-    InputUrl ulr;
+    String url;
 }
