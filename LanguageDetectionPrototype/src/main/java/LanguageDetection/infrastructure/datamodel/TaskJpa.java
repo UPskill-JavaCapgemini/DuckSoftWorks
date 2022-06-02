@@ -29,14 +29,13 @@ public class TaskJpa {
 	@Getter
 	private TimeOut timeOut;
 	@Getter
-	@Getter
-	private InputUrl url;
+	private String url;
 
 
 	@Getter
 	private Task.CurrentStatus currentStatus;
 
-	public TaskJpa(URL url, TimeOut timeOut, Task.Category category) {
+	public TaskJpa(String url, TimeOut timeOut, Task.Category category) {
 		this.url = url;
 		this.timeOut = timeOut;
 		this.category = category;

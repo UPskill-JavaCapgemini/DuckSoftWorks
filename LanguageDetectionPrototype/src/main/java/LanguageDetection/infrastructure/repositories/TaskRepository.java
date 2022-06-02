@@ -7,6 +7,8 @@ import LanguageDetection.infrastructure.repositories.JPARepositories.TaskJpaRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.net.MalformedURLException;
+
 @Repository
 public class TaskRepository {
 
@@ -19,11 +21,11 @@ public class TaskRepository {
 	TaskJpaRepository taskJpaRepository;
 
 
-	public Task save( Task task ) {
-		TaskJpa countryJpa = taskAssembler.toData(task);
+	public Task save( Task task ) throws MalformedURLException {
+		TaskJpa taskJpa = taskAssembler.toData(task);
 
-		TaskJpa savedCountryJpa = taskJpaRepository.save( countryJpa );
+		TaskJpa savedTaskJpa = taskJpaRepository.save( taskJpa );
 
-		return taskAssembler.toDomain(savedCountryJpa);
+		return taskAssembler.toDomain(savedTaskJpa);
 	}
 }

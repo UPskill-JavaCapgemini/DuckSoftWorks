@@ -1,10 +1,12 @@
 package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
 
 public class InputUrl implements ValueObject, Comparable<InputUrl> {
+
 
     private final java.net.URL url;
 

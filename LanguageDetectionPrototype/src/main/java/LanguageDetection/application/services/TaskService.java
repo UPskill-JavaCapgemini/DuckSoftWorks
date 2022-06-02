@@ -5,8 +5,6 @@ import LanguageDetection.application.dtos.NewTaskInfoDTO;
 import LanguageDetection.application.dtos.TaskDTO;
 import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.AnalyzerService;
-import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.ValueObjects.URL;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factories.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
@@ -64,8 +62,8 @@ public class TaskService {
 //        String cleanedUp = cleanUpInputText(string.getText());
 //        String language = analyzerService.analyze(cleanedUp);
         Task task = taskFactory.createTask(userInput.getUrl(), userInput.getCategory(), userInput.getTimeOut());
-        TaskRepository taskRepo = taskRepository.save(task);
-        return taskDomainDTOAssembler.toDTO(task);
+        Task taskRepo = taskRepository.save(task);
+        return taskDomainDTOAssembler.toDTO(taskRepo);
     }
 
 }
