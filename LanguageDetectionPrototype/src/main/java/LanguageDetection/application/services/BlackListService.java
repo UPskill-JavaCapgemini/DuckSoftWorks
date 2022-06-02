@@ -31,7 +31,7 @@ public class BlackListService {
         return assembler.toDTO(savedBlackListItem);
     }
 
-    public List<BlackListDTO> findAll() {
+    public List<BlackListDTO> findAll() throws MalformedURLException {
         List<BlackList> blackListItems = repository.findAll();
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();
