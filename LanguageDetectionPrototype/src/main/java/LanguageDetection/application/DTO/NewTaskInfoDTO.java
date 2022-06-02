@@ -1,7 +1,7 @@
-package LanguageDetection.application.dtos;
+package LanguageDetection.application.DTO;
 
+import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.ValueObjects.URL;
 import LanguageDetection.domain.entities.Task;
 import lombok.*;
 
@@ -10,7 +10,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = false)
 public class NewTaskInfoDTO {
     @Getter @Setter
-    URL url;
+    InputUrl url;
     @Getter
     Task.Category category;
     @Getter

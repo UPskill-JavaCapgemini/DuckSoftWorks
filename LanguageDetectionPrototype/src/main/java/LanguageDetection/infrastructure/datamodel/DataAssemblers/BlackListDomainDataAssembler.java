@@ -1,4 +1,4 @@
-package LanguageDetection.infrastructure.datamodel.assemblers;
+package LanguageDetection.infrastructure.datamodel.DataAssemblers;
 
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.entities.BlackList;
@@ -9,7 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 @Service
-public class BlackListDomainJPAAssembler {
+public class BlackListDomainDataAssembler {
+
 
     public BlackListJPA toData(BlackList blackList) {
         InputUrl inputUrl = blackList.getUrl();
@@ -25,3 +26,4 @@ public class BlackListDomainJPAAssembler {
     }
 
 }
+

@@ -1,8 +1,8 @@
 package LanguageDetection.application.controllers;
 
 
-import LanguageDetection.application.dtos.NewTaskInfoDTO;
-import LanguageDetection.application.dtos.TaskDTO;
+import LanguageDetection.application.DTO.NewTaskInfoDTO;
+import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.application.services.TaskService;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;

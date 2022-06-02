@@ -1,9 +1,9 @@
 package LanguageDetection.application.services;
 
 
-import LanguageDetection.application.dtos.NewTaskInfoDTO;
-import LanguageDetection.application.dtos.TaskDTO;
-import LanguageDetection.application.dtos.assemblers.TaskDomainDTOAssembler;
+import LanguageDetection.application.DTO.NewTaskInfoDTO;
+import LanguageDetection.application.DTO.TaskDTO;
+import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.AnalyzerService;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factories.TaskFactory;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.*;
 
 
 /**
