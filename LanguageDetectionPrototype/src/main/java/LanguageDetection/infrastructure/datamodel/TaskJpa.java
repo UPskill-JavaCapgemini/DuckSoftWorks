@@ -27,7 +27,6 @@ public class TaskJpa {
 	@Getter
 	private TimeOut timeOut;
 	@Getter
-	@Getter
 	private InputUrl url;
 
 
