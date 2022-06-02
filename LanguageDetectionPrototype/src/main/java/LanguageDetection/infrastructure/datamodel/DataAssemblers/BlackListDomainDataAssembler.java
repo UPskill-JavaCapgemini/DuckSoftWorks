@@ -6,7 +6,6 @@ import LanguageDetection.infrastructure.datamodel.BlackListJPA;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
 @Service
 public class BlackListDomainDataAssembler {
@@ -20,8 +19,7 @@ public class BlackListDomainDataAssembler {
 
     public BlackList toDomain(BlackListJPA blackListJPA) throws MalformedURLException {
         String input = blackListJPA.getUrl();
-        InputUrl inputUrl = new InputUrl(input);
-        return new BlackList(inputUrl);
+        return new BlackList(input);
     }
 
 }
