@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 
 /**
@@ -61,14 +63,14 @@ public class Task implements AggregateRoot<Date> {
      * @param category chosen by the client for a type of text
      */
 
-    public Task(InputUrl url, TimeOut timeOut, Category category) {
+    public Task(String url, int timeOut, String category) throws MalformedURLException {
         // should id be here too??
         this.date = new Date(System.currentTimeMillis());
-        this.url = url;
+        this.url = new InputUrl(url);
         this.language = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
-        this.timeOut = timeOut;
-        this.category = category;
+        this.timeOut = new TimeOut(timeOut);
+        this.category = Task.Category.valueOf(category);
     }
 
 
