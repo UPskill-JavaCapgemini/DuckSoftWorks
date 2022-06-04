@@ -1,5 +1,8 @@
 package LanguageDetection.infrastructure.repositories;
 import LanguageDetection.domain.entities.Category;
+import LanguageDetection.infrastructure.datamodel.CategoryJpa;
+import LanguageDetection.infrastructure.datamodel.DataAssemblers.CategoryDomainDataAssembler;
+import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.net.MalformedURLException;
 
@@ -16,7 +19,7 @@ public class CategoryRepository {
     public Category save(Category category ) throws MalformedURLException {
         CategoryJpa categoryJpa = categoryAssembler.toData(category);
 
-        CategoryJpa savedCategoryJpa = categoryJpaRepository.save( categoryJpa );
+        CategoryJpa savedCategoryJpa = categoryJpaRepository.save(categoryJpa);
 
         return categoryAssembler.toDomain(savedCategoryJpa);
     }

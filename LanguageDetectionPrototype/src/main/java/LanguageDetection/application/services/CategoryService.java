@@ -5,8 +5,11 @@ import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssemble
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.factories.ICategoryFactory;
+import LanguageDetection.infrastructure.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.net.MalformedURLException;
 
 @Service
 public class CategoryService {
@@ -22,7 +25,7 @@ public class CategoryService {
 
 
 
-    public CategoryDTO createCategory(NewCategoryInfoDTO infoDTO){
+    public CategoryDTO createCategory(NewCategoryInfoDTO infoDTO) throws MalformedURLException {
 
 
         Category category = categoryFactory.createCategory(infoDTO.getCategory());
