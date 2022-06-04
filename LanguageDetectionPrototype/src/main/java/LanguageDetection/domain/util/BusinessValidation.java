@@ -38,7 +38,7 @@ public final class BusinessValidation {
             throw new IllegalArgumentException(msg);
     }
 
-    private String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
+    private static String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
 
     public static boolean isOnlyNumbers(String arg) {
         if (arg.isBlank() || arg.isEmpty() || arg.matches(onlyNumbersRegex)){

@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name="task")
-public class TaskJpa {
+public class  TaskJpa {
 
 	@Getter
 	@Id
