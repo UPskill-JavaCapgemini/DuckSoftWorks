@@ -16,5 +16,5 @@ public class CategoryDomainDataAssembler {
         String categoryName = categoryJpa.getCategoryName();
         return new Category(categoryName);
     }
-    
+
 }
