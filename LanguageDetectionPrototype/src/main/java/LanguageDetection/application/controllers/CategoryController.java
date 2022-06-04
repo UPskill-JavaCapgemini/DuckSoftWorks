@@ -43,4 +43,10 @@ import java.util.List;
             CategoryDTO categoryDTO = categoryService.createCategory(category);
             return new ResponseEntity<>(categoryDTO, HttpStatus.CREATED);
         }
+
+        @PostMapping("/Delete")
+        public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
+            CategoryDTO categoryDTO = categoryService.createCategory(category);
+            return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
+        }
 }

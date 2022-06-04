@@ -57,21 +57,21 @@ public class Task implements AggregateRoot<Date> {
     Category category;
 
     /**
-     * Constructor of the task that buidls the task receiving the text and the language detected
+     * Task's constructor that receives the text and the language detected
      *
      * @param url URL of the text to be analyzed
      * @param timeOut time limit to conclude the task
      * @param category chosen by the client for a type of text
      */
 
-    public Task(String url, int timeOut, String category) throws MalformedURLException {
+    public Task(String url, int timeOut, Category category) throws MalformedURLException {
         this.id = null;
         this.date = null;
         this.url = new InputUrl(url);
         this.language = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
-        this.category = Task.Category.valueOf(category);
+        this.category = category;
     }
 
 
@@ -110,13 +110,5 @@ public class Task implements AggregateRoot<Date> {
         Concluded,
         Canceled,
         Processing
-    }
-
-    public enum Category {
-        Economics,
-        Philosophy,
-        Mechanics,
-        Nutrition,
-        Sport
     }
 }

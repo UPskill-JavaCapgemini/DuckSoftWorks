@@ -1,15 +1,28 @@
 package LanguageDetection.domain.entities;
 
+import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.shared.Entity;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Class that will provide the category choosen by the user that serves a text
+ */
 public class Category implements Entity {
 
+    /*  {
+        Economics,
+        Philosophy,
+        Mechanics,
+        Nutrition,
+        Sport
+    }*/
     @Getter
-    String category;
+    CategoryDescription categoryDescription;
 
-    public Category(String category) {
+    public Category(String categoryDescription) {
+
+        this.categoryDescription = new CategoryDescription(categoryDescription);
     }
 
     @Override
@@ -19,11 +32,12 @@ public class Category implements Entity {
 
     @Override
     public Object identity() {
-        return null;
+        return this.categoryDescription;
     }
 
     @Override
     public int compareTo(@NotNull Object o) {
         return 0;
     }
+
 }
