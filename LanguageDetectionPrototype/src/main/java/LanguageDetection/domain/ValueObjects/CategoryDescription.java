@@ -6,9 +6,16 @@ import lombok.Getter;
 
 public class CategoryDescription implements ValueObject {
 
+    /**
+     * getter for the cathegory's description as a string
+     */
     @Getter
     String categoryDescription;
 
+    /**
+     * constructor for the Category Description with validations
+     * it prevents the category to be created with only numbers, only spaces or without any input.
+     */
     public CategoryDescription(String categoryDescription) {
         if (BusinessValidation.isOnlyNumbers(categoryDescription) || categoryDescription.isBlank() || categoryDescription.isEmpty()){
             throw new IllegalArgumentException();

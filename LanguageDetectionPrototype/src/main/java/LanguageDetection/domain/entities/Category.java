@@ -6,7 +6,8 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Class that will provide the category choosen by the user that serves a text
+ * Class that that will be represent a text.
+ * The cateory of the text will be choosen by the user.
  */
 public class Category implements Entity {
 
@@ -17,9 +18,16 @@ public class Category implements Entity {
         Nutrition,
         Sport
     }*/
+
+    /**
+     * Gets the Value Object CategoryDescription where the business validations are implemented.
+     */
     @Getter
     CategoryDescription categoryDescription;
 
+    /**
+     * Constructs a new category.
+     */
     public Category(String categoryDescription) {
 
         this.categoryDescription = new CategoryDescription(categoryDescription);
@@ -30,6 +38,10 @@ public class Category implements Entity {
         return false;
     }
 
+    /**
+     * method that identify the category
+     * @return the description of the category
+     */
     @Override
     public Object identity() {
         return this.categoryDescription;
