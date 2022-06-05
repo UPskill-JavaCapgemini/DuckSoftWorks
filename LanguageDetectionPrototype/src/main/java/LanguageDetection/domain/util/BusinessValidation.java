@@ -41,7 +41,7 @@ public final class BusinessValidation {
     private static String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
 
     public static boolean isOnlyNumbers(String arg) {
-        if (arg.isBlank() || arg.isEmpty() || arg.matches(onlyNumbersRegex)){
+        if (arg.matches(onlyNumbersRegex)){
             return true;
         }
         return false;
