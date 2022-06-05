@@ -64,14 +64,14 @@ public class Task implements AggregateRoot<Date> {
      * @param category chosen by the client for a type of text
      */
 
-    public Task(String url, int timeOut, Category category) throws MalformedURLException {
+    public Task(String url, int timeOut, String category) throws MalformedURLException {
         this.id = null;
         this.date = null;
         this.url = new InputUrl(url);
         this.language = Language.DETECTING;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
-        this.category = category;
+        this.category = new Category(category);
     }
 
 
