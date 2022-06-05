@@ -40,4 +40,8 @@ public class Category implements Entity {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return categoryDescription.toString();
+    }
 }
