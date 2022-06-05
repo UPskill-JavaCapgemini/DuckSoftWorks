@@ -10,7 +10,7 @@ public class CategoryDescription implements ValueObject {
     String categoryDescription;
 
     public CategoryDescription(String categoryDescription) {
-        if (BusinessValidation.isOnlyNumbers(categoryDescription)){
+        if (BusinessValidation.isOnlyNumbers(categoryDescription) || categoryDescription.isBlank() || categoryDescription.isEmpty()){
             throw new IllegalArgumentException();
         }
         this.categoryDescription = categoryDescription;
