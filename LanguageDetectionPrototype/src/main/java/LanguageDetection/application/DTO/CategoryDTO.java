@@ -7,7 +7,6 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString
 public class CategoryDTO {
 
     Category category;
@@ -15,5 +14,10 @@ public class CategoryDTO {
 
     public CategoryDTO(Category category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return category.toString();
     }
 }
