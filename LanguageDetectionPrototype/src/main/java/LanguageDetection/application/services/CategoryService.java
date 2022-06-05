@@ -46,4 +46,10 @@ public class CategoryService {
 
         return categoryDTOS;
     }
+
+    public boolean deleteCategory(NewCategoryInfoDTO category) {
+        Category duplicatedCategory = categoryFactory.createCategory(category.getCategory());
+        return categoryRepository.delete(duplicatedCategory);
+    }
+
 }
