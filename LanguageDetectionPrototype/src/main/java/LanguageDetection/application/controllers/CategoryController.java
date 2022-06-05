@@ -14,36 +14,38 @@ import java.io.IOException;
 import java.util.List;
 
 
+@Controller
+@RestController
+@RequestMapping(path = "/Category")
+public class CategoryController {
 
-    @Controller
-    @RestController
-    @RequestMapping(path = "/Category")
-    public class CategoryController {
+    @Autowired
+    CategoryService categoryService;
 
-        @Autowired
-        CategoryService categoryService;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
-        public CategoryController(CategoryService categoryService) {
-            this.categoryService = categoryService;
+    @GetMapping("/findAll")
+    @ResponseBody
+    public ResponseEntity<Object> findAll() throws ParseException, IOException {
+        List<CategoryDTO> categories = categoryService.findAll();
+        return new ResponseEntity<>(categories, HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Object> createCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
+        CategoryDTO categoryDTO = categoryService.createCategory(category);
+        return new ResponseEntity<>(categoryDTO.toString(), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/Delete")
+    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
+        if (categoryService.deleteCategory(category)) {
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Category does not exist", HttpStatus.NOT_FOUND);
         }
-
-        @GetMapping("")
-        @ResponseBody
-        public ResponseEntity<Object> findAll() throws ParseException, IOException {
-            List<CategoryDTO> categories = categoryService.findAll();
-            return new ResponseEntity<>(categories, HttpStatus.OK);
-        }
-
-        @PostMapping("")
-        public ResponseEntity<Object> createCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
-            CategoryDTO categoryDTO = categoryService.createCategory(category);
-            return new ResponseEntity<>(categoryDTO, HttpStatus.CREATED);
-        }
-
-        @PostMapping("/Delete")
-        public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
-            CategoryDTO categoryDTO = categoryService.deleteCategory(category);
-            return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
-        }
+    }
 
 }
