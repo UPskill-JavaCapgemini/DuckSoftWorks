@@ -15,4 +15,9 @@ public class CategoryDescription implements ValueObject {
         }
         this.categoryDescription = categoryDescription;
     }
+
+    @Override
+    public String toString() {
+        return categoryDescription;
+    }
 }
