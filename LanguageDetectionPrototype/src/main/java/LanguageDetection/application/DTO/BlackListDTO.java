@@ -18,4 +18,9 @@ public class BlackListDTO {
     public BlackListDTO(BlackList blackListItem) {
         this.url = blackListItem.identity();
     }
+
+    @Override
+    public String toString(){
+        return url.getUrl();
+    }
 }
