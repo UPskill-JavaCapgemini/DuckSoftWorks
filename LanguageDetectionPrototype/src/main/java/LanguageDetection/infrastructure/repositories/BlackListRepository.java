@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class BlackListRepository {
@@ -38,5 +39,11 @@ public class BlackListRepository {
         }
 
         return blackListItems;
+    }
+
+    public boolean isBlackListed(String url) {
+        Optional<BlackListJPA> opBlackListJPA = blackListRepository.findByUrl(url);
+
+        return opBlackListJPA.isPresent();
     }
 }

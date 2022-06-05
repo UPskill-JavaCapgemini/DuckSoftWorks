@@ -3,6 +3,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
+import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.domain.entities.BlackList;
 import LanguageDetection.domain.factories.BlackListFactory;
 import LanguageDetection.infrastructure.repositories.BlackListRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +44,10 @@ public class BlackListService {
         }
 
         return blackListDTOS;
+    }
+
+    public boolean isBlackListed(NewTaskInfoDTO inputTask) {
+        String url = inputTask.getUrl();
+        return repository.isBlackListed(url);
     }
 }
