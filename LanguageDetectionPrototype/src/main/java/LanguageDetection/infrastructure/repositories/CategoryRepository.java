@@ -28,4 +28,15 @@ public class CategoryRepository {
         return categoryAssembler.toDomain(savedCategoryJpa);
     }
 
+    public List<Category> findAll() {
+        List<CategoryJpa> categoryJpas = (List<CategoryJpa>) categoryJpaRepository.findAll();
+
+        List<Category> categories = new ArrayList<>();
+        for (CategoryJpa categoryJpa : categoryJpas) {
+            Category category = categoryAssembler.toDomain(categoryJpa);
+            categories.add(category);
+        }
+
+        return categories;
+    }
 }

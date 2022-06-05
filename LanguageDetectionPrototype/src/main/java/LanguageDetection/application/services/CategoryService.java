@@ -1,10 +1,8 @@
 package LanguageDetection.application.services;
 
-import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.domain.entities.BlackList;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.factories.ICategoryFactory;
 import LanguageDetection.infrastructure.repositories.CategoryRepository;
@@ -36,4 +34,16 @@ public class CategoryService {
         return dtoAssembler.toDTO(categoryRepo);
     }
 
+    public List<CategoryDTO> findAll() {
+        List<Category> categories = categoryRepository.findAll();
+
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
+
+        for (Category category : categories) {
+            CategoryDTO categoryDTO = dtoAssembler.toDTO(category);
+            categoryDTOS.add(categoryDTO);
+        }
+
+        return categoryDTOS;
+    }
 }
