@@ -1,8 +1,10 @@
 package LanguageDetection.application.services;
 
+import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
+import LanguageDetection.domain.entities.BlackList;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.factories.ICategoryFactory;
 import LanguageDetection.infrastructure.repositories.CategoryRepository;
@@ -26,7 +28,6 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
 
-
     public CategoryDTO createCategory(NewCategoryInfoDTO infoDTO) throws MalformedURLException {
 
 
@@ -34,7 +35,5 @@ public class CategoryService {
         Category categoryRepo = categoryRepository.save(category);
         return dtoAssembler.toDTO(categoryRepo);
     }
-
-
 
 }

@@ -1,12 +1,8 @@
 package LanguageDetection.application.controllers;
 
-import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.CategoryDTO;
-import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.services.BlackListService;
 import LanguageDetection.application.services.CategoryService;
-import LanguageDetection.domain.entities.Category;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
