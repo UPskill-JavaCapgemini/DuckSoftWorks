@@ -12,4 +12,5 @@ public interface ICategory {
     boolean deleteByDescription(Category category);
 
     List<Category> findAll();
+
 }
