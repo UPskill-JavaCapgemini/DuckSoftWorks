@@ -43,11 +43,11 @@ public class TaskController {
 
     @PostMapping("")
     public ResponseEntity<Object> createTaskFromInput(@RequestBody NewTaskInfoDTO info) throws ParseException, IOException {
-        Optional<TaskDTO> taskCreated = Optional.of(service.createTask(info));
+        Optional<TaskDTO> taskCreated = service.createTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
         } else {
-            return new ResponseEntity("This is a BlackListed URL, please insert another URL to create a task!", HttpStatus.FORBIDDEN);
+            return new ResponseEntity("Unable to create task", HttpStatus.BAD_REQUEST);
         }
     }
 

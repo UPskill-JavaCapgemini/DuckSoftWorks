@@ -1,5 +1,6 @@
 package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Embeddable;
@@ -18,8 +19,11 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
 
     public InputUrl(String url) throws MalformedURLException {
-
-        this.url= new URL(url);
+        if(StringUtils.endsWithAny(url,".txt")) {
+            this.url = new URL(url);
+        } else {
+            throw new IllegalArgumentException("The URL doesn't contain a txt file");
+        }
     }
 
     @Override
