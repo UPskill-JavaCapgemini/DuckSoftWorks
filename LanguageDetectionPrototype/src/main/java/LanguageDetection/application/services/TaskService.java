@@ -1,3 +1,4 @@
+
 package LanguageDetection.application.services;
 
 
@@ -14,33 +15,39 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 
+
 /**
  * Represents the task service responsible for creating a task.
  *
  * @author DuckSoftWorks
  */
+
 @Service
 public class TaskService {
 
 
     @Autowired
-    /**
+
+/**
      * The domain DTO assembler for a task.
      */
+
             TaskDomainDTOAssembler taskDomainDTOAssembler;
 
 
     @Autowired
-    /**
+
+/**
      * The Analyzer service.
      */
+
             AnalyzerService analyzerService;
 
     @Autowired
     TaskRepository taskRepository;
 
 
-    /**
+/**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
      * Cleans up the input text by calling cleanUpInputText() and
      * analyzes it with the service analyzer.
@@ -50,6 +57,7 @@ public class TaskService {
      * @throws ParseException - Signals that an error has been reached unexpectedly in the QueryParse
      * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
      */
+
     public TaskDTO createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
 //        String cleanedUp = cleanUpInputText(string.getText());
 //        String language = analyzerService.analyze(cleanedUp);
@@ -59,5 +67,4 @@ public class TaskService {
     }
 
 }
-
 
