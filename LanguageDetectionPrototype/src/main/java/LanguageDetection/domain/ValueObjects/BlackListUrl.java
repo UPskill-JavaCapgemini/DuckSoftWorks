@@ -3,9 +3,13 @@ package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
 import org.jetbrains.annotations.NotNull;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Embeddable
+@Table
 public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
 
     private final URL blackListUrl;

@@ -4,6 +4,7 @@ import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.entities.IBlackListItem;
 import LanguageDetection.infrastructure.repositories.BlackListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,20 +17,20 @@ import java.util.List;
 public class BlackListService {
 
     @Autowired
-    BlackListRepository repository;
+    IBlackListItem iBlackListItem;
     @Autowired
     BlackListDomainDTOAssembler assembler;
 
     public BlackListDTO createBlackListItem(NewBlackListInfoDTO inputUrl) throws MalformedURLException {
         String url = inputUrl.getUrl();
         BlackListItem blackListItem = new BlackListItem(inputUrl.getUrl());
-        BlackListItem savedBlackListItem = repository.save(blackListItem);
+        BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
 
         return assembler.toDTO(savedBlackListItem);
     }
 
     public List<BlackListDTO> findAll() throws MalformedURLException {
-        List<BlackListItem> blackListItems = repository.findAll();
+        List<BlackListItem> blackListItems = iBlackListItem.findAllBlackListItems();
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();
 
@@ -43,6 +44,6 @@ public class BlackListService {
 
     public boolean isBlackListed(NewBlackListInfoDTO inputBlackList) throws MalformedURLException {
         BlackListItem blackList = new BlackListItem(inputBlackList.getUrl());
-        return repository.isBlackListed(blackList);
+        return iBlackListItem.isBlackListed(blackList);
     }
 }

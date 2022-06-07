@@ -30,12 +30,13 @@ public class BlackListController {
     @ResponseBody
     public ResponseEntity<Object> findAll() throws ParseException, IOException {
         List<BlackListDTO> blackListItems = blackListService.findAll();
-       return new ResponseEntity<>(blackListItems,HttpStatus.OK);
+       return new ResponseEntity<>(blackListItems.toString(),HttpStatus.OK);
     }
 
     @PostMapping("")
     public ResponseEntity<Object> createBlackListItem(@RequestBody NewBlackListInfoDTO url) throws ParseException, IOException {
         BlackListDTO blackListDTO = blackListService.createBlackListItem(url);
-        return new ResponseEntity<>(blackListDTO, HttpStatus.CREATED);
+        return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
     }
+
 }
