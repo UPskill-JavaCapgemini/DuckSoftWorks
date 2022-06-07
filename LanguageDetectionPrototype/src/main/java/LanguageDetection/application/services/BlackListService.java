@@ -20,7 +20,7 @@ public class BlackListService {
     @Autowired
     BlackListDomainDTOAssembler assembler;
 
-    public BlackListDTO createBlackListItem(NewBlackListInfoDTO inputUrl) throws MalformedURLException {
+    public BlackListDTO createAndSaveBlackListItem(NewBlackListInfoDTO inputUrl) throws MalformedURLException {
         String url = inputUrl.getUrl();
         BlackListItem blackListItem = new BlackListItem(inputUrl.getUrl());
         BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
