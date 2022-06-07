@@ -2,6 +2,7 @@ package LanguageDetection.application.DTO;
 
 import LanguageDetection.domain.entities.Category;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -9,6 +10,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class CategoryDTO {
 
+    @Getter
     Category category;
 
 

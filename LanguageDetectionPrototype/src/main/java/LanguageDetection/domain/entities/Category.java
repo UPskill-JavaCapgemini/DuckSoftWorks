@@ -29,6 +29,7 @@ public class Category implements Entity {
      * Gets the Value Object CategoryDescription where the business validations are implemented.
      */
 
+    @Getter
     @EmbeddedId
     CategoryDescription categoryDescription;
 

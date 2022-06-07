@@ -32,12 +32,12 @@ public class CategoryController {
      * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
      * @throws IOException thrown by IndexReader class if some sort of I/O problem occurred
      */
-  /*  @GetMapping("/findAll")
+   @GetMapping("/findAll")
     @ResponseBody
     public ResponseEntity<Object> findAll() throws ParseException, IOException {
         List<CategoryDTO> categories = categoryService.findAll();
-        return new ResponseEntity<>(categories, HttpStatus.OK);
-    }*/
+        return new ResponseEntity<>(categories.toString(), HttpStatus.OK);
+    }
 
     /**
      * This method receives a NewCategoryInfoDTO object, that is automatically created from a
@@ -62,13 +62,13 @@ public class CategoryController {
      * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
      * @throws IOException thrown by IndexReader class if some sort of I/O problem occurred
      */
-    /*@DeleteMapping("/Delete")
+    @DeleteMapping("/Delete")
     public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
         if (categoryService.deleteCategory(category)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Category does not exist", HttpStatus.NOT_FOUND);
         }
-    }*/
+    }
 
 }
