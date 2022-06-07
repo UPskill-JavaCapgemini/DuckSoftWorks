@@ -51,6 +51,11 @@ public class CategoryRepository implements ICategory {
     }*/
 
     @Override
+    public Optional<Category> findCategoryById(Category category) {
+        return categoryJpaRepository.findByCategoryDescription(category.getCategoryDescription());
+    }
+
+    @Override
     public Category saveCategory(Category category) {
         return categoryJpaRepository.save(category);
     }
