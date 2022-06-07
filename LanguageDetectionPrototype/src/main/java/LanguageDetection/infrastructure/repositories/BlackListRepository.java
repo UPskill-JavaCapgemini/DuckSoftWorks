@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Repository
 public class BlackListRepository {
 
@@ -41,7 +42,8 @@ public class BlackListRepository {
         return blackListItems;
     }
 
-    public boolean isBlackListed(String url) {
+    public boolean isBlackListed(BlackList blackListUrl) {
+        String url = blackListUrl.getUrl().toString();
         Optional<BlackListJPA> opBlackListJPA = blackListRepository.findByUrl(url);
 
         return opBlackListJPA.isPresent();

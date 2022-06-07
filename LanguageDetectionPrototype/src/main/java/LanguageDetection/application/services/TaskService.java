@@ -6,7 +6,6 @@ import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.AnalyzerService;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.domain.factories.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +22,6 @@ import java.io.IOException;
 @Service
 public class TaskService {
 
-    @Autowired
-    /**
-     * The taskFactory.
-     */
-            TaskFactory taskFactory;
-
 
     @Autowired
     /**
@@ -44,7 +37,7 @@ public class TaskService {
             AnalyzerService analyzerService;
 
     @Autowired
-     TaskRepository taskRepository;
+    TaskRepository taskRepository;
 
 
     /**
@@ -60,7 +53,7 @@ public class TaskService {
     public TaskDTO createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
 //        String cleanedUp = cleanUpInputText(string.getText());
 //        String language = analyzerService.analyze(cleanedUp);
-        Task task = taskFactory.createTask(userInput.getUrl(), userInput.getTimeOut(), userInput.getCategory());
+        Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), userInput.getCategory());
         Task taskRepo = taskRepository.save(task);
         return taskDomainDTOAssembler.toDTO(taskRepo);
     }

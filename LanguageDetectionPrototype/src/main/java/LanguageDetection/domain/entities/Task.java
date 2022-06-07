@@ -68,7 +68,7 @@ public class Task implements AggregateRoot<Date> {
         this.id = null;
         this.date = null;
         this.url = new InputUrl(url);
-        this.language = Language.DETECTING;
+        this.language = null;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
         this.category = new Category(category);
@@ -102,8 +102,7 @@ public class Task implements AggregateRoot<Date> {
     public enum Language {
         ENGLISH,
         PORTUGUESE,
-        SPANISH,
-        DETECTING
+        SPANISH
     }
 
     public enum CurrentStatus {
