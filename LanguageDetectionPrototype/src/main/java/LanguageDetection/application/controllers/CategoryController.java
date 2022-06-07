@@ -67,7 +67,7 @@ public class CategoryController {
         if (categoryService.deleteCategory(category)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Category does not exist", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Unable to delete", HttpStatus.BAD_REQUEST);
         }
     }
 
