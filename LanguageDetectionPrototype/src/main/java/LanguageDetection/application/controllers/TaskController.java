@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Controller
 @RestController
@@ -41,8 +42,12 @@ public class TaskController {
 
     @PostMapping("")
     public ResponseEntity<Object> createTaskFromInput(@RequestBody NewTaskInfoDTO info) throws ParseException, IOException {
-        TaskDTO task = service.createTask(info);
-        return new ResponseEntity<>(task, HttpStatus.CREATED);
+        Optional<TaskDTO> taskCreated = service.createTask(info);
+        if (taskCreated.isPresent()) {
+            return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity("This is a BlackListed URL, please insert another URL to create a task!", HttpStatus.FORBIDDEN);
+        }
     }
 
 
