@@ -2,7 +2,6 @@
 package LanguageDetection.application.services;
 
 
-import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
@@ -16,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Optional;
+
 
 
 /**
@@ -49,9 +48,6 @@ public class TaskService {
     @Autowired
     TaskRepository taskRepository;
 
-    @Autowired
-    BlackListService blackListService;
-
 
 /**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
@@ -64,20 +60,18 @@ public class TaskService {
      * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
      */
 
-    public Optional<TaskDTO> createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
-
-        NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-
-        if(blackListService.isBlackListed(newBlackListInfoDTO)){
-            return Optional.empty();
-        }else{
+    public TaskDTO createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
 //        String cleanedUp = cleanUpInputText(string.getText());
 //        String language = analyzerService.analyze(cleanedUp);
         Category category = new Category(userInput.getCategory());
         Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), category);
         Task taskRepo = taskRepository.saveTask(task);
-        return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo)) ;
+        return taskDomainDTOAssembler.toDTO(taskRepo);
     }
-}
+
+   /* public TaskDTO findByCategory(NewTaskInfoDTO userInput) throws ParseException, IOException{
+
+    }*/
+
 }
 

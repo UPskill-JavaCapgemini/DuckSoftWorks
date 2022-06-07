@@ -23,10 +23,6 @@ public class BlackListController {
     @Autowired
     BlackListService blackListService;
 
-    public BlackListController(BlackListService blackListService) {
-        this.blackListService = blackListService;
-    }
-
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<Object> findAll() throws ParseException, IOException {
@@ -35,10 +31,11 @@ public class BlackListController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> createBlackListItem(@RequestBody NewBlackListInfoDTO url) throws ParseException, IOException {
-        BlackListDTO blackListDTO = blackListService.createBlackListItem(url);
+    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws ParseException, IOException {
+        BlackListDTO blackListDTO = blackListService.createAndSaveBlackListItem(url);
         return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
     }
+
 
     @DeleteMapping("/Delete")
     public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) throws ParseException, IOException {
