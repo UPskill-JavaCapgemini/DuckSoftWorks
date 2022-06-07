@@ -1,11 +1,16 @@
 package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
+
+@Embeddable
+@Table
 public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
 
@@ -50,6 +55,7 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     @Override
     public int compareTo(@NotNull InputUrl o) {
-        return url.getPath().compareTo(o.getUrlObject().toString());
+        assert url != null;
+        return url.toString().compareTo(o.getUrlObject().toString());
     }
 }

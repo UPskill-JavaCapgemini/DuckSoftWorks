@@ -3,14 +3,13 @@ package LanguageDetection.domain.entities;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.stereotype.Repository;
 
 
+import javax.persistence.*;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Date;
 
 /**
@@ -21,19 +20,27 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Task implements AggregateRoot<Date> {
+@Repository
+@Entity
+@Table
+public class Task implements AggregateRoot<Long> {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     /**
      * The date of the task
      */
     @Getter
+    @CreationTimestamp
+    @Column(name="timestamp", nullable = false, updatable = false)
     Date date;
     /**
      * The text of the task
      */
     @Getter
+    @Embedded
     InputUrl url;
     /**
      * The language detected on the text
@@ -49,11 +56,16 @@ public class Task implements AggregateRoot<Date> {
      * The time task has to be concluded before it is automatically canceled
      */
     @Getter
+    @Embedded
     TimeOut timeOut;
     /**
      * The category defined by the user for the task
      */
     @Getter
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumns({
+            @JoinColumn(name = "category_categoryDescription", referencedColumnName = "categoryDescription")
+    })
     Category category;
 
     /**
@@ -64,14 +76,14 @@ public class Task implements AggregateRoot<Date> {
      * @param category chosen by the client for a type of text
      */
 
-    public Task(String url, int timeOut, String category) throws MalformedURLException {
+    public Task(String url, int timeOut, Category category) throws MalformedURLException {
         this.id = null;
         this.date = null;
         this.url = new InputUrl(url);
         this.language = null;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
-        this.category = new Category(category);
+        this.category = category;
     }
 
 
@@ -81,7 +93,7 @@ public class Task implements AggregateRoot<Date> {
     }
 
     @Override
-    public int compareTo(Date other) {
+    public int compareTo(Long other) {
         return AggregateRoot.super.compareTo(other);
     }
 
@@ -90,12 +102,12 @@ public class Task implements AggregateRoot<Date> {
      * @return the date of the task
      */
     @Override
-    public Date identity() {
-        return this.date;
+    public Long identity() {
+        return this.id;
     }
 
     @Override
-    public boolean hasIdentity(Date id) {
+    public boolean hasIdentity(Long id) {
         return AggregateRoot.super.hasIdentity(id);
     }
 

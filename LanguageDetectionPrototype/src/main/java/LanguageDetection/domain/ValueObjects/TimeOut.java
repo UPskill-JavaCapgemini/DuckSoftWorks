@@ -2,6 +2,12 @@ package LanguageDetection.domain.ValueObjects;
 
 import LanguageDetection.domain.shared.ValueObject;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
+
+
+@Embeddable
+@Table
 public class TimeOut implements ValueObject {
     private final int timeOut;
 

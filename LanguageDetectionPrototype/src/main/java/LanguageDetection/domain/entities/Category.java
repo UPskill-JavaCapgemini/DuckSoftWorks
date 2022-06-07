@@ -2,7 +2,7 @@ package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.shared.Entity;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +12,7 @@ import javax.persistence.*;
  * Class that that will be represent a text.
  * The cateory of the text will be choosen by the user.
  */
+@NoArgsConstructor
 @Repository
 @javax.persistence.Entity
 @Table
@@ -32,12 +33,7 @@ public class Category implements Entity {
     @EmbeddedId
     CategoryDescription categoryDescription;
 
-    public void setCategoryDescription(CategoryDescription categoryDescription) {
-        this.categoryDescription = categoryDescription;
-    }
 
-    public Category() {
-    }
 
     /**
      * Constructs a new category.
