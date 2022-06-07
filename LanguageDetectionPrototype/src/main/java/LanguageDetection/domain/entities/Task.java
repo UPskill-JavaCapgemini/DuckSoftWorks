@@ -117,6 +117,7 @@ public class Task implements AggregateRoot<Long> {
         SPANISH
     }
 
+    @Getter
     public enum CurrentStatus {
         Concluded,
         Canceled,

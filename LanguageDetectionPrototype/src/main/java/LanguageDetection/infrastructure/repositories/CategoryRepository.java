@@ -14,7 +14,6 @@ import java.util.Optional;
 public class CategoryRepository implements ICategory {
 
 
-
     @Autowired
     CategoryJpaRepository categoryJpaRepository;
 
@@ -72,14 +71,12 @@ public class CategoryRepository implements ICategory {
         return (List<Category>) categoryJpaRepository.findAll();
     }
 
-    protected boolean isBaseCategory(Optional<Category> category){
+    protected boolean isBaseCategory(Optional<Category> category) {
         boolean isBase = false;
 
-        if (category.isPresent())
-        {
-            switch (category.get().toString().toLowerCase())
-            {
-                case "economia","filosofia","mecânica","nutricionismo","desporto":
+        if (category.isPresent()) {
+            switch (category.get().toString().toLowerCase()) {
+                case "economia", "filosofia", "mecânica", "nutricionismo", "desporto":
                     isBase = true;
                     break;
 
@@ -90,5 +87,5 @@ public class CategoryRepository implements ICategory {
         }
         return isBase;
     }
-
 }
+
