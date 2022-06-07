@@ -6,7 +6,6 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.AnalyzerService;
-import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
@@ -15,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-
+import java.util.Optional;
 
 
 /**
@@ -48,6 +47,9 @@ public class TaskService {
     @Autowired
     TaskRepository taskRepository;
 
+    @Autowired
+    CategoryService categoryService;
+
 
 /**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
@@ -60,18 +62,30 @@ public class TaskService {
      * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
      */
 
-    public TaskDTO createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
+    public Optional<TaskDTO> createTask(NewTaskInfoDTO userInput) throws ParseException, IOException {
 //        String cleanedUp = cleanUpInputText(string.getText());
 //        String language = analyzerService.analyze(cleanedUp);
-        Category category = new Category(userInput.getCategory());
-        Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), category);
-        Task taskRepo = taskRepository.saveTask(task);
-        return taskDomainDTOAssembler.toDTO(taskRepo);
+
+        Optional<Category> persistedCategory = findPersistedCategory(userInput);
+
+        if (persistedCategory.isPresent())
+        {
+            Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory.get());
+            Task taskRepo = taskRepository.saveTask(task);
+            return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo));
+        }
+        return Optional.empty();
     }
 
    /* public TaskDTO findByCategory(NewTaskInfoDTO userInput) throws ParseException, IOException{
 
     }*/
+
+    protected Optional<Category> findPersistedCategory(NewTaskInfoDTO userInput){
+        Category inputCategory = new Category(userInput.getCategory());
+        Optional<Category> category = categoryService.findById(inputCategory);
+        return category;
+    }
 
 }
 
