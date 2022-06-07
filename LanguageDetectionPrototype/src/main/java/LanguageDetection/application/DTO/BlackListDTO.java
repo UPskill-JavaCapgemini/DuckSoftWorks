@@ -1,7 +1,7 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.entities.BlackList;
+import LanguageDetection.domain.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.entities.BlackListItem;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,14 +13,14 @@ import lombok.ToString;
 public class BlackListDTO {
 
     @Getter
-    InputUrl url;
+    BlackListUrl url;
 
-    public BlackListDTO(BlackList blackListItem) {
+    public BlackListDTO(BlackListItem blackListItem) {
         this.url = blackListItem.identity();
     }
 
     @Override
     public String toString(){
-        return url.getUrl();
+        return url.getBlackListUrlObject().toString();
     }
 }

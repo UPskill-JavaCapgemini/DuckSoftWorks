@@ -3,7 +3,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.domain.entities.BlackList;
+import LanguageDetection.domain.entities.BlackListItem;
 import LanguageDetection.infrastructure.repositories.BlackListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,18 +22,18 @@ public class BlackListService {
 
     public BlackListDTO createBlackListItem(NewBlackListInfoDTO inputUrl) throws MalformedURLException {
         String url = inputUrl.getUrl();
-        BlackList blackListItem = new BlackList(inputUrl.getUrl());
-        BlackList savedBlackListItem = repository.save(blackListItem);
+        BlackListItem blackListItem = new BlackListItem(inputUrl.getUrl());
+        BlackListItem savedBlackListItem = repository.save(blackListItem);
 
         return assembler.toDTO(savedBlackListItem);
     }
 
     public List<BlackListDTO> findAll() throws MalformedURLException {
-        List<BlackList> blackListItems = repository.findAll();
+        List<BlackListItem> blackListItems = repository.findAll();
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();
 
-        for (BlackList blackList : blackListItems) {
+        for (BlackListItem blackList : blackListItems) {
             BlackListDTO blackListDTO = assembler.toDTO(blackList);
             blackListDTOS.add(blackListDTO);
         }
@@ -42,7 +42,7 @@ public class BlackListService {
     }
 
     public boolean isBlackListed(NewBlackListInfoDTO inputBlackList) throws MalformedURLException {
-        BlackList blackList = new BlackList(inputBlackList.getUrl());
+        BlackListItem blackList = new BlackListItem(inputBlackList.getUrl());
         return repository.isBlackListed(blackList);
     }
 }
