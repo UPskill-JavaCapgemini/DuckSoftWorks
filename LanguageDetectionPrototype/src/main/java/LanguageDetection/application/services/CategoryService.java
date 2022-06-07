@@ -4,6 +4,7 @@ import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.ICategoria;
 import LanguageDetection.domain.factories.ICategoryFactory;
 import LanguageDetection.infrastructure.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +26,19 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    ICategoria categoria;
+
 
     public CategoryDTO createCategory(NewCategoryInfoDTO infoDTO) throws MalformedURLException {
 
 
         Category category = categoryFactory.createCategory(infoDTO.getCategory());
-        Category categoryRepo = categoryRepository.save(category);
+        Category categoryRepo = categoria.saveCategory(category);
         return dtoAssembler.toDTO(categoryRepo);
     }
 
-    public List<CategoryDTO> findAll() {
+    /*public List<CategoryDTO> findAll() {
         List<Category> categories = categoryRepository.findAll();
 
         List<CategoryDTO> categoryDTOS = new ArrayList<>();
@@ -50,6 +54,6 @@ public class CategoryService {
     public boolean deleteCategory(NewCategoryInfoDTO category) {
         Category duplicatedCategory = categoryFactory.createCategory(category.getCategory());
         return categoryRepository.delete(duplicatedCategory);
-    }
+    }*/
 
 }

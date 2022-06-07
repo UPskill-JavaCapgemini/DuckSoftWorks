@@ -3,14 +3,21 @@ package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
 import LanguageDetection.domain.util.BusinessValidation;
 import lombok.Getter;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.*;
+
+@Embeddable
+@Table
 public class CategoryDescription implements ValueObject {
 
     /**
      * getter for the cathegory's description as a string
      */
-    @Getter
     String categoryDescription;
+
+    public CategoryDescription() {
+    }
 
     /**
      * constructor for the Category Description with validations

@@ -1,6 +1,8 @@
 package LanguageDetection.infrastructure.datamodel;
+/*
 
-
+import LanguageDetection.domain.ValueObjects.CategoryDescription;
+import LanguageDetection.domain.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +20,10 @@ public class CategoryJpa {
     @Getter
     long id;
     @Getter
-    String categoryName;
+    Category categoryName;
 
-    public CategoryJpa(String categoryName) {
+    public CategoryJpa(Category categoryName) {
         this.categoryName = categoryName;
     }
 
-}
+}*/

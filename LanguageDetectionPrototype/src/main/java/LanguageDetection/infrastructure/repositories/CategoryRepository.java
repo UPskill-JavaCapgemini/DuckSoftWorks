@@ -1,9 +1,9 @@
 package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
+import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.infrastructure.datamodel.CategoryJpa;
-import LanguageDetection.infrastructure.datamodel.DataAssemblers.CategoryDomainDataAssembler;
+import LanguageDetection.domain.entities.ICategoria;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,17 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CategoryRepository {
+public class CategoryRepository implements ICategoria{
 
-    @Autowired
-    CategoryDomainDataAssembler categoryAssembler;
+   /* @Autowired
+    CategoryDomainDataAssembler categoryAssembler;*/
 
 
     @Autowired
     CategoryJpaRepository categoryJpaRepository;
 
 
-    public Category save(Category category) throws MalformedURLException {
+
+    /*public Category save(Category category) throws MalformedURLException {
         CategoryJpa categoryJpa = categoryAssembler.toData(category);
 
         CategoryJpa savedCategoryJpa = categoryJpaRepository.save(categoryJpa);
@@ -64,5 +65,26 @@ public class CategoryRepository {
             return categoryRepo.equals(categoryByParameter);
         }
         return false;
+    }*/
+
+
+    /*public CategoryDescription save(Category category) {
+        Category category2 = categoria.saveCategory(category);
+
+    }*/
+
+    @Override
+    public Category saveCategory(Category category) {
+        return categoryJpaRepository.save(category);
     }
+
+    @Override
+    public boolean deleteByDescription(CategoryDescription categoryDescription) {
+        return false;
+    }
+
+   /* @Override
+    public boolean deleteByDescription(CategoryDescription categoryDescription) {
+        return false;
+    }*/
 }

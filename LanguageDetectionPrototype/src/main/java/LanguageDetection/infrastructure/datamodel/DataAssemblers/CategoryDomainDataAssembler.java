@@ -1,5 +1,5 @@
 package LanguageDetection.infrastructure.datamodel.DataAssemblers;
-
+/*
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.infrastructure.datamodel.CategoryJpa;
 import org.springframework.stereotype.Service;
@@ -17,4 +17,4 @@ public class CategoryDomainDataAssembler {
         return new Category(categoryName);
     }
 
-}
+}*/
