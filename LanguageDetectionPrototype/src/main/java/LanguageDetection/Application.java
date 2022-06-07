@@ -20,7 +20,7 @@ public class Application {
 
     public static void main(String[] args) throws MalformedURLException {
         SpringApplication.run(Application.class);
-        
+
 
 
         //NewBlackListInfoDTO bl1 = new NewBlackListInfoDTO("http://127.0.0.1.");
