@@ -1,6 +1,7 @@
 package LanguageDetection.domain.entities;
 
-import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.shared.AggregateRoot;
 import LanguageDetection.domain.shared.Entity;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
@@ -14,11 +15,11 @@ import java.net.MalformedURLException;
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
-public class BlackList implements Entity<InputUrl> {
-    private InputUrl url;
+public class BlackListItem implements AggregateRoot<BlackListUrl> {
+    private BlackListUrl url;
 
-    public BlackList(String url) throws MalformedURLException {
-        this.url = new InputUrl(url);
+    public BlackListItem(String url) throws MalformedURLException {
+        this.url = new BlackListUrl(url);
     }
 
     public boolean sameAs(Object otherBlackList) {
@@ -26,19 +27,17 @@ public class BlackList implements Entity<InputUrl> {
     }
 
 
-    public int compareTo(@NotNull InputUrl otherURL) {
+    public int compareTo(@NotNull BlackListUrl otherURL) {
         return url.compareTo(otherURL);
     }
 
     @JsonGetter
-    public InputUrl identity() {
+    public BlackListUrl identity() {
         return this.url;
     }
 
-
     @Override
-    public boolean hasIdentity(InputUrl id) {
-        return Entity.super.hasIdentity(id);
+    public boolean hasIdentity(BlackListUrl id) {
+        return AggregateRoot.super.hasIdentity(id);
     }
-
 }
