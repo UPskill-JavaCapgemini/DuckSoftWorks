@@ -1,50 +1,54 @@
-//package LanguageDetection.infrastructure.repositories;
-//
-//import LanguageDetection.domain.entities.BlackList;
-//import LanguageDetection.infrastructure.datamodel.BlackListJPA;
-//import LanguageDetection.infrastructure.repositories.JPARepositories.BlackListJpaRepository;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Repository;
-//
-//import java.net.MalformedURLException;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Optional;
-//
-//
-//@Repository
-//public class BlackListRepository {
-//
-//    @Autowired
-//    BlackListDomainDataAssembler blackListAssembler;
-//
-//    @Autowired
-//    BlackListJpaRepository blackListRepository;
-//
-//    public BlackList save(BlackList blackList) throws MalformedURLException {
-//        BlackListJPA blackListJPA = blackListAssembler.toData(blackList);
-//
-//        BlackListJPA savedBlackList = blackListRepository.save(blackListJPA);
-//
-//        return blackListAssembler.toDomain(savedBlackList);
-//    }
-//
-//    public List<BlackList> findAll() throws MalformedURLException {
-//        List<BlackListJPA> blackListJpaItems = (List<BlackListJPA>) blackListRepository.findAll();
-//
-//        List<BlackList> blackListItems = new ArrayList<>();
-//        for (BlackListJPA blackListJPA : blackListJpaItems) {
-//            BlackList blackList = blackListAssembler.toDomain(blackListJPA);
-//            blackListItems.add(blackList);
-//        }
-//
-//        return blackListItems;
-//    }
-//
-//    public boolean isBlackListed(BlackList blackListUrl) {
-//        String url = blackListUrl.getUrl().toString();
-//        Optional<BlackListJPA> opBlackListJPA = blackListRepository.findByUrl(url);
-//
-//        return opBlackListJPA.isPresent();
-//    }
-//}
+
+package LanguageDetection.infrastructure.repositories;
+
+import LanguageDetection.domain.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.entities.IBlackListItem;
+import LanguageDetection.infrastructure.repositories.JPARepositories.BlackListJpaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
+import java.net.MalformedURLException;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public class BlackListRepository implements IBlackListItem{
+
+    @Autowired
+    BlackListJpaRepository blackListRepository;
+
+    public BlackListItem saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException {
+        BlackListItem savedBlackListUrl = blackListRepository.save(blackListItem);
+        return savedBlackListUrl;
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteByBlackListUrl(BlackListItem blackListItem) {
+        Optional<BlackListItem> itemToBeDeleted = blackListRepository.findById(blackListItem.identity());
+        if (itemToBeDeleted.isPresent())
+        {
+            blackListRepository.delete(blackListItem);
+            return true;
+        }
+        else
+            return false;
+    }
+
+
+    public List<BlackListItem> findAllBlackListItems() throws MalformedURLException {
+        List<BlackListItem> blackListItems = (List<BlackListItem>) blackListRepository.findAll();
+        return blackListItems;
+    }
+
+
+
+    public boolean isBlackListed(BlackListItem blackListItem) {
+        BlackListUrl blackListUrl = blackListItem.getUrl();
+        Optional<BlackListItem> blackListRepoUrl = blackListRepository.findById(blackListUrl);
+
+        return blackListRepoUrl.isPresent();
+    }
+}

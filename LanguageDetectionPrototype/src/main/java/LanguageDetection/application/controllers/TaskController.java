@@ -1,3 +1,4 @@
+
 package LanguageDetection.application.controllers;
 
 
@@ -34,7 +35,7 @@ public class TaskController {
      *
      * @param info receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
      * @throws ParseException thrown by QueryParser it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException thrown by IndexReader class if some sort of I/O problem occurred
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
 
 
@@ -45,13 +46,14 @@ public class TaskController {
     }
 
 
-/*    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<Mono<TaskDTO>> getById(@PathVariable Long id) {
         Mono<TaskDTO> monoTask = service.getLanguage(id);
         return new ResponseEntity<>(monoTask, HttpStatus.OK);
-    }*/
-/*
+    }
+
+
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<Flux<TaskDTO>> getAll(@RequestParam(required = false, name = "name") String name) {
@@ -80,5 +82,7 @@ public class TaskController {
         TaskDTO example = service.createAndSaveExample(info.getName());
         return new ResponseEntity<>(example, HttpStatus.CREATED);
     }*/
+
 }
+
 

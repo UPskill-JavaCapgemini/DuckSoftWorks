@@ -1,23 +1,18 @@
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ICategoria;
+import LanguageDetection.domain.entities.ICategory;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class CategoryRepository implements ICategoria{
+public class CategoryRepository implements ICategory {
 
-   /* @Autowired
-    CategoryDomainDataAssembler categoryAssembler;*/
 
 
     @Autowired
@@ -25,25 +20,7 @@ public class CategoryRepository implements ICategoria{
 
 
 
-    /*public Category save(Category category) throws MalformedURLException {
-        CategoryJpa categoryJpa = categoryAssembler.toData(category);
-
-        CategoryJpa savedCategoryJpa = categoryJpaRepository.save(categoryJpa);
-
-        return categoryAssembler.toDomain(savedCategoryJpa);
-    }
-
-    public List<Category> findAll() {
-        List<CategoryJpa> categoryJpas = (List<CategoryJpa>) categoryJpaRepository.findAll();
-
-        List<Category> categories = new ArrayList<>();
-        for (CategoryJpa categoryJpa : categoryJpas) {
-            Category category = categoryAssembler.toDomain(categoryJpa);
-            categories.add(category);
-        }
-
-        return categories;
-    }
+    /*
 
     @Transactional
     public boolean delete(Category category) {
@@ -79,12 +56,20 @@ public class CategoryRepository implements ICategoria{
     }
 
     @Override
-    public boolean deleteByDescription(CategoryDescription categoryDescription) {
+    @Transactional
+    public boolean deleteByDescription(Category category) {
+        Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryDescription(category.getCategoryDescription());
+        if (categoryRepo.isPresent()) {
+            categoryJpaRepository.deleteCategory(category.getCategoryDescription());
+            return true;
+        }
         return false;
     }
 
-   /* @Override
-    public boolean deleteByDescription(CategoryDescription categoryDescription) {
-        return false;
-    }*/
+    @Override
+    public List<Category> findAll() {
+        return (List<Category>) categoryJpaRepository.findAll();
+    }
+
+
 }

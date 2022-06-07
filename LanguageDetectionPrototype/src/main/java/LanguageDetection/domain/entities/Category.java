@@ -2,11 +2,13 @@ package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.shared.Entity;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Table;
 
 /**
  * Class that that will be represent a text.
@@ -30,6 +32,7 @@ public class Category implements Entity {
      * Gets the Value Object CategoryDescription where the business validations are implemented.
      */
 
+    @Getter
     @EmbeddedId
     CategoryDescription categoryDescription;
 
