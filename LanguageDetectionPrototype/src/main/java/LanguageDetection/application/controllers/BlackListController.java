@@ -2,6 +2,7 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
+import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.BlackListService;
 import org.apache.lucene.queryparser.classic.ParseException;
 
@@ -39,4 +40,12 @@ public class BlackListController {
         return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/Delete")
+    public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) throws ParseException, IOException {
+        if (blackListService.deleteBlackListItem(blackListInfoDTO)) {
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Black list item does not exist", HttpStatus.NOT_FOUND);
+        }
+    }
 }

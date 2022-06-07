@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +26,14 @@ public class BlackListRepository implements IBlackListItem{
     @Override
     @Transactional
     public boolean deleteByBlackListUrl(BlackListItem blackListItem) {
-        return false;
+        Optional<BlackListItem> itemToBeDeleted = blackListRepository.findById(blackListItem.identity());
+        if (itemToBeDeleted.isPresent())
+        {
+            blackListRepository.delete(blackListItem);
+            return true;
+        }
+        else
+            return false;
     }
 
 

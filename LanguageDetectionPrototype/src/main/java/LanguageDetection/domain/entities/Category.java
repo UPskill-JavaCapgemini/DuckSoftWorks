@@ -2,6 +2,7 @@ package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.CategoryDescription;
 import LanguageDetection.domain.shared.Entity;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 
