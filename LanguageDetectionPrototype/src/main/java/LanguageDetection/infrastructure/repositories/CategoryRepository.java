@@ -58,8 +58,9 @@ public class CategoryRepository implements ICategory {
     @Override
     @Transactional
     public boolean deleteByDescription(Category category) {
+
         Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryDescription(category.getCategoryDescription());
-        if (categoryRepo.isPresent()) {
+        if (!isBaseCategory(categoryRepo)) {
             categoryJpaRepository.deleteCategory(category.getCategoryDescription());
             return true;
         }
@@ -71,5 +72,23 @@ public class CategoryRepository implements ICategory {
         return (List<Category>) categoryJpaRepository.findAll();
     }
 
+    protected boolean isBaseCategory(Optional<Category> category){
+        boolean isBase = false;
+
+        if (category.isPresent())
+        {
+            switch (category.get().toString().toLowerCase())
+            {
+                case "economia","filosofia","mecânica","nutricionismo","desporto":
+                    isBase = true;
+                    break;
+
+                default:
+                    isBase = false;
+                    break;
+            }
+        }
+        return isBase;
+    }
 
 }
