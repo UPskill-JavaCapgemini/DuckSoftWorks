@@ -46,7 +46,7 @@ public class TaskController {
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
         } else {
-            return new ResponseEntity("This is a BlackListed URL, please insert another URL to create a task!", HttpStatus.FORBIDDEN);
+            return new ResponseEntity("Unable to create task", HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -46,5 +47,9 @@ public class CategoryService {
     }
 
 
+    public Optional<Category> findById(Category category) {
+        Optional<Category> opCategoryRepo = iCategory.findCategoryById(category);
 
+        return opCategoryRepo;
+    }
 }
