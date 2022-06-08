@@ -1,6 +1,6 @@
 package LanguageDetection.domain.entities;
 
-import LanguageDetection.domain.ValueObjects.CategoryDescription;
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.shared.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,12 +29,12 @@ public class Category implements Entity {
     }*/
 
     /**
-     * Gets the Value Object CategoryDescription where the business validations are implemented.
+     * Gets the Value Object CategoryName where the business validations are implemented.
      */
 
     @Getter
     @EmbeddedId
-    CategoryDescription categoryDescription;
+    CategoryName categoryName;
 
 
 
@@ -43,7 +43,7 @@ public class Category implements Entity {
      */
     public Category(String categoryDescription) {
 
-        this.categoryDescription = new CategoryDescription(categoryDescription);
+        this.categoryName = new CategoryName(categoryDescription);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class Category implements Entity {
      */
     @Override
     public Object identity() {
-        return this.categoryDescription;
+        return this.categoryName;
     }
 
     @Override
@@ -67,6 +67,6 @@ public class Category implements Entity {
 
     @Override
     public String toString() {
-        return categoryDescription.toString();
+        return categoryName.toString();
     }
 }

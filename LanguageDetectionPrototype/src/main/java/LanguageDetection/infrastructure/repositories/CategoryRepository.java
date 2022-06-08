@@ -36,22 +36,22 @@ public class CategoryRepository implements ICategory {
     protected boolean isCategoryOnRepository(Category category){
         List<Category> categories = findAll();
         for (Category category1 : categories) {
-            String categoryByParameter = category.getCategoryDescription().getCategoryDescription();
-            String categoryRepo = category1.getCategoryDescription().getCategoryDescription();
+            String categoryByParameter = category.getCategoryName().getCategoryName();
+            String categoryRepo = category1.getCategoryName().getCategoryName();
             return categoryRepo.equals(categoryByParameter);
         }
         return false;
     }*/
 
 
-    /*public CategoryDescription save(Category category) {
+    /*public CategoryName save(Category category) {
         Category category2 = categoria.saveCategory(category);
 
     }*/
 
     @Override
     public Optional<Category> findCategoryById(Category category) {
-        return categoryJpaRepository.findByCategoryDescription(category.getCategoryDescription());
+        return categoryJpaRepository.findByCategoryName(category.getCategoryName());
     }
 
     @Override
@@ -63,9 +63,9 @@ public class CategoryRepository implements ICategory {
     @Transactional
     public boolean deleteByDescription(Category category) {
 
-        Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryDescription(category.getCategoryDescription());
+        Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryName(category.getCategoryName());
         if (!isBaseCategory(categoryRepo)) {
-            categoryJpaRepository.deleteCategory(category.getCategoryDescription());
+            categoryJpaRepository.deleteCategory(category.getCategoryName());
             return true;
         }
         return false;

@@ -4,8 +4,6 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.services.TaskService;
-import LanguageDetection.domain.ValueObjects.CategoryDescription;
-import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;

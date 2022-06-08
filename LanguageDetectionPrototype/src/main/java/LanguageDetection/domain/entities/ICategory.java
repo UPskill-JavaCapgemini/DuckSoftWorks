@@ -1,7 +1,5 @@
 package LanguageDetection.domain.entities;
 
-import LanguageDetection.domain.ValueObjects.CategoryDescription;
-
 import java.util.List;
 import java.util.Optional;
 

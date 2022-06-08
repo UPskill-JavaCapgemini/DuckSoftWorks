@@ -2,36 +2,34 @@ package LanguageDetection.domain.ValueObjects;
 
 import LanguageDetection.domain.shared.ValueObject;
 import LanguageDetection.domain.util.BusinessValidation;
-import lombok.Getter;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 
 @Embeddable
 @Table
-public class CategoryDescription implements ValueObject {
+public class CategoryName implements ValueObject {
 
     /**
      * getter for the cathegory's description as a string
      */
-    String categoryDescription;
+    String categoryName;
 
-    public CategoryDescription() {
+    public CategoryName() {
     }
 
     /**
      * constructor for the Category Description with validations
      * it prevents the category to be created with only numbers, only spaces or without any input.
      */
-    public CategoryDescription(String categoryDescription) {
-        if (BusinessValidation.isOnlyNumbers(categoryDescription) || categoryDescription.isBlank() || categoryDescription.isEmpty()){
+    public CategoryName(String categoryName) {
+        if (BusinessValidation.isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
             throw new IllegalArgumentException();
         }
-        this.categoryDescription = categoryDescription;
+        this.categoryName = categoryName;
     }
 
     @Override
     public String toString() {
-        return categoryDescription;
+        return categoryName;
     }
 }
