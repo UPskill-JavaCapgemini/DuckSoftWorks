@@ -19,11 +19,11 @@ import java.nio.file.Paths;
 import static org.apache.lucene.index.IndexOptions.DOCS_AND_FREQS;
 
 @Service
-public class DictionaryService {
+public class Dictionary {
 Directory directory;
 IndexWriterConfig config;
 IndexWriter writer;
-private static DictionaryService singleton = null;
+private static Dictionary singleton = null;
 
     /**
      *This constructor creates an instance of DictionaryService.
@@ -32,7 +32,7 @@ private static DictionaryService singleton = null;
      *@throws IOException thrown if some sort of I/O problem occurred.
      */
 
-    public DictionaryService() throws IOException {
+    public Dictionary() throws IOException {
         this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
         this.config = new IndexWriterConfig();
         this.writer = new IndexWriter(directory, config);
@@ -59,9 +59,9 @@ private static DictionaryService singleton = null;
      * @return a singleton DictionaryService instance
      * @throws IOException thrown if some sort of I/O problem occurred
      */
-    protected static DictionaryService getInstance() throws IOException {
+    protected static Dictionary getInstance() throws IOException {
         if (singleton == null)
-            singleton = new DictionaryService();
+            singleton = new Dictionary();
 
         return singleton;
     }
