@@ -1,6 +1,5 @@
 package LanguageDetection.domain.DomainService;
 
-import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -16,9 +15,9 @@ import java.net.URL;
 import java.util.Locale;
 
 @Service
-public class AnalyzerService implements ILanguageDetector{
+public class LanguageAnalyzer implements ILanguageDetector{
     private static final int MAX_TOKENS = Integer.MAX_VALUE;
-    static Analyzer analyzer;
+    static org.apache.lucene.analysis.Analyzer analyzer;
     static IndexReader reader;
     static IndexSearcher searcher;
 
@@ -39,9 +38,9 @@ public class AnalyzerService implements ILanguageDetector{
      *instance (reader) as a paramether.
      * @throws IOException - thrown by IndexReader class if some sort of I/O problem occurred
      */
-    public AnalyzerService() throws IOException {
+    public LanguageAnalyzer() throws IOException {
         analyzer = new SimpleAnalyzer();
-        reader = DirectoryReader.open(DictionaryService.getInstance().directory);
+        reader = DirectoryReader.open(Dictionary.getInstance().directory);
         searcher = new IndexSearcher(reader);
     }
 
