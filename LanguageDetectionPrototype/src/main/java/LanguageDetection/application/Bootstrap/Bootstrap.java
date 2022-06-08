@@ -41,10 +41,10 @@ public class Bootstrap implements InitializingBean {
         NewCategoryInfoDTO nutrition = new NewCategoryInfoDTO("Nutrition");
         NewCategoryInfoDTO sports = new NewCategoryInfoDTO("Sports");
 
-        categoryService.createCategory(economics);
-        categoryService.createCategory(philosohy);
-        categoryService.createCategory(mechanics);
-        categoryService.createCategory(nutrition);
-        categoryService.createCategory(sports);
+        categoryService.createAndSaveCategory(economics);
+        categoryService.createAndSaveCategory(philosohy);
+        categoryService.createAndSaveCategory(mechanics);
+        categoryService.createAndSaveCategory(nutrition);
+        categoryService.createAndSaveCategory(sports);
     }
 }

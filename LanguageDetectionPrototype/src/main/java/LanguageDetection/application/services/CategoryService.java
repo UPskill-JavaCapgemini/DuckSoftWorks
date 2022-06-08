@@ -23,7 +23,7 @@ public class CategoryService {
     ICategory iCategory;
 
 
-    public CategoryDTO createCategory(NewCategoryInfoDTO infoDTO) throws MalformedURLException {
+    public CategoryDTO createAndSaveCategory(NewCategoryInfoDTO infoDTO) throws MalformedURLException {
         Category category = new Category(infoDTO.getCategory());
         Category categoryRepo = iCategory.saveCategory(category);
         return dtoAssembler.toDTO(categoryRepo);

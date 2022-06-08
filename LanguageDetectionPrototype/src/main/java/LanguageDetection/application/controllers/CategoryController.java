@@ -51,7 +51,7 @@ public class CategoryController {
      */
     @PostMapping("")
     public ResponseEntity<Object> createCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
-        CategoryDTO categoryDTO = categoryService.createCategory(category);
+        CategoryDTO categoryDTO = categoryService.createAndSaveCategory(category);
         return new ResponseEntity<>(categoryDTO.toString(), HttpStatus.CREATED);
     }
 
