@@ -8,7 +8,7 @@ public interface ICategory {
 
     Category saveCategory(Category category);
 
-    boolean deleteByDescription(Category category);
+    boolean deleteByName(Category category);
 
     List<Category> findAll();
 

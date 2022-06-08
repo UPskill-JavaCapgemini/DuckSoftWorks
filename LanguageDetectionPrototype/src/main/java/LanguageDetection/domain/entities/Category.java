@@ -20,14 +20,6 @@ import javax.persistence.Table;
 @Table
 public class Category implements Entity {
 
-    /*  {
-        Economics,
-        Philosophy,
-        Mechanics,
-        Nutrition,
-        Sport
-    }*/
-
     /**
      * Gets the Value Object CategoryName where the business validations are implemented.
      */
