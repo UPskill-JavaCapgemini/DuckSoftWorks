@@ -19,7 +19,7 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
 
     public InputUrl(String url) throws MalformedURLException {
-        if(StringUtils.endsWithAny(url,".txt")) {
+        if(StringUtils.endsWithAny(url.toLowerCase(),".txt")) {
             this.url = new URL(url);
         } else {
             throw new IllegalArgumentException("The URL doesn't contain a txt file");
