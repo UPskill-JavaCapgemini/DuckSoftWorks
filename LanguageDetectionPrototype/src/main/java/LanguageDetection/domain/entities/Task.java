@@ -84,6 +84,26 @@ public class Task implements AggregateRoot<Long> {
         this.category = category;
     }
 
+    public Task(Task task,String language) throws MalformedURLException {
+        this.id = task.identity();
+        this.date = task.getDate();
+        this.url = task.getUrl();
+        this.language = Task.Language.valueOf(language);
+        this.currentStatus = CurrentStatus.Concluded;
+        this.timeOut = task.getTimeOut();
+        this.category = task.getCategory();
+    }
+
+    public Task(Task task) throws MalformedURLException {
+        this.id = task.identity();
+        this.date = task.getDate();
+        this.url = task.getUrl();
+        this.language = null;
+        this.currentStatus = CurrentStatus.Canceled;
+        this.timeOut = task.getTimeOut();
+        this.category = task.getCategory();
+    }
+
 
     @Override
     public boolean sameAs(Object other) {
