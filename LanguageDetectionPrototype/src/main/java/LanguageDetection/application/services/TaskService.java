@@ -21,10 +21,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import java.util.Optional;
 import java.util.concurrent.*;
 
 
@@ -133,11 +131,26 @@ public class TaskService {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         Future<String> returnedValues = executorService.submit(analyzerService);
+        Timer timer = new Timer(Thread.currentThread().getName(),true);
+        TimerTask interruptReturnedValues = timeOutAnalysis(returnedValues);
+        timer.schedule(interruptReturnedValues,2000);
 
         log.info("ID da thread: " + Thread.currentThread().getId() + "Nome da thread: " + Thread.currentThread().getName());
 
         executorService.shutdown();
     }
 
+    protected TimerTask timeOutAnalysis(Future<String> future){
+
+      TimerTask task =  new TimerTask() {
+           @Override
+           public void run() {
+               boolean cancelledFuture =  (future.cancel(true));
+               System.out.println("Cancelled");
+           }
+       };
+
+       return task;
+    }
 }
 
