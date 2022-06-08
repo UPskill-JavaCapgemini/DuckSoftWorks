@@ -107,7 +107,8 @@ public class TaskService {
 
 
     public List<Task> findByStatusContaining (StatusDTO st) {
-        List<Task> listTasksByStatus = taskRepository.findByStatusContaining(Task.CurrentStatus.valueOf(st.getStatus()));
+        Task.CurrentStatus status = Task.CurrentStatus.valueOf(st.getStatus());
+        List<Task> listTasksByStatus = taskRepository.findByStatusContaining(status);
 
 
         return listTasksByStatus;

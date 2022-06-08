@@ -17,7 +17,6 @@ import java.util.Date;
  *  * @author DuckSoftWorks
  */
 
-@ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 @Repository
@@ -45,11 +44,13 @@ public class Task implements AggregateRoot<Long> {
     /**
      * The language detected on the text
      */
+    @Enumerated(EnumType.STRING)
     @Getter
     Language language;
     /**
      * The actual state of the task
      */
+    @Enumerated(EnumType.STRING)
     @Getter
     CurrentStatus currentStatus;
     /**
@@ -62,10 +63,7 @@ public class Task implements AggregateRoot<Long> {
      * The category defined by the user for the task
      */
     @Getter
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumns({
-            @JoinColumn(name = "category_categoryDescription", referencedColumnName = "categoryDescription")
-    })
+    @ManyToOne
     Category category;
 
     /**
@@ -122,5 +120,17 @@ public class Task implements AggregateRoot<Long> {
         Concluded,
         Canceled,
         Processing
+    }
+
+    @Override
+    public String toString() {
+        return "Task: " +
+                "id=" + id +
+                ", date=" + date +
+                ", url=" + url +
+                ", language=" + language +
+                ", currentStatus=" + currentStatus +
+                ", timeOut=" + timeOut +
+                ", category=" + category;
     }
 }

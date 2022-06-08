@@ -54,7 +54,7 @@ public class TaskController {
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<Object> getAllCategoriesContainingOrByStatusContaining(
-            @RequestParam (name = "category", required = false) CategoryNameDTO categoryName,
+            @RequestParam (name = "categoryName", required = false) CategoryNameDTO categoryName,
             @RequestParam (name = "status", required = false) StatusDTO status) {
 
         List<Task> tasks = new ArrayList<>();
@@ -68,7 +68,7 @@ public class TaskController {
         else if (status != null && categoryName != null){
             tasks = service.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
-        return new ResponseEntity<>(tasks, HttpStatus.OK);
+        return new ResponseEntity<>(tasks.toString(), HttpStatus.OK);
     }
 
 

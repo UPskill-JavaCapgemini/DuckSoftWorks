@@ -6,11 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface TaskJpaRepository extends CrudRepository <Task, Long> {
-    Iterable<Task> findByStatusContaining(Task.CurrentStatus st);
+    Iterable<Task> findByCurrentStatusLike(Task.CurrentStatus st);
 
-    Iterable<Task> findByCategoryContaining(Category catName);
+    Iterable<Task> findTaskByCategoryLike(Category catName);
 
-    Iterable<Task> findByStatusContainingAndByCategoryContaining(Task.CurrentStatus status, Category category);
+    Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLike(Category category, Task.CurrentStatus status);
 
 
 //    Optional<Task> findById(String name);
