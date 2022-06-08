@@ -2,9 +2,13 @@
 package LanguageDetection.application.services;
 
 
+
+import LanguageDetection.application.DTO.*;
+
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskDTO;
+
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.AnalyzerService;
 import LanguageDetection.domain.entities.Category;
@@ -13,9 +17,15 @@ import LanguageDetection.infrastructure.repositories.TaskRepository;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.Optional;
+
 
 
 /**
@@ -84,6 +94,44 @@ public class TaskService {
             return Optional.empty();
         }
     }
+
+    public List<Task> findAllTasks() {
+
+        List<Task> listAllTasks = taskRepository.findAllTasks();
+
+        List<NewTaskInfoDTO> setNewTaskInfoDTO = new ArrayList<NewTaskInfoDTO>();
+
+        return listAllTasks;
+
+    }
+
+
+    public List<Task> findByStatusContaining (StatusDTO st) {
+        List<Task> listTasksByStatus = taskRepository.findByStatusContaining(Task.CurrentStatus.valueOf(st.getStatus()));
+
+
+        return listTasksByStatus;
+    }
+
+    public List<Task> findByCategoryContaining(CategoryNameDTO catName) {
+        Category category = new Category(catName.getCategoryName());
+        List<Task> listTasksByCategory = taskRepository.findByCategoryContaining(category);
+
+
+        return listTasksByCategory;
+    }
+
+    public List<Task> findByStatusContainingAndCategoryContaining(StatusDTO status, CategoryNameDTO categoryNameDTO) {
+        Task.CurrentStatus status1 = Task.CurrentStatus.valueOf(status.getStatus());
+        Category category1 = new Category(categoryNameDTO.getCategoryName());
+
+        List<Task> listTasksByStatusAndByCategory = taskRepository.findByStatusAndByCategoryContaining(status1, category1);
+        return listTasksByStatusAndByCategory;
+    }
+
+   /* public TaskDTO findByCategory(NewTaskInfoDTO userInput) throws ParseException, IOException{
+
+    }*/
 
     protected Optional<Category> findPersistedCategory(NewTaskInfoDTO userInput) {
         Category inputCategory = new Category(userInput.getCategory());

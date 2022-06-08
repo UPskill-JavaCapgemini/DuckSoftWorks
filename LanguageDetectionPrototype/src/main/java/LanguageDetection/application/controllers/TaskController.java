@@ -2,20 +2,21 @@
 package LanguageDetection.application.controllers;
 
 
-import LanguageDetection.application.DTO.NewTaskInfoDTO;
-import LanguageDetection.application.DTO.TaskDTO;
+import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.services.TaskService;
+import LanguageDetection.domain.ValueObjects.CategoryDescription;
+import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.Task;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -48,6 +49,26 @@ public class TaskController {
         } else {
             return new ResponseEntity("Unable to create task", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("")
+    @ResponseBody
+    public ResponseEntity<Object> getAllCategoriesContainingOrByStatusContaining(
+            @RequestParam (name = "category", required = false) CategoryNameDTO categoryName,
+            @RequestParam (name = "status", required = false) StatusDTO status) {
+
+        List<Task> tasks = new ArrayList<>();
+
+        if (status == null && categoryName == null)
+            tasks = service.findAllTasks();
+        else if (status != null && categoryName == null){
+            tasks = service.findByStatusContaining(status);}
+        else if (status == null && categoryName != null){
+            tasks = service.findByCategoryContaining(categoryName); }
+        else if (status != null && categoryName != null){
+            tasks = service.findByStatusContainingAndCategoryContaining(status, categoryName);
+        }
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
 
