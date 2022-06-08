@@ -36,13 +36,13 @@ public class Bootstrap implements InitializingBean {
     private void createBaseCategories() throws MalformedURLException {
 
         NewCategoryInfoDTO economics = new NewCategoryInfoDTO("Economics");
-        NewCategoryInfoDTO philosohy = new NewCategoryInfoDTO("Philosohy");
+        NewCategoryInfoDTO philosophy = new NewCategoryInfoDTO("Philosophy");
         NewCategoryInfoDTO mechanics = new NewCategoryInfoDTO("Mechanics");
         NewCategoryInfoDTO nutrition = new NewCategoryInfoDTO("Nutrition");
         NewCategoryInfoDTO sports = new NewCategoryInfoDTO("Sports");
 
         categoryService.createAndSaveCategory(economics);
-        categoryService.createAndSaveCategory(philosohy);
+        categoryService.createAndSaveCategory(philosophy);
         categoryService.createAndSaveCategory(mechanics);
         categoryService.createAndSaveCategory(nutrition);
         categoryService.createAndSaveCategory(sports);

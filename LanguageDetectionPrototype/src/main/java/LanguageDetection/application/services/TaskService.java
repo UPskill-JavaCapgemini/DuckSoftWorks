@@ -140,7 +140,7 @@ public class TaskService {
         executorService.shutdown();
     }
 
-    protected TimerTask timeOutAnalysis(Future<String> future){
+    protected TimerTask timeOutAnalysis (Future<String> future){
 
       TimerTask task =  new TimerTask() {
            @Override

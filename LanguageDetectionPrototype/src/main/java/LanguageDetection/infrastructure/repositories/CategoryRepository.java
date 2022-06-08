@@ -81,7 +81,8 @@ public class CategoryRepository implements ICategory {
 
         if (category.isPresent()) {
             switch (category.get().toString().toLowerCase()) {
-                case "economia", "filosofia", "mecânica", "nutricionismo", "desporto":
+                case "economics", "philosophy", "mechanics", "nutrition", "sports" +
+                        "":
                     isBase = true;
                     break;
 
