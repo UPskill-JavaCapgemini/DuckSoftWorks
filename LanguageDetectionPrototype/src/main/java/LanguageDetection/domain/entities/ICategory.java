@@ -15,4 +15,5 @@ public interface ICategory {
     List<Category> findAll();
 
     Optional<Category> findCategoryById(Category category);
+
 }
