@@ -35,16 +35,16 @@ public class Bootstrap implements InitializingBean {
 
     private void createBaseCategories() throws MalformedURLException {
 
-        NewCategoryInfoDTO economia = new NewCategoryInfoDTO("economia");
-        NewCategoryInfoDTO filosofia = new NewCategoryInfoDTO("filosofia");
-        NewCategoryInfoDTO mecanica = new NewCategoryInfoDTO("mecânica");
-        NewCategoryInfoDTO nutricionismo = new NewCategoryInfoDTO("nutricionismo");
-        NewCategoryInfoDTO desporto = new NewCategoryInfoDTO("desporto");
+        NewCategoryInfoDTO economics = new NewCategoryInfoDTO("Economics");
+        NewCategoryInfoDTO philosohy = new NewCategoryInfoDTO("Philosohy");
+        NewCategoryInfoDTO mechanics = new NewCategoryInfoDTO("Mechanics");
+        NewCategoryInfoDTO nutrition = new NewCategoryInfoDTO("Nutrition");
+        NewCategoryInfoDTO sports = new NewCategoryInfoDTO("Sports");
 
-        categoryService.createCategory(economia);
-        categoryService.createCategory(filosofia);
-        categoryService.createCategory(mecanica);
-        categoryService.createCategory(nutricionismo);
-        categoryService.createCategory(desporto);
+        categoryService.createCategory(economics);
+        categoryService.createCategory(philosohy);
+        categoryService.createCategory(mechanics);
+        categoryService.createCategory(nutrition);
+        categoryService.createCategory(sports);
     }
 }

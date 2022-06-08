@@ -61,7 +61,7 @@ public class CategoryRepository implements ICategory {
 
     @Override
     @Transactional
-    public boolean deleteByDescription(Category category) {
+    public boolean deleteByName(Category category) {
 
         Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryName(category.getCategoryName());
         if (!isBaseCategory(categoryRepo)) {

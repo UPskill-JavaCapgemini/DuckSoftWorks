@@ -43,7 +43,7 @@ public class CategoryService {
 
     public boolean deleteCategory(NewCategoryInfoDTO category) {
         Category duplicatedCategory = new Category(category.getCategory());
-        return iCategory.deleteByDescription(duplicatedCategory);
+        return iCategory.deleteByName(duplicatedCategory);
     }
 
 
