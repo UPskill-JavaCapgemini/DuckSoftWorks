@@ -2,7 +2,6 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.BlackListService;
 import org.apache.lucene.queryparser.classic.ParseException;
 
@@ -25,8 +24,8 @@ public class BlackListController {
 
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> findAll() throws ParseException, IOException {
-        List<BlackListDTO> blackListItems = blackListService.findAll();
+    public ResponseEntity<Object> getAllBlackListItems() throws ParseException, IOException {
+        List<BlackListDTO> blackListItems = blackListService.getAllBlackListItems();
        return new ResponseEntity<>(blackListItems.toString(),HttpStatus.OK);
     }
 
@@ -36,8 +35,7 @@ public class BlackListController {
         return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
     }
 
-
-    @DeleteMapping("/Delete")
+    @DeleteMapping("")
     public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) throws ParseException, IOException {
         if (blackListService.deleteBlackListItem(blackListInfoDTO)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);

@@ -24,7 +24,7 @@ import java.util.Date;
 @Table
 public class Task implements AggregateRoot<Long> {
 
-
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
@@ -40,7 +40,7 @@ public class Task implements AggregateRoot<Long> {
      */
     @Getter
     @Embedded
-    InputUrl url;
+    InputUrl inputUrl;
     /**
      * The language detected on the text
      */
@@ -69,15 +69,15 @@ public class Task implements AggregateRoot<Long> {
     /**
      * Task's constructor that receives the text and the language detected
      *
-     * @param url URL of the text to be analyzed
+     * @param inputUrl URL of the text to be analyzed
      * @param timeOut time limit to conclude the task
      * @param category chosen by the client for a type of text
      */
 
-    public Task(String url, int timeOut, Category category) throws MalformedURLException {
+    public Task(String inputUrl, int timeOut, Category category) throws MalformedURLException {
         this.id = null;
         this.date = null;
-        this.url = new InputUrl(url);
+        this.inputUrl = new InputUrl(inputUrl);
         this.language = null;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
@@ -87,7 +87,7 @@ public class Task implements AggregateRoot<Long> {
     public Task(Task task,String language) throws MalformedURLException {
         this.id = task.identity();
         this.date = task.getDate();
-        this.url = task.getUrl();
+        this.inputUrl = task.getInputUrl();
         this.language = Task.Language.valueOf(language);
         this.currentStatus = CurrentStatus.Concluded;
         this.timeOut = task.getTimeOut();
@@ -97,7 +97,7 @@ public class Task implements AggregateRoot<Long> {
     public Task(Task task) throws MalformedURLException {
         this.id = task.identity();
         this.date = task.getDate();
-        this.url = task.getUrl();
+        this.inputUrl = task.getInputUrl();
         this.language = null;
         this.currentStatus = CurrentStatus.Canceled;
         this.timeOut = task.getTimeOut();
@@ -147,7 +147,7 @@ public class Task implements AggregateRoot<Long> {
         return "Task: " +
                 "id=" + id +
                 ", date=" + date +
-                ", url=" + url +
+                ", url=" + inputUrl +
                 ", language=" + language +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +

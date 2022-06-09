@@ -22,18 +22,19 @@ public class BlackListService {
 
     public BlackListDTO createAndSaveBlackListItem(NewBlackListInfoDTO inputUrl) throws MalformedURLException {
         String url = inputUrl.getUrl();
-        BlackListItem blackListItem = new BlackListItem(inputUrl.getUrl());
+        BlackListItem blackListItem = new BlackListItem(url);
         BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
 
         return assembler.toDTO(savedBlackListItem);
     }
 
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) throws MalformedURLException {
-        BlackListItem blackListItem = new BlackListItem(blackListInfoDTO.getUrl());
+        String url = blackListInfoDTO.getUrl();
+        BlackListItem blackListItem = new BlackListItem(url);
         return iBlackListItem.deleteByBlackListUrl(blackListItem);
     }
 
-    public List<BlackListDTO> findAll() throws MalformedURLException {
+    public List<BlackListDTO> getAllBlackListItems() throws MalformedURLException {
         List<BlackListItem> blackListItems = iBlackListItem.findAllBlackListItems();
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();

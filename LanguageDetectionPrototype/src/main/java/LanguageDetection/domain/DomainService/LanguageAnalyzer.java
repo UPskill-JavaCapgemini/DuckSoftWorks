@@ -101,11 +101,10 @@ public class LanguageAnalyzer implements ILanguageDetector{
                     break;
             }
         }
-
         in.close();
-
         return cleanUpInputText(text);
     }
+
     public String createNewText(String stringURL) throws IOException {
         URL url = new URL(stringURL);
         String textBody = parseURLtoString(url);

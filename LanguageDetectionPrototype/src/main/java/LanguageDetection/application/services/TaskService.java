@@ -6,21 +6,20 @@ import LanguageDetection.application.DTO.*;
 
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewTaskInfoDTO;
-import LanguageDetection.application.DTO.TaskDTO;
+import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+import java.net.MalformedURLException;
 import java.util.*;
 
 import java.util.concurrent.*;
@@ -36,6 +35,7 @@ import java.util.concurrent.*;
 public class TaskService {
 
 
+    private static final long CONSTANT_TO_MINUTES = 60000L;
     /**
      * The domain DTO assembler for a task.
      */
@@ -51,8 +51,6 @@ public class TaskService {
     @Autowired
     CategoryService categoryService;
 
-    @Autowired
-    ILanguageDetector languageDetector;
 
 
     /**
@@ -66,17 +64,16 @@ public class TaskService {
      * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
      */
 
-    public Optional<TaskDTO> createTask(NewTaskInfoDTO userInput) throws ParseException, IOException, ExecutionException, InterruptedException, TimeoutException {
+    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException, ExecutionException, InterruptedException, TimeoutException {
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
 
         if (!blackListService.isBlackListed(newBlackListInfoDTO)) {
             Optional<Category> persistedCategory = findPersistedCategory(userInput);
-
             if (persistedCategory.isPresent()) {
                 Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory.get());
                 Task taskRepo = taskRepository.saveTask(task);
-                newThread(taskRepo, (long) userInput.getTimeOut());
+                languageAnalysis(taskRepo);
                 return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo));
             }
         }
@@ -87,16 +84,12 @@ public class TaskService {
 
         List<Task> listAllTasks = taskRepository.findAllTasks();
 
-        List<NewTaskInfoDTO> setNewTaskInfoDTO = new ArrayList<NewTaskInfoDTO>();
-
         return listAllTasks;
-
     }
 
-    public List<Task> findByStatusContaining(StatusDTO st) {
-        Task.CurrentStatus status = Task.CurrentStatus.valueOf(st.getStatus());
+    public List<Task> findByStatusContaining(StatusDTO inputStatus) {
+        Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = taskRepository.findByStatusContaining(status);
-
 
         return listTasksByStatus;
     }
@@ -105,15 +98,14 @@ public class TaskService {
         Category category = new Category(catName.getCategoryName());
         List<Task> listTasksByCategory = taskRepository.findByCategoryContaining(category);
 
-
         return listTasksByCategory;
     }
 
-    public List<Task> findByStatusContainingAndCategoryContaining(StatusDTO status, CategoryNameDTO categoryNameDTO) {
-        Task.CurrentStatus status1 = Task.CurrentStatus.valueOf(status.getStatus());
-        Category category1 = new Category(categoryNameDTO.getCategoryName());
+    public List<Task> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
+        Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
+        Category category = new Category(inputCategory.getCategoryName());
 
-        List<Task> listTasksByStatusAndByCategory = taskRepository.findByStatusAndByCategoryContaining(status1, category1);
+        List<Task> listTasksByStatusAndByCategory = taskRepository.findByStatusAndByCategoryContaining(status, category);
         return listTasksByStatusAndByCategory;
     }
 
@@ -123,34 +115,50 @@ public class TaskService {
         return category;
     }
 
-    @Async
-    public void newThread(Task taskrepo, Long userinput) throws ExecutionException, InterruptedException, TimeoutException {
+    protected void languageAnalysis(Task taskrepo) throws ExecutionException, InterruptedException, TimeoutException, MalformedURLException {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
-        analyzerService.setUrl(taskrepo.getUrl().getUrl());
+        analyzerService.setTaskRepo(taskrepo);
+        analyzerService.setTaskRepository(taskRepository);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-
         Future<String> returnedValues = executorService.submit(analyzerService);
-        Timer timer = new Timer(Thread.currentThread().getName(),true);
-        TimerTask interruptReturnedValues = timeOutAnalysis(returnedValues);
-        timer.schedule(interruptReturnedValues,2000);
+
+        Timer timer = new Timer(Thread.currentThread().getName(), true);
+        TimerTask interruptReturnedValues = timeOutAnalysis(returnedValues, taskrepo);
+        timer.schedule(interruptReturnedValues, (taskrepo.getTimeOut().getTimeOut() * CONSTANT_TO_MINUTES));
 
         log.info("ID da thread: " + Thread.currentThread().getId() + "Nome da thread: " + Thread.currentThread().getName());
 
         executorService.shutdown();
     }
 
-    protected TimerTask timeOutAnalysis (Future<String> future){
+    protected TimerTask timeOutAnalysis(Future<String> future, Task taskrepo) {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                future.cancel(true);
+                System.out.println("Cancelled");
+                if (future.isCancelled()) {
+                    try {
+                        Task canceledTask = new Task(taskrepo);
+                        taskRepository.saveTask(canceledTask);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        return task;
+    }
 
-      TimerTask task =  new TimerTask() {
-           @Override
-           public void run() {
-               boolean cancelledFuture =  (future.cancel(true));
-               System.out.println("Cancelled");
-           }
-       };
-
-       return task;
+    public Optional<Task> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
+        Optional<Task> task = taskRepository.findById(id.getId());
+        if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())){
+            Task canceledTask = new Task(task.get());
+            taskRepository.saveTask(canceledTask);
+            return task;
+        }
+        return Optional.empty();
     }
 }
 

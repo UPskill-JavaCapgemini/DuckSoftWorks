@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -55,6 +56,10 @@ public class TaskRepository implements ITask {
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
 	}
+
+    public Optional<Task> findById(Long identity) {
+		return taskJpaRepository.findById(identity);
+    }
 
 
 //	@Override

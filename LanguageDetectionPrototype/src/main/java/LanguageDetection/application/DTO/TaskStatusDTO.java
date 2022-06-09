@@ -8,12 +8,12 @@ import org.springframework.hateoas.RepresentationModel;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class TaskDTO extends RepresentationModel<TaskDTO> {
+public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
 
     @Getter
-    Task.Language language;
+    Task.CurrentStatus status;
 
-    public TaskDTO(Task language) {
-        this.language = language.getLanguage();
+    public TaskStatusDTO(Task status) {
+        this.status = status.getCurrentStatus();
     }
 }

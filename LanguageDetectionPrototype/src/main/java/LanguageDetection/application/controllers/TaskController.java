@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,8 +43,8 @@ public class TaskController {
 
 
     @PostMapping("")
-    public ResponseEntity<Object> createTaskFromInput(@RequestBody NewTaskInfoDTO info) throws ParseException, IOException, ExecutionException, InterruptedException, TimeoutException {
-        Optional<TaskDTO> taskCreated = service.createTask(info);
+    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) throws IOException, ExecutionException, InterruptedException, TimeoutException {
+        Optional<TaskStatusDTO> taskCreated = service.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
         } else {
@@ -53,7 +54,7 @@ public class TaskController {
 
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllCategoriesContainingOrByStatusContaining(
+    public ResponseEntity<Object> getAllCategoryByNameStatus(
             @RequestParam (name = "categoryName", required = false) CategoryNameDTO categoryName,
             @RequestParam (name = "status", required = false) StatusDTO status) {
 
@@ -63,51 +64,23 @@ public class TaskController {
             tasks = service.findAllTasks();
         else if (status != null && categoryName == null){
             tasks = service.findByStatusContaining(status);}
-        else if (status == null && categoryName != null){
+        else if (status == null){
             tasks = service.findByCategoryContaining(categoryName); }
-        else if (status != null && categoryName != null){
+        else {
             tasks = service.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
         return new ResponseEntity<>(tasks.toString(), HttpStatus.OK);
     }
 
-
-    /*@GetMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<Mono<TaskDTO>> getById(@PathVariable Long id) {
-        Mono<TaskDTO> monoTask = service.getLanguage(id);
-        return new ResponseEntity<>(monoTask, HttpStatus.OK);
+    @PostMapping("/cancel")
+    public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) throws MalformedURLException {
+        Optional<Task> cancelTask = service.cancelTaskAnalysis(id);
+        if(cancelTask.isPresent()){
+            return new ResponseEntity<>(cancelTask.get().toString(), HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
-
-
-    @GetMapping("")
-    @ResponseBody
-    public ResponseEntity<Flux<TaskDTO>> getAll(@RequestParam(required = false, name = "name") String name) {
-        Flux<TaskDTO> exampleDTOs;
-        if (name != null)
-            exampleDTOs = service.getExamplesByNameContaining(name);
-        else
-            exampleDTOs = service.getAllExamples();
-        return new ResponseEntity<>(exampleDTOs, HttpStatus.OK);
-    }
-
-    @GetMapping("/custom")
-    @ResponseBody
-    public ResponseEntity<Flux<TaskDTO>> getAllCustomQuery(@RequestParam(required = false, name = "name") String name) {
-        Flux<TaskDTO> exampleDTOs;
-        if (name != null)
-            exampleDTOs = service.getExamplesByNameContaining(name);
-        else
-            exampleDTOs = service.getAllExamples();
-        return new ResponseEntity<>(exampleDTOs, HttpStatus.OK);
-    }
-
-
-    @PostMapping("")
-    public ResponseEntity<Object> createExample(@RequestBody NewExampleInfoDTO info) {
-        TaskDTO example = service.createAndSaveExample(info.getName());
-        return new ResponseEntity<>(example, HttpStatus.CREATED);
-    }*/
 
 }
 
