@@ -19,7 +19,7 @@ public class BlackListRepository implements IBlackListItem{
     @Autowired
     BlackListJpaRepository blackListRepository;
 
-    public BlackListItem saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException {
+    public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
         BlackListItem savedBlackListUrl = blackListRepository.save(blackListItem);
         return savedBlackListUrl;
     }

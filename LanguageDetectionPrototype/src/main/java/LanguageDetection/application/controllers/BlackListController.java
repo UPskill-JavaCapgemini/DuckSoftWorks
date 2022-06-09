@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 
 @Controller
@@ -26,13 +27,19 @@ public class BlackListController {
     @ResponseBody
     public ResponseEntity<Object> getAllBlackListItems() throws ParseException, IOException {
         List<BlackListDTO> blackListItems = blackListService.getAllBlackListItems();
-       return new ResponseEntity<>(blackListItems.toString(),HttpStatus.OK);
+        return new ResponseEntity<>(blackListItems.toString(), HttpStatus.OK);
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws ParseException, IOException {
-        BlackListDTO blackListDTO = blackListService.createAndSaveBlackListItem(url);
-        return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
+    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url){
+        BlackListDTO blackListDTO;
+        try {
+            blackListDTO = blackListService.createAndSaveBlackListItem(url);
+            return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
+        } catch (MalformedURLException ioException) {
+            String exception = ioException.getMessage();
+            return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("")

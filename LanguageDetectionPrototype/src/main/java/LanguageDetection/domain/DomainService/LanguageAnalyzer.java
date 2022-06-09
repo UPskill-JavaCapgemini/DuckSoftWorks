@@ -78,8 +78,6 @@ public class LanguageAnalyzer implements ILanguageDetector{
     protected String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
-                //.replaceAll("\\p{P}", "") //PUNCTUATION
-                //.replaceAll("\\p{N}", "") // NUMBERS
                 .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
     }
 

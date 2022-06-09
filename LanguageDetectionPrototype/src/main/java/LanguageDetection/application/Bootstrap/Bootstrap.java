@@ -7,12 +7,13 @@ import LanguageDetection.application.services.BlackListService;
 import LanguageDetection.application.services.CategoryService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.net.MalformedURLException;
 
-@Service
+@Component
 public class Bootstrap implements InitializingBean {
 
     @Autowired

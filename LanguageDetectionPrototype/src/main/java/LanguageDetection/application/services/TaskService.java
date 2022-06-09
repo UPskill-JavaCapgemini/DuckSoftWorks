@@ -52,7 +52,6 @@ public class TaskService {
     CategoryService categoryService;
 
 
-
     /**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
      * Cleans up the input text by calling cleanUpInputText() and
@@ -67,7 +66,6 @@ public class TaskService {
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException, ExecutionException, InterruptedException, TimeoutException {
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-
         if (!blackListService.isBlackListed(newBlackListInfoDTO)) {
             Optional<Category> persistedCategory = findPersistedCategory(userInput);
             if (persistedCategory.isPresent()) {
@@ -121,30 +119,29 @@ public class TaskService {
         analyzerService.setTaskRepository(taskRepository);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<String> returnedValues = executorService.submit(analyzerService);
+        executorService.submit(analyzerService);
 
-        Timer timer = new Timer(Thread.currentThread().getName(), true);
-        TimerTask interruptReturnedValues = timeOutAnalysis(returnedValues, taskrepo);
-        timer.schedule(interruptReturnedValues, (taskrepo.getTimeOut().getTimeOut() * CONSTANT_TO_MINUTES));
-
-        log.info("ID da thread: " + Thread.currentThread().getId() + "Nome da thread: " + Thread.currentThread().getName());
+        initializeTimer(taskrepo);
 
         executorService.shutdown();
     }
 
-    protected TimerTask timeOutAnalysis(Future<String> future, Task taskrepo) {
+    protected Timer initializeTimer(Task taskrepo) {
+        Timer timer = new Timer(Thread.currentThread().getName(), true);
+        TimerTask interruptReturnedValues = timeOutAnalysis(taskrepo);
+        timer.schedule(interruptReturnedValues, (taskrepo.getTimeOut().getTimeOut() * CONSTANT_TO_MINUTES));
+        return timer;
+    }
+
+    protected TimerTask timeOutAnalysis(Task taskrepo) {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                future.cancel(true);
-                System.out.println("Cancelled");
-                if (future.isCancelled()) {
-                    try {
-                        Task canceledTask = new Task(taskrepo);
-                        taskRepository.saveTask(canceledTask);
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    Task canceledTask = new Task(taskrepo);
+                    taskRepository.saveTask(canceledTask);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
                 }
             }
         };
@@ -153,7 +150,7 @@ public class TaskService {
 
     public Optional<Task> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
         Optional<Task> task = taskRepository.findById(id.getId());
-        if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())){
+        if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())) {
             Task canceledTask = new Task(task.get());
             taskRepository.saveTask(canceledTask);
             return task;
