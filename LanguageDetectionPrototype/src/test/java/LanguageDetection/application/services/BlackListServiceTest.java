@@ -44,7 +44,7 @@ class BlackListServiceTest {
         BlackListItem item1 = new BlackListItem(Url);
         Mockito.when(iBlackListItem.isBlackListed(item1)).thenReturn(false);
         Mockito.when(iBlackListItem.saveBlackListItem(item1)).thenReturn(item1);
-        Mockito.when(assembler.toDTO(item1)).thenReturn(new BlackListDTO(item1));
+        Mockito.when(assembler.toDTO(Mockito.any())).thenCallRealMethod();
 
         Optional<BlackListDTO> optional =  blackListService.createAndSaveBlackListItem(new NewBlackListInfoDTO(Url));
         Assert.assertTrue(!optional.isEmpty());
@@ -61,22 +61,7 @@ class BlackListServiceTest {
 
         Assert.assertTrue(blackListService.deleteBlackListItem(newBlackListInfoDTOitem1));
     }
-    /*public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) throws MalformedURLException {
-        String url = blackListInfoDTO.getUrl();
-        BlackListItem blackListItem = new BlackListItem(url);
-        return iBlackListItem.deleteByBlackListUrl(blackListItem);
-    }*/
 
-    /*    @Test
-    void shouldSuccessefullyDeleteACategory() {
-        String catName = "History";
-        Category item1 = new Category(catName);
-        NewCategoryInfoDTO newCategoryInfoDTOitem1 = new NewCategoryInfoDTO(catName);
-
-        Mockito.when(iCategory.deleteByName(item1)).thenReturn(true);
-
-        Assert.assertTrue(categoryService.deleteCategory(newCategoryInfoDTOitem1));
-    }*/
 
     @Test
     void shouldReturnAllBlackListItemsWith2Created() throws MalformedURLException {
@@ -113,34 +98,5 @@ class BlackListServiceTest {
         Assert.assertTrue(blackListService.isBlackListed(item1));
     }
 
-    /*@Test
 
-    
-    void verifyThatAnInvalidUrlIsNotCreatedByThrowingAMalformedException() throws MalformedURLException {
-
-
-
-        String Url = "ht://stackoverflow.com/first";
-        BlackListItem item1 = new BlackListItem(Url);
-
-
-        Assert.assertThrows()
-
-
-
-        */
-
-                /*  //Arrange
-        TimeOut inputTimeout = new TimeOut(3);
-        Category inputCategory = new Category("mechanics");
-
-        //Act
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
-            Task testableTask = new Task("http://www.notxturl.com",inputTimeout.getTimeOut(),inputCategory);
-        });
-
-        //Assert
-        assertEquals(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
-    }*/
-    }
 }
