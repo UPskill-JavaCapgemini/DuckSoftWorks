@@ -7,10 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 class InputUrlTest {
 
-    String emptySpaceInputUrl = "";
     String allSymbolsInputUrl = "!%$/(()))";
     String allNumberInputUrl;
 
@@ -29,5 +30,19 @@ class InputUrlTest {
 
         //Assert
         Assert.assertNotNull(inputUrl);
+    }
+
+    @Test
+    public void shouldThrowExceptionWithSpacesOnlyUrl(){
+        //Arrange
+        String spacesOnlyInputUrl = "             ";
+
+        //Act
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new InputUrl(spacesOnlyInputUrl);
+        });
+
+        //Assert
+        Assert.assertNotNull(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
     }
 }
