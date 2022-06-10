@@ -5,6 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class BusinessValidation {
+
+    private static String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
+    private static String onlySpecialCharactersRegex = "^\\W+$";
+
     private BusinessValidation(){
         // ensure utility
     }
@@ -39,8 +43,6 @@ public final class BusinessValidation {
             throw new IllegalArgumentException(msg);
     }
 
-    private static String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
-    private static String onlySpecialCharactersRegex = "^\\W+$";
 
     public static boolean isOnlyNumbers(String arg) {
         if (arg.matches(onlyNumbersRegex)){
@@ -55,14 +57,6 @@ public final class BusinessValidation {
         }
         return false;
     }
-
-
-//    public static boolean removeSpacesAndSpecialCharacters(String text) {
-//        text.trim().toLowerCase(Locale.ROOT)
-//                .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", "")
-//                .replaceAll("\\s+", ""); // MULTIPLE_WHITESPACE
-//        return text.isEmpty();
-//    }
 
 
 }
