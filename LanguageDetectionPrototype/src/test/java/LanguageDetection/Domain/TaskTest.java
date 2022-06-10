@@ -1,11 +1,15 @@
 package LanguageDetection.Domain;
 
+import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.ValueObjects.TimeOut;
+import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.util.Date;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.net.MalformedURLException;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class TaskTest {
@@ -24,7 +28,22 @@ public class TaskTest {
         assertEquals(task.getText().toString(), "Olá é extraordinário como chegaste até aqui");
     }
 
- */
+*/
+
+    @Test
+    public void shouldCreateATaskWhenUrlWithTxtIsProvided() throws MalformedURLException {
+        //Arrange
+        InputUrl inputURlWithTxt = new InputUrl("http://www.textexample.com/text/text.txt");
+        TimeOut inputTimeout = new TimeOut(3);
+        Category inputCategory = new Category("mechanics");
+        Task testableTask;
+
+        //Act
+        testableTask = new Task(inputURlWithTxt.getUrl(), inputTimeout.getTimeOut(), inputCategory);
+
+        //Assert
+        assertNotNull(testableTask);
+    }
 
 }
 

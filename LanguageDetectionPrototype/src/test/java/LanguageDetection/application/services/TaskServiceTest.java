@@ -1,4 +1,3 @@
-/*
 package LanguageDetection.application.services;
 
 import org.junit.Assert;
@@ -25,38 +24,38 @@ public class TaskServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    public void shouldCleanUpAStringWithSpecialCharacters() {
-        //Arrange
-        String testString = "<%a# test>< ! ,string @ with no.. special? characters.";
-        String cleanedUpString;
-        //Act
-        cleanedUpString = taskService.cleanUpInputText(testString);
-        //Assert
-        Assert.assertEquals(" a test string with no special characters ", cleanedUpString);
-    }
+//    @Test
+//    public void shouldCleanUpAStringWithSpecialCharacters() {
+//        //Arrange
+//        String testString = "<%a# test>< ! ,string @ with no.. special? characters.";
+//        String cleanedUpString;
+//        //Act
+//        cleanedUpString = taskService.cleanUpInputText(testString);
+//        //Assert
+//        Assert.assertEquals(" a test string with no special characters ", cleanedUpString);
+//    }
+//
+//    @Test
+//    public void shouldCleanUpAStringWithMultipleSpacing() {
+//        //Arrange
+//        String testString = " a         test         string   with    multiple    spaces       ";
+//        String cleanedUpString;
+//        //Act
+//        cleanedUpString = taskService.cleanUpInputText(testString);
+//        //Assert
+//        Assert.assertEquals("a test string with multiple spaces", cleanedUpString);
+//    }
+//
+//    @Test
+//    public void shouldCleanUpAStringWithUpperCase() {
+//        //Arrange
+//        String testString = "A tEsT STRing WitH UpPEr CASE";
+//        String lowerCaseString;
+//        //Act
+//        lowerCaseString = taskService.cleanUpInputText(testString);
+//        //Assert
+//        Assert.assertEquals("a test string with upper case", lowerCaseString);
+//    }
 
-    @Test
-    public void shouldCleanUpAStringWithMultipleSpacing() {
-        //Arrange
-        String testString = " a         test         string   with    multiple    spaces       ";
-        String cleanedUpString;
-        //Act
-        cleanedUpString = taskService.cleanUpInputText(testString);
-        //Assert
-        Assert.assertEquals("a test string with multiple spaces", cleanedUpString);
-    }
-
-    @Test
-    public void shouldCleanUpAStringWithUpperCase() {
-        //Arrange
-        String testString = "A tEsT STRing WitH UpPEr CASE";
-        String lowerCaseString;
-        //Act
-        lowerCaseString = taskService.cleanUpInputText(testString);
-        //Assert
-        Assert.assertEquals("a test string with upper case", lowerCaseString);
-    }
 
 }
-*/
