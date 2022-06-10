@@ -17,20 +17,20 @@ import java.util.Optional;
 public class BlackListRepository implements IBlackListItem{
 
     @Autowired
-    BlackListJpaRepository blackListRepository;
+    BlackListJpaRepository blackListJpaRepository;
 
     public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
-        BlackListItem savedBlackListUrl = blackListRepository.save(blackListItem);
+        BlackListItem savedBlackListUrl = blackListJpaRepository.save(blackListItem);
         return savedBlackListUrl;
     }
 
     @Override
     @Transactional
     public boolean deleteByBlackListUrl(BlackListItem blackListItem) {
-        Optional<BlackListItem> itemToBeDeleted = blackListRepository.findById(blackListItem.identity());
+        Optional<BlackListItem> itemToBeDeleted = blackListJpaRepository.findById(blackListItem.identity());
         if (itemToBeDeleted.isPresent())
         {
-            blackListRepository.delete(blackListItem);
+            blackListJpaRepository.delete(blackListItem);
             return true;
         }
         else
@@ -39,7 +39,7 @@ public class BlackListRepository implements IBlackListItem{
 
 
     public List<BlackListItem> findAllBlackListItems() throws MalformedURLException {
-        List<BlackListItem> blackListItems = (List<BlackListItem>) blackListRepository.findAll();
+        List<BlackListItem> blackListItems = (List<BlackListItem>) blackListJpaRepository.findAll();
         return blackListItems;
     }
 
@@ -47,8 +47,7 @@ public class BlackListRepository implements IBlackListItem{
 
     public boolean isBlackListed(BlackListItem blackListItem) {
         BlackListUrl blackListUrl = blackListItem.getUrl();
-        Optional<BlackListItem> blackListRepoUrl = blackListRepository.findById(blackListUrl);
-
+        Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         return blackListRepoUrl.isPresent();
     }
 }
