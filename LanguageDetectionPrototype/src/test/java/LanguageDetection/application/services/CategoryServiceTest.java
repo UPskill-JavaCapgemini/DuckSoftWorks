@@ -13,6 +13,42 @@ class CategoryServiceTest {
         assertEquals(category.getCategoryName().toString(), "Arts");
     }
 
+//    @Test
+//    void shouldNotCreateACategoryWithInvalidAttributes() {
+//        Category category = new Category("");
+//
+//        assertEquals(category.getCategoryName().toString());
+//    }
+
+    @Test
+    public void shouldNotCreateACategoryWithEmptyAttribute_IllegalArgumentExceptionExpected() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Category category = new Category("");;
+        });
+
+        assertTrue(exception.getMessage().contains("Invalid Category Name"));
+    }
+
+    @Test
+    public void shouldNotCreateACategoryWithOnlyNumbers_IllegalArgumentExceptionExpected() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Category category = new Category("333");;
+        });
+
+        assertTrue(exception.getMessage().contains("Invalid Category Name"));
+    }
+
+    @Test
+    public void shouldNotCreateACategoryWithOnlySpecialCharacters_IllegalArgumentExceptionExpected() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            Category category = new Category("***");;
+        });
+
+        assertTrue(exception.getMessage().contains("Invalid Category Name"));
+    }
+
+
+
 
 //    @Test
 //    void createAndSaveCategory() {

@@ -5,6 +5,9 @@ import LanguageDetection.domain.util.BusinessValidation;
 
 import javax.persistence.*;
 
+import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
+import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
+
 @Embeddable
 @Table
 public class CategoryName implements ValueObject {
@@ -22,8 +25,8 @@ public class CategoryName implements ValueObject {
      * it prevents the category to be created with only numbers, only spaces or without any input.
      */
     public CategoryName(String categoryName) {
-        if (BusinessValidation.isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
-            throw new IllegalArgumentException();
+        if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
+            throw new IllegalArgumentException("Invalid Category Name");
         }
         this.categoryName = categoryName;
     }
