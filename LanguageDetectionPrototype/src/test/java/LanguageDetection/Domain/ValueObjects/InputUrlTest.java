@@ -2,7 +2,6 @@ package LanguageDetection.Domain.ValueObjects;
 
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
@@ -13,11 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class InputUrlTest {
 
 
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
     public void shouldCreateInputUrlWithValidUrl() throws MalformedURLException {
         //Arrange
@@ -25,6 +19,18 @@ class InputUrlTest {
 
         //Act
         InputUrl inputUrl = new InputUrl(validInputUrl);
+
+        //Assert
+        Assert.assertNotNull(inputUrl);
+    }
+
+    @Test
+    public void shouldCreateInputUrlWithValidLocalUrl() throws MalformedURLException {
+        //Arrange
+        String validLocalInputUrl = "file:///C:/Users/danil/Documents/UPskill/LABP/example.txt";
+
+        //Act
+        InputUrl inputUrl = new InputUrl(validLocalInputUrl);
 
         //Assert
         Assert.assertNotNull(inputUrl);
