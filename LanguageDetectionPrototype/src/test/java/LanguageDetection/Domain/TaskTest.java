@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.net.MalformedURLException;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class TaskTest {
@@ -45,5 +45,21 @@ public class TaskTest {
         assertNotNull(testableTask);
     }
 
+    @Test
+    public void shouldThrowExceptionWhenUrlHasNoTxt() throws MalformedURLException {
+        //Arrange
+        TimeOut inputTimeout = new TimeOut(3);
+        Category inputCategory = new Category("mechanics");
+
+        //Act
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            Task testableTask = new Task("http://www.notxturl.com",inputTimeout.getTimeOut(),inputCategory);
+        });
+
+
+        //Assert
+        assertEquals(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+    }
 }
 
