@@ -74,6 +74,7 @@ public class TaskService {
         return Optional.empty();
     }
 
+
     /**
      * Fetch all tasks found in database
      * @return List of TaskDTO with all information

@@ -1,73 +1,78 @@
-//package LanguageDetection.application.services;
-//import LanguageDetection.domain.entities.Category;
-//import LanguageDetection.infrastructure.repositories.CategoryRepository;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//import org.mockito.InjectMocks;
-//import org.mockito.MockitoAnnotations;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.boot.test.mock.mockito.MockBean;
+package LanguageDetection.application.services;
+import LanguageDetection.application.DTO.CategoryDTO;
+import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
+import LanguageDetection.application.DTO.NewCategoryInfoDTO;
+import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.ICategory;
+import LanguageDetection.infrastructure.repositories.CategoryRepository;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+
+
+class CategoryServiceTest {
 //
-//import static org.junit.jupiter.api.Assertions.*;
-//import static org.mockito.Mockito.when;
+//    @Mock
+//    CategoryDomainDTOAssembler dtoAssembler;
 //
-//
-//@SpringBootTest
-//class CategoryServiceTest {
-//
-//    @MockBean
-//    CategoryRepository categoryRepository;
-//
-//    @MockBean
-//    Category category;
+//    @Mock
+//    ICategory iCategory;
 //
 //    @InjectMocks
 //    CategoryService categoryService;
 //
+//
 //    @BeforeEach
-//    public void setUp() throws Exception {
+//    public void init() {
 //        MockitoAnnotations.openMocks(this);
 //    }
 //
 //
-//    shouldCreateAndPersistACountryWithCorrectAttributes()
-//
-//
-//
 //    @Test
-//    void shouldCreateACountryWithCorrectAttributes() {
+//    void shouldCreateACategoryWithCorrectAttributes() {
+//
+//        NewCategoryInfoDTO specificDTO = new NewCategoryInfoDTO("Economics");
+//        Category category = new Category("Economics");
+//        CategoryDTO categoryDTO = new CategoryDTO(category);
 //
 //        // Arrange
-//        when(country.getCode()).thenReturn("PT");
-//        when(country.getName()).thenReturn("Portugal");
-//
-//        when( countryFactory.createCountry("PT", "Portugal")).thenReturn(country);
-//
-//        when(countryRepository.save( country )).thenReturn(country);
+//        when(iCategory.saveCategory(category)).thenReturn(category);
+//        when(dtoAssembler.toDTO(category)).thenReturn(categoryDTO);
 //
 //        // Act
-//        Country country = countryService.createAndSaveCountry("PT", "Portugal");
+//        Optional<CategoryDTO> categoryReturn = categoryService.createAndSaveCategory(specificDTO);
 //
-//        String code = country.getCode();
-//        String name = country.getName();
+//        String catName = categoryReturn.toString();
 //
 //        // Assert
-//        assertEquals(code, "PT");
-//        assertEquals(name, "Portugal");
+//        assertEquals(catName, "Economics");
 //    }
 //
 //
-//
-//
-//   /* @Test
-//    void findAll() {
-//    }
-//
-//    @Test
-//    void deleteCategory() {
-//    }
-//
-//    @Test
-//    void findById() {
-//    }*/
-//}
+
+
+   /* @Test
+    void findAll() {
+    }
+
+    @Test
+    void deleteCategory() {
+    }
+
+    @Test
+    void findById() {
+    }*/
+}
