@@ -27,9 +27,9 @@ import java.util.concurrent.*;
 
 
 /**
- * Represents the task service responsible for creating a task.
+ * Represents the task service responsible for handling all methods which interacts with a task.
  *
- * @author DuckSoftWorks
+ * @author DuckSoftWorks Team
  */
 @Slf4j
 @Service
@@ -37,9 +37,7 @@ public class TaskService {
 
 
     private static final long CONSTANT_TO_MINUTES = 60000L;
-    /**
-     * The domain DTO assembler for a task.
-     */
+
     @Autowired
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
@@ -55,17 +53,13 @@ public class TaskService {
 
     /**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
-     * Cleans up the input text by calling cleanUpInputText() and
-     * analyzes it with the service analyzer.
+     * Before task creation it is checked if URL from input is on BlackList or not.
      *
      * @param userInput the string containing the text within NewTaskInfoDTO.
-     * @return TaskDTO assembled by taskDomainDTOAssembler.
-     * @throws ParseException - Signals that an error has been reached unexpectedly in the QueryParse
-     * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
+     * @return TaskStatusDTO assembled by taskDomainDTOAssembler, with information of Status when created(Processing) or empty if url is on blacklist and unable to crate
+     * @throws IOException thrown if URL is malformed
      */
-
-    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException, ExecutionException {
-
+    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
         if (!blackListService.isBlackListed(newBlackListInfoDTO)) {
@@ -80,6 +74,10 @@ public class TaskService {
         return Optional.empty();
     }
 
+    /**
+     * Fetch all tasks found in database
+     * @return List of TaskDTO with all information
+     */
     public List<TaskDTO> findAllTasks() {
         List<Task> listAllTasks = taskRepository.findAllTasks();
         List<TaskDTO> taskDTOList = new ArrayList<>();
@@ -92,6 +90,11 @@ public class TaskService {
         return taskDTOList;
     }
 
+    /**
+     * Fetch all tasks found in database with the status passed in StatusDTO instance
+     * @param inputStatus StatusDTO object with string of status that want to be searched
+     * @return List of TaskDTO with all information of task that has status the same as String inside StatusDTO instance
+     */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = taskRepository.findByStatusContaining(status);
@@ -105,6 +108,11 @@ public class TaskService {
         return taskDTOList;
     }
 
+    /**
+     * Fetch all tasks found in database with the category passed in CategoryNameDTO instance
+     * @param catName CategoryNameDTO object with string of category name that want to be searched
+     * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance
+     */
     public List<TaskDTO> findByCategoryContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
         List<Task> listTasksByCategory = taskRepository.findByCategoryContaining(category);
@@ -119,6 +127,13 @@ public class TaskService {
         return taskDTOList;
     }
 
+    /**
+     * Fetch all tasks found in database with the category and status passed in CategoryNameDTO instance and StatusDTO instance
+     * @param inputStatus StatusDTO object with string of status that want to be searched
+     * @param inputCategory CategoryNameDTO object with string of category name that want to be searched
+     * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance and
+     * status the same as string inside StatusDTO instance
+     */
     public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
         Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
@@ -134,13 +149,22 @@ public class TaskService {
         return taskDTOList;
     }
 
+    /**
+     * Fetches if a category passed by user input already exists on database.
+     * @param userInput category name that as passed by from user input - instance of NewTaskInfoDTO
+     * @return persisted category if already on database
+     */
     protected Optional<Category> findPersistedCategory(NewTaskInfoDTO userInput) {
         Category inputCategory = new Category(userInput.getCategory());
         Optional<Category> category = categoryService.findById(inputCategory);
         return category;
     }
 
-    protected void languageAnalysis(Task taskrepo) throws ExecutionException, MalformedURLException {
+    /**
+     * Responsible for instantiate a new Thread for asynchronous language analysis.
+     * @param taskrepo instance of object already created
+     */
+    private void languageAnalysis(Task taskrepo) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
         analyzerService.setTaskRepo(taskrepo);
         analyzerService.setTaskRepository(taskRepository);
@@ -153,6 +177,11 @@ public class TaskService {
         executorService.shutdown();
     }
 
+    /**
+     * Initializes a new timer to handle timeout for language analysis which was sent from user input.
+     * @param taskrepo Task instance which was already created and has timeout limit.
+     * @return timer
+     */
     protected Timer initializeTimer(Task taskrepo) {
         Timer timer = new Timer(Thread.currentThread().getName(), true);
         TimerTask interruptReturnedValues = timeOutAnalysis(taskrepo);
@@ -160,6 +189,11 @@ public class TaskService {
         return timer;
     }
 
+    /**
+     * Handles the canceling method after timelimit reaches.
+     * @param taskrepo task instance of what needs to be canceled.
+     * @return Timer task
+     */
     protected TimerTask timeOutAnalysis(Task taskrepo) {
         TimerTask task = new TimerTask() {
             @Override
@@ -175,6 +209,12 @@ public class TaskService {
         return task;
     }
 
+    /**
+     * Handles the cancellation process of a language analysis from user input
+     * @param id if of a task that user wants to cancel
+     * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
+     * @throws MalformedURLException thrown only if some sort of update done to URL on database.
+     */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
         Optional<Task> task = taskRepository.findById(id.getId());
         if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())) {
