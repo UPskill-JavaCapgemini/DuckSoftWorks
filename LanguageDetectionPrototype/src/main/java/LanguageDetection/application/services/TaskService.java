@@ -80,6 +80,7 @@ public class TaskService {
         return Optional.empty();
     }
 
+
     public List<TaskDTO> findAllTasks() {
         List<Task> listAllTasks = taskRepository.findAllTasks();
         List<TaskDTO> taskDTOList = new ArrayList<>();

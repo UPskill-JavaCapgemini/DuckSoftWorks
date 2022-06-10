@@ -13,7 +13,7 @@ import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialChar
 public class CategoryName implements ValueObject {
 
     /**
-     * getter for the cathegory's description as a string
+     * getter for the category's description as a string
      */
     String categoryName;
 
@@ -21,8 +21,8 @@ public class CategoryName implements ValueObject {
     }
 
     /**
-     * constructor for the Category Description with validations
-     * it prevents the category to be created with only numbers, only spaces or without any input.
+     * constructor for the Category Name with validations
+     * it prevents the category name to be created with only special characters, only numbers and only spaces or without any input.
      */
     public CategoryName(String categoryName) {
         if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
