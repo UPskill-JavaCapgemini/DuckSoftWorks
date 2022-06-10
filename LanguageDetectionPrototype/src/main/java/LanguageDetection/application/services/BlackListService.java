@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlackListService {
@@ -20,12 +21,13 @@ public class BlackListService {
     @Autowired
     BlackListDomainDTOAssembler assembler;
 
-    public BlackListDTO createAndSaveBlackListItem(NewBlackListInfoDTO inputUrl) throws MalformedURLException {
-        String url = inputUrl.getUrl();
-        BlackListItem blackListItem = new BlackListItem(url);
-        BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
 
-        return assembler.toDTO(savedBlackListItem);
+    public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO inputUrlDTO) throws MalformedURLException {
+        BlackListItem blackListItem = new BlackListItem(inputUrlDTO.getUrl());
+        if (iBlackListItem.isBlackListed(blackListItem)) {
+            return Optional.empty();
+        }BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
+        return Optional.of(assembler.toDTO(savedBlackListItem));
     }
 
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) throws MalformedURLException {

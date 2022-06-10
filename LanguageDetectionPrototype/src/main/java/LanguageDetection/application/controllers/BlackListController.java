@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RestController
@@ -31,14 +32,12 @@ public class BlackListController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url){
-        BlackListDTO blackListDTO;
-        try {
-            blackListDTO = blackListService.createAndSaveBlackListItem(url);
+    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws MalformedURLException {
+        Optional<BlackListDTO> blackListDTO = blackListService.createAndSaveBlackListItem(url);
+        if (blackListDTO.isPresent()){
             return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
-        } catch (MalformedURLException ioException) {
-            String exception = ioException.getMessage();
-            return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+        }else {
+            return new ResponseEntity<>("Unable to create, URL already exits in the Blacklist or is invalid", HttpStatus.BAD_REQUEST);
         }
     }
 
