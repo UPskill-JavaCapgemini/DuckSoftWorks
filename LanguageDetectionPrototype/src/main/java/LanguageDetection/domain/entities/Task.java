@@ -67,11 +67,12 @@ public class Task implements AggregateRoot<Long> {
     Category category;
 
     /**
-     * Task's constructor that receives the text and the language detected
+     * Constructor that receives all the information necessary to create a Task from user input
      *
      * @param inputUrl URL of the text to be analyzed
      * @param timeOut time limit to conclude the task
      * @param category chosen by the client for a type of text
+     * @throws MalformedURLException thrown if an url from input is invalid
      */
 
     public Task(String inputUrl, int timeOut, Category category) throws MalformedURLException {
@@ -84,6 +85,12 @@ public class Task implements AggregateRoot<Long> {
         this.category = category;
     }
 
+    /**
+     * Constructor that handles the Task creation to be saved after a language analysis is concluded.
+     * @param task that that was already created and needs to be updated
+     * @param language result of a language analysis
+     * @throws MalformedURLException thrown if some sort of update done in database on url
+     */
     public Task(Task task,String language) throws MalformedURLException {
         this.id = task.identity();
         this.date = task.getDate();
@@ -94,6 +101,11 @@ public class Task implements AggregateRoot<Long> {
         this.category = task.getCategory();
     }
 
+    /**
+     * Constructor that handles the Task creation to be saved if a task is concluded by timeout or from user input
+     * @param task task that was already created and needs to be updated
+     * @throws MalformedURLException thrown if some sort of update done in database on url
+     */
     public Task(Task task) throws MalformedURLException {
         this.id = task.identity();
         this.date = task.getDate();
@@ -129,12 +141,18 @@ public class Task implements AggregateRoot<Long> {
         return AggregateRoot.super.hasIdentity(id);
     }
 
+    /**
+     * Possibilities of what can be the Task language
+     */
     public enum Language {
         ENGLISH,
         PORTUGUESE,
         SPANISH
     }
 
+    /**
+     * Possibilities of what can be the Task status
+     */
     @Getter
     public enum CurrentStatus {
         Concluded,
