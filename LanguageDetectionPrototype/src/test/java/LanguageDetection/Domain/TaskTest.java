@@ -101,6 +101,19 @@ public class TaskTest {
         //Assert
         assertEquals(illegalArgumentException.getMessage(),"This TimeOut is not in the proper range");
     }
+
+    @Test
+    public void shouldCreateATaskWithIntegerTimeoutWhenValidDoubleIsProvided() throws MalformedURLException,IllegalArgumentException {
+        //Arrange
+        InputUrl inputURlWithTxt = new InputUrl("http://www.textexample.com/text/text.txt");
+        Category inputCategory = new Category("philosophy");
+
+        //Act
+        Task testableTask = new Task(inputURlWithTxt.getUrl(),(int)1.33,inputCategory);
+
+        //Assert
+        assertEquals(testableTask.getTimeOut().getTimeOut(),1);
+    }
 }
 
 
