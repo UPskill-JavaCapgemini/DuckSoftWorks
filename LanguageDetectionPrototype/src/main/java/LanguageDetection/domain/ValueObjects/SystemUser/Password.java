@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.domain.ValueObjects.SystemUser;
 
 import LanguageDetection.domain.shared.ValueObject;
@@ -9,10 +10,13 @@ public class Password implements ValueObject {
         this.password = pass;
     }
 
-    /* For ORM purposes */
+    */
+/* For ORM purposes *//*
+
     public Password(){
         this.password = null;
     }
 
 
 }
+*/

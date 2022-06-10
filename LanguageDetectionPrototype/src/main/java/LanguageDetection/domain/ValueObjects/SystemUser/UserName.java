@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.domain.ValueObjects.SystemUser;
 
 import LanguageDetection.domain.shared.ValueObject;
@@ -16,7 +17,9 @@ public class UserName implements ValueObject, Comparable<UserName> {
         return this.userName;
     }
 
-    /* For ORM purposes */
+    */
+/* For ORM purposes *//*
+
     public UserName(){
         this.userName = null;
     }
@@ -26,3 +29,4 @@ public class UserName implements ValueObject, Comparable<UserName> {
         return userName.compareTo(o.userName);
     }
 }
+*/

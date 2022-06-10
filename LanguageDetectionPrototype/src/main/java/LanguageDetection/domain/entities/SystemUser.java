@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.domain.entities.example;
 
 import LanguageDetection.domain.ValueObjects.SystemUser.Password;
@@ -15,30 +16,38 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class SystemUser implements AggregateRoot<UserName> {
 
-    /**
+    */
+/**
      * The Username of the System user
-     */
+     *//*
+
     @Id
     @Getter
     UserName userName;
-    /**
+    */
+/**
      * The password of the System user
-     */
+     *//*
+
     @Getter
     Password password;
-    /**
+    */
+/**
      * The role of the System user
-     */
+     *//*
+
     @Getter
     Role role;
 
 
-    /**
+    */
+/**
      * Constructor of the System user
      * @param uName Username  of the system user
      * @param pass password of the system user
      * @param role role that system user plays
-     */
+     *//*
+
     public SystemUser(UserName uName, Password pass, Role role) {
         this.userName = uName;
         this.password = pass;
@@ -56,10 +65,12 @@ public class SystemUser implements AggregateRoot<UserName> {
         return AggregateRoot.super.compareTo(other);
     }
 
-    /**
+    */
+/**
      * method that identify the System user
      * @return the Username
-     */
+     *//*
+
     @Override
     public UserName identity() {
         return this.userName;
@@ -75,3 +86,4 @@ public class SystemUser implements AggregateRoot<UserName> {
         Administrator
     }
 }
+*/

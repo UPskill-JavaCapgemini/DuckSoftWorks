@@ -19,7 +19,7 @@ class MockLanguageAnalyzerTest {
 
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
@@ -46,7 +46,7 @@ class MockLanguageAnalyzerTest {
     }
 
     @Test
-    public void shouldCleanUpAStringWithUpperCase() throws IOException {
+    public void shouldCleanUpAStringWithUpperCase() {
         //Arrange
         String testString = "A tEsT STRing WitH UpPEr CASE";
         String lowerCaseString;
@@ -58,7 +58,7 @@ class MockLanguageAnalyzerTest {
 
 
     @Test
-    public void verifyIfTheExtraSpacesAreRetrievedWithCleanUpInputText() throws IOException {
+    public void verifyIfTheExtraSpacesAreRetrievedWithCleanUpInputText() {
         ;
         String testString = "Bom  dia";
         String result = languageAnalyzer.cleanUpInputText(testString);
@@ -66,7 +66,7 @@ class MockLanguageAnalyzerTest {
     }
 
     @Test
-    public void verifyIfEmptySpacesAreRetrievedWithCleanUpInputText() throws IOException {
+    public void verifyIfEmptySpacesAreRetrievedWithCleanUpInputText() {
         String testString = " ";
         String result = languageAnalyzer.cleanUpInputText(testString);
         org.testng.Assert.assertEquals(result, "");
