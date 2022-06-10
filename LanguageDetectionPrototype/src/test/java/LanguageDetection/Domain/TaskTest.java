@@ -61,7 +61,7 @@ public class TaskTest {
     }
 
     @Test
-    public void shoulCreateATaskWithAcceptableTimeOut() throws MalformedURLException {
+    public void shouldCreateATaskWithAcceptableTimeOut() throws MalformedURLException {
         //Arrange
         TimeOut inputTimeOut = new TimeOut(2);
         InputUrl inputURlWithTxt = new InputUrl("http://www.textexample.com/text/text.txt");
@@ -73,5 +73,20 @@ public class TaskTest {
         //Assert
         assertNotNull(testableTask);
     }
+
+    @Test
+    public void shouldNotCreateATaskWithTimeoutBelow1() throws MalformedURLException,IllegalArgumentException {
+        //Arrange
+        InputUrl inputURlWithTxt = new InputUrl("http://www.textexample.com/text/text.txt");
+        Category inputCategory = new Category("philosophy");
+
+        //Act
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            Task testableTask = new Task(inputURlWithTxt.getUrl(),0,inputCategory); });
+
+        //Assert
+        assertEquals(illegalArgumentException.getMessage(),"This TimeOut is not in the proper range");
+    }
 }
+
 
