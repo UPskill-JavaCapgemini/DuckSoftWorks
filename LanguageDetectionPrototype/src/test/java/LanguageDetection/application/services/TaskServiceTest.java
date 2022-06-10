@@ -1,6 +1,8 @@
 package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.application.DTO.NewBlackListInfoDTO;
+import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
@@ -9,6 +11,7 @@ import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -19,6 +22,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Optional;
 
@@ -32,11 +36,17 @@ public class TaskServiceTest {
     @InjectMocks
     TaskService taskService;
 
-    @Mock
-    TaskDomainDTOAssembler taskDomainDTOAssembler;
+    /*@Mock
+    TaskDomainDTOAssembler taskDomainDTOAssembler;*/
 
     @Mock
     TaskRepository taskRepository;
+
+    @Mock
+    BlackListService blService;
+
+    @Mock
+    CategoryService categoryService;
 
 
     @BeforeEach
@@ -87,12 +97,63 @@ public class TaskServiceTest {
         Optional<Task> opTestableTask = Optional.of(testableTask);
         Task cancelledTask = new Task(opTestableTask.get());
 
-        // Act
+        /*// Act
         when(taskRepository.findById(testableTask.getId())).thenReturn(opTestableTask);
-        when(taskRepository.saveTask(opTestableTask.get())).thenReturn(cancelledTask);
+        when(taskRepository.saveTask(opTestableTask.get())).thenReturn(cancelledTask);*/
 
         // Assert
         Assert.assertTrue(cancelledTask.toString().contains("Canceled"));
     }
 
+    @org.junit.jupiter.api.Test
+    void createAndSaveTaskShouldReturnOptionalEmptyIfCategoryExistsAndUrlIsBlackListed() throws IOException {
+        NewTaskInfoDTO infoDTO = new NewTaskInfoDTO("http://www.textexample.com/text/text.txt", "Sports", 2);
+        NewBlackListInfoDTO blackListInfoDTO = new NewBlackListInfoDTO("http://www.textexample.com/text/text.txt");
+        Category category = new Category("Sports");
+
+        when(blService.isBlackListed(blackListInfoDTO)).thenReturn(true);
+        when(categoryService.findById(category)).thenReturn(Optional.of(category));
+
+        Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
+    }
+
+    @org.junit.jupiter.api.Test
+    void createAndSaveTaskShouldReturnOptionalEmptyIfCategoryDoesNotExistAndUrlIsNotBlackListed() throws IOException {
+        NewTaskInfoDTO infoDTO = new NewTaskInfoDTO("http://www.textexample.com/text/text.txt", "Sports", 2);
+        NewBlackListInfoDTO blackListInfoDTO = new NewBlackListInfoDTO("http://www.textexample.com/text/text.txt");
+        Category category = new Category("Economy");
+
+        when(blService.isBlackListed(blackListInfoDTO)).thenReturn(false);
+        when(categoryService.findById(category)).thenReturn(Optional.of(category));
+
+        Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
+    }
+
+    @org.junit.jupiter.api.Test
+    void createAndSaveTaskShouldReturnOptionalEmptyIfCategoryDoesNotExistAndUrlIsBlackListed() throws IOException {
+        NewTaskInfoDTO infoDTO = new NewTaskInfoDTO("http://www.textexample.com/text/text.txt", "Sports", 2);
+        NewBlackListInfoDTO blackListInfoDTO = new NewBlackListInfoDTO("http://www.textexample.com/text/text.txt");
+        Category category = new Category("Sports");
+
+        when(blService.isBlackListed(blackListInfoDTO)).thenReturn(true);
+        when(categoryService.findById(category)).thenReturn(Optional.of(category));
+
+        Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
+    }
+
+    @org.junit.jupiter.api.Test
+    void findAllTasks() {
+    }
+
+    @org.junit.jupiter.api.Test
+    void findByStatusContaining() {
+    }
+
+    @org.junit.jupiter.api.Test
+    void findByCategoryContaining() {
+    }
+
+    @org.junit.jupiter.api.Test
+    void findByStatusContainingAndCategoryContaining() {
+    }
 }
