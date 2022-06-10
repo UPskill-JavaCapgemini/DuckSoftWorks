@@ -1,14 +1,12 @@
 package LanguageDetection.application.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 public class NewCancelThreadDTO {
+    @Setter
     @Getter
     Long id;
 }
