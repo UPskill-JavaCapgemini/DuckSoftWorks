@@ -64,7 +64,7 @@ public class TaskService {
      * @throws IOException    - thrown by IndexReader class if some sort of I/O problem occurred
      */
 
-    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException, ExecutionException, InterruptedException, TimeoutException {
+    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException, ExecutionException {
 
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
@@ -140,7 +140,7 @@ public class TaskService {
         return category;
     }
 
-    protected void languageAnalysis(Task taskrepo) throws ExecutionException, InterruptedException, TimeoutException, MalformedURLException {
+    protected void languageAnalysis(Task taskrepo) throws ExecutionException, MalformedURLException {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
         analyzerService.setTaskRepo(taskrepo);
         analyzerService.setTaskRepository(taskRepository);
