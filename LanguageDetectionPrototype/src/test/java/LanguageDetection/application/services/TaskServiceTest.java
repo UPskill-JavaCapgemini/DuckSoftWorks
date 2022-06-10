@@ -1,6 +1,7 @@
 package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.application.DTO.NewCancelThreadDTO;
 import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.internal.util.io.IOUtil;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -87,12 +89,21 @@ public class TaskServiceTest {
         Optional<Task> opTestableTask = Optional.of(testableTask);
         Task cancelledTask = new Task(opTestableTask.get());
 
-        // Act
+        //preencher
+        TaskDTO taskDto = new TaskDTO();
+
         when(taskRepository.findById(testableTask.getId())).thenReturn(opTestableTask);
-        when(taskRepository.saveTask(opTestableTask.get())).thenReturn(cancelledTask);
+        when(taskRepository.saveTask(opTestableTask.get())).thenReturn(Mockito.any());
+        when(taskDomainDTOAssembler.toCompleteDTO(testableTask)).thenReturn(taskDto);
+        // Act
+        var changeMe = taskService.cancelTaskAnalysis(new NewCancelThreadDTO(testableTask.getId()));
 
         // Assert
         Assert.assertTrue(cancelledTask.toString().contains("Canceled"));
+
+
+
+
     }
 
 }
