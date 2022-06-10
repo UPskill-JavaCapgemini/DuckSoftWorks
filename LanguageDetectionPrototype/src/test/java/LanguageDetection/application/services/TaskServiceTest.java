@@ -1,10 +1,7 @@
 package LanguageDetection.application.services;
 
+import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
-import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.application.DTO.NewTaskInfoDTO;
-import LanguageDetection.application.DTO.NewCancelThreadDTO;
-import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
@@ -26,6 +23,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -116,6 +116,8 @@ public class TaskServiceTest {
 
     }
 
+    //TODO test missing for a valid createAndSaveTask
+
     @org.junit.jupiter.api.Test
     void createAndSaveTaskShouldReturnOptionalEmptyIfCategoryExistsAndUrlIsBlackListed() throws IOException {
         NewTaskInfoDTO infoDTO = new NewTaskInfoDTO("http://www.textexample.com/text/text.txt", "Sports", 2);
@@ -153,18 +155,88 @@ public class TaskServiceTest {
     }
 
     @org.junit.jupiter.api.Test
-    void findAllTasks() {
+    void findAllTasksShouldReturnListOfAllTasks() throws MalformedURLException {
+        //Arrange
+        Category category1 = new Category("Sports");
+        Category category2 = new Category("Economics");
+        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
+        Task task2 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category2);
+        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TimeOut timeOut = new TimeOut(1);
+        java.util.Date date = new java.util.Date(2);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+        TaskDTO taskDTO2 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category2);
+
+        when(taskRepository.findAllTasks()).thenReturn(List.of(task1, task2));
+        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
+        when(taskDomainDTOAssembler.toCompleteDTO(task2)).thenReturn(taskDTO2);
+
+        //Assert
+        Assert.assertEquals(taskService.findAllTasks(), List.of(taskDTO1, taskDTO2));
     }
 
     @org.junit.jupiter.api.Test
-    void findByStatusContaining() {
+    void findByStatusContainingShouldReturnListOfTaskWhichHaveMatchingStatusOnArgument() throws MalformedURLException {
+        //Arrange
+        Category category1 = new Category("Sports");
+        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
+        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TimeOut timeOut = new TimeOut(1);
+        java.util.Date date = new java.util.Date(2);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+
+        StatusDTO statusDTO = new StatusDTO("Processing");
+
+        when(taskRepository.findByStatusContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
+        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
+
+        List<TaskDTO> tasks = taskService.findByStatusContaining(statusDTO);
+        //Assert
+        Assertions.assertEquals(tasks, List.of(taskDTO1));
+    }
+
+    //TODO verify why this 2 tests below don't work
+    /*@org.junit.jupiter.api.Test
+    void findByCategoryContainingShouldReturnListOfTaskWhichHaveMatchingCategoryOnArgument() throws MalformedURLException {
+        //Arrange
+        CategoryNameDTO categoryInfoDTO = new CategoryNameDTO("Sports");
+        Category category1 = new Category(categoryInfoDTO.getCategoryName());
+        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
+        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TimeOut timeOut = new TimeOut(1);
+        java.util.Date date = new java.util.Date(2);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+
+        List<Task> task = new ArrayList<>();
+        task.add(task1);
+
+        when(taskRepository.findByCategoryContaining(category1)).thenReturn(task);
+        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
+
+        List<TaskDTO> tasks = taskService.findByCategoryContaining(categoryInfoDTO);
+        //Assert
+        Assertions.assertEquals(tasks, List.of(taskDTO1));
     }
 
     @org.junit.jupiter.api.Test
-    void findByCategoryContaining() {
-    }
+    void findByStatusContainingAndCategoryContaining() throws MalformedURLException {
+        //Arrange
+        CategoryNameDTO categoryInfoDTO = new CategoryNameDTO("Sports");
+        Category category1 = new Category(categoryInfoDTO.getCategoryName());
+        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
+        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TimeOut timeOut = new TimeOut(1);
+        java.util.Date date = new java.util.Date(2);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
 
-    @org.junit.jupiter.api.Test
-    void findByStatusContainingAndCategoryContaining() {
-    }
+        StatusDTO statusDTO = new StatusDTO("Processing");
+
+
+        when(taskRepository.findByStatusAndByCategoryContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()), category1)).thenReturn(List.of(task1));
+        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
+
+        List<TaskDTO> tasks = taskService.findByStatusContainingAndCategoryContaining(statusDTO, categoryInfoDTO);
+        //Assert
+        Assertions.assertEquals(tasks, List.of(taskDTO1));
+    }*/
 }

@@ -7,9 +7,12 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@ToString
-
 public class CategoryNameDTO {
     @Getter
     String categoryName;
+
+    @Override
+    public String toString() {
+        return categoryName;
+    }
 }
