@@ -10,6 +10,13 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Represents the category repository responsible for handling all interactions with DB of this Domain object.
+ * Implements the ICategory interface to allow decoupling and easier transition to other DB in the future.
+ *
+ * @author DuckSoftWorks Team
+ */
+
 @Repository
 public class CategoryRepository implements ICategory {
 
@@ -49,15 +56,32 @@ public class CategoryRepository implements ICategory {
 
     }*/
 
+    /**
+     * Method that allows the search of a category by its ID
+     * @param category
+     * @return an Optinal of the found category
+     */
     @Override
     public Optional<Category> findCategoryById(Category category) {
         return categoryJpaRepository.findByCategoryName(category.getCategoryName());
     }
 
+    /**
+     * Method that allows to save a category to the DB
+     * @param category
+     * @return the saved category
+     */
+
     @Override
     public Category saveCategory(Category category) {
         return categoryJpaRepository.save(category);
     }
+
+    /**
+     * Method that allows to delete a category by its name from DB
+     * @param category
+     * @return true if the delete was sucessful
+     */
 
     @Override
     @Transactional
@@ -71,10 +95,21 @@ public class CategoryRepository implements ICategory {
         return false;
     }
 
+    /**
+     * Method that returns all the category found on DB in a list
+     * @return a list with all the category found
+     */
+
     @Override
     public List<Category> findAll() {
         return (List<Category>) categoryJpaRepository.findAll();
     }
+
+    /**
+     * Method that checks if the category is part of the group that is protected from delete.
+     * @param category
+     * @return true if the category cannot be deleted.
+     */
 
     protected boolean isBaseCategory(Optional<Category> category) {
         boolean isBase = false;
