@@ -175,12 +175,12 @@ public class TaskService {
         return task;
     }
 
-    public Optional<Task> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
+    public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
         Optional<Task> task = taskRepository.findById(id.getId());
         if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())) {
             Task canceledTask = new Task(task.get());
             taskRepository.saveTask(canceledTask);
-            return task;
+            return Optional.of(taskDomainDTOAssembler.toCompleteDTO(task.get()));
         }
         return Optional.empty();
     }

@@ -74,7 +74,7 @@ public class TaskController {
 
     @PostMapping("/cancel")
     public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<Task> cancelTask = service.cancelTaskAnalysis(id);
+        Optional<TaskDTO> cancelTask = service.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){
             return new ResponseEntity<>(cancelTask.get().toString(), HttpStatus.ACCEPTED);
         } else {
