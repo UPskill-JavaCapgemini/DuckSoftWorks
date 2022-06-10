@@ -2,6 +2,8 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
+import LanguageDetection.application.DTO.NewTaskInfoDTO;
+import LanguageDetection.application.DTO.TaskStatusDTO;
 import LanguageDetection.application.services.CategoryService;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 
 @Controller
@@ -50,8 +55,12 @@ public class CategoryController {
      */
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
-        CategoryDTO categoryDTO = categoryService.createAndSaveCategory(category);
-        return new ResponseEntity<>(categoryDTO.toString(), HttpStatus.CREATED);
+        Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
+        if (categoryDTO.isPresent()) {
+            return new ResponseEntity<>(categoryDTO.toString(), HttpStatus.CREATED);
+        }else {
+                return new ResponseEntity("Unable to create, category already exists or invalid characters", HttpStatus.BAD_REQUEST);
+            }
     }
 
     /**

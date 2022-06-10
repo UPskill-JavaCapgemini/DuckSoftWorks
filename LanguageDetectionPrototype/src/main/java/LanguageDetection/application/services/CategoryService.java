@@ -23,10 +23,15 @@ public class CategoryService {
     ICategory iCategory;
 
 
-    public CategoryDTO createAndSaveCategory(NewCategoryInfoDTO infoDTO) {
+    public Optional<CategoryDTO> createAndSaveCategory(NewCategoryInfoDTO infoDTO) {
         Category category = new Category(infoDTO.getCategory());
-        Category categoryRepo = iCategory.saveCategory(category);
-        return dtoAssembler.toDTO(categoryRepo);
+        Optional<Category> findCategory = iCategory.findCategoryById(category);
+        if (findCategory.isEmpty()) {
+            Category categoryRepo = iCategory.saveCategory(category);
+            return Optional.of(dtoAssembler.toDTO(categoryRepo));
+        } else {
+            return Optional.empty();
+        }
     }
 
     public List<CategoryDTO> getAllCategory() {
