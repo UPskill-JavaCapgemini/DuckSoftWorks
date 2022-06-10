@@ -72,11 +72,7 @@ public class TaskRepository implements ITask {
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
 	}
 
-	/**
-	 * Fetches task on database with the corresponding id passed
-	 * @param identity the id of a task
-	 * @return task object if id is found in database
-	 */
+
     public Optional<Task> findById(Long identity) {
 		return taskJpaRepository.findById(identity);
     }
