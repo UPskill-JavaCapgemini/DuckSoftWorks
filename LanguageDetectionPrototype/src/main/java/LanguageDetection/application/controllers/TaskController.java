@@ -1,11 +1,7 @@
-
 package LanguageDetection.application.controllers;
-
 
 import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.services.TaskService;
-import LanguageDetection.domain.entities.Task;
-import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
+/**
+ * Class responsible for communication with HTTP request with respective mappings
+ *
+ * @authors DuckSoftWorks Team
+ */
 @Controller
 @RestController
 @RequestMapping(path = "/LanguageDetection")
@@ -39,10 +37,9 @@ public class TaskController {
      * @param info receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
      * @return information of Processing status with HTTPStatus 201(Created) or String with error information of HTTPStatus 400(Bad Request) if some error occurred
      * @throws IOException signals that an I/O exception of some sort occurred. For example input of a Bad URL
-     * @throws ExecutionException thrown if a thread for analysis cannot initiate
      */
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) throws IOException, ExecutionException {
+    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) throws IOException {
         Optional<TaskStatusDTO> taskCreated = service.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
