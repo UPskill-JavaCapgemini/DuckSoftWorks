@@ -19,6 +19,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
@@ -38,15 +39,31 @@ class BlackListServiceTest {
     }
 
     @Test
-    void createAndSaveBlackListItem() {
+    void shouldCreateAndSaveBlackListItem() throws MalformedURLException {
+        String Url = "https://stackoverflow.com/first";
+        BlackListItem item1 = new BlackListItem(Url);
+        Mockito.when(iBlackListItem.isBlackListed(item1)).thenReturn(false);
+        Mockito.when(iBlackListItem.saveBlackListItem(item1)).thenReturn(item1);
+        Mockito.when(assembler.toDTO(item1)).thenReturn(new BlackListDTO(item1));
+
+        Optional<BlackListDTO> optional =  blackListService.createAndSaveBlackListItem(new NewBlackListInfoDTO(Url));
+        Assert.assertTrue(!optional.isEmpty());
+        Assert.assertTrue(optional.get().getUrl().toString().equals(Url));
     }
+/*public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO inputUrlDTO) throws MalformedURLException {
+        BlackListItem blackListItem = new BlackListItem(inputUrlDTO.getUrl());
+        if (iBlackListItem.isBlackListed(blackListItem)) {
+            return Optional.empty();
+        }BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
+        return Optional.of(assembler.toDTO(savedBlackListItem));
+    }*/
 
     @Test
     void deleteBlackListItem() {
     }
 
     @Test
-    void getAllBlackListItemsWith2CreatedAssertingTrue() throws MalformedURLException {
+    void shouldreturnAllBlackListItemsWith2Created() throws MalformedURLException {
         BlackListItem item1 = new BlackListItem("https://stackoverflow.com/first");
         BlackListItem item2 = new BlackListItem("https://stackoverflow.com/second");
 
@@ -78,7 +95,6 @@ class BlackListServiceTest {
         Mockito.when(iBlackListItem.isBlackListed(Mockito.any())).thenReturn(true);
 
         Assert.assertTrue(blackListService.isBlackListed(item1));
-
     }
 
     /* public boolean isBlackListed(NewBlackListInfoDTO inputBlackList) throws MalformedURLException {
