@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InputUrlTest {
 
-    String allNumberInputUrl;
 
     @BeforeEach
     void setUp() {
@@ -32,7 +31,7 @@ class InputUrlTest {
     }
 
     @Test
-    public void shouldThrowExceptionWithSpacesOnlyUrl(){
+    public void shouldThrowExceptionWithSpacesOnlyUrl() {
         //Arrange
         String spacesOnlyInputUrl = "             ";
 
@@ -42,11 +41,11 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertNotNull(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+        Assert.assertNotNull(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
     }
 
     @Test
-    public void shouldThrowExceptionSymboOnlyUrl(){
+    public void shouldThrowExceptionWithSymbolOnlyUrl() {
         //Arrange
         String allSymbolsInputUrl = "!%$/(()))";
 
@@ -56,6 +55,21 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertNotNull(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+        Assert.assertNotNull(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+    }
+
+    @Test
+    public void shouldThrowExceptionWithNumberOnlyUrl() {
+        //Arrange
+        String allNumberInputUrl = "12315123151";
+
+        //Act
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new InputUrl(allNumberInputUrl);
+        });
+
+        //Assert
+        Assert.assertNotNull(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
     }
 }
+
