@@ -16,6 +16,8 @@ import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
+
 
 class CategoryServiceTest {
 
@@ -41,7 +43,7 @@ class CategoryServiceTest {
         String catName = "History";
         Category item1 = new Category(catName);
 
-        Mockito.when(iCategory.findCategoryById(item1)).thenReturn(Mockito.any());
+        Mockito.when(iCategory.findCategoryById(item1)).thenReturn(any());
         Mockito.when(iCategory.saveCategory(item1)).thenReturn(item1);
         Mockito.when(assembler.toDTO(item1)).thenReturn(new CategoryDTO(item1));
 
@@ -50,16 +52,18 @@ class CategoryServiceTest {
         Assert.assertTrue(optional.get().getCategory().toString().equals(catName));
     }
 
-//    @Test
-//    void shouldSuccessefullyDeleteACategory() {
-//        String catName = "History";
-//        Category item1 = new Category(catName);
-//        NewCategoryInfoDTO newCategoryInfoDTOitem1 = new NewCategoryInfoDTO(catName);
-//
-//        Mockito.when(iCategory.deleteByName(item1)).thenReturn(true);
-//
-//        Assert.assertTrue(categoryService.deleteCategory(newCategoryInfoDTOitem1));
-//    }
+    @Test
+    void shouldSuccessefullyDeleteACategory() {
+        String catName = "History";
+        Category item1 = new Category(catName);
+        NewCategoryInfoDTO newCategoryInfoDTOitem1 = new NewCategoryInfoDTO(catName);
+
+
+
+        Mockito.when(iCategory.deleteByName(any(Category.class))).thenReturn(true);
+
+        Assert.assertTrue(categoryService.deleteCategory(newCategoryInfoDTOitem1));
+    }
 
     @Test
     void getAllCategoryItemsWith2CreatedAssertingTrue() throws MalformedURLException {
@@ -92,7 +96,7 @@ class CategoryServiceTest {
         Category item1 = new Category("History");
         Optional<Category> op = Optional.of(item1);
 
-        Mockito.when(iCategory.findCategoryById(Mockito.any())).thenReturn(op);
+        Mockito.when(iCategory.findCategoryById(any())).thenReturn(op);
 
         Assert.assertSame(categoryService.findById(item1), op);
 
