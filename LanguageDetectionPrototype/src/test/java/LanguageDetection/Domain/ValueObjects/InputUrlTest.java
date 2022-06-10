@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InputUrlTest {
 
-    String allSymbolsInputUrl = "!%$/(()))";
     String allNumberInputUrl;
 
     @BeforeEach
@@ -40,6 +39,20 @@ class InputUrlTest {
         //Act
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
             new InputUrl(spacesOnlyInputUrl);
+        });
+
+        //Assert
+        Assert.assertNotNull(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+    }
+
+    @Test
+    public void shouldThrowExceptionSymboOnlyUrl(){
+        //Arrange
+        String allSymbolsInputUrl = "!%$/(()))";
+
+        //Act
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new InputUrl(allSymbolsInputUrl);
         });
 
         //Assert
