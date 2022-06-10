@@ -67,6 +67,17 @@ class BlackListServiceTest {
         return iBlackListItem.deleteByBlackListUrl(blackListItem);
     }*/
 
+    /*    @Test
+    void shouldSuccessefullyDeleteACategory() {
+        String catName = "History";
+        Category item1 = new Category(catName);
+        NewCategoryInfoDTO newCategoryInfoDTOitem1 = new NewCategoryInfoDTO(catName);
+
+        Mockito.when(iCategory.deleteByName(item1)).thenReturn(true);
+
+        Assert.assertTrue(categoryService.deleteCategory(newCategoryInfoDTOitem1));
+    }*/
+
     @Test
     void shouldReturnAllBlackListItemsWith2Created() throws MalformedURLException {
         BlackListItem item1 = new BlackListItem("https://stackoverflow.com/first");
@@ -100,5 +111,36 @@ class BlackListServiceTest {
         Mockito.when(iBlackListItem.isBlackListed(Mockito.any())).thenReturn(true);
 
         Assert.assertTrue(blackListService.isBlackListed(item1));
+    }
+
+    /*@Test
+
+    
+    void verifyThatAnInvalidUrlIsNotCreatedByThrowingAMalformedException() throws MalformedURLException {
+
+
+
+        String Url = "ht://stackoverflow.com/first";
+        BlackListItem item1 = new BlackListItem(Url);
+
+
+        Assert.assertThrows()
+
+
+
+        */
+
+                /*  //Arrange
+        TimeOut inputTimeout = new TimeOut(3);
+        Category inputCategory = new Category("mechanics");
+
+        //Act
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            Task testableTask = new Task("http://www.notxturl.com",inputTimeout.getTimeOut(),inputCategory);
+        });
+
+        //Assert
+        assertEquals(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+    }*/
     }
 }
