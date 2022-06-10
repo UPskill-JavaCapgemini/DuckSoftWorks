@@ -52,14 +52,26 @@ public class TaskTest {
         Category inputCategory = new Category("mechanics");
 
         //Act
-
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
             Task testableTask = new Task("http://www.notxturl.com",inputTimeout.getTimeOut(),inputCategory);
         });
 
-
         //Assert
         assertEquals(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+    }
+
+    @Test
+    public void shoulCreateATaskWithAcceptableTimeOut() throws MalformedURLException {
+        //Arrange
+        TimeOut inputTimeOut = new TimeOut(2);
+        InputUrl inputURlWithTxt = new InputUrl("http://www.textexample.com/text/text.txt");
+        Category inputCategory = new Category("philosophy");
+
+        //Act
+        Task testableTask = new Task(inputURlWithTxt.getUrl(),inputTimeOut.getTimeOut(),inputCategory);
+
+        //Assert
+        assertNotNull(testableTask);
     }
 }
 
