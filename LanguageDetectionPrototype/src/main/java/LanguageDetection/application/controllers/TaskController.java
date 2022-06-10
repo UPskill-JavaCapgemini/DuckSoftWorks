@@ -58,7 +58,7 @@ public class TaskController {
             @RequestParam (name = "categoryName", required = false) CategoryNameDTO categoryName,
             @RequestParam (name = "status", required = false) StatusDTO status) {
 
-        List<Task> tasks = new ArrayList<>();
+        List<TaskDTO> tasks;
 
         if (status == null && categoryName == null)
             tasks = service.findAllTasks();

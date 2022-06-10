@@ -9,6 +9,7 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
@@ -65,6 +66,7 @@ public class TaskService {
 
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException, ExecutionException, InterruptedException, TimeoutException {
 
+
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
         if (!blackListService.isBlackListed(newBlackListInfoDTO)) {
             Optional<Category> persistedCategory = findPersistedCategory(userInput);
@@ -78,33 +80,58 @@ public class TaskService {
         return Optional.empty();
     }
 
-    public List<Task> findAllTasks() {
-
+    public List<TaskDTO> findAllTasks() {
         List<Task> listAllTasks = taskRepository.findAllTasks();
+        List<TaskDTO> taskDTOList = new ArrayList<>();
 
-        return listAllTasks;
+        for (Task task : listAllTasks) {
+            TaskDTO assemble = taskDomainDTOAssembler.toCompleteDTO(task);
+            taskDTOList.add(assemble);
+        }
+
+        return taskDTOList;
     }
 
-    public List<Task> findByStatusContaining(StatusDTO inputStatus) {
+    public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = taskRepository.findByStatusContaining(status);
 
-        return listTasksByStatus;
+        List<TaskDTO> taskDTOList = new ArrayList<>();
+
+        for (Task task : listTasksByStatus) {
+            TaskDTO assemble = taskDomainDTOAssembler.toCompleteDTO(task);
+            taskDTOList.add(assemble);
+        }
+        return taskDTOList;
     }
 
-    public List<Task> findByCategoryContaining(CategoryNameDTO catName) {
+    public List<TaskDTO> findByCategoryContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
         List<Task> listTasksByCategory = taskRepository.findByCategoryContaining(category);
 
-        return listTasksByCategory;
+        List<TaskDTO> taskDTOList = new ArrayList<>();
+
+        for (Task task : listTasksByCategory) {
+            TaskDTO assemble = taskDomainDTOAssembler.toCompleteDTO(task);
+            taskDTOList.add(assemble);
+        }
+
+        return taskDTOList;
     }
 
-    public List<Task> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
+    public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
         Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
         List<Task> listTasksByStatusAndByCategory = taskRepository.findByStatusAndByCategoryContaining(status, category);
-        return listTasksByStatusAndByCategory;
+
+        List<TaskDTO> taskDTOList = new ArrayList<>();
+
+        for (Task task : listTasksByStatusAndByCategory) {
+            TaskDTO assemble = taskDomainDTOAssembler.toCompleteDTO(task);
+            taskDTOList.add(assemble);
+        }
+        return taskDTOList;
     }
 
     protected Optional<Category> findPersistedCategory(NewTaskInfoDTO userInput) {
