@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -97,22 +98,27 @@ public class TaskServiceTest {
         Category inputCategory = new Category("sports");
         Task testableTask = new Task(inputUrl.getUrl(),inputTimeout.getTimeOut(),inputCategory);
         Optional<Task> opTestableTask = Optional.of(testableTask);
-        Task cancelledTask = new Task(opTestableTask.get());
-
-        //preencher
-        TaskDTO taskDto = new TaskDTO();
+        TaskDTO taskDto = new TaskDTO(1L,
+                testableTask.getDate(),
+                testableTask.getInputUrl(),
+                testableTask.getLanguage(),
+                Task.CurrentStatus.Canceled,
+                testableTask.getTimeOut(),
+                testableTask.getCategory());
 
         when(taskRepository.findById(testableTask.getId())).thenReturn(opTestableTask);
         when(taskRepository.saveTask(opTestableTask.get())).thenReturn(Mockito.any());
         when(taskDomainDTOAssembler.toCompleteDTO(testableTask)).thenReturn(taskDto);
+
         // Act
-        var changeMe = taskService.cancelTaskAnalysis(new NewCancelThreadDTO(testableTask.getId()));
+        Optional<TaskDTO> returnedCancelledTaskDTO = taskService.cancelTaskAnalysis(new NewCancelThreadDTO(testableTask.getId()));
+        String cancelledDTO = returnedCancelledTaskDTO.get().toString();
 
         // Assert
-        Assert.assertTrue(cancelledTask.toString().contains("Canceled"));
-
-
-
+        Mockito.verify(taskRepository,times(1)).findById(opTestableTask.get().getId());
+        Mockito.verify(taskRepository,times(1)).saveTask(Mockito.any());
+        Mockito.verify(taskDomainDTOAssembler,times(1)).toCompleteDTO(testableTask);
+        Assert.assertTrue(cancelledDTO.contains("Canceled"));
 
     }
 

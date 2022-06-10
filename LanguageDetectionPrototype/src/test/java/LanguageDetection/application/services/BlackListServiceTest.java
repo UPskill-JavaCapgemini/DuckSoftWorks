@@ -39,31 +39,32 @@ class BlackListServiceTest {
     }
 
     @Test
-    void shouldCreateAndSaveBlackListItem() throws MalformedURLException {
+    void shouldCreateAndSaveABlackListItem() throws MalformedURLException {
         String Url = "https://stackoverflow.com/first";
         BlackListItem item1 = new BlackListItem(Url);
         Mockito.when(iBlackListItem.isBlackListed(item1)).thenReturn(false);
         Mockito.when(iBlackListItem.saveBlackListItem(item1)).thenReturn(item1);
-        Mockito.when(assembler.toDTO(item1)).thenReturn(new BlackListDTO(item1));
+        Mockito.when(assembler.toDTO(Mockito.any())).thenCallRealMethod();
 
         Optional<BlackListDTO> optional =  blackListService.createAndSaveBlackListItem(new NewBlackListInfoDTO(Url));
         Assert.assertTrue(!optional.isEmpty());
         Assert.assertTrue(optional.get().getUrl().toString().equals(Url));
     }
-/*public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO inputUrlDTO) throws MalformedURLException {
-        BlackListItem blackListItem = new BlackListItem(inputUrlDTO.getUrl());
-        if (iBlackListItem.isBlackListed(blackListItem)) {
-            return Optional.empty();
-        }BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
-        return Optional.of(assembler.toDTO(savedBlackListItem));
-    }*/
 
     @Test
-    void deleteBlackListItem() {
+    void shouldSuccessefullyDeleteABlackListItem() throws MalformedURLException {
+        String Url = "https://stackoverflow.com/first";
+        BlackListItem blackListItem1 = new BlackListItem(Url);
+        NewBlackListInfoDTO newBlackListInfoDTOitem1 = new NewBlackListInfoDTO(Url);
+
+        Mockito.when(iBlackListItem.deleteByBlackListUrl(blackListItem1)).thenReturn(true);
+
+        Assert.assertTrue(blackListService.deleteBlackListItem(newBlackListInfoDTOitem1));
     }
 
+
     @Test
-    void shouldreturnAllBlackListItemsWith2Created() throws MalformedURLException {
+    void shouldReturnAllBlackListItemsWith2Created() throws MalformedURLException {
         BlackListItem item1 = new BlackListItem("https://stackoverflow.com/first");
         BlackListItem item2 = new BlackListItem("https://stackoverflow.com/second");
 
@@ -77,7 +78,7 @@ class BlackListServiceTest {
     }
 
     @Test
-    void getAllBlackListItemsWith1createdAssertingFalse() throws MalformedURLException {
+    void shouldReturnAllBlackListItemsWith1createdAssertingFalse() throws MalformedURLException {
         BlackListItem item1 = new BlackListItem("https://stackoverflow.com/first");
 
         Mockito.when(iBlackListItem.findAllBlackListItems()).thenReturn(List.of(item1));
@@ -89,7 +90,7 @@ class BlackListServiceTest {
     }
 
     @Test
-    void isBlackListed() throws MalformedURLException {
+    void shouldAssertTrueIfItemIsAlreadyInTheBlackList() throws MalformedURLException {
         NewBlackListInfoDTO item1 = new NewBlackListInfoDTO("https://stackoverflow.com/first");
 
         Mockito.when(iBlackListItem.isBlackListed(Mockito.any())).thenReturn(true);
@@ -97,8 +98,5 @@ class BlackListServiceTest {
         Assert.assertTrue(blackListService.isBlackListed(item1));
     }
 
-    /* public boolean isBlackListed(NewBlackListInfoDTO inputBlackList) throws MalformedURLException {
-        BlackListItem blackList = new BlackListItem(inputBlackList.getUrl());
-        return iBlackListItem.isBlackListed(blackList);
-    }*/
+
 }
