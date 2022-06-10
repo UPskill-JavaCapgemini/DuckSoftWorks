@@ -41,7 +41,7 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertNotNull(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
     }
 
     @Test
@@ -55,7 +55,7 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertNotNull(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
     }
 
     @Test
@@ -69,7 +69,21 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertNotNull(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+    }
+
+    @Test
+    public void shouldThrowExceptionWithNoProtocolUrl(){
+        //Arrange
+        String noProtocolInputUrl = "www.noprotocol.com.txt";
+
+        //Act
+        MalformedURLException malformedURLException = assertThrows(MalformedURLException.class, () -> {
+            new InputUrl(noProtocolInputUrl);
+        });
+
+        //Assert
+        Assert.assertEquals(malformedURLException.getMessage(), "no protocol: www.noprotocol.com.txt");
     }
 }
 
