@@ -53,7 +53,7 @@ public class CategoryController {
     public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
         Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
-            return new ResponseEntity<>(categoryDTO.toString(), HttpStatus.CREATED);
+            return new ResponseEntity<>(categoryDTO.get().toString(), HttpStatus.CREATED);
         }else {
                 return new ResponseEntity("Unable to create, category already exists or invalid characters", HttpStatus.BAD_REQUEST);
             }

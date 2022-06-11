@@ -43,9 +43,7 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
      * Constructs a BlackListItem with an url as a String.
      */
     public BlackListItem(String url) throws MalformedURLException {
-        /*if (urlValidator(url)){
-            throw new MalformedURLException();
-        }*/
+
             this.url = new BlackListUrl(url);
     }
 
