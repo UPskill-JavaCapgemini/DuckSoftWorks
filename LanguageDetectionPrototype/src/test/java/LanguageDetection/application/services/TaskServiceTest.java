@@ -197,27 +197,27 @@ public class TaskServiceTest {
     }
 
     //TODO verify why this 2 tests below don't work
-    /*@org.junit.jupiter.api.Test
-    void findByCategoryContainingShouldReturnListOfTaskWhichHaveMatchingCategoryOnArgument() throws MalformedURLException {
-        //Arrange
-        CategoryNameDTO categoryInfoDTO = new CategoryNameDTO("Sports");
-        Category category1 = new Category(categoryInfoDTO.getCategoryName());
-        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
-        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
-        TimeOut timeOut = new TimeOut(1);
-        java.util.Date date = new java.util.Date(2);
-        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
-
-        List<Task> task = new ArrayList<>();
-        task.add(task1);
-
-        when(taskRepository.findByCategoryContaining(category1)).thenReturn(task);
-        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
-
-        List<TaskDTO> tasks = taskService.findByCategoryContaining(categoryInfoDTO);
-        //Assert
-        Assertions.assertEquals(tasks, List.of(taskDTO1));
-    }
+//    @org.junit.jupiter.api.Test
+//    void findByCategoryContainingShouldReturnListOfTaskWhichHaveMatchingCategoryOnArgument() throws MalformedURLException {
+//        //Arrange
+//        CategoryNameDTO categoryInfoDTO = new CategoryNameDTO("Sports");
+//        Category category1 = new Category(categoryInfoDTO.getCategoryName());
+//        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
+//        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+//        TimeOut timeOut = new TimeOut(1);
+//        java.util.Date date = new java.util.Date(2);
+//        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+//
+//        List<Task> task = new ArrayList<>();
+//        task.add(task1);
+//
+//        when(taskRepository.findByCategoryContaining(category1)).thenReturn(task);
+//        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
+//
+//        List<TaskDTO> tasks = taskService.findByCategoryContaining(categoryInfoDTO);
+//        //Assert
+//        Assertions.assertEquals(tasks, List.of(taskDTO1));
+//    }
 
     @org.junit.jupiter.api.Test
     void findByStatusContainingAndCategoryContaining() throws MalformedURLException {
@@ -239,5 +239,5 @@ public class TaskServiceTest {
         List<TaskDTO> tasks = taskService.findByStatusContainingAndCategoryContaining(statusDTO, categoryInfoDTO);
         //Assert
         Assertions.assertEquals(tasks, List.of(taskDTO1));
-    }*/
+    }
 }

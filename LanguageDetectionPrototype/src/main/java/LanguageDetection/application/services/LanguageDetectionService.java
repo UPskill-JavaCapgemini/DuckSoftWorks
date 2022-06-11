@@ -22,12 +22,14 @@ public class LanguageDetectionService implements Callable<String> {
     @Setter
     private Task taskRepo;
 
+    ILanguageDetector languageInterface;
+
     @Setter
     TaskRepository taskRepository;
 
     @Override
     public String call() throws Exception {
-        ILanguageDetector lang = new LanguageAnalyzer();
+        LanguageAnalyzer lang = languageInterface.createAnalizer();
         String language = lang.analyze(taskRepo.getInputUrl().getUrl());
         Optional<Task> checkTask = taskRepository.findById(taskRepo.getId());
 
