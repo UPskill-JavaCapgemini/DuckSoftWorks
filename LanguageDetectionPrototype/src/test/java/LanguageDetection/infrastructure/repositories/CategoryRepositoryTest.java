@@ -72,7 +72,7 @@ public class CategoryRepositoryTest {
     }
 
     @Test
-    public void shouldReturnCategory() {
+    public void shouldFindByIdCategory() {
 
         //Arrange / Act
         when(jpaRepository.findByCategoryName(category1.getCategoryName())).thenReturn(Optional.of(category1));
