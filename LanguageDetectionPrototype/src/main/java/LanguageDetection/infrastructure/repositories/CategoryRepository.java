@@ -80,7 +80,7 @@ public class CategoryRepository implements ICategory {
     /**
      * Method that allows to delete a category by its name from DB
      * @param category
-     * @return true if the delete was sucessful
+     * @return true if it was sucessfully deleted
      */
 
     @Override
