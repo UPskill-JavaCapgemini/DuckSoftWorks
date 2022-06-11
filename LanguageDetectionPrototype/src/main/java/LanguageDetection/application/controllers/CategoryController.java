@@ -61,7 +61,7 @@ public class CategoryController {
 
     /**
      * @param category
-     * @return the deletion of a certain category that was previously created and not one of the 5 base categories
+     * @return the deletion of a certain category
      * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
      * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
