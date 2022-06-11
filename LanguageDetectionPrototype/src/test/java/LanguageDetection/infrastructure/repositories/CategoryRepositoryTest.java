@@ -33,6 +33,7 @@ public class CategoryRepositoryTest {
 
     @BeforeEach
     public void beforeEach() {
+        //Arrange
         category1 = new Category("Sports");
         category2 = new Category("Economics");
     }
@@ -40,36 +41,43 @@ public class CategoryRepositoryTest {
 
     @Test
     public void findAllCategoryShouldReturn4() {
-        //given
+        //Arrange
         Category category3 = new Category("Arts");
         Category category4 = new Category("Economy");
 
-        //when
+        //Act
         when(jpaRepository.findAll()).thenReturn(List.of(category1, category2, category3, category4));
 
+        //Assert
         Assertions.assertEquals(categoryRepository.findAll(), List.of(category1, category2, category3, category4));
     }
 
     @Test
     public void shouldAvoidCreationOfCategoryThatIsBaseCategory() {
+       //Arrange
         Optional<Category> cat = Optional.of(category1);
 
+        //Assert
         Assert.assertTrue(categoryRepository.isBaseCategory(cat));
     }
 
     @Test
     public void shouldNotAvoidCreationOfCategoryThatIsNotBaseCategory() {
+        //Arrange
         Category categoryBase = new Category("Ducks)");
         Optional<Category> cat = Optional.of(categoryBase);
 
+        //Assert
         Assert.assertFalse(categoryRepository.isBaseCategory(cat));
     }
 
     @Test
     public void shouldReturnCategory() {
 
+        //Arrange / Act
         when(jpaRepository.findByCategoryName(category1.getCategoryName())).thenReturn(Optional.of(category1));
 
+        //Assert
         Assert.assertEquals(categoryRepository.findCategoryById(category1), Optional.of(category1));
 
     }

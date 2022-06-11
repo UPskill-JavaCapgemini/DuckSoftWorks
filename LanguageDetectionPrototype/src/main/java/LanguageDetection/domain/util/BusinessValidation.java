@@ -1,5 +1,7 @@
 package LanguageDetection.domain.util;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,6 +58,15 @@ public final class BusinessValidation {
             return true;
         }
         return false;
+    }
+
+    public static boolean isUrlValid(String url) {
+        try {
+            URL obj = new URL(url);
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
     }
 
 
