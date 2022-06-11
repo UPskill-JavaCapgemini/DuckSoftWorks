@@ -57,7 +57,7 @@ public class TaskTest {
         });
 
         //Assert
-        assertEquals(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file");
+        assertEquals(illegalArgumentException.getMessage(),"The URL doesn't contain a txt file or it´s not valid");
     }
 
     @Test

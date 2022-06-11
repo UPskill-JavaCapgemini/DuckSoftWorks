@@ -17,12 +17,14 @@
  * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+ *//*
+
 package LanguageDetection.domain.util;
 
 import java.util.Arrays;
 import java.util.Objects;
 
+*/
 /**
  * Helper class for {@code hashCode()} method implementation.
  * <p>
@@ -65,14 +67,17 @@ import java.util.Objects;
  * "https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/builder/HashCodeBuilder.html">org.apache.commons.lang3.builder.HashCodeBuilder</a>
  *
  * @author Paulo Gandra Sousa
- */
+ *//*
+
 public final class HashCoder {
 
     private int result;
 
-    /**
+    */
+/**
      * Constructor.
-     */
+     *//*
+
     public HashCoder() {
         result = 31;
     }
@@ -121,7 +126,8 @@ public final class HashCoder {
         return Objects.hashCode(f);
     }
 
-    /**
+    */
+/**
      * Computes the hash based on the current hash and the hash of a part
      * (field)
      *
@@ -129,18 +135,21 @@ public final class HashCoder {
      * @param partHash
      *
      * @return the hash code
-     */
+     *//*
+
     public static int compute(final int currentHash, final int partHash) {
         return 37 * currentHash + partHash;
     }
 
-    /**
+    */
+/**
      * utility method to generate the hash of an object
      *
      * @param f
      *
      * @return the hash code
-     */
+     *//*
+
     public static int hash(final Object f) {
         return Objects.hash(f);
     }
@@ -239,13 +248,16 @@ public final class HashCoder {
         return this;
     }
 
-    /**
+    */
+/**
      * Returns the actual hash code based on the different parts added to this
      * builder
      *
      * @return the hash code
-     */
+     *//*
+
     public int code() {
         return result;
     }
 }
+*/

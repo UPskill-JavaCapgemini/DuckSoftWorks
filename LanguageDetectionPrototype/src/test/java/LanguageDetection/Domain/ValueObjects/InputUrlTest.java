@@ -47,7 +47,7 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file or it´s not valid");
     }
 
     @Test
@@ -61,7 +61,7 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file or it´s not valid");
     }
 
     @Test
@@ -75,7 +75,7 @@ class InputUrlTest {
         });
 
         //Assert
-        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file");
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The URL doesn't contain a txt file or it´s not valid");
     }
 
     @Test
