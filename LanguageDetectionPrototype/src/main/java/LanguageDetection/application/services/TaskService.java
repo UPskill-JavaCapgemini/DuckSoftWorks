@@ -23,6 +23,8 @@ import java.util.*;
 
 import java.util.concurrent.*;
 
+import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
+
 
 /**
  * Represents the task service responsible for handling all methods which interacts with a task.
@@ -63,13 +65,17 @@ public class TaskService {
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-        if (!blackListService.isBlackListed(newBlackListInfoDTO)) {
+        if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListService.isBlackListed(newBlackListInfoDTO)) {
             Optional<Category> persistedCategory = findPersistedCategory(userInput);
             if (persistedCategory.isPresent()) {
-                Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory.get());
-                Task taskRepo = this.iTask.saveTask(task);
-                languageAnalysis(taskRepo);
-                return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo));
+               try {
+                   Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory.get());
+                   Task taskRepo = this.iTask.saveTask(task);
+                   languageAnalysis(taskRepo);
+                   return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo));
+               } catch (IllegalArgumentException e){
+                   return Optional.empty();
+               }
             }
         }
         return Optional.empty();
