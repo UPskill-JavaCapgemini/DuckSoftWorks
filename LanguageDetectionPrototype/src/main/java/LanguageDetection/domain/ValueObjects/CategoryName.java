@@ -13,7 +13,7 @@ import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialChar
 public class CategoryName implements ValueObject {
 
     /**
-     * getter for the category's description as a string
+     * getter for the category's name as a string
      */
     String categoryName;
 
