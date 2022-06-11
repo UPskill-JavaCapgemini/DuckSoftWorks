@@ -4,7 +4,9 @@ import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.IBlackListItem;
+import LanguageDetection.domain.entities.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
 
 @Service
 public class BlackListService {
@@ -27,17 +31,25 @@ public class BlackListService {
      * the creation with the method isBlackListed.
      * Then it saves it through the Interface IBlackListItem in the Data Base Repository.
      *
-     * @param inputUrlDTO the NewBlackListInfoDTO object that contains an Url as a String.
+     * @param blackListInputUrlDTO the NewBlackListInfoDTO object that contains an Url as a String.
      * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional.
      * @throws MalformedURLException
      */
 
-    public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO inputUrlDTO) throws MalformedURLException {
-        BlackListItem blackListItem = new BlackListItem(inputUrlDTO.getUrl());
-        if (iBlackListItem.isBlackListed(blackListItem)) {
-            return Optional.empty();
-        }BlackListItem savedBlackListItem = iBlackListItem.saveBlackListItem(blackListItem);
-        return Optional.of(assembler.toDTO(savedBlackListItem));
+    public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) throws MalformedURLException {
+        if (isUrlValid(blackListInputUrlDTO.getUrl()) && !isBlackListed(blackListInputUrlDTO)) {
+            BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
+            Optional<BlackListItem> persistedBlackListItem = iBlackListItem.findByBlackListItem(blackListItem);
+            if (persistedBlackListItem.isPresent()) {
+                try {
+                    BlackListItem blackListToRepo = iBlackListItem.saveBlackListItem(blackListItem);
+                    return Optional.of(assembler.toDTO(blackListToRepo));
+                } catch (IllegalArgumentException e){
+                    return Optional.empty();
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     /**

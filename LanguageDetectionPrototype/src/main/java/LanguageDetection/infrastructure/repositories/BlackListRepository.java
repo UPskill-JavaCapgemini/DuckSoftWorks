@@ -69,4 +69,15 @@ public class BlackListRepository implements IBlackListItem{
         Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         return blackListRepoUrl.isPresent();
     }
+
+    @Override
+    public Optional<BlackListItem> findByBlackListItem(BlackListItem blackListItem) {
+
+        BlackListUrl blackListUrl = blackListItem.getUrl();
+        Optional<BlackListItem> opBlackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
+        if (opBlackListRepoUrl.isPresent())
+            return opBlackListRepoUrl;
+        else
+            return Optional.empty();
+    }
 }
