@@ -34,7 +34,7 @@ public class CategoryService {
      * The method verifies if category already exists in the repository before
      * the creation with the method findCategoryById.
      *
-     * @param infoDTO the NewTaskInfoDTO object that contains a String that will be the CategoryName.
+     * @param infoDTO the NewCategoryInfoDTO object that contains a String that will be the CategoryName.
      * @return CategoryDTO assembled by CategoryDomainDTOAssembler wrapped by an Optional.
      */
 
@@ -50,7 +50,7 @@ public class CategoryService {
     }
 
     /**
-     * Method that allows the search for all the category in the repository
+     * Method that allows the search for all the categories in the repository
      * @return CategoryDTO list
      */
 

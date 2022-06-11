@@ -2,8 +2,6 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.DTO.NewTaskInfoDTO;
-import LanguageDetection.application.DTO.TaskStatusDTO;
 import LanguageDetection.application.services.CategoryService;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 
 @Controller
@@ -49,7 +45,7 @@ public class CategoryController {
      * of Category Service that returns a CategoryDTO with the info to be passed to the user in
      * the ResponseEntity object.
      *
-     * @param category receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
+     * @param category receives a JSON file that is automatically transformed into a NewCategoryInfoDTO object
      * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
      * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */

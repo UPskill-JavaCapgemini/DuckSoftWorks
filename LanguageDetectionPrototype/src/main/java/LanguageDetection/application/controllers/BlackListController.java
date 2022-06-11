@@ -24,12 +24,29 @@ public class BlackListController {
     @Autowired
     BlackListService blackListService;
 
+
+    /**
+     * @return all BlackListItems already created
+     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
+     */
+
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<Object> getAllBlackListItems() throws ParseException, IOException {
         List<BlackListDTO> blackListItems = blackListService.getAllBlackListItems();
         return new ResponseEntity<>(blackListItems.toString(), HttpStatus.OK);
     }
+    /**
+     * This method receives a NewCategoryInfoDTO object, that is automatically created from a
+     * JSON by SpringFrameWork. The information is extracted from it and passed to an instance
+     * of BlackListService that returns a BlackListDTO with the info to be passed to the user in
+     * the ResponseEntity object.
+     *
+     * @param url receives a JSON file that is automatically transformed into a NewBlackListInfoDTO object
+     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
+     */
 
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws MalformedURLException {
@@ -41,6 +58,12 @@ public class BlackListController {
         }
     }
 
+    /**
+     * @param blackListInfoDTO
+     * @return the deletion of a certain blackListItem that was previously created
+     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
+     */
     @DeleteMapping("")
     public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) throws ParseException, IOException {
         if (blackListService.deleteBlackListItem(blackListInfoDTO)) {
