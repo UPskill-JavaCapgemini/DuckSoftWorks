@@ -14,7 +14,7 @@ import java.util.Date;
 
 /**
  * This Class represents the tasks created to detect predominant language of text present in the given URL
- *  * @author DuckSoftWorks
+ * @author DuckSoftWorks
  */
 
 @EqualsAndHashCode

@@ -19,6 +19,12 @@ import java.net.MalformedURLException;
 //import static org.apache.commons.validator.routines.UrlValidator.ALLOW_ALL_SCHEMES;
 //import static org.apache.commons.validator.routines.UrlValidator.ALLOW_LOCAL_URLS;
 
+/**
+ * Class that that represents the Items that are going to be placed in a BlackList of not accepted Urls
+ * for the text language identification.
+ * The first url was inserted throught Bootstrap and the rest can be added by the Administrator.
+ */
+
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -26,9 +32,16 @@ import java.net.MalformedURLException;
 @Entity
 @Table
 public class BlackListItem implements AggregateRoot<BlackListUrl> {
+
+    /**
+     * Gets the Value Object BlackListUrl where the business validations are implemented.
+     */
     @EmbeddedId
     private BlackListUrl url;
 
+    /**
+     * Constructs a BlackListItem with an url as a String.
+     */
     public BlackListItem(String url) throws MalformedURLException {
         /*if (urlValidator(url)){
             throw new MalformedURLException();
@@ -45,6 +58,10 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
         return url.compareTo(otherURL);
     }
 
+    /**
+     * method that identify the BlackListUrl
+     * @return the url
+     */
     @JsonGetter
     public BlackListUrl identity() {
         return this.url;

@@ -11,7 +11,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Table;
 
 /**
- * Class that that will be represent a text.
+ * Class that that will represent a text.
  * The cateory of the text will be choosen by the user.
  */
 @NoArgsConstructor
@@ -45,7 +45,7 @@ public class Category implements Entity {
 
     /**
      * method that identify the category
-     * @return the description of the category
+     * @return the name of the category
      */
     @Override
     public Object identity() {
