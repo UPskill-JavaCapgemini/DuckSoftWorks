@@ -9,6 +9,7 @@ import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.ITask;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,10 @@ public class TaskService {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    TaskRepository taskRepository;
+    TaskRepository taskRepo;
+
+    @Autowired
+    ITask iTask;
 
     @Autowired
     BlackListService blackListService;
@@ -63,7 +67,7 @@ public class TaskService {
             Optional<Category> persistedCategory = findPersistedCategory(userInput);
             if (persistedCategory.isPresent()) {
                 Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory.get());
-                Task taskRepo = taskRepository.saveTask(task);
+                Task taskRepo = this.iTask.saveTask(task);
                 languageAnalysis(taskRepo);
                 return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo));
             }
@@ -76,8 +80,8 @@ public class TaskService {
      * Fetch all tasks found in database
      * @return List of TaskDTO with all information
      */
-    public List<TaskDTO> findAllTasks() {
-        List<Task> listAllTasks = taskRepository.findAllTasks();
+    public List<TaskDTO> getAllTasks() {
+        List<Task> listAllTasks = iTask.findAllTasks();
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
         for (Task task : listAllTasks) {
@@ -95,7 +99,7 @@ public class TaskService {
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
-        List<Task> listTasksByStatus = taskRepository.findByStatusContaining(status);
+        List<Task> listTasksByStatus = iTask.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -113,7 +117,7 @@ public class TaskService {
      */
     public List<TaskDTO> findByCategoryContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
-        List<Task> listTasksByCategory = taskRepository.findByCategoryContaining(category);
+        List<Task> listTasksByCategory = iTask.findByCategoryContaining(category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -136,7 +140,7 @@ public class TaskService {
         Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
-        List<Task> listTasksByStatusAndByCategory = taskRepository.findByStatusAndByCategoryContaining(status, category);
+        List<Task> listTasksByStatusAndByCategory = iTask.findByStatusAndByCategoryContaining(status, category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -165,7 +169,7 @@ public class TaskService {
     private void languageAnalysis(Task taskrepo) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
         analyzerService.setTaskRepo(taskrepo);
-        analyzerService.setTaskRepository(taskRepository);
+        analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(analyzerService);
@@ -198,7 +202,7 @@ public class TaskService {
             public void run() {
                 try {
                     Task canceledTask = new Task(taskrepo);
-                    taskRepository.saveTask(canceledTask);
+                    taskRepo.saveTask(canceledTask);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -214,10 +218,10 @@ public class TaskService {
      * @throws MalformedURLException thrown only if some sort of update done to URL on database.
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<Task> task = taskRepository.findById(id.getId());
+        Optional<Task> task = iTask.findById(id.getId());
         if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())) {
             Task canceledTask = new Task(task.get());
-            taskRepository.saveTask(canceledTask);
+            iTask.saveTask(canceledTask);
             return Optional.of(taskDomainDTOAssembler.toCompleteDTO(task.get()));
         }
         return Optional.empty();

@@ -16,15 +16,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.util.io.IOUtil;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -177,7 +173,7 @@ public class TaskServiceTest {
         when(taskDomainDTOAssembler.toCompleteDTO(task2)).thenReturn(taskDTO2);
 
         //Assert
-        Assert.assertEquals(taskService.findAllTasks(), List.of(taskDTO1, taskDTO2));
+        Assert.assertEquals(taskService.getAllTasks(), List.of(taskDTO1, taskDTO2));
     }
 
     @org.junit.jupiter.api.Test

@@ -66,7 +66,7 @@ public class TaskController {
         List<TaskDTO> tasks;
 
         if (status == null && categoryName == null)
-            tasks = service.findAllTasks();
+            tasks = service.getAllTasks();
         else if (status != null && categoryName == null){
             tasks = service.findByStatusContaining(status);}
         else if (status == null){
