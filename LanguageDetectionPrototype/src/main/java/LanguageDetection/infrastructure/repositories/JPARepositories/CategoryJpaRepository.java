@@ -8,11 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface CategoryJpaRepository extends CrudRepository<Category,String> {
-
-    @Modifying
-    @Query(value = "DELETE FROM CATEGORY c WHERE c.CATEGORY_NAME = ?1", nativeQuery = true)
-    void deleteCategory(CategoryName categoryName);
+public interface CategoryJpaRepository extends CrudRepository<Category, String> {
 
     Optional<Category> findByCategoryName(CategoryName categoryName);
 }

@@ -89,7 +89,7 @@ public class CategoryRepository implements ICategory {
 
         Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryName(category.getCategoryName());
         if (!isBaseCategory(categoryRepo)) {
-            categoryJpaRepository.deleteCategory(category.getCategoryName());
+            categoryJpaRepository.delete(categoryRepo.get());
             return true;
         }
         return false;
