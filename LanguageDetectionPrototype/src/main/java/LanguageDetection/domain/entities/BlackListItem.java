@@ -22,7 +22,7 @@ import java.net.MalformedURLException;
 /**
  * Class that that represents the Items that are going to be placed in a BlackList of not accepted Urls
  * for the text language identification.
- * The first url was inserted throught Bootstrap and the rest can be added by the Administrator.
+ * The first url was inserted through Bootstrap and the rest can be added by the Administrator.
  */
 
 @Getter

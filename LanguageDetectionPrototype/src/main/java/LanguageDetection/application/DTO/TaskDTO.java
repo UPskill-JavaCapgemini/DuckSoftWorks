@@ -32,13 +32,13 @@ public class TaskDTO {
 
     @Override
     public String toString() {
-        return "TaskDTO{" +
+        return "Task :" +
                 "date=" + date +
                 ", inputUrl=" + inputUrl +
                 ", language=" + language +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category +
-                '}';
+                '\n';
     }
 }

@@ -52,7 +52,7 @@ public class BlackListController {
     public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws MalformedURLException {
         Optional<BlackListDTO> blackListDTO = blackListService.createAndSaveBlackListItem(url);
         if (blackListDTO.isPresent()){
-            return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
+            return new ResponseEntity<>(blackListDTO.get().toString(), HttpStatus.CREATED);
         }else {
             return new ResponseEntity<>("Unable to create, URL already exits in the Blacklist or is invalid", HttpStatus.BAD_REQUEST);
         }

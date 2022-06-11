@@ -9,7 +9,6 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString
 public class BlackListDTO {
 
     @Getter
