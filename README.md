@@ -38,6 +38,7 @@ When done, it will set the status as finished.
 | Client | Capgemini | 
 | Product Owner | Professor Paulo Proença |
 | Srum Master | Inês Clavel |
+| Reository Team Manager | Daniel Machado |
 
 
 ### Themes Studied
