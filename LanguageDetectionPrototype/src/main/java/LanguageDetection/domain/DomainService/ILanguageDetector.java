@@ -8,7 +8,4 @@ import java.io.IOException;
 public interface ILanguageDetector {
 
     String analyze(String query) throws ParseException, IOException;
-
-    LanguageAnalyzer createAnalizer() throws IOException;
-
 }

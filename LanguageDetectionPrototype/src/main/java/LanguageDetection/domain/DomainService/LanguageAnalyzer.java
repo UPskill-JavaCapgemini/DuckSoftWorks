@@ -70,11 +70,6 @@ public class LanguageAnalyzer implements ILanguageDetector {
         return searcher.doc(hits[0].doc).get("language");
     }
 
-    @Override
-    public LanguageAnalyzer createAnalizer() throws IOException {
-        return new LanguageAnalyzer();
-    }
-
     /**
      * Cleans up the string received via input.
      * Strips the string of multiple whitespaces through the use of a regex.
