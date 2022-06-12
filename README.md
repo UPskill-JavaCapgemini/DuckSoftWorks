@@ -64,7 +64,16 @@ When done, it will set the status as finished.
 ## Tasks Division
 The tasks were splited as equally as possible throughout all the team members.
 
-It is descriminted in the Anlysis Report.
+It is descriminted in the Tickets Chart.
+
+## Things to take in consideration
+We are using a Remote Oracle Database provided by Professor Nuno Castro.
+Please be aware that it might be unavaible during tests. 
+Kindly understand the situation as unfortunately this is not under our control.
+
+Also take in consideration that, our database is reseted everytime the code runs for the first time in that machine.
+Therefore, some conflicts may happen if more than one person runs the program during the performance of each other.
+
 
 ## Future prospects and possibilities
-The project is though with scalability in a way that allows to change from Lucno to other API in a easy way.
+The project is though with scalability in a way that allows to change from Lucene to other API in a easy way.
