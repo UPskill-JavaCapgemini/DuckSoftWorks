@@ -40,16 +40,16 @@ class BlackListServiceTest {
     }
 
     @Test
-    void shouldCreateAndSaveABlackListItem() throws MalformedURLException {
+    void shouldCreateAndSaveABlackListItemWithValidURL() throws MalformedURLException {
         String Url = "https://stackoverflow.com/first";
         BlackListItem item1 = new BlackListItem(Url);
         Mockito.when(iBlackListItem.isBlackListed(item1)).thenReturn(false);
         Mockito.when(iBlackListItem.saveBlackListItem(item1)).thenReturn(item1);
         Mockito.when(assembler.toDTO(Mockito.any())).thenCallRealMethod();
-        when(iBlackListItem.findByBlackListItem(item1)).thenReturn(Optional.of(item1));
+        when(iBlackListItem.findByBlackListItem(item1)).thenReturn(Optional.empty());
 
         Optional<BlackListDTO> optional =  blackListService.createAndSaveBlackListItem(new NewBlackListInfoDTO(Url));
-        Assert.assertTrue(!optional.isEmpty());
+        Assert.assertTrue(optional.isPresent());
         Assert.assertTrue(optional.get().getUrl().toString().equals(Url));
     }
 
