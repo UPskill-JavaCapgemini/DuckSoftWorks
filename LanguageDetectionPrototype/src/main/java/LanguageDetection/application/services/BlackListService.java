@@ -40,7 +40,7 @@ public class BlackListService {
         if (isUrlValid(blackListInputUrlDTO.getUrl()) && !isBlackListed(blackListInputUrlDTO)) {
             BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
             Optional<BlackListItem> persistedBlackListItem = iBlackListItem.findByBlackListItem(blackListItem);
-            if (persistedBlackListItem.isPresent()) {
+            if (persistedBlackListItem.isEmpty()) {
                 try {
                     BlackListItem blackListToRepo = iBlackListItem.saveBlackListItem(blackListItem);
                     return Optional.of(assembler.toDTO(blackListToRepo));
