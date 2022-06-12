@@ -2,7 +2,6 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.BlackListService;
 import org.apache.lucene.queryparser.classic.ParseException;
 
@@ -13,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RestController
@@ -23,21 +24,47 @@ public class BlackListController {
     @Autowired
     BlackListService blackListService;
 
+
+    /**
+     * @return all BlackListItems already created
+     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
+     */
+
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> findAll() throws ParseException, IOException {
-        List<BlackListDTO> blackListItems = blackListService.findAll();
-       return new ResponseEntity<>(blackListItems.toString(),HttpStatus.OK);
+    public ResponseEntity<Object> getAllBlackListItems() throws ParseException, IOException {
+        List<BlackListDTO> blackListItems = blackListService.getAllBlackListItems();
+        return new ResponseEntity<>(blackListItems.toString(), HttpStatus.OK);
     }
+    /**
+     * This method receives a NewCategoryInfoDTO object, that is automatically created from a
+     * JSON by SpringFrameWork. The information is extracted from it and passed to an instance
+     * of BlackListService that returns a BlackListDTO with the info to be passed to the user in
+     * the ResponseEntity object.
+     *
+     * @param url receives a JSON file that is automatically transformed into a NewBlackListInfoDTO object
+     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
+     */
 
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws ParseException, IOException {
-        BlackListDTO blackListDTO = blackListService.createAndSaveBlackListItem(url);
-        return new ResponseEntity<>(blackListDTO.toString(), HttpStatus.CREATED);
+    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws MalformedURLException {
+        Optional<BlackListDTO> blackListDTO = blackListService.createAndSaveBlackListItem(url);
+        if (blackListDTO.isPresent()){
+            return new ResponseEntity<>(blackListDTO.get().toString(), HttpStatus.CREATED);
+        }else {
+            return new ResponseEntity<>("Unable to create, URL already exits in the Blacklist or is invalid", HttpStatus.BAD_REQUEST);
+        }
     }
 
-
-    @DeleteMapping("/Delete")
+    /**
+     * @param blackListInfoDTO
+     * @return the deletion of a certain blackListItem that was previously created
+     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
+     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
+     */
+    @DeleteMapping("")
     public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) throws ParseException, IOException {
         if (blackListService.deleteBlackListItem(blackListInfoDTO)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);

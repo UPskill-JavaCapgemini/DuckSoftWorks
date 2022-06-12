@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
 
 
 @Embeddable
@@ -22,7 +23,7 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
         if(StringUtils.endsWithAny(url.toLowerCase(),".txt")) {
             this.url = new URL(url);
         } else {
-            throw new IllegalArgumentException("The URL doesn't contain a txt file");
+            throw new IllegalArgumentException("The URL doesn't contain a txt file or it´s not valid");
         }
     }
 

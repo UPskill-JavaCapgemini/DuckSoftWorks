@@ -14,7 +14,7 @@ import java.util.Date;
 
 /**
  * This Class represents the tasks created to detect predominant language of text present in the given URL
- *  * @author DuckSoftWorks
+ * @author DuckSoftWorks
  */
 
 @EqualsAndHashCode
@@ -24,7 +24,7 @@ import java.util.Date;
 @Table
 public class Task implements AggregateRoot<Long> {
 
-
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
@@ -40,7 +40,7 @@ public class Task implements AggregateRoot<Long> {
      */
     @Getter
     @Embedded
-    InputUrl url;
+    InputUrl inputUrl;
     /**
      * The language detected on the text
      */
@@ -67,21 +67,53 @@ public class Task implements AggregateRoot<Long> {
     Category category;
 
     /**
-     * Task's constructor that receives the text and the language detected
+     * Constructor that receives all the information necessary to create a Task from user input
      *
-     * @param url URL of the text to be analyzed
+     * @param inputUrl URL of the text to be analyzed
      * @param timeOut time limit to conclude the task
      * @param category chosen by the client for a type of text
+     * @throws MalformedURLException thrown if an url from input is invalid
      */
 
-    public Task(String url, int timeOut, Category category) throws MalformedURLException {
+    public Task(String inputUrl, int timeOut, Category category) throws MalformedURLException {
         this.id = null;
         this.date = null;
-        this.url = new InputUrl(url);
+        this.inputUrl = new InputUrl(inputUrl);
         this.language = null;
         this.currentStatus = CurrentStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
         this.category = category;
+    }
+
+    /**
+     * Constructor that handles the Task creation to be saved after a language analysis is concluded.
+     * @param task that that was already created and needs to be updated
+     * @param language result of a language analysis
+     * @throws MalformedURLException thrown if some sort of update done in database on url
+     */
+    public Task(Task task,String language) throws MalformedURLException {
+        this.id = task.identity();
+        this.date = task.getDate();
+        this.inputUrl = task.getInputUrl();
+        this.language = Task.Language.valueOf(language);
+        this.currentStatus = CurrentStatus.Concluded;
+        this.timeOut = task.getTimeOut();
+        this.category = task.getCategory();
+    }
+
+    /**
+     * Constructor that handles the Task creation to be saved if a task is concluded by timeout or from user input
+     * @param task task that was already created and needs to be updated
+     * @throws MalformedURLException thrown if some sort of update done in database on url
+     */
+    public Task(Task task) throws MalformedURLException {
+        this.id = task.identity();
+        this.date = task.getDate();
+        this.inputUrl = task.getInputUrl();
+        this.language = null;
+        this.currentStatus = CurrentStatus.Canceled;
+        this.timeOut = task.getTimeOut();
+        this.category = task.getCategory();
     }
 
 
@@ -109,12 +141,18 @@ public class Task implements AggregateRoot<Long> {
         return AggregateRoot.super.hasIdentity(id);
     }
 
+    /**
+     * Possibilities of what can be the Task language
+     */
     public enum Language {
         ENGLISH,
         PORTUGUESE,
         SPANISH
     }
 
+    /**
+     * Possibilities of what can be the Task status
+     */
     @Getter
     public enum CurrentStatus {
         Concluded,
@@ -127,7 +165,7 @@ public class Task implements AggregateRoot<Long> {
         return "Task: " +
                 "id=" + id +
                 ", date=" + date +
-                ", url=" + url +
+                ", url=" + inputUrl +
                 ", language=" + language +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +

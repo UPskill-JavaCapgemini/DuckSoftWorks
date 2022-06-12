@@ -1,19 +1,44 @@
 package LanguageDetection.application.DTO;
 
+import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.ValueObjects.TimeOut;
+import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
-import lombok.*;
-import org.springframework.hateoas.RepresentationModel;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+import java.util.Date;
 
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
-public class TaskDTO extends RepresentationModel<TaskDTO> {
-
-    @Getter
+@EqualsAndHashCode
+public class TaskDTO {
+    Long id;
+    Date date;
+    InputUrl inputUrl;
     Task.Language language;
+    Task.CurrentStatus currentStatus;
+    TimeOut timeOut;
+    Category category;
 
-    public TaskDTO(Task language) {
-        this.language = language.getLanguage();
+    public TaskDTO(Long id, Date date, InputUrl inputUrl, Task.Language language, Task.CurrentStatus currentStatus, TimeOut timeOut, Category category) {
+        this.id = id;
+        this.date = date;
+        this.inputUrl = inputUrl;
+        this.language = language;
+        this.currentStatus = currentStatus;
+        this.timeOut = timeOut;
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Task :" +
+                "date=" + date +
+                ", inputUrl=" + inputUrl +
+                ", language=" + language +
+                ", currentStatus=" + currentStatus +
+                ", timeOut=" + timeOut +
+                ", category=" + category +
+                '\n';
     }
 }

@@ -1,9 +1,16 @@
 package LanguageDetection.domain.util;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class BusinessValidation {
+
+    private static String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
+    private static String onlySpecialCharactersRegex = "^\\W+$";
+
     private BusinessValidation(){
         // ensure utility
     }
@@ -38,13 +45,28 @@ public final class BusinessValidation {
             throw new IllegalArgumentException(msg);
     }
 
-    private static String onlyNumbersRegex = "-?\\d+(\\.\\d+)?";
 
     public static boolean isOnlyNumbers(String arg) {
         if (arg.matches(onlyNumbersRegex)){
             return true;
         }
         return false;
+    }
+
+    public static boolean isOnlySpecialCharacters(String arg) {
+        if (arg.matches(onlySpecialCharactersRegex)){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isUrlValid(String url) {
+        try {
+            URL obj = new URL(url);
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
     }
 
 

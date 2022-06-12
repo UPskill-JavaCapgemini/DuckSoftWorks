@@ -7,12 +7,13 @@ import LanguageDetection.application.services.BlackListService;
 import LanguageDetection.application.services.CategoryService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.net.MalformedURLException;
 
-@Service
+@Component
 public class Bootstrap implements InitializingBean {
 
     @Autowired
@@ -36,13 +37,13 @@ public class Bootstrap implements InitializingBean {
     private void createBaseCategories() throws MalformedURLException {
 
         NewCategoryInfoDTO economics = new NewCategoryInfoDTO("Economics");
-        NewCategoryInfoDTO philosohy = new NewCategoryInfoDTO("Philosohy");
+        NewCategoryInfoDTO philosophy = new NewCategoryInfoDTO("Philosophy");
         NewCategoryInfoDTO mechanics = new NewCategoryInfoDTO("Mechanics");
         NewCategoryInfoDTO nutrition = new NewCategoryInfoDTO("Nutrition");
         NewCategoryInfoDTO sports = new NewCategoryInfoDTO("Sports");
 
         categoryService.createAndSaveCategory(economics);
-        categoryService.createAndSaveCategory(philosohy);
+        categoryService.createAndSaveCategory(philosophy);
         categoryService.createAndSaveCategory(mechanics);
         categoryService.createAndSaveCategory(nutrition);
         categoryService.createAndSaveCategory(sports);

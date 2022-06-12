@@ -12,6 +12,9 @@ import java.net.URL;
 @Table
 public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
 
+    /**
+     * getter for the BlackList url as a string
+     */
     private final URL blackListUrl;
 
     /* For ORM purposes */
@@ -19,6 +22,10 @@ public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
         this.blackListUrl = null;
     }
 
+    /**
+     * constructor for the BlackListUrl with validation
+     * it prevents the BlackListUrl to be created with severeal rules provided by the java URL Class.
+     */
     public BlackListUrl(String blackListUrl) throws MalformedURLException {
 
         this.blackListUrl = new URL(blackListUrl);

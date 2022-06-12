@@ -1,49 +1,105 @@
 package LanguageDetection.application.services;
 
+import LanguageDetection.application.DTO.CategoryDTO;
+import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
+import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.ICategory;
+import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import java.net.MalformedURLException;
+import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+
 
 class CategoryServiceTest {
 
-    @Test
-    void createAndSaveCategory() {
-        Category category = new Category("Maths");
+    @Mock
+    private ICategory iCategory;
 
-        assertTrue();
+    @Mock
+    CategoryDomainDTOAssembler assembler;
+
+
+    @InjectMocks
+    private CategoryService categoryService;
+
+
+    @BeforeEach
+    public void init() {
+        MockitoAnnotations.openMocks(this);
     }
 
 
-    /*// Arrange
-    when(country.getCode()).thenReturn("PT");
-    when(country.getName()).thenReturn("Portugal");
+    @Test
+    void shouldCreateAndSaveCategory(){
+        String catName = "History";
+        Category item1 = new Category(catName);
 
-    when( countryFactory.createCountry("PT", "Portugal")).thenReturn(country);
+        Mockito.when(iCategory.findCategoryById(item1)).thenReturn(any());
+        Mockito.when(iCategory.saveCategory(item1)).thenReturn(item1);
+        Mockito.when(assembler.toDTO(item1)).thenReturn(new CategoryDTO(item1));
 
-    when(countryRepository.save( country )).thenReturn(country);
-
-    // Act
-    Country country = countryService.createAndSaveCountry("PT", "Portugal");
-
-    String code = country.getCode();
-    String name = country.getName();
-
-    // Assert
-    assertEquals(code, "PT");
-    assertEquals(name, "Portugal");
-}*/
-
-
-   /* @Test
-    void findAll() {
+        Optional<CategoryDTO> optional =  categoryService.createAndSaveCategory(new NewCategoryInfoDTO(catName));
+        Assert.assertTrue(!optional.isEmpty());
+        Assert.assertTrue(optional.get().getCategory().toString().equals(catName));
     }
 
     @Test
-    void deleteCategory() {
+    void shouldSuccessefullyDeleteACategory() {
+        String catName = "History";
+        Category item1 = new Category(catName);
+        NewCategoryInfoDTO newCategoryInfoDTOitem1 = new NewCategoryInfoDTO(catName);
+
+
+
+        Mockito.when(iCategory.deleteByName(any(Category.class))).thenReturn(true);
+
+        Assert.assertTrue(categoryService.deleteCategory(newCategoryInfoDTOitem1));
     }
 
     @Test
-    void findById() {
-    }*/
+    void getAllCategoryItemsWith2CreatedAssertingTrue() throws MalformedURLException {
+        Category item1 = new Category("Arts");
+        Category item2 = new Category("Science");
+
+        Mockito.when(iCategory.findAll()).thenReturn(List.of(item1,item2));
+        Mockito.when(assembler.toDTO(item1)).thenReturn(new CategoryDTO(item1));
+        Mockito.when(assembler.toDTO(item2)).thenReturn(new CategoryDTO(item2));
+
+        List<CategoryDTO> result = categoryService.getAllCategory();
+
+        Assert.assertEquals(result.size(),2);
+    }
+
+    @Test
+    void getAllCategoryItemsWith1CreatedAssertingFalse() throws MalformedURLException {
+        Category item1 = new Category("Arts");
+
+        Mockito.when(iCategory.findAll()).thenReturn(List.of(item1));
+        Mockito.when(assembler.toDTO(item1)).thenReturn(new CategoryDTO(item1));
+
+        List<CategoryDTO> result = categoryService.getAllCategory();
+
+        Assert.assertNotEquals(result.size(),2);
+    }
+
+    @Test
+    void categoryExistsfindByCategoryId(){
+        Category item1 = new Category("History");
+        Optional<Category> op = Optional.of(item1);
+
+        Mockito.when(iCategory.findCategoryById(any())).thenReturn(op);
+
+        Assert.assertSame(categoryService.findById(item1), op);
+
+    }
+
 }
