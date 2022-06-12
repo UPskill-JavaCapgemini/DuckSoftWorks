@@ -1,2 +1,0 @@
-# DuckSoftWorks
-Duck Squad repository
