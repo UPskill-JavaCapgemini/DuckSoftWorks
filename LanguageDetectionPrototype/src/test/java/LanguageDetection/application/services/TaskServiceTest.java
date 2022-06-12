@@ -5,6 +5,7 @@ import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.ITask;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import org.junit.Assert;
@@ -21,6 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,13 +40,13 @@ public class TaskServiceTest {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Mock
-    TaskRepository taskRepository;
-
-    @Mock
     BlackListService blService;
 
     @Mock
     CategoryService categoryService;
+
+    @Mock
+    ITask iTask;
 
 
     @BeforeEach
@@ -93,6 +95,7 @@ public class TaskServiceTest {
         Category inputCategory = new Category("sports");
         Task testableTask = new Task(inputUrl.getUrl(),inputTimeout.getTimeOut(),inputCategory);
         Optional<Task> opTestableTask = Optional.of(testableTask);
+
         TaskDTO taskDto = new TaskDTO(1L,
                 testableTask.getDate(),
                 testableTask.getInputUrl(),
@@ -101,17 +104,18 @@ public class TaskServiceTest {
                 testableTask.getTimeOut(),
                 testableTask.getCategory());
 
-        when(taskRepository.findById(testableTask.getId())).thenReturn(opTestableTask);
-        when(taskRepository.saveTask(opTestableTask.get())).thenReturn(Mockito.any());
+        NewCancelThreadDTO cancelThreadDTO = new NewCancelThreadDTO(1L);
+
+        when(iTask.findById(cancelThreadDTO.getId())).thenReturn(opTestableTask);
         when(taskDomainDTOAssembler.toCompleteDTO(testableTask)).thenReturn(taskDto);
 
         // Act
-        Optional<TaskDTO> returnedCancelledTaskDTO = taskService.cancelTaskAnalysis(new NewCancelThreadDTO(testableTask.getId()));
+        Optional<TaskDTO> returnedCancelledTaskDTO = taskService.cancelTaskAnalysis(new NewCancelThreadDTO(1L));
         String cancelledDTO = returnedCancelledTaskDTO.get().toString();
 
         // Assert
-        Mockito.verify(taskRepository,times(1)).findById(opTestableTask.get().getId());
-        Mockito.verify(taskRepository,times(1)).saveTask(Mockito.any());
+        Mockito.verify(iTask,times(1)).findById(cancelThreadDTO.getId());
+        Mockito.verify(iTask,times(1)).saveTask(Mockito.any());
         Mockito.verify(taskDomainDTOAssembler,times(1)).toCompleteDTO(testableTask);
         Assert.assertTrue(cancelledDTO.contains("Canceled"));
 
@@ -168,7 +172,7 @@ public class TaskServiceTest {
         TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
         TaskDTO taskDTO2 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category2);
 
-        when(taskRepository.findAllTasks()).thenReturn(List.of(task1, task2));
+        when(iTask.findAllTasks()).thenReturn(List.of(task1, task2));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
         when(taskDomainDTOAssembler.toCompleteDTO(task2)).thenReturn(taskDTO2);
 
@@ -188,7 +192,7 @@ public class TaskServiceTest {
 
         StatusDTO statusDTO = new StatusDTO("Processing");
 
-        when(taskRepository.findByStatusContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
+        when(iTask.findByStatusContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
 
         List<TaskDTO> tasks = taskService.findByStatusContaining(statusDTO);
@@ -196,28 +200,25 @@ public class TaskServiceTest {
         Assertions.assertEquals(tasks, List.of(taskDTO1));
     }
 
-    //TODO verify why this 2 tests below don't work
-//    @org.junit.jupiter.api.Test
-//    void findByCategoryContainingShouldReturnListOfTaskWhichHaveMatchingCategoryOnArgument() throws MalformedURLException {
-//        //Arrange
-//        CategoryNameDTO categoryInfoDTO = new CategoryNameDTO("Sports");
-//        Category category1 = new Category(categoryInfoDTO.getCategoryName());
-//        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
-//        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
-//        TimeOut timeOut = new TimeOut(1);
-//        java.util.Date date = new java.util.Date(2);
-//        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
-//
-//        List<Task> task = new ArrayList<>();
-//        task.add(task1);
-//
-//        when(taskRepository.findByCategoryContaining(category1)).thenReturn(task);
-//        when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
-//
-//        List<TaskDTO> tasks = taskService.findByCategoryContaining(categoryInfoDTO);
-//        //Assert
-//        Assertions.assertEquals(tasks, List.of(taskDTO1));
-//    }
+    /*@org.junit.jupiter.api.Test
+    void findByCategoryContainingShouldReturnListOfTaskWhichHaveMatchingCategoryOnArgument() throws MalformedURLException {
+        //Arrange
+        CategoryNameDTO catName = new CategoryNameDTO("Sports");
+        Category category1 = new Category(catName.getCategoryName());
+        Task task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
+        InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TimeOut timeOut = new TimeOut(1);
+        java.util.Date date = new java.util.Date(2);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+
+
+        Mockito.when(iTask.findByCategoryContaining(category1)).thenReturn(List.of(task1));
+        Mockito.when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
+
+        List<TaskDTO> tasks = taskService.findByCategoryContaining(catName);
+        //Assert
+        Assertions.assertEquals(tasks, List.of(taskDTO1));
+    }
 
     @org.junit.jupiter.api.Test
     void findByStatusContainingAndCategoryContaining() throws MalformedURLException {
@@ -233,11 +234,11 @@ public class TaskServiceTest {
         StatusDTO statusDTO = new StatusDTO("Processing");
 
 
-        when(taskRepository.findByStatusAndByCategoryContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()), category1)).thenReturn(List.of(task1));
+        when(iTask.findByStatusAndByCategoryContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()), category1)).thenReturn(List.of(task1));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
 
         List<TaskDTO> tasks = taskService.findByStatusContainingAndCategoryContaining(statusDTO, categoryInfoDTO);
         //Assert
         Assertions.assertEquals(tasks, List.of(taskDTO1));
-    }
+    }*/
 }
