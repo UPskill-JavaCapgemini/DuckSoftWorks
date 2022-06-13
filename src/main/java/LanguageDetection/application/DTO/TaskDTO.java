@@ -16,11 +16,11 @@ public class TaskDTO {
     Date date;
     InputUrl inputUrl;
     Task.Language language;
-    Task.CurrentStatus currentStatus;
+    Task.TaskStatus currentStatus;
     TimeOut timeOut;
     Category category;
 
-    public TaskDTO(Long id, Date date, InputUrl inputUrl, Task.Language language, Task.CurrentStatus currentStatus, TimeOut timeOut, Category category) {
+    public TaskDTO(Long id, Date date, InputUrl inputUrl, Task.Language language, Task.TaskStatus currentStatus, TimeOut timeOut, Category category) {
         this.id = id;
         this.date = date;
         this.inputUrl = inputUrl;

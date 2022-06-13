@@ -5,6 +5,7 @@ import LanguageDetection.domain.shared.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EmbeddedId;
@@ -14,8 +15,7 @@ import javax.persistence.Table;
  * Class that that will represent a text.
  * The cateory of the text will be choosen by the user.
  */
-@NoArgsConstructor
-@Repository
+@Component
 @javax.persistence.Entity
 @Table
 public class Category implements Entity {
@@ -29,6 +29,8 @@ public class Category implements Entity {
     CategoryName categoryName;
 
 
+    protected Category() {
+    }
 
     /**
      * Constructs a new category.

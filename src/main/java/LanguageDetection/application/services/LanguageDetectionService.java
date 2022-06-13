@@ -20,7 +20,7 @@ import java.util.concurrent.Callable;
 public class LanguageDetectionService implements Callable<String> {
     @Getter
     @Setter
-    private Task taskRepo;
+    private Task task;
 
     @Setter
     TaskRepository taskRepository;
@@ -28,12 +28,12 @@ public class LanguageDetectionService implements Callable<String> {
     @Override
     public String call() throws Exception {
         ILanguageDetector lang = new LanguageAnalyzer();
-        String language = lang.analyze(taskRepo.getInputUrl().getUrl());
-        Optional<Task> checkTask = taskRepository.findById(taskRepo.getId());
+        String language = lang.analyze(task.getInputUrl().getUrl());
+        Optional<Task> currentTask = taskRepository.findById(task.getId());
 
-        if (checkTask.isPresent() && checkTask.get().getCurrentStatus().toString().equals("Processing")) {
-            Task taskCompleted = new Task(taskRepo, language);
-            taskRepository.saveTask(taskCompleted);
+        if (currentTask.isPresent() && currentTask.get().isStatusProcessing()) {
+            currentTask.get().updateLanguage(language);
+            taskRepository.saveTask(currentTask.get());
         }
 
         return language;

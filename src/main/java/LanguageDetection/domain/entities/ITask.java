@@ -11,11 +11,11 @@ public interface ITask {
 
     List<Task> findAllTasks();
 
-    List<Task> findByStatusContaining(Task.CurrentStatus st);
+    List<Task> findByStatusContaining(Task.TaskStatus st);
 
     List<Task> findByCategoryContaining(Category category);
 
-    List<Task> findByStatusAndByCategoryContaining(Task.CurrentStatus status, Category category);
+    List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category);
 
 //    boolean deletedById(Long id);
 

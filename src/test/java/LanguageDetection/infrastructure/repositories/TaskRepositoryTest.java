@@ -54,7 +54,7 @@ class TaskRepositoryTest {
 
     @Test
     void findByStatusContainingShouldReturnListWithTasksThatMatchStatus() throws MalformedURLException {
-        Task.CurrentStatus status = Task.CurrentStatus.Processing;
+        Task.TaskStatus status = Task.TaskStatus.Processing;
         when(jpaRepository.findByCurrentStatusLike(status)).thenReturn(List.of(task1, task2));
 
         //Assert
@@ -70,8 +70,8 @@ class TaskRepositoryTest {
 
     @Test
     void findByStatusAndByCategoryContainingShouldReturnListOfTaskWithCategoryAndStatusThatMatch() {
-        when(repository.findByStatusAndByCategoryContaining(Task.CurrentStatus.Processing, category1)).thenReturn(List.of(task1));
+        when(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1)).thenReturn(List.of(task1));
 
-        Assertions.assertEquals(repository.findByStatusAndByCategoryContaining(Task.CurrentStatus.Processing, category1), List.of(task1));
+        Assertions.assertEquals(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1), List.of(task1));
     }
 }

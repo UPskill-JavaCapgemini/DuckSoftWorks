@@ -98,7 +98,7 @@ public class TaskServiceTest {
                 testableTask.getDate(),
                 testableTask.getInputUrl(),
                 testableTask.getLanguage(),
-                Task.CurrentStatus.Canceled,
+                Task.TaskStatus.Canceled,
                 testableTask.getTimeOut(),
                 testableTask.getCategory());
 
@@ -145,6 +145,8 @@ public class TaskServiceTest {
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
 
+
+    //TODO This is passing blacklisted validation. fix
     @org.junit.jupiter.api.Test
     void createAndSaveTaskShouldReturnOptionalEmptyIfCategoryDoesNotExistAndUrlIsBlackListed() throws IOException {
         NewTaskInfoDTO infoDTO = new NewTaskInfoDTO("http://www.textexample.com/text/text.txt", "Sports", 2);
@@ -157,6 +159,8 @@ public class TaskServiceTest {
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
 
+    //TODO: create new test to ensure that default category is being created in the task
+
     @org.junit.jupiter.api.Test
     void findAllTasksShouldReturnListOfAllTasks() throws MalformedURLException {
         //Arrange
@@ -167,8 +171,8 @@ public class TaskServiceTest {
         InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
         TimeOut timeOut = new TimeOut(1);
         java.util.Date date = new java.util.Date(2);
-        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
-        TaskDTO taskDTO2 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category2);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category1);
+        TaskDTO taskDTO2 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category2);
 
         when(iTask.findAllTasks()).thenReturn(List.of(task1, task2));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
@@ -186,11 +190,11 @@ public class TaskServiceTest {
         InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
         TimeOut timeOut = new TimeOut(1);
         java.util.Date date = new java.util.Date(2);
-        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category1);
 
         StatusDTO statusDTO = new StatusDTO("Processing");
 
-        when(iTask.findByStatusContaining(Task.CurrentStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
+        when(iTask.findByStatusContaining(Task.TaskStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
 
         List<TaskDTO> tasks = taskService.findByStatusContaining(statusDTO);
@@ -207,7 +211,7 @@ public class TaskServiceTest {
         InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
         TimeOut timeOut = new TimeOut(1);
         java.util.Date date = new java.util.Date(2);
-        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category1);
 
         Mockito.when(iTask.findByCategoryContaining(Mockito.any())).thenReturn(List.of(task1));
         Mockito.when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
@@ -226,7 +230,7 @@ public class TaskServiceTest {
         InputUrl url1 = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
         TimeOut timeOut = new TimeOut(1);
         java.util.Date date = new java.util.Date(2);
-        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.CurrentStatus.Processing, timeOut, category1);
+        TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category1);
 
         StatusDTO statusDTO = new StatusDTO("Processing");
 
