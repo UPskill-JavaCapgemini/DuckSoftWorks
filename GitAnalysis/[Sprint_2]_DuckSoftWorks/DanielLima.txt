@@ -1,0 +1,535 @@
+commit c0b4b2dbb8cda99e453100dfe4c2942fd55de56c
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sat Jun 11 19:10:24 2022 +0100
+
+    Refactored createAndSaveBlackListItem()
+    
+    Refactored domain entity and repository interface to reflect this change. Implemented findByBlackListItem() in BlackListRepository for it to be used by CreateAndSaveBlackListItem()
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/IBlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	LanguageDetectionPrototype/template_rest_application_ddd.iml
+
+commit f41a0e123d77111293706a1bf913f80e33fc96af
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sat Jun 11 19:08:05 2022 +0100
+
+    Refactored deleteByName() in CategoryRepository
+    
+    Changed CategoryController and CategoryService accordingly.
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit b36a7bf42a4cae43ffbc958e0d595923932e36bf
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 21:24:28 2022 +0100
+
+    Added shouldThrowExceptionWhenBelowAcceptedInterval() to TimeOutTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java
+
+commit c844ae3723679789bb561b3263b43ef875f07ee1
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 21:17:05 2022 +0100
+
+    Created TimeOutTest. Added shouldCreateATimeOutWithValidTimeOut().
+
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java
+
+commit df684df3c32d45f596939ebd53ebbdb570217725
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 21:04:46 2022 +0100
+
+    Added  shouldCreateInputUrlWithValidLocalUrl() to InputUrlTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit 875e422b39ecaaafecfdac4346197bac299a3a02
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 21:00:33 2022 +0100
+
+    Refactored asserts in test methods. Added shouldThrowExceptionWithNoProtocol() to InputUrlTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit 9455d7a47d9154713b5fa60d23ad28a168a2858a
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 20:54:24 2022 +0100
+
+    Added shouldThrowExceptionWithNumberOnlyUrl() to InputUrlTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit 24e1f8421ec054a194baa75ca15879e1e2f1b63f
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 20:50:53 2022 +0100
+
+    Added shouldThrowExceptionWithSymbolOnlyUrl() to InputUrlTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit bb17b4d13150579fd808137751a764b46e795054
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 20:48:41 2022 +0100
+
+    Added shouldThrowExceptionWithSpacesOnlyUrl() to InputUrlTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit 9b7cb663bddbc53df91cafe8074acfd4e376d6e1
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 20:40:51 2022 +0100
+
+    Created InputUrlTest. Added shouldCreateInputUrlWithValidUrl()
+
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit aec7a7b132466d4bce2515bcb2bf1ab395407271
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 19:24:27 2022 +0100
+
+    Refactored shouldReturnCancelledTaskByUserCancelInput() in TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit e2a4a4b85beaa9d0ddc5938f47abd489bd0c25cc
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 17:46:35 2022 +0100
+
+    Added shouldReturnCancelledTaskByUserCancelInput() to TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 988adf527873132235c7abd4db2e9030eef42afa
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 16:25:37 2022 +0100
+
+    Added shouldCreateATaskWithIntegerTimeoutWhenValidDoubleIsProvided() to TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+
+commit d0025db960cf28e10b8cb124f2b284e9ca11f4be
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 16:18:00 2022 +0100
+
+    Added shouldNotCreateATaskWithTimeoutAbove5() to TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+
+commit 211781907235855e614bbbd6bd111523bf8540fd
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 16:16:22 2022 +0100
+
+    Added shouldNotCreateATaskWithTimeoutBelow1() to TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+
+commit f98f3f0749d86bce259ed3451c70a6fc75759cdc
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 16:04:59 2022 +0100
+
+    Added shouldCreateATaskWithAcceptableTimeOut() to TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+
+commit 7df64f73171d30f51fa2f17010e84607f4830e43
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 15:19:24 2022 +0100
+
+    Added shouldThrowExceptionWhenUrlHasNoTxt() to TaskTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+
+commit c36b55ca2ef310464210e417c623aff40658d9a9
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 10 15:18:04 2022 +0100
+
+    Added shouldCreateATaskWhenUrlWithTxtIsProvided() to TaskTest
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 35c11bd6e98101300d05f183c97604d335ba7496
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 8 17:14:40 2022 +0100
+
+    Added new Constructors in Task for both canceled and concluded tasks´
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit 6d7191a19dce5bd22eb309094eb88c53264bd87b
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 8 17:06:44 2022 +0100
+
+    Refactored isBaseCategory in CategoryRepository
+    
+    Refactor in order to match bootstrapped categories
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 4949886ad5eab98aa4775e562f307737068ae116
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 8 16:57:53 2022 +0100
+
+    Refactored newThread() in TaskService
+    
+    Added timeOutAnalysis() as a means to control analysis based on task timeout. It is not killing the thread yet.
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 08d1673faff4f04a8c0bd8db5f2bc43933b7ec66
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 22:38:37 2022 +0100
+
+    Added findCategoryById() to CategoryRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit fb44fc78576852e83c198d8ff3af429d5f7ea073
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 22:37:38 2022 +0100
+
+    Added findCategoryById to ICategory
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategory.java
+
+commit 125dfdb782843fbf05d62a3094b00457209e32c9
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 22:36:54 2022 +0100
+
+    Added validation to TaskService to lookup category in createTask()
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 996e28276018b5c0665a5d4b01849755b45598a0
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 22:34:37 2022 +0100
+
+    Added findByID() to CategoryService
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+
+commit cd38ef2a75bead628c5b3f07737636cd30c860bf
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 22:33:24 2022 +0100
+
+    Added createBaseCategories() to Bootstrap
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+
+commit 50f56dec2e3727229c919a2134f452eb3e8cb020
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 21:01:45 2022 +0100
+
+    Added isBaseCategory() in CategoryRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit 51ddb3fecdd55d769ecab4a4569a3153f054bd49
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 15:50:34 2022 +0100
+
+    Added DeleteBlackListItem() to BlackListController and BlackListService
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 0fe69c1a68e4df4323c2047b51538574c33c1198
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 15:33:28 2022 +0100
+
+    BlackListItem design refactor
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/IBlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/BlackListJPA.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 09337e0325087ec6e15a0279ac0ca0b906d81621
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 12:44:38 2022 +0100
+
+    Refactored BlackList to BlackListItem. Changed Domain root and VO's
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+R053	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackList.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 02e385edbd7d2babb64c575b4fbdf442ef948f98
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 7 12:11:44 2022 +0100
+
+    Removed domain factories and refactored methods that used them
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/BlackListFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/CategoryFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/IBlackListFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ICategoryFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 8ad92dcbbf33a4558d6baada17221d501cb37187
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 5 16:43:58 2022 +0100
+
+    Refactored Task
+    
+    Changed received category param to String and instantiated tasks's category with received String
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit 78da79f33fdee224320c34c7e864ba4356ef5c09
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 5 16:31:29 2022 +0100
+
+    Implemented findAll() in CategoryService and CategoryRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit cfbd40108473ac3c9175f3e870dc93b58e60f684
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 5 14:49:10 2022 +0100
+
+    Added isBlackListed() to BlackListService and dependencies
+    
+    Added isBlackListed() to check if the provided NewTaskInfoDTO is blacklisted
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+
+commit 842b15637b1459a5dc927fb7e6066d25c255ee62
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 5 14:27:28 2022 +0100
+
+    Overrode toString() in BlackListDTO
+    
+    toString() overrode since it wasn't returning the url path alone. It should now return the appropriate url path to be used properly
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+
+commit e5441212e9270bbaf775f6a76e9ed1238cb422cc
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 5 14:21:57 2022 +0100
+
+    Removed getHostName() from BlackList Entity
+    
+    Removed method and its implementation seen as it is yet to be determined wether or not this is a requirement
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackList.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/template_rest_application_ddd.iml
+
+commit 5b0b2cc032f454bd32c087cffb85c450b1cec01c
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 23:12:10 2022 +0100
+
+    Refactored BlackList to change inputURL to hostNameURL
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackList.java
+
+commit 838ae4f77ecc7e2d59db38600b8996b0e571383c
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 22:00:55 2022 +0100
+
+    Refactored getAll Method in BlackListRepository
+    
+    Implemented method body as it hadn't yet been implemented before
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 10af73f164d00543578912099bf041b74c8f6bb6
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 17:14:46 2022 +0100
+
+    Refactored BlackListController to include getAll
+    
+    Started to implement getAll in BlackListController and all dependencies
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 01487c4213eb3c4e63bf695d87251417fe41b0d9
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 16:56:39 2022 +0100
+
+    Added BlackListController
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+
+commit c8ab58d8ae65ffbca7f4a661edab425a186f1748
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 16:52:10 2022 +0100
+
+    Added BlackListService
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+
+commit 6109166e7c48389068b043897a7ffd2b52bf63de
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 16:07:19 2022 +0100
+
+    Added BlackListFactory
+    
+    Refactored several classes/Interfaces based on changes
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackList.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/BlackListFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/IBlackListFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/BlackListDomainDataAssembler.java
+
+commit ffe1af0b8547ce390242dcc7eb13dfbc3f1e1e83
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 15:43:58 2022 +0100
+
+    Added IBlackListFactory interface
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/IBlackListFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/BlackListDomainDataAssembler.java
+
+commit fd11e9519bd55f6979c769a13c703251888cffe2
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 15:37:04 2022 +0100
+
+    Refactored BlackListDomainDataAssembler
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/BlackListDomainDataAssembler.java
+
+commit 018ea1553344d84ce1c94582f1eb9b55b9e26cef
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 15:30:21 2022 +0100
+
+    Added BlackListRepository
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 23581467f164cacd59ccd93a473bc3d4eb058bf6
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 15:23:24 2022 +0100
+
+    Added BlackListJpaRepository Interface
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+
+commit 5a0e7f579a831bfa66406cb2c473150e1c4a5ffc
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 15:17:34 2022 +0100
+
+    Added BlackListDomainDTOAssembler
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java
+
+commit 9420be64219195acf1f7980bd3f6e148ef801234
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 15:09:13 2022 +0100
+
+    Added BlackListDomainJPAAssembler
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/BlackListDomainJPAAssembler.java
+
+commit 63c3385f6d941ca35d4c0202200f617bc13138ab
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 14:55:13 2022 +0100
+
+    Added BlackListDomainJPAAssembler
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/BlackListJPA.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/BlackListDomainJPAAssembler.java
+
+commit 80eea8c177fd20d9f928ef84906442f165035b96
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 14:40:58 2022 +0100
+
+    Refactored BlackListJPA
+    
+    Changed data type for url
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/BlackListJPA.java
+
+commit e31cb76cb01ed8b568022f7f58e932492bb322dc
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 14:35:01 2022 +0100
+
+    Created BlackListJPA
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/BlackListJPA.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit 0782f2df4a939206c67299ebed246bf58e1b62fb
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 14:18:29 2022 +0100
+
+    Added NewBlackListInfoDTO
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewBlackListInfoDTO.java
+
+commit 3a2bdee795762d3c2a67bd934c500c6eb9ceb233
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 12:35:39 2022 +0100
+
+    Added BlackListDTO
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/BlackListDTO.java
+
+commit 182ade0e45189d1dec39452122f3234e9536affe
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 12:27:59 2022 +0100
+
+    Added BlackList Entity
+    
+    On top of adding BlackList Entity, modified compareTO method in InputURL VO
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackList.java
+
+commit 2a59e8cf884a041b4cdba42ae9316e2750a623df
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 10:03:03 2022 +0100
+
+    Removed Entity URL
+
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/URL.java
+
+commit 100165b066a8ee9b263c6380a1b735f9911d924e
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Thu Jun 2 09:51:41 2022 +0100
+
+    Added Entity URL
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/URL.java

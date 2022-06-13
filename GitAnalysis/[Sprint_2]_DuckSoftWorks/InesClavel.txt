@@ -1,0 +1,454 @@
+commit 704f4512d47c9a8e1a6fc0f60037b1ebeaf23836
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 12 22:32:23 2022 +0100
+
+    added all the documentation performed by the group
+
+A	LanguageDetectionPrototype/Documents/Arquitecture and Status Diagrams/Design Architecture.svg
+A	LanguageDetectionPrototype/Documents/Arquitecture and Status Diagrams/Task Status Diagram.svg
+D	LanguageDetectionPrototype/Documents/CD/CD_Diagram.svg
+A	LanguageDetectionPrototype/Documents/Class Diagrams/Complete Class Diagram.svg
+A	LanguageDetectionPrototype/Documents/Class Diagrams/US 1 - BlackList.svg
+A	LanguageDetectionPrototype/Documents/Class Diagrams/US 3 - FindTask Class Diagram.svg
+A	LanguageDetectionPrototype/Documents/Class Diagrams/US 4 -  CancelTask Class Diagram.svg
+A	LanguageDetectionPrototype/Documents/Class Diagrams/US 5 - Category Exerpt Class Diagram.svg
+D	LanguageDetectionPrototype/Documents/Domain Model/Domain Model.svg
+A	LanguageDetectionPrototype/Documents/Domain Models/Complete Domain Model Diagram.svg
+A	LanguageDetectionPrototype/Documents/Domain Models/US 1 - BlackList Domain Model.svg
+A	LanguageDetectionPrototype/Documents/Domain Models/US 3 - FindTask Partial Domain Model.svg
+A	LanguageDetectionPrototype/Documents/Domain Models/US 4 - Domain Model Cancel Task.svg
+A	LanguageDetectionPrototype/Documents/Domain Models/US 5 - Category Domain Model.svg
+M	LanguageDetectionPrototype/Documents/Glossary.xlsx
+A	LanguageDetectionPrototype/Documents/Project Report Analysis Sprint 2.docx
+D	LanguageDetectionPrototype/Documents/Report&Analysis DuckSoftWorks.docx
+D	LanguageDetectionPrototype/Documents/SD/Prototype - US 01.svg
+A	LanguageDetectionPrototype/Documents/SDs/Asyncronous Task Analysis SD.svg
+A	LanguageDetectionPrototype/Documents/SDs/CancelTask Sequence Diagram.svg
+A	LanguageDetectionPrototype/Documents/SDs/Generic - Delete.svg
+A	LanguageDetectionPrototype/Documents/SDs/Generic Create Blacklist-Category.svg
+A	LanguageDetectionPrototype/Documents/SDs/Generic FindAll.svg
+A	LanguageDetectionPrototype/Documents/SDs/Task Without Asynchronous Process.svg
+A	LanguageDetectionPrototype/Documents/SSDs/US 1 - SSD Blacklist.svg
+A	LanguageDetectionPrototype/Documents/SSDs/US 2 - SSD Create Task.svg
+R052	LanguageDetectionPrototype/Documents/SSD/SSD.svg	LanguageDetectionPrototype/Documents/SSDs/US 4 - SSD cancelTaskAnalysis (1).svg
+A	LanguageDetectionPrototype/Documents/SSDs/US 5 - SSD Category Creation.svg
+A	LanguageDetectionPrototype/Documents/SSDs/Us 3 - SSD findAll.svg
+A	LanguageDetectionPrototype/Documents/Tickets Chart - Duck Squad.xlsx
+A	LanguageDetectionPrototype/Documents/US Documentation/US 1.docx
+A	LanguageDetectionPrototype/Documents/US Documentation/US 2.docx
+A	LanguageDetectionPrototype/Documents/US Documentation/US 3.docx
+A	LanguageDetectionPrototype/Documents/US Documentation/US 4.docx
+A	LanguageDetectionPrototype/Documents/US Documentation/US 5.docx
+
+commit 0fe990cdc985a9c4bd2f6df44c061229aeac96cf
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 11 13:34:37 2022 +0100
+
+    BlackListUrl javaDoc update - refactor in CategoryName javaDoc
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+
+commit 0f019501f802e65c599f391a85b20c277290612d
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 11 13:33:59 2022 +0100
+
+    BlackListRepository javaDoc update - refactor in CategoryRepository javaDoc
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit 0530f2633452517a28b34be4960cf5f5365f743f
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 11 13:22:30 2022 +0100
+
+    BlackListItem javaDoc update - refactor in Category and Task javaDoc
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit a3cadca0bdbecef34c95f7ddb21375b14110ce58
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 11 12:54:09 2022 +0100
+
+    BlackListController javaDoc update - refactor in CategoryController javaDoc
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+
+commit fb198811b356637b1fd55e2e63f9d467a80af9f0
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 11 12:21:19 2022 +0100
+
+    BlackListService javaDoc update - refactor in CategoryService javaDoc
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+
+commit 00c8de8f5415b2af7132d7025d19dfd619d2363f
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 23:22:34 2022 +0100
+
+    BlackListUrlTest class created with tests
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java
+
+commit b63bba89fdf156db59316d19d16e1e027e3d3c22
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 20:49:35 2022 +0100
+
+    Created Test class for BlackListUrl with method shouldCreateABlackListUrlWithCorrectAttributes()
+
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+
+commit 5002b277135de55bbc7bd87b9280592797346782
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 20:01:03 2022 +0100
+
+    Beeing able to perform a pull
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+
+commit 9b50e8922128b3aa60a82718f55d9e8ceaeacb6f
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 19:22:28 2022 +0100
+
+    Created test shouldCreateAndSaveABlackListItem()
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+
+commit 8d3c2106a32de000a326c07b106839715a937c18
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 18:37:13 2022 +0100
+
+    Proof of concept TaskServiceTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit b396ed04e32aae857c482a7b990026120ce9cce6
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 18:10:24 2022 +0100
+
+    shouldCreateAndSaveBlackListItem() test created
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+
+commit d86fc9970b05c44eafe8abaecc10dff949d689d0
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 17:41:00 2022 +0100
+
+    Tests for BlacklistService class in the getAllBlackListItems() and isBlackListed() - refactor of variable of BlackListJpaRepository to blackListJpaRepository;
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+
+commit 54771d80d91d2c05097593063492754845c78261
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Fri Jun 10 16:18:36 2022 +0100
+
+    Method to prevent cration of suplicated URL in BlackListController and BlackListService created
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+
+commit 8f6e5de2d21bee63b3c616d11f089c7cf36f7166
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 9 22:12:07 2022 +0100
+
+    cleanUp() test created. Added a MockLanguageAnalizer class to be able to
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/MockLanguageAnalyzer.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java
+
+commit 9e99d71d378c90d9ed5d4f69f612055a7fd1091e
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 8 15:42:55 2022 +0100
+
+    refactor of method crateCategory to create and save
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerPrototypeTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit eb778deda942caaabe773874414df255f6ca70c3
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 8 12:18:19 2022 +0100
+
+    Refactor of CategoryName categories to english language
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit 8f929bd0109026e18768953d4290fdb29e1c776c
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 8 11:34:23 2022 +0100
+
+    Refactor from CategoryDescription to CategoryID
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+R054	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryDescription.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit 4408c689652477db5d5e6a3138da91bbba21af4e
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 7 23:21:00 2022 +0100
+
+    Creation of Methods FindByStatusAndCategory and seperate ones
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/StatusDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 96634c2f3b36d0d45b44711c1a7d83b74bc72daf
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 7 21:06:36 2022 +0100
+
+    Amend of the the ResponseEntity in CategoryController
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/Application.java
+
+commit a71dc2eafcb69eda4f0c5c38fb574981837b3c51
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 7 21:02:13 2022 +0100
+
+    Creation of the BooStrap class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/Application.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 6d942d3ca131786696d8b99860cc24d3ece6c644
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 7 18:51:52 2022 +0100
+
+    item base for the blacklist created
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/Application.java
+
+commit b2123b668496451dec86baa0a9081a2a4afb6b1d
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 5 19:16:27 2022 +0100
+
+    JavaDoc added to the classes categoryController, Category and CategoryDescription
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryDescription.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+
+commit ae8b34057f1d3cff11d9b07b7aaafea8efea5d21
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 5 17:29:51 2022 +0100
+
+    onlyNumbers method corrected and CathegoryDescription contructor updated
+
+M	LanguageDetectionPrototype/pom.xml
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryDescription.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+
+commit dd68c895c842a13221434a503d9f0d4bba9f7bf0
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 4 20:07:02 2022 +0100
+
+    Refactor of VO to CategoryDescription and creation of the Category Validation method in BusinessValidation
+
+M	LanguageDetectionPrototype/pom.xml
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryDescription.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/Description.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+
+commit d27e06b12b77d2538c1e239d6a2d9cb3a3f80361
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 4 17:36:38 2022 +0100
+
+    Category Entity, Controller and ValueObject Description created
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/Description.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/CategoryFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ICategoryFactory.java
+
+commit 938a45cb1b4ccc36abd885d7936c4f0371bce452
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 16:35:34 2022 +0100
+
+    Correction on the the method toData in TaskDomainTaskAssembler
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/TaskDomainDataAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit 0c2fe34f6b952b390be79921fcc6af2cb2efcb92
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 15:34:01 2022 +0100
+
+    Methods signatures to recieve strings and int
+    
+    NewTaskInfoDTO, TaskService, ITaskFactory, TaskFactory
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+
+commit 8142369a28b5381a823eba2f57a0ee0dff823e34
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 15:05:42 2022 +0100
+
+    Refactor os Packages
+
+R090	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/BlackListDTO.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+R071	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/assemblers/TaskDomainDTOAssembler.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+R083	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewBlackListInfoDTO.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+R090	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+R078	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/TaskDTO.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+R090	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskDomainDataAssembler.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/TaskDomainDataAssembler.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 2293ab14f52962869b7eb5b16520e1ecd0034c99
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 14:54:32 2022 +0100
+
+    InputURL updated in ITaskFactory and TaskFactory
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+
+commit 7de791502cfd07fe54688511f9974661be116138
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 14:51:42 2022 +0100
+
+    Getter of the URL corrected in the NewTaskIfoDTO class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java
+
+commit c943d6b4e16a02c3ae99031ecacf190cfcad2a19
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 14:49:45 2022 +0100
+
+    import deleted
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 47840cb01d1fd83dbce43d63d9fdaae820b07b7c
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 14:36:01 2022 +0100
+
+    Corrections in the methods of TaskDomainDataAssembler and other because of the URL
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskDomainDataAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 3dd7b0b8c8bbea6faab13eb5664c26b7e4a5ddd8
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 12:36:02 2022 +0100
+
+    Creation of methods in the class service, assembler and repository
+    
+    Updates in the classes TaskDomainAssembler, TaskJpa, Task Service, TaskRepository, TaskJpaRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskDomainDataAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 7c6961856cdec1893d049a1569f82c287b3d3e71
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 12:09:36 2022 +0100
+
+    Alterations in the factories and services - conflitManagements
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskAssembler.java
+
+commit 11b3c3f7918e08b7e5b64531feb731c9abe45c9a
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 11:41:31 2022 +0100
+
+    ITaskFactory, TaskFactory and TaskJpa classes updated
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit 179b0a0081bf1e4b7ecc97423ae12fc9c284f566
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 10:28:06 2022 +0100
+
+    Updates in TaskJpa and TaskJpaRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+
+commit 2346aa76152c24b131cd60edddb3b77d05cd7329
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 10:08:28 2022 +0100
+
+    Creation of TaskAssembler and TaskJpa and TaskRepository update
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 5fa1a3643df3d62cbf7ab680f34093a415697aea
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 09:49:29 2022 +0100
+
+    NewTaskInfoDTO update
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java
+
+commit cc844024316f903cb47a4cbd1089bcff7f75cdc7
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 2 09:47:17 2022 +0100
+
+    refactor of the entity package and update on the task params
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/TaskDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/assemblers/TaskDomainDTOAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+R090	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/example/Task.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java

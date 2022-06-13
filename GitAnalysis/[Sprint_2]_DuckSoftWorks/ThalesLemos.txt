@@ -1,0 +1,318 @@
+commit e970eabe3019616b637569d0b6a02aa02b32411b
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 12 22:39:10 2022 +0100
+
+    corrected part of glossary
+
+M	AnalyzerAPI/Documents/Glossary.xlsx
+
+commit 8d8745b55bc950aa52cbf7ecc390629a6556161f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 11 19:11:22 2022 +0100
+
+    modified method to connect ILanguageDetector
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 19f71b025b9a990fdfaa89eac125d4a4148ca848
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 11 13:32:23 2022 +0100
+
+    corrected javaDoc CategoryController
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 07f31619751a4b7fb3873d3320fe74038c26d06d
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 11 13:16:46 2022 +0100
+
+    fix conflict
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+
+commit ca573a8841bbf12acbb9af8217976169d4d85b6e
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 11 12:36:07 2022 +0100
+
+    added method isUrlValid() business validation and to class TaskService
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/CategoryTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 0852aad6baba14629c386d2120b82c054acf6065
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 21:14:31 2022 +0100
+
+    added tests to CategoryRepositoryTest
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 332f50e109dbb3c9ee7938ba7d45647ff64854fa
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 20:02:21 2022 +0100
+
+    added tests to CategoryService and CategoryRepository
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 84442e2c299e52eab991505a8bf9025ffe81488b
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 16:23:40 2022 +0100
+
+    added javaDoc to category related parts
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit 88ec4458d63df78ac6f4c96e154a89627c7edb66
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 16:12:02 2022 +0100
+
+    fix conflict
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 9ecec8161716e1d7905edffe6df0b1290a419ffc
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 13:55:38 2022 +0100
+
+    created class CategoryTest and moved tests
+
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/CategoryTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 4438a9b1e491b983e035314270a3551bab25d65b
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 13:12:42 2022 +0100
+
+    created test shouldCreateACategoryWithCorrectAttributesIncludingSpaces to test category creation
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 1e9aaa2a2eeeaaec82675125e8719c6cb74c50f7
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 13:06:35 2022 +0100
+
+    added method isOnlySpecialCharacters to BusinessValidation class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+
+commit f4adf146521ef3d044eba87174e989e78bb2b03a
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 13:05:08 2022 +0100
+
+     added tests for creation of category with wrong parameters
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 85408b88f3277197b81f1c815d9006f4c3d6824f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 12:06:09 2022 +0100
+
+    added test shouldCreateACategoryWithCorrectAttributes
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 8bbbfcaf2f163dbf049a02e58259eef1419e9135
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 10 11:47:25 2022 +0100
+
+    added verification to add category only if it doesnt already exists in class CategoryService and Controller
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+
+commit 6669d36f12a6fa1b9496b7ea9a57fbf5d8f5b79f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 8 09:11:52 2022 +0100
+
+    toLowercase added to business validation of inputUrl
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+
+commit e462271fb20baf04f46cc811efb79cf44f111874
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 23:20:17 2022 +0100
+
+    fix conflict
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategory.java
+
+commit 40af6a8ead42c5e4fd3bfe6e6b4fd1131874a05d
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 21:35:30 2022 +0100
+
+    corrected conflict with method createTask
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 4a3e69614c2471ce38b4c808071824da8b12a61e
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 21:21:04 2022 +0100
+
+    added business validation to InputUrl
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+
+commit d7a185e437e57a9fd0566085731e61c6ac654ff7
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 20:26:46 2022 +0100
+
+    added business validation to TimeOut
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java
+
+commit c6b97db8d330cab4b63a81bfc703c4f19d4c3607
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 19:41:03 2022 +0100
+
+    created verification for blacklisted urls in creation of Task
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 197e264f3c3025cc6713ddc328649ef7a3f8c995
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 16:06:01 2022 +0100
+
+    refactored task and repository to new design
+
+M	LanguageDetectionPrototype/pom.xml
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ITask.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 0d0777fbc275904aafe4390bd63497381aedc8d1
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 7 12:05:58 2022 +0100
+
+    removed assemblers from infrastructure
+
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/BlackListDomainDataAssembler.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/CategoryDomainDataAssembler.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/TaskDomainDataAssembler.java
+
+commit 803e77fa5ae52f16f40b15fcb91edb7c95eac14f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 4 21:53:32 2022 +0100
+
+    modified method for validation of categoryName in BusinessValidation
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit 1d8ab0914c7c04bd556719a831e51a887dd2ed6a
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 4 21:34:25 2022 +0100
+
+    modified method of deleteCategory in CategoryController, added dependecy in CotegoryJpaRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/CategoryDomainDataAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit 9295bbd2dbff188bc2e85482425a2a2aef7f0e35
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 4 21:29:28 2022 +0100
+
+    created class CategoryDomainDataAssembler and its methods
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/CategoryDomainDataAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit fbec8462a7d3cee68ed39252501c52bf2111375e
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 4 21:18:56 2022 +0100
+
+    created class CategoryJpa
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/CategoryJpa.java
+
+commit 06e240d3d2dd06f11e4901acb8b25dba99a00db2
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 4 21:11:58 2022 +0100
+
+    created class CategoryRepository and CategoryJpaRepository interface
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit 0177cac7106a6da507a6b10b5794a595e5f3da37
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 2 17:09:35 2022 +0100
+
+    modified method getUrl to return toString in InputUrl class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+
+commit 005b3ae06a4c388f1c0dcf1e3ddf7e6f7ecc2a42
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 2 15:24:57 2022 +0100
+
+    modified constructor Task to receive string parameters and InputUrl to receive string
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit a21d513d82cc520541a128b770080fbbbcebdcfd
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 2 12:13:31 2022 +0100
+
+    modified class URL to inputUrl and added methods to it
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/URL.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit 563aff6e8b3e815484ebada046f713821109efb1
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 1 22:27:52 2022 +0100
+
+    added category in Task
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/example/Task.java
+
+commit 99b5a24a62e62b7063f41f6f7b313f05748d1a33
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 1 21:59:46 2022 +0100
+
+    modified class Task to receive valueOBjects, added javadocs to new VO
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/example/Task.java
+
+commit 15bb779d6eee4ce131703e7cde1fa7f5ecd510a7
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 1 21:51:36 2022 +0100
+
+    created VO TimeOut and URL and modifed class Task to receive new VO
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/Text.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/URL.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/example/Task.java

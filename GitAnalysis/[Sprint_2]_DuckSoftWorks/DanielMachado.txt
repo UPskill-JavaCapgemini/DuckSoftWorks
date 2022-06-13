@@ -1,0 +1,745 @@
+commit ac89f407d0360f4e879675f5737022b355c3ab3a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 23:36:05 2022 +0100
+
+    Fix Glossary formatting
+
+M	Documents/Glossary.xlsx
+
+commit d54968e5ed862d884b846b02765ca72bea14bb84
+Author: Daniel Machado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 23:12:29 2022 +0100
+
+    Delete ReadMe.md
+    
+    We already have one ReadMe file on main branch.
+
+D	README.md
+
+commit f3090f7028ac1886f5fc585ff4cdab6a74a0da51
+Author: Daniel Machado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 23:11:45 2022 +0100
+
+    Delete LanguageDetectionPrototype folder
+    
+    This way we can merge with dev branch and maintain in main just what is necessary to be evaluated in Sprint 2.
+    It is also possible to verify the Sprint 1 code by Sprint 1 tag on releases tab.
+
+D	LanguageDetectionPrototype/.gitignore
+D	LanguageDetectionPrototype/Documents/CD/CD_Diagram.svg
+D	LanguageDetectionPrototype/Documents/Domain Model/Domain Model.svg
+D	LanguageDetectionPrototype/Documents/Glossary.xlsx
+D	LanguageDetectionPrototype/Documents/Report&Analysis DuckSoftWorks.docx
+D	LanguageDetectionPrototype/Documents/SD/Prototype - US 01.svg
+D	LanguageDetectionPrototype/Documents/SSD/SSD.svg
+D	LanguageDetectionPrototype/pom.xml
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/Application.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/NewTaskInfoDTO.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/TaskDTO.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/dtos/assemblers/TaskDomainDTOAssembler.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/AnalyzerService.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/DictionaryService.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/Text.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/example/Task.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ITaskFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/TaskFactory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/AggregateRoot.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/Entity.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/Identifiable.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/Immutable.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/ValueObject.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/HashCoder.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskDomainDataAssembler.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl
+D	LanguageDetectionPrototype/src/main/resources/application.properties
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/DictionaryServiceTest.java
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+D	LanguageDetectionPrototype/target/classes/application.properties
+D	LanguageDetectionPrototype/template_rest_application_ddd.iml
+
+commit e9356979bc328e84d54fc4d438f78be36f4f5c99
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 22:58:52 2022 +0100
+
+    Refactor project folder structure to git
+
+R100	AnalyzerAPI/.gitignore	.gitignore
+D	AnalyzerAPI/Documents/CD/CD_Diagram.svg
+D	AnalyzerAPI/Documents/Domain Model/Domain Model.svg
+D	AnalyzerAPI/Documents/Glossary.xlsx
+D	AnalyzerAPI/Documents/Report&Analysis DuckSoftWorks.docx
+D	AnalyzerAPI/Documents/SD/Prototype - US 01.svg
+D	AnalyzerAPI/Documents/SSD/SSD.svg
+D	AnalyzerAPI/pom.xml
+D	AnalyzerAPI/src/main/java/LanguageDetection/Application.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/application/controllers/AnalysisController.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/application/dtos/AnalysisDTO.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/application/dtos/NewAnalysisInfoDTO.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/application/dtos/assemblers/AnalysisDTOAssembler.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/application/services/AnalysisService.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/domain/entities/example/Analyzer.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/domain/entities/example/Dictionary.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/domain/entities/example/Language.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskDomainDataAssembler.java
+D	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+D	AnalyzerAPI/src/main/resources/application.properties
+D	AnalyzerAPI/src/test/java/LanguageDetection/application/controllers/AnalysisControllerTest.java
+D	AnalyzerAPI/src/test/java/LanguageDetection/application/services/AnalysisServiceTest.java
+D	AnalyzerAPI/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+D	AnalyzerAPI/src/test/java/LanguageDetection/application/services/DictionaryServiceTest.java
+D	AnalyzerAPI/target/classes/application.properties
+D	AnalyzerAPI/template_rest_application_ddd.iml
+R100	LanguageDetectionPrototype/Documents/Arquitecture and Status Diagrams/Design Architecture.svg	Documents/Arquitecture and Status Diagrams/Design Architecture.svg
+R100	LanguageDetectionPrototype/Documents/Arquitecture and Status Diagrams/Task Status Diagram.svg	Documents/Arquitecture and Status Diagrams/Task Status Diagram.svg
+R100	LanguageDetectionPrototype/Documents/Class Diagrams/Complete Class Diagram.svg	Documents/Class Diagrams/Complete Class Diagram.svg
+R100	LanguageDetectionPrototype/Documents/Class Diagrams/US 1 - BlackList.svg	Documents/Class Diagrams/US 1 - BlackList.svg
+R100	LanguageDetectionPrototype/Documents/Class Diagrams/US 3 - FindTask Class Diagram.svg	Documents/Class Diagrams/US 3 - FindTask Class Diagram.svg
+R100	LanguageDetectionPrototype/Documents/Class Diagrams/US 4 -  CancelTask Class Diagram.svg	Documents/Class Diagrams/US 4 -  CancelTask Class Diagram.svg
+R100	LanguageDetectionPrototype/Documents/Class Diagrams/US 5 - Category Exerpt Class Diagram.svg	Documents/Class Diagrams/US 5 - Category Exerpt Class Diagram.svg
+R100	LanguageDetectionPrototype/Documents/Domain Models/Complete Domain Model Diagram.svg	Documents/Domain Models/Complete Domain Model Diagram.svg
+R100	LanguageDetectionPrototype/Documents/Domain Models/US 1 - BlackList Domain Model.svg	Documents/Domain Models/US 1 - BlackList Domain Model.svg
+R100	LanguageDetectionPrototype/Documents/Domain Models/US 3 - FindTask Partial Domain Model.svg	Documents/Domain Models/US 3 - FindTask Partial Domain Model.svg
+R100	LanguageDetectionPrototype/Documents/Domain Models/US 4 - Domain Model Cancel Task.svg	Documents/Domain Models/US 4 - Domain Model Cancel Task.svg
+R100	LanguageDetectionPrototype/Documents/Domain Models/US 5 - Category Domain Model.svg	Documents/Domain Models/US 5 - Category Domain Model.svg
+R100	LanguageDetectionPrototype/Documents/Glossary.xlsx	Documents/Glossary.xlsx
+R100	LanguageDetectionPrototype/Documents/Project Report Analysis Sprint 2.docx	Documents/Project Report Analysis Sprint 2.docx
+R100	LanguageDetectionPrototype/Documents/SDs/Asyncronous Task Analysis SD.svg	Documents/SDs/Asyncronous Task Analysis SD.svg
+R100	LanguageDetectionPrototype/Documents/SDs/CancelTask Sequence Diagram.svg	Documents/SDs/CancelTask Sequence Diagram.svg
+R100	LanguageDetectionPrototype/Documents/SDs/Generic - Delete.svg	Documents/SDs/Generic - Delete.svg
+R100	LanguageDetectionPrototype/Documents/SDs/Generic Create Blacklist-Category.svg	Documents/SDs/Generic Create Blacklist-Category.svg
+R100	LanguageDetectionPrototype/Documents/SDs/Generic FindAll.svg	Documents/SDs/Generic FindAll.svg
+R100	LanguageDetectionPrototype/Documents/SDs/Task Without Asynchronous Process.svg	Documents/SDs/Task Without Asynchronous Process.svg
+R100	LanguageDetectionPrototype/Documents/SSDs/US 1 - SSD Blacklist.svg	Documents/SSDs/US 1 - SSD Blacklist.svg
+R100	LanguageDetectionPrototype/Documents/SSDs/US 2 - SSD Create Task.svg	Documents/SSDs/US 2 - SSD Create Task.svg
+R100	LanguageDetectionPrototype/Documents/SSDs/US 4 - SSD cancelTaskAnalysis (1).svg	Documents/SSDs/US 4 - SSD cancelTaskAnalysis (1).svg
+R100	LanguageDetectionPrototype/Documents/SSDs/US 5 - SSD Category Creation.svg	Documents/SSDs/US 5 - SSD Category Creation.svg
+R100	LanguageDetectionPrototype/Documents/SSDs/Us 3 - SSD findAll.svg	Documents/SSDs/Us 3 - SSD findAll.svg
+R100	LanguageDetectionPrototype/Documents/Tickets Chart - Duck Squad.xlsx	Documents/Tickets Chart - Duck Squad.xlsx
+R100	LanguageDetectionPrototype/Documents/US Documentation/US 1.docx	Documents/US Documentation/US 1.docx
+R100	LanguageDetectionPrototype/Documents/US Documentation/US 2.docx	Documents/US Documentation/US 2.docx
+R100	LanguageDetectionPrototype/Documents/US Documentation/US 3.docx	Documents/US Documentation/US 3.docx
+R100	LanguageDetectionPrototype/Documents/US Documentation/US 4.docx	Documents/US Documentation/US 4.docx
+R100	LanguageDetectionPrototype/Documents/US Documentation/US 5.docx	Documents/US Documentation/US 5.docx
+D	LanguageDetectionPrototype/.gitignore
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/AggregateRoot.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/Entity.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/Identifiable.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/Immutable.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/shared/ValueObject.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl
+R100	LanguageDetectionPrototype/pom.xml	pom.xml
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/Application.java	src/main/java/LanguageDetection/Application.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java	src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/BlackListDTO.java	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryDTO.java	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java	src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java	src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java	src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java	src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/StatusDTO.java	src/main/java/LanguageDetection/application/DTO/StatusDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskDTO.java	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java	src/main/java/LanguageDetection/application/controllers/TaskController.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/application/security/WebSecurityConfig.java	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java	src/main/java/LanguageDetection/application/services/BlackListService.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java	src/main/java/LanguageDetection/application/services/CategoryService.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/LanguageDetectionService.java	src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java	src/main/java/LanguageDetection/application/services/TaskService.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/Dictionary.java	src/main/java/LanguageDetection/domain/DomainService/Dictionary.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java	src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java	src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/MockLanguageAnalyzer.java	src/main/java/LanguageDetection/domain/DomainService/MockLanguageAnalyzer.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java	src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/Password.java	src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/Password.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/UserName.java	src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/UserName.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java	src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java	src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java	src/main/java/LanguageDetection/domain/entities/Category.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/IBlackListItem.java	src/main/java/LanguageDetection/domain/entities/IBlackListItem.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategory.java	src/main/java/LanguageDetection/domain/entities/ICategory.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ITask.java	src/main/java/LanguageDetection/domain/entities/ITask.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/SystemUser.java	src/main/java/LanguageDetection/domain/entities/SystemUser.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java	src/main/java/LanguageDetection/domain/entities/Task.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/AggregateRoot.java	src/main/java/LanguageDetection/domain/shared/AggregateRoot.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/Entity.java	src/main/java/LanguageDetection/domain/shared/Entity.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/Identifiable.java	src/main/java/LanguageDetection/domain/shared/Identifiable.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/Immutable.java	src/main/java/LanguageDetection/domain/shared/Immutable.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/ValueObject.java	src/main/java/LanguageDetection/domain/shared/ValueObject.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/BusinessValidation.java	src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/HashCoder.java	src/main/java/LanguageDetection/domain/util/HashCoder.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+R100	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+R100	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+R100	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl
+R100	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl
+R100	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl
+R100	LanguageDetectionPrototype/src/main/resources/application.properties	src/main/resources/application.properties
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/CategoryTest.java	src/test/java/LanguageDetection/Domain/CategoryTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/DomainService/LanguageAnalyzerTest.java	src/test/java/LanguageDetection/Domain/DomainService/LanguageAnalyzerTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java	src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java	src/test/java/LanguageDetection/Domain/TaskTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java	src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java	src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java	src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java	src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java	src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/CategoryServiceTest.java	src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java	src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+R100	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+R100	LanguageDetectionPrototype/target/classes/application.properties	target/classes/application.properties
+R100	LanguageDetectionPrototype/template_rest_application_ddd.iml	template_rest_application_ddd.iml
+
+commit bc45d15ce5ccb0cd6d534985f785848f5ecffd1f
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 22:52:31 2022 +0100
+
+    Fix createAndSaveBlackListItem test method
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+
+commit 09bff5cd4a5c405684776b9d4170f63d70d82673
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 16:07:21 2022 +0100
+
+    Revert modification of language analyser to before 8d8745b
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+
+commit 540bfbab2a44642e1f94912e1db1af7535eb52fe
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 15:52:46 2022 +0100
+
+    Fix createAndSaveBlackListItem method logic
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/Application.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 6c74a65c67277ff0ae288056eb1b054df626715f
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 15:39:11 2022 +0100
+
+    Add three more test of language analyzer service
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+
+commit 385060aba230c0a3800a87d8511421cbaf7f19ab
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 15:38:42 2022 +0100
+
+    Fix findCategory and findCategoryAndStatus test methods
+
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 8fe0766f41b8c41405ccbc76a0c7ba635c35bd0d
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 12 15:16:22 2022 +0100
+
+    Fix several test errors
+
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerPrototypeTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+D	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/DictionaryServiceTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit f73d4aecff2365f6e5775a42057616dcb95ccb96
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 11 19:43:26 2022 +0100
+
+    Fix some tests errors
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/util/HashCoder.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/TaskTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+
+commit 998590970754499e92e6a1cb8bb33bd6d847c67c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 11 14:14:09 2022 +0100
+
+    Removed some unnecessary dependencies from pom.xml file
+
+M	LanguageDetectionPrototype/pom.xml
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+
+commit 53ac7879c11cf451400abe68550177ae0099e14b
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 11 01:35:15 2022 +0100
+
+    Update method names and changed TaskService to use ITask interface
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 0c8e529e501f5a2c8aa8ad1ebaf20c9b43492aa7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 23:32:32 2022 +0100
+
+    Add analyse method from LanguageAnalyzer class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/Password.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/UserName.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/SystemUser.java
+A	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/DomainService/LanguageAnalyzerTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit bc26941a75bbd1632709550a01a486fbb1ec6462
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 21:32:13 2022 +0100
+
+    Add TaskController tests for post methods
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+
+commit 738abec7dd3db920aac7484ee50962cbd6169eae
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 20:55:47 2022 +0100
+
+    Add TaskService tests
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 7f15ae268e9aa19099ef733a3392954746fc8786
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 18:53:41 2022 +0100
+
+    Add javadoc that was delete by mistake
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 21f1c512da6759960a80762bf6e08ffc672ee23a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 18:46:43 2022 +0100
+
+    Add createAndSaveTask test methods
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 1fe098231a3ca13cc3d19fee4538df26fa01bdc7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 18:02:39 2022 +0100
+
+    Add JUnit tests with Mockito of Task Repository class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ITask.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerPrototypeTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit 04446b240095da5865ecb53a3a86990fb30d86c7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 16:21:46 2022 +0100
+
+    Add javadoc to TaskRepository
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 6fdc8341953da34489fa09f5ba7f4edbbcb7ba1d
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 16:07:47 2022 +0100
+
+    Add javadoc to Task class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit 17f428c481aa686351cb901e4803e92de6905f6c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 15:57:14 2022 +0100
+
+    Add javadoc to TaskService class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 5b9f9968b833d13cdb72aeb0368877f906003450
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 14:57:17 2022 +0100
+
+    Add JavaDoc to TaskController class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 40379d695ae9de5b543e06cbb87663c9cb2dcf7f
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 14:03:04 2022 +0100
+
+    Fix cancelAnalysisThread method to receive TaskDTO object
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 60408a2bbb5d3ad6ae44fbfb6c02e7b0f32775dd
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 10 13:56:51 2022 +0100
+
+    Fix TaskController to receive TaskDTO instead of Task object
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 83135cc4080789f72fde8dce33cfcdcd1367d82f
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 9 13:39:23 2022 +0100
+
+    Team TimeBox to catch exceptions
+    
+    All team effort
+
+M	LanguageDetectionPrototype/pom.xml
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit c27f57f68e39b505110d7aa372b96f1221fd3a17
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 9 10:39:25 2022 +0100
+
+    Team Time Box for thread implementation
+    
+    We also did refactoring to improve the quality of the code
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+R056	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskDTO.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/BlackListService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ITask.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 7f1987511c944f37adcc5c243bd58354bc84974a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 8 11:51:58 2022 +0100
+
+    Add threads to analyse the language
+    
+    Still need improvements to cancel by timelimit and by input from user
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+R093	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/DictionaryService.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/Dictionary.java
+R093	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/AnalyzerService.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+
+commit add6d83dd1719ee40fc841ea5d7ec47e2abe4847
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 8 10:51:28 2022 +0100
+
+    Fix find methods on Task class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 32405a334375c5af790be9977020ad51f484135b
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 7 16:44:36 2022 +0100
+
+    Deleted DataModel package
+
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/BlackListJPA.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit 96910551965bf69a32654a2a1ab6c9886d8e77fa
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 7 15:02:33 2022 +0100
+
+    Category design refactoring
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategoria.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategory.java
+D	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/CategoryJpa.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit f6b258107c7a330ce4151f0d06a563d0841cd24c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 7 12:01:41 2022 +0100
+
+    Project Design refactoring
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryDescription.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/ICategoria.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/CategoryJpa.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/CategoryDomainDataAssembler.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit 24a819f60de5eaa13481a888c4769ce2ad2844a4
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 5 18:35:16 2022 +0100
+
+    Added methods to delete Category from DB
+    
+    Also verified if a category can be deleted
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/CategoryFactory.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit 25d0ac5539799da175da4f1bd1c8291c994ba62a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 5 18:34:08 2022 +0100
+
+    Added toString method to CategoryDescription
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/ValueObjects/CategoryDescription.java
+
+commit 795aa0d4e272ba8edfb148f8a6d4960854151a00
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 5 18:32:31 2022 +0100
+
+    Modified toString of CategoryDTO
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+
+commit d73d64abf8d35e45592ed6226672e9b764491c55
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 5 18:31:32 2022 +0100
+
+    Modified CategoryController from Post to Delete mapping
+    
+    Also updated method to receive 2 response entities. This way client knows if category was deleted or not
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/controllers/CategoryController.java
+
+commit 2bc90d39dfd4ff0d945aca1834a2e0a936fc8025
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 5 18:29:40 2022 +0100
+
+    Add toString method to Category class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Category.java
+
+commit d2abe1bf3e451d8622bcb1426f35776b28d07137
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 5 18:28:43 2022 +0100
+
+    Create deleteCategory method in CategoryService class
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+
+commit c24da13e3e23cccc983700ff8d7335354765a1c9
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 4 14:43:12 2022 +0100
+
+    Created CategoryService class with createCategory method
+    
+    Still needs to be updated since dependencies are still not created
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/CategoryService.java
+
+commit 55db5bf72769648796eb3484fe65936651a5d94c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 4 14:31:44 2022 +0100
+
+    Added CategoryDTO class and modified CategoryDomainDTOAssembler
+    
+    Fixed imports on CategoryDomainDTOAssembler
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+
+commit 924747a46ddd6d873c42a35283d7470a4204ee54
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 4 14:25:43 2022 +0100
+
+    Added CategoryDomainDTOAssembler class
+    
+    Class that will be responsible to assemble Category into CategoryDTO
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+
+commit 825ceb8f439b22b391be0e37cfecda75a40d62da
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 4 14:22:43 2022 +0100
+
+    Added NewCategoryInfo DTO
+    
+    DTO that will be received by RequestParameter tag on CategoryController
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java
+
+commit 6fc0e64c9efbab03c28491b6657448ff7c550c69
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 4 14:18:41 2022 +0100
+
+    Created CategoryFactory and ICategoryFactory
+
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/CategoryFactory.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/factories/ICategoryFactory.java
+
+commit 0d67a10097aca7dde432ceaf70679ad996d12169
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 2 23:22:28 2022 +0100
+
+    Update pom.xml file - oracle JDBC dependency
+
+M	LanguageDetectionPrototype/pom.xml
+M	LanguageDetectionPrototype/target/classes/application.properties
+
+commit 462578d8ee1537f600e2f7f9bb42bb2bd9f9f4d6
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 2 23:19:21 2022 +0100
+
+    Update Task constructor
+    
+    Modified constructor to receive ID and Date null, as it is generated by DB
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit df8a86116ccd06473319aca207c68dd2718ced96
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 2 23:17:34 2022 +0100
+
+    Update toData method from TaskDomainDataAssembler class
+    
+    Constructor was updated to receive language and current status
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/DataAssemblers/TaskDomainDataAssembler.java
+
+commit 22bd075eb2051c980b70b28b0402c35a39fc6d7b
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 2 23:16:03 2022 +0100
+
+    Update TaskJPA class
+    
+    Updated id Generation type to Auto instead of Identity, added generated timestamp, and modified constructor
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+
+commit c40b3309d0f8d6e7b17ee655353c909f45cbb2d7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 2 23:13:49 2022 +0100
+
+    Update application properties file
+    
+    Modified database to oracle
+
+M	LanguageDetectionPrototype/src/main/resources/application.properties
+
+commit ced0d108f75047a46fba65ffab950203bf92ee20
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 2 12:04:44 2022 +0100
+
+    Modified AnalyzerService and DicitionaryService to domain
+    
+    Also commented all tests to simplify our coding errors
+
+M	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/TaskService.java
+R054	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/AnalyzerService.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/AnalyzerService.java
+R098	LanguageDetectionPrototype/src/main/java/LanguageDetection/application/services/DictionaryService.java	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/DictionaryService.java
+A	LanguageDetectionPrototype/src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/DictionaryServiceTest.java
+M	LanguageDetectionPrototype/src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit 22dfde2ce1bfa152e5885ba13dc31cf103370c60
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 1 22:35:58 2022 +0100
+
+    API prototype test
+
+A	AnalyzerAPI/.gitignore
+A	AnalyzerAPI/Documents/CD/CD_Diagram.svg
+A	AnalyzerAPI/Documents/Domain Model/Domain Model.svg
+A	AnalyzerAPI/Documents/Glossary.xlsx
+A	AnalyzerAPI/Documents/Report&Analysis DuckSoftWorks.docx
+A	AnalyzerAPI/Documents/SD/Prototype - US 01.svg
+A	AnalyzerAPI/Documents/SSD/SSD.svg
+A	AnalyzerAPI/pom.xml
+A	AnalyzerAPI/src/main/java/LanguageDetection/Application.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/application/controllers/AnalysisController.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/application/dtos/AnalysisDTO.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/application/dtos/NewAnalysisInfoDTO.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/application/dtos/assemblers/AnalysisDTOAssembler.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/application/services/AnalysisService.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/entities/example/Analyzer.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/entities/example/Dictionary.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/entities/example/Language.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/AggregateRoot.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/Entity.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/Identifiable.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/Immutable.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/domain/shared/ValueObject.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/datamodel/TaskJpa.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/datamodel/assemblers/TaskDomainDataAssembler.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl
+A	AnalyzerAPI/src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl
+A	AnalyzerAPI/src/main/resources/application.properties
+A	AnalyzerAPI/src/test/java/LanguageDetection/application/controllers/AnalysisControllerTest.java
+A	AnalyzerAPI/src/test/java/LanguageDetection/application/services/AnalysisServiceTest.java
+A	AnalyzerAPI/src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+A	AnalyzerAPI/src/test/java/LanguageDetection/application/services/DictionaryServiceTest.java
+A	AnalyzerAPI/target/classes/application.properties
+A	AnalyzerAPI/template_rest_application_ddd.iml
