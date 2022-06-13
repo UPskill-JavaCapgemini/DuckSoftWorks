@@ -11,9 +11,9 @@ import org.springframework.hateoas.RepresentationModel;
 public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
 
     @Getter
-    Task.CurrentStatus status;
+    Task.TaskStatus status;
 
     public TaskStatusDTO(Task status) {
-        this.status = status.getCurrentStatus();
+        this.status = status.getStatus();
     }
 }

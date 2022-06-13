@@ -104,7 +104,7 @@ public class TaskService {
      * @return List of TaskDTO with all information of task that has status the same as String inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
-        Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
+        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = iTask.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
@@ -143,7 +143,7 @@ public class TaskService {
      * status the same as string inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
-        Task.CurrentStatus status = Task.CurrentStatus.valueOf(inputStatus.getStatus());
+        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
         List<Task> listTasksByStatusAndByCategory = iTask.findByStatusAndByCategoryContaining(status, category);
@@ -174,7 +174,7 @@ public class TaskService {
      */
     private void languageAnalysis(Task taskrepo) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
-        analyzerService.setTaskRepo(taskrepo);
+        analyzerService.setTask(taskrepo);
         analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -199,22 +199,18 @@ public class TaskService {
 
     /**
      * Handles the canceling method after timelimit reaches.
-     * @param taskrepo task instance of what needs to be canceled.
+     * @param task task instance of what needs to be canceled.
      * @return Timer task
      */
-    protected TimerTask timeOutAnalysis(Task taskrepo) {
-        TimerTask task = new TimerTask() {
+    protected TimerTask timeOutAnalysis(Task task) {
+        TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                try {
-                    Task canceledTask = new Task(taskrepo);
-                    taskRepo.saveTask(canceledTask);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
+                task.updateStatus(Task.TaskStatus.Canceled);
+                taskRepo.saveTask(task);
             }
         };
-        return task;
+        return timerTask;
     }
 
     /**
@@ -224,11 +220,11 @@ public class TaskService {
      * @throws MalformedURLException thrown only if some sort of update done to URL on database.
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<Task> task = iTask.findById(id.getId());
-        if (task.get().getCurrentStatus().toString().equals(Task.CurrentStatus.Processing.toString())) {
-            Task canceledTask = new Task(task.get());
-            iTask.saveTask(canceledTask);
-            return Optional.of(taskDomainDTOAssembler.toCompleteDTO(task.get()));
+        Optional<Task> optionalTask = iTask.findById(id.getId());
+        if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
+            Task task = optionalTask.get();
+            iTask.saveTask(task);
+            return Optional.of(taskDomainDTOAssembler.toCompleteDTO(optionalTask.get()));
         }
         return Optional.empty();
     }

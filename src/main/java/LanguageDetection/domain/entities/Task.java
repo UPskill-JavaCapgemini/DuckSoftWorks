@@ -52,7 +52,7 @@ public class Task implements AggregateRoot<Long> {
      */
     @Enumerated(EnumType.STRING)
     @Getter
-    CurrentStatus currentStatus;
+    TaskStatus status;
     /**
      * The time task has to be concluded before it is automatically canceled
      */
@@ -80,42 +80,10 @@ public class Task implements AggregateRoot<Long> {
         this.date = null;
         this.inputUrl = new InputUrl(inputUrl);
         this.language = null;
-        this.currentStatus = CurrentStatus.Processing;
+        this.status = TaskStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
         this.category = category;
     }
-
-    /**
-     * Constructor that handles the Task creation to be saved after a language analysis is concluded.
-     * @param task that that was already created and needs to be updated
-     * @param language result of a language analysis
-     * @throws MalformedURLException thrown if some sort of update done in database on url
-     */
-    public Task(Task task,String language) throws MalformedURLException {
-        this.id = task.identity();
-        this.date = task.getDate();
-        this.inputUrl = task.getInputUrl();
-        this.language = Task.Language.valueOf(language);
-        this.currentStatus = CurrentStatus.Concluded;
-        this.timeOut = task.getTimeOut();
-        this.category = task.getCategory();
-    }
-
-    /**
-     * Constructor that handles the Task creation to be saved if a task is concluded by timeout or from user input
-     * @param task task that was already created and needs to be updated
-     * @throws MalformedURLException thrown if some sort of update done in database on url
-     */
-    public Task(Task task) throws MalformedURLException {
-        this.id = task.identity();
-        this.date = task.getDate();
-        this.inputUrl = task.getInputUrl();
-        this.language = null;
-        this.currentStatus = CurrentStatus.Canceled;
-        this.timeOut = task.getTimeOut();
-        this.category = task.getCategory();
-    }
-
 
     @Override
     public boolean sameAs(Object other) {
@@ -141,6 +109,23 @@ public class Task implements AggregateRoot<Long> {
         return AggregateRoot.super.hasIdentity(id);
     }
 
+    public boolean isStatusProcessing(){
+        return this.status == TaskStatus.Processing;
+    }
+
+    /**
+     * TODO: When language is updated then status should go to completed.
+     * @param language
+     */
+    public void updateLanguage(String language) {
+        this.language = Task.Language.valueOf(language);
+        this.updateStatus(TaskStatus.Concluded);
+    }
+
+    public void updateStatus(TaskStatus status){
+        this.status = status;
+    }
+
     /**
      * Possibilities of what can be the Task language
      */
@@ -154,7 +139,7 @@ public class Task implements AggregateRoot<Long> {
      * Possibilities of what can be the Task status
      */
     @Getter
-    public enum CurrentStatus {
+    public enum TaskStatus {
         Concluded,
         Canceled,
         Processing
@@ -167,7 +152,7 @@ public class Task implements AggregateRoot<Long> {
                 ", date=" + date +
                 ", url=" + inputUrl +
                 ", language=" + language +
-                ", currentStatus=" + currentStatus +
+                ", currentStatus=" + status +
                 ", timeOut=" + timeOut +
                 ", category=" + category;
     }

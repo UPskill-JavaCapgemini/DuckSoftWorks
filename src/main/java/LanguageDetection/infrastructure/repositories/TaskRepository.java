@@ -43,7 +43,7 @@ public class TaskRepository implements ITask {
 	 * @param st Task current status ENUM that wants to be searched in database
 	 * @return List of all tasks present with the status passed
 	 */
-	public List<Task> findByStatusContaining(Task.CurrentStatus st) {
+	public List<Task> findByStatusContaining(Task.TaskStatus st) {
 		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLike(st);
 
 		return (List<Task>) listTasksByStatus;
@@ -66,7 +66,7 @@ public class TaskRepository implements ITask {
 	 * @param category Category instance that wants to be searched in database
 	 * @return List of all tasks present with the category and status passed
 	 */
-	public List<Task> findByStatusAndByCategoryContaining(Task.CurrentStatus status, Category category) {
+	public List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category) {
 		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLike(category, status);
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
