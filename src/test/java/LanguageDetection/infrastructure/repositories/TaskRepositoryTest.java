@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 class TaskRepositoryTest {
 
     @InjectMocks
-    TaskRepositoryRepository repository;
+    TaskRepository repository;
 
     @Mock
     TaskJpaRepository jpaRepository;

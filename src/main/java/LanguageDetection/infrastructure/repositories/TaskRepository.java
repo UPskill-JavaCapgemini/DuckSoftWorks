@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 @Repository
-public class TaskRepositoryRepository implements ITaskRepository {
+public class TaskRepository implements ITaskRepository {
 
 
 	@Autowired

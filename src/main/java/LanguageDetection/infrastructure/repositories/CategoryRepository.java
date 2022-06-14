@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 
 @Repository
-public class CategoryRepositoryRepository implements ICategoryRepository {
+public class CategoryRepository implements ICategoryRepository {
 
 
     @Autowired
