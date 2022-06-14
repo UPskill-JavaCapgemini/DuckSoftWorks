@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface IBlackListItemRepository {
 
 
-    Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException;
+    Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem);
 
 /*
     Optional<BlackListItem> findByBlackListItem(BlackListItem blackListItem);

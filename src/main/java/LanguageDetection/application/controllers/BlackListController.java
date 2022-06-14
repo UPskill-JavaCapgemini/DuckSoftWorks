@@ -49,7 +49,7 @@ public class BlackListController {
      */
 
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws MalformedURLException {
+    public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) {
         Optional<BlackListDTO> blackListDTO = blackListManagementService.createAndSaveBlackListItem(url);
         if (blackListDTO.isPresent()){
             return new ResponseEntity<>(blackListDTO.get().toString(), HttpStatus.CREATED);

@@ -1,2 +1,7 @@
-package LanguageDetection.application.services;public class TaskFactory {
+package LanguageDetection.application.services;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class TaskFactory {
 }

@@ -16,7 +16,7 @@ public class BlackListService {
     @Autowired
     IBlackListItemRepository blackListItemRepository;
 
-    public Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException {
+    public Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) {
         return blackListItemRepository.saveBlackListItem(blackListItem);
     }
 

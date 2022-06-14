@@ -48,12 +48,16 @@ public class BlackListManagementService {
         }
         return Optional.empty();
     }*/
-    public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) throws MalformedURLException {
-        BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
-        Optional<BlackListItem> blackListToRepo = blackListService.saveBlackListItem(blackListItem);
-        if(blackListToRepo.isPresent()){
-            return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo.get()));
-        } else {
+    public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) {
+        try {
+            BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
+            Optional<BlackListItem> blackListToRepo = blackListService.saveBlackListItem(blackListItem);
+            if(blackListToRepo.isPresent()){
+                return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo.get()));
+            } else {
+                return Optional.empty();
+            }
+        }catch (MalformedURLException e){
             return Optional.empty();
         }
     }
