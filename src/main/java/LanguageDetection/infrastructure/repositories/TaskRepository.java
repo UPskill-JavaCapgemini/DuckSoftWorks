@@ -81,6 +81,4 @@ public class TaskRepository implements ITaskRepository {
 		return taskJpaRepository.findById(identity);
     }
 
-
-
 }
