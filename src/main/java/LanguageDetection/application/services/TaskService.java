@@ -69,25 +69,14 @@ public class TaskService {
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
-
-        NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-        if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListService.isBlackListed(newBlackListInfoDTO)) {
-            Category persistedCategory = findCategoryOrDefault(userInput);
-           try {
-               Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory);
-               Task savedTask = this.iTaskRepository.saveTask(task);
         InputUrl inputUrl = new InputUrl(userInput.getUrl());
         TimeOut timeOut= new TimeOut(userInput.getTimeOut());
         Category category = new Category(userInput.getCategory());
-               Task createdTask = taskFactory.createTask(inputUrl,timeOut,category);
-               Task savedTask = this.iTaskRepository.saveTask(createdTask);
-
-               languageAnalysis(savedTask);
-               return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
+        Task createdTask = taskFactory.createTask(inputUrl,timeOut,category);
+        Task savedTask = this.iTaskRepository.saveTask(createdTask);
+        languageAnalysis(savedTask);
+        return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
     }
-
-
-
 
     /**
      * Fetch all tasks found in database
