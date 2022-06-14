@@ -8,6 +8,8 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITask;
 import LanguageDetection.domain.entities.Task;
@@ -53,6 +55,9 @@ public class TaskService {
     @Autowired
     CategoryService categoryService;
 
+    @Autowired
+    TaskFactory taskFactory;
+
 
     /**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
@@ -64,20 +69,16 @@ public class TaskService {
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
-        NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-        if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListService.isBlackListed(newBlackListInfoDTO)) {
-            Category persistedCategory = findCategoryOrDefault(userInput);
-           try {
-               Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory);
-               Task savedTask = this.iTask.saveTask(task);
+        InputUrl inputUrl = new InputUrl(userInput.getUrl());
+        TimeOut timeOut= new TimeOut(userInput.getTimeOut());
+        Category category = new Category(userInput.getCategory());
+               Task createdTask = taskFactory.createTask(inputUrl,timeOut,category);
+               Task savedTask = this.iTask.saveTask(createdTask);
                languageAnalysis(savedTask);
                return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
-           } catch (IllegalArgumentException e){
-               return Optional.empty();
-           }
-        }
-        return Optional.empty();
     }
+
+
 
 
     /**
@@ -176,11 +177,9 @@ public class TaskService {
      */
     private void languageAnalysis(Task task) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
-<<<<<<< HEAD
-        analyzerService.setTask(taskrepo);
-=======
+
         analyzerService.setTask(task);
->>>>>>> 2a396a4afcae487af6c343b18b22bccef2c1da4f
+
         analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
