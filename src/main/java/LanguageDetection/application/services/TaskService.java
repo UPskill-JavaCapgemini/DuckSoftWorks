@@ -13,6 +13,7 @@ import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.factory.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

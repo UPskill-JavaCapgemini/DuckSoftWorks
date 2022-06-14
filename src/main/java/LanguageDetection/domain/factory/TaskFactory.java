@@ -1,4 +1,4 @@
-package LanguageDetection.application.services;
+package LanguageDetection.domain.factory;
 
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.ValueObjects.InputUrl;

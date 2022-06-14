@@ -70,7 +70,7 @@ public class TaskController {
         else if (status != null && categoryName == null){
             tasks = taskService.findByStatusContaining(status);}
         else if(status == null) {
-            tasks = taskService.findByCategoryContaining(categoryName); }
+            tasks = taskService.findByCategoryNameContaining(categoryName); }
         else {
             tasks = taskService.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
