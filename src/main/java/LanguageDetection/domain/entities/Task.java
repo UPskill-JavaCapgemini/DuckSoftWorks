@@ -52,7 +52,9 @@ public class Task implements AggregateRoot<Long> {
      */
     @Enumerated(EnumType.STRING)
     @Getter
+
     TaskStatus currentStatus;
+
     /**
      * The time task has to be concluded before it is automatically canceled
      */
@@ -126,6 +128,7 @@ public class Task implements AggregateRoot<Long> {
 
     public void updateStatus(TaskStatus status){
         this.currentStatus = status;
+
     }
 
     /**

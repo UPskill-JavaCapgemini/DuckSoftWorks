@@ -17,6 +17,6 @@ public class TaskDomainDTOAssembler {
     }
 
     public TaskDTO toCompleteDTO(Task task){
-        return new TaskDTO(task.getId(), task.getDate(), task.getInputUrl(), task.getLanguage(), task.getCurrentStatus(), task.getTimeOut(), task.getCategory());
+        return new TaskDTO(task.getId(), task.getDate(), task.getInputUrl(), task.getLanguage(), task.getStatus(), task.getTimeOut(), task.getCategory());
     }
 }
