@@ -72,10 +72,17 @@ public class TaskService {
         InputUrl inputUrl = new InputUrl(userInput.getUrl());
         TimeOut timeOut= new TimeOut(userInput.getTimeOut());
         Category category = new Category(userInput.getCategory());
-        Task createdTask = taskFactory.createTask(inputUrl,timeOut,category);
-        Task savedTask = this.iTaskRepository.saveTask(createdTask);
-        languageAnalysis(savedTask);
-        return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
+
+        Optional<Task> opCreatedTask = taskFactory.createTask(inputUrl,timeOut,category);
+
+        if (opCreatedTask.isPresent())
+        {
+            Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
+            languageAnalysis(savedTask);
+            return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
+
+        }
+        return Optional.empty();
     }
 
     /**
@@ -175,7 +182,7 @@ public class TaskService {
     private void languageAnalysis(Task task) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
 
-        analyzerService.setTask(task);
+        analyzerService.setTaskToBeAnalyzed(task);
 
         analyzerService.setTaskRepository(taskRepo);
 
