@@ -1,5 +1,6 @@
 package LanguageDetection.infrastructure.repositories;
 
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
@@ -54,9 +55,8 @@ public class TaskRepositoryRepository implements ITaskRepository {
 	 * @param catName Category instance that wants to be searched in database
 	 * @return List of all tasks present with the category passed
 	 */
-	public List<Task> findByCategoryContaining(Category catName) {
+	public List<Task> findByCategoryNameContaining(CategoryName catName) {
 		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLike(catName);
-
 		return (List<Task>) listTasksByCategory;
 	}
 

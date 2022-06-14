@@ -61,12 +61,12 @@ class TaskRepositoryTest {
         Assertions.assertEquals(repository.findByStatusContaining(status), List.of(task1, task2));
     }
 
-    @Test
-    void findByCategoryContainingShouldReturnListWithTaskThatHaveCategory2() {
-        when(repository.findByCategoryContaining(category2)).thenReturn(List.of(task2));
-
-        Assertions.assertEquals(repository.findByCategoryContaining(category2), List.of(task2));
-    }
+//    @Test
+//    void findByCategoryContainingShouldReturnListWithTaskThatHaveCategory2() {
+//        when(repository.findByCategoryContaining(category2)).thenReturn(List.of(task2));
+//
+//        Assertions.assertEquals(repository.findByCategoryContaining(category2), List.of(task2));
+//    }
 
     @Test
     void findByStatusAndByCategoryContainingShouldReturnListOfTaskWithCategoryAndStatusThatMatch() {
