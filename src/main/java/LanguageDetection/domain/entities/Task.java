@@ -151,7 +151,7 @@ public class Task implements AggregateRoot<Long> {
                 "id=" + id +
                 ", date=" + date +
                 ", url=" + inputUrl +
-                ", language=" + taskResult.getLanguage().toString() +
+                ", language=" + taskResult +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category;

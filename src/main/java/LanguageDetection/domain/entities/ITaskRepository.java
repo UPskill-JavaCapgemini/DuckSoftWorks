@@ -15,7 +15,9 @@ public interface ITaskRepository {
 
     List<Task> findByCategoryContaining(Category category);
 
+/*
     List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category);
+*/
 
 //    boolean deletedById(Long id);
 

@@ -66,11 +66,11 @@ public class TaskRepositoryRepository implements ITaskRepository {
 	 * @param category Category instance that wants to be searched in database
 	 * @return List of all tasks present with the category and status passed
 	 */
-	public List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category) {
+	/*public List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category) {
 		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentTaskStatusLike(category, status);
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
-	}
+	}*/
 
 	/**
 	 * Fetches task on database with the corresponding id passed
