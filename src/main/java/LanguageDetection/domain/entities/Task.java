@@ -1,11 +1,11 @@
 package LanguageDetection.domain.entities;
 
-import LanguageDetection.domain.ValueObjects.TaskResult;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
@@ -19,8 +19,7 @@ import java.util.Date;
  */
 
 @EqualsAndHashCode
-@NoArgsConstructor
-@Repository
+@Component
 @Entity
 @Table
 public class Task implements AggregateRoot<Long> {
@@ -45,15 +44,17 @@ public class Task implements AggregateRoot<Long> {
     /**
      * The language detected on the text
      */
+    @Enumerated(EnumType.STRING)
     @Getter
-    @Embedded
-    TaskResult taskResult;
+    Language language;
     /**
      * The actual state of the task
      */
     @Enumerated(EnumType.STRING)
     @Getter
-    TaskStatus status;
+
+    TaskStatus currentStatus;
+
     /**
      * The time task has to be concluded before it is automatically canceled
      */
@@ -66,6 +67,8 @@ public class Task implements AggregateRoot<Long> {
     @Getter
     @ManyToOne
     Category category;
+
+    protected Task (){}
 
     /**
      * Constructor that receives all the information necessary to create a Task from user input
@@ -80,8 +83,8 @@ public class Task implements AggregateRoot<Long> {
         this.id = null;
         this.date = null;
         this.inputUrl = new InputUrl(inputUrl);
-        this.taskResult = null;
-        this.status = TaskStatus.Processing;
+        this.language = null;
+        this.currentStatus = TaskStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
         this.category = category;
     }
@@ -111,22 +114,31 @@ public class Task implements AggregateRoot<Long> {
     }
 
     public boolean isStatusProcessing(){
-        return this.status == TaskStatus.Processing;
+        return this.currentStatus == TaskStatus.Processing;
     }
 
     /**
      * TODO: When language is updated then status should go to completed.
-     * @param updatedTaskResult
+     * @param language
      */
-    public void updateTaskResultLanguage(TaskResult updatedTaskResult) {
-        this.taskResult = updatedTaskResult;
+    public void updateLanguage(String language) {
+        this.language = Task.Language.valueOf(language);
         this.updateStatus(TaskStatus.Concluded);
     }
 
     public void updateStatus(TaskStatus status){
-        this.status = status;
+        this.currentStatus = status;
+
     }
 
+    /**
+     * Possibilities of what can be the Task language
+     */
+    public enum Language {
+        ENGLISH,
+        PORTUGUESE,
+        SPANISH
+    }
 
     /**
      * Possibilities of what can be the Task status
@@ -144,8 +156,8 @@ public class Task implements AggregateRoot<Long> {
                 "id=" + id +
                 ", date=" + date +
                 ", url=" + inputUrl +
-                ", language=" + taskResult.getLanguage().toString() +
-                ", currentStatus=" + status +
+                ", language=" + language +
+                ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category;
     }

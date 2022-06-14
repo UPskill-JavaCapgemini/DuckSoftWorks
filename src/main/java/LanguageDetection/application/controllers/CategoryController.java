@@ -34,7 +34,7 @@ public class CategoryController {
      */
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllCategory() throws ParseException, IOException {
+    public ResponseEntity<Object> getAllCategories() throws ParseException, IOException {
         List<CategoryDTO> categories = categoryService.getAllCategory();
         return new ResponseEntity<>(categories.toString(), HttpStatus.OK);
     }

@@ -5,7 +5,7 @@ import LanguageDetection.domain.DomainService.LanguageAnalyzer;
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.TaskResult;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.infrastructure.repositories.TaskRepository;
+import LanguageDetection.infrastructure.repositories.TaskRepositoryRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
@@ -26,7 +26,7 @@ public class LanguageDetectionService implements Runnable{
         private Task taskToBeAnalyzed;
 
     @Setter
-    TaskRepository taskRepository;
+    TaskRepositoryRepository taskRepository;
 
     @SneakyThrows
     @Override

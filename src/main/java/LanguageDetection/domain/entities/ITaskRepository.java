@@ -3,7 +3,7 @@ package LanguageDetection.domain.entities;
 import java.util.List;
 import java.util.Optional;
 
-public interface ITask {
+public interface ITaskRepository {
 
     Task saveTask(Task task);
 

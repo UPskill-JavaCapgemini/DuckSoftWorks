@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 //import org.apache.commons.validator.routines.UrlValidator;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EmbeddedId;
@@ -26,9 +27,8 @@ import java.net.MalformedURLException;
  */
 
 @Getter
-@NoArgsConstructor
 @EqualsAndHashCode
-@Repository
+@Component
 @Entity
 @Table
 public class BlackListItem implements AggregateRoot<BlackListUrl> {
@@ -37,14 +37,16 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
      * Gets the Value Object BlackListUrl where the business validations are implemented.
      */
     @EmbeddedId
-    private BlackListUrl url;
+    private BlackListUrl blackListUrl;
+
+    protected BlackListItem(){}
 
     /**
      * Constructs a BlackListItem with an url as a String.
      */
-    public BlackListItem(String url) throws MalformedURLException {
+    public BlackListItem(String blackListUrl) throws MalformedURLException {
 
-            this.url = new BlackListUrl(url);
+            this.blackListUrl = new BlackListUrl(blackListUrl);
     }
 
     public boolean sameAs(Object otherBlackList) {
@@ -53,7 +55,7 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
 
 
     public int compareTo(@NotNull BlackListUrl otherURL) {
-        return url.compareTo(otherURL);
+        return blackListUrl.compareTo(otherURL);
     }
 
     /**
@@ -62,7 +64,7 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
      */
     @JsonGetter
     public BlackListUrl identity() {
-        return this.url;
+        return this.blackListUrl;
     }
 
     @Override

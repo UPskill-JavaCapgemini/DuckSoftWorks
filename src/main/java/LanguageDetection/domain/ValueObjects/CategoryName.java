@@ -9,7 +9,6 @@ import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
 @Embeddable
-@Table
 public class CategoryName implements ValueObject {
 
     /**
@@ -17,7 +16,9 @@ public class CategoryName implements ValueObject {
      */
     String categoryName;
 
-    public CategoryName() {
+    private static final String DEFAULT_CATEGORY = "TODO";
+
+    protected CategoryName() {
     }
 
     /**
@@ -26,7 +27,7 @@ public class CategoryName implements ValueObject {
      */
     public CategoryName(String categoryName) {
         if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
-            throw new IllegalArgumentException("Invalid Category Name");
+            this.categoryName = DEFAULT_CATEGORY;
         }
         this.categoryName = categoryName;
     }

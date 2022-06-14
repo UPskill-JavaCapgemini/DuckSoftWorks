@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITask;
+import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.JPARepositories.TaskJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 @Repository
-public class TaskRepository implements ITask {
+public class TaskRepositoryRepository implements ITaskRepository {
 
 
 	@Autowired
