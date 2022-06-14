@@ -34,7 +34,7 @@ public class Bootstrap implements InitializingBean {
         blackListService.createAndSaveBlackListItem(blackListInfoDTO);
     }
 
-    private void createBaseCategories() throws MalformedURLException {
+    private void createBaseCategories() {
 
         NewCategoryInfoDTO economics = new NewCategoryInfoDTO("Economics");
         NewCategoryInfoDTO philosophy = new NewCategoryInfoDTO("Philosophy");

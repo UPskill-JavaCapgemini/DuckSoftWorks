@@ -145,6 +145,8 @@ public class TaskServiceTest {
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
 
+
+    //TODO This is passing blacklisted validation. fix
     @org.junit.jupiter.api.Test
     void createAndSaveTaskShouldReturnOptionalEmptyIfCategoryDoesNotExistAndUrlIsBlackListed() throws IOException {
         NewTaskInfoDTO infoDTO = new NewTaskInfoDTO("http://www.textexample.com/text/text.txt", "Sports", 2);
@@ -156,6 +158,8 @@ public class TaskServiceTest {
 
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
+
+    //TODO: create new test to ensure that default category is being created in the task
 
     @org.junit.jupiter.api.Test
     void findAllTasksShouldReturnListOfAllTasks() throws MalformedURLException {

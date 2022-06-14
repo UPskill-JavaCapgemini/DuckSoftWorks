@@ -52,7 +52,9 @@ public class Task implements AggregateRoot<Long> {
      */
     @Enumerated(EnumType.STRING)
     @Getter
-    TaskStatus status;
+
+    TaskStatus currentStatus;
+
     /**
      * The time task has to be concluded before it is automatically canceled
      */
@@ -80,7 +82,7 @@ public class Task implements AggregateRoot<Long> {
         this.date = null;
         this.inputUrl = new InputUrl(inputUrl);
         this.language = null;
-        this.status = TaskStatus.Processing;
+        this.currentStatus = TaskStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
         this.category = category;
     }
@@ -110,7 +112,7 @@ public class Task implements AggregateRoot<Long> {
     }
 
     public boolean isStatusProcessing(){
-        return this.status == TaskStatus.Processing;
+        return this.currentStatus == TaskStatus.Processing;
     }
 
     /**
@@ -123,7 +125,8 @@ public class Task implements AggregateRoot<Long> {
     }
 
     public void updateStatus(TaskStatus status){
-        this.status = status;
+        this.currentStatus = status;
+
     }
 
     /**
@@ -152,7 +155,7 @@ public class Task implements AggregateRoot<Long> {
                 ", date=" + date +
                 ", url=" + inputUrl +
                 ", language=" + language +
-                ", currentStatus=" + status +
+                ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category;
     }

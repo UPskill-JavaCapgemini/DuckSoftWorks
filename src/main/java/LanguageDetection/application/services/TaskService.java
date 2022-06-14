@@ -66,17 +66,15 @@ public class TaskService {
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
         if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListService.isBlackListed(newBlackListInfoDTO)) {
-            Optional<Category> persistedCategory = findPersistedCategory(userInput);
-            if (persistedCategory.isPresent()) {
-               try {
-                   Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory.get());
-                   Task taskRepo = this.iTask.saveTask(task);
-                   languageAnalysis(taskRepo);
-                   return Optional.of(taskDomainDTOAssembler.toDTO(taskRepo));
-               } catch (IllegalArgumentException e){
-                   return Optional.empty();
-               }
-            }
+            Category persistedCategory = findCategoryOrDefault(userInput);
+           try {
+               Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory);
+               Task savedTask = this.iTask.saveTask(task);
+               languageAnalysis(savedTask);
+               return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
+           } catch (IllegalArgumentException e){
+               return Optional.empty();
+           }
         }
         return Optional.empty();
     }
@@ -162,25 +160,33 @@ public class TaskService {
      * @param userInput category name that as passed by from user input - instance of NewTaskInfoDTO
      * @return persisted category if already on database
      */
-    protected Optional<Category> findPersistedCategory(NewTaskInfoDTO userInput) {
+    protected Category findCategoryOrDefault(NewTaskInfoDTO userInput) {
         Category inputCategory = new Category(userInput.getCategory());
         Optional<Category> category = categoryService.findById(inputCategory);
-        return category;
+        if(category.isPresent()){
+            return category.get();
+        }
+        //TODO
+        return new Category("");
     }
 
     /**
      * Responsible for instantiate a new Thread for asynchronous language analysis.
-     * @param taskrepo instance of object already created
+     * @param task instance of object already created
      */
-    private void languageAnalysis(Task taskrepo) {
+    private void languageAnalysis(Task task) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
+<<<<<<< HEAD
         analyzerService.setTask(taskrepo);
+=======
+        analyzerService.setTask(task);
+>>>>>>> 2a396a4afcae487af6c343b18b22bccef2c1da4f
         analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(analyzerService);
 
-        initializeTimer(taskrepo);
+        initializeTimer(task);
 
         executorService.shutdown();
     }
