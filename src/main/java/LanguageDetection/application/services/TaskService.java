@@ -7,11 +7,13 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.factory.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,9 +123,9 @@ public class TaskService {
      * @param catName CategoryNameDTO object with string of category name that want to be searched
      * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance
      */
-    public List<TaskDTO> findByCategoryContaining(CategoryNameDTO catName) {
-        Category category = new Category(catName.getCategoryName());
-        List<Task> listTasksByCategory = iTaskRepository.findByCategoryContaining(category);
+    public List<TaskDTO> findByCategoryNameContaining(CategoryNameDTO catName) {
+        CategoryName categoryName = new CategoryName(catName.getCategoryName());
+        List<Task> listTasksByCategory = iTaskRepository.findByCategoryNameContaining(categoryName);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -142,7 +144,7 @@ public class TaskService {
      * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance and
      * status the same as string inside StatusDTO instance
      */
-    /*public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
+    public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
         Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
@@ -155,7 +157,7 @@ public class TaskService {
             taskDTOList.add(assemble);
         }
         return taskDTOList;
-    }*/
+    }
 
     /**
      * Fetches if a category passed by user input already exists on database.

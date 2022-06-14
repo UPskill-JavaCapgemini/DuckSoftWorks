@@ -1,5 +1,7 @@
 package LanguageDetection.domain.entities;
 
+import LanguageDetection.domain.ValueObjects.CategoryName;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +15,9 @@ public interface ITaskRepository {
 
     List<Task> findByStatusContaining(Task.TaskStatus st);
 
-    List<Task> findByCategoryContaining(Category category);
+    List<Task> findByCategoryNameContaining(CategoryName categoryname);
 
-/*
     List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category);
-*/
 
 //    boolean deletedById(Long id);
 

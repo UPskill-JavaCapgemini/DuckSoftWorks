@@ -1,4 +1,4 @@
-package LanguageDetection.application.services;
+package LanguageDetection.domain.factory;
 
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.ValueObjects.InputUrl;
@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Component
 public class TaskFactory {
+
     @Autowired
      BlackListService blackListService;
     public Optional<Task> createTask(InputUrl inputUrl, TimeOut timeOut, Category category) throws MalformedURLException {
