@@ -5,13 +5,11 @@ import LanguageDetection.domain.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.entities.BlackListItem;
 import LanguageDetection.domain.entities.IBlackListItemRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.BlackListJpaRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +47,7 @@ public class BlackListRepositoryRepository implements IBlackListItemRepository {
             blackListJpaRepository.delete(blackListItem);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             //TODO: Verify what exception is thrown here
             return false;
         }
@@ -61,7 +60,7 @@ public class BlackListRepositoryRepository implements IBlackListItemRepository {
      * @return a list with all the BlackList Items found
      */
 
-    public List<BlackListItem> findAllBlackListItems() throws MalformedURLException {
+    public List<BlackListItem> findAllBlackListItems() {
         List<BlackListItem> blackListItems = (List<BlackListItem>) blackListJpaRepository.findAll();
         return blackListItems;
     }
@@ -78,15 +77,4 @@ public class BlackListRepositoryRepository implements IBlackListItemRepository {
         Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         return blackListRepoUrl.isPresent();
     }
-
-    /*@Override
-    public Optional<BlackListItem> findByBlackListItem(BlackListItem blackListItem) {
-
-        BlackListUrl blackListUrl = blackListItem.getBlackListUrl();
-        Optional<BlackListItem> opBlackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
-        if (opBlackListRepoUrl.isPresent())
-            return opBlackListRepoUrl;
-        else
-            return Optional.empty();
-    }*/
 }

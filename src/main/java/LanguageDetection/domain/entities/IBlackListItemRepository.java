@@ -9,14 +9,10 @@ public interface IBlackListItemRepository {
 
     Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem);
 
-/*
-    Optional<BlackListItem> findByBlackListItem(BlackListItem blackListItem);
-*/
-
     boolean deleteByBlackListUrl(BlackListItem blackListItem);
 
-     boolean isBlackListed(BlackListItem blackListItem);
+    boolean isBlackListed(BlackListItem blackListItem);
 
-    List<BlackListItem> findAllBlackListItems() throws MalformedURLException;
+    List<BlackListItem> findAllBlackListItems();
 
 }

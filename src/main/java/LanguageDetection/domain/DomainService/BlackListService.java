@@ -5,7 +5,6 @@ import LanguageDetection.domain.entities.IBlackListItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,11 +23,17 @@ public class BlackListService {
         return blackListItemRepository.deleteByBlackListUrl(blackListItem);
     }
 
+    /**
+     * The method that verifies if an Item already exists in the repository.
+     *
+     * @param blackList instance of BlackListItem to verify in repository
+     * @return boolean that defines if the url is present in the repository list or not.
+     */
     public boolean isBlackListed(BlackListItem blackList) {
         return blackListItemRepository.isBlackListed(blackList);
     }
 
-    public List<BlackListItem> findAllBlackListItems() throws MalformedURLException {
+    public List<BlackListItem> findAllBlackListItems() {
         return blackListItemRepository.findAllBlackListItems();
     }
 }

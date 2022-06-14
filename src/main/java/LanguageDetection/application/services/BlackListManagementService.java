@@ -30,24 +30,7 @@ public class BlackListManagementService {
      *
      * @param blackListInputUrlDTO the NewBlackListInfoDTO object that contains an Url as a String.
      * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional.
-     * @throws MalformedURLException
      */
-
-    /*public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) throws MalformedURLException {
-        if (isUrlValid(blackListInputUrlDTO.getUrl()) && !isBlackListed(blackListInputUrlDTO)) {
-            BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
-            Optional<BlackListItem> persistedBlackListItem = iBlackListItemRepository.findByBlackListItem(blackListItem);
-            if (persistedBlackListItem.isEmpty()) {
-                try {
-                    BlackListItem blackListToRepo = iBlackListItemRepository.saveBlackListItem(blackListItem);
-                    return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo));
-                } catch (IllegalArgumentException e){
-                    return Optional.empty();
-                }
-            }
-        }
-        return Optional.empty();
-    }*/
     public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) {
         try {
             BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
@@ -70,10 +53,14 @@ public class BlackListManagementService {
      * @throws MalformedURLException
      */
 
-    public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) throws MalformedURLException {
-        String url = blackListInfoDTO.getUrl();
-        BlackListItem blackListItem = new BlackListItem(url);
-        return blackListService.deleteByBlackListUrl(blackListItem);
+    public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) {
+        try {
+            String url = blackListInfoDTO.getUrl();
+            BlackListItem blackListItem = new BlackListItem(url);
+            return blackListService.deleteByBlackListUrl(blackListItem);
+        } catch (MalformedURLException urlException){
+            return false;
+        }
     }
 
     /**
@@ -83,7 +70,7 @@ public class BlackListManagementService {
      * @throws MalformedURLException
      */
 
-    public List<BlackListDTO> getAllBlackListItems() throws MalformedURLException {
+    public List<BlackListDTO> getAllBlackListItems() {
         List<BlackListItem> blackListItems = blackListService.findAllBlackListItems();
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();
@@ -94,18 +81,5 @@ public class BlackListManagementService {
         }
 
         return blackListDTOS;
-    }
-
-    /**
-     * The method that verifies if an Item already exists in the repository.
-     *
-     * @param inputBlackList
-     * @return boolean that difines if the url is arleady present in the repository list or not.
-     * @throws MalformedURLException
-     */
-
-    public boolean isBlackListed(NewBlackListInfoDTO inputBlackList) throws MalformedURLException {
-        BlackListItem blackList = new BlackListItem(inputBlackList.getUrl());
-        return blackListService.isBlackListed(blackList);
     }
 }
