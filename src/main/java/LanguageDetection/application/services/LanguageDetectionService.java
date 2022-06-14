@@ -5,7 +5,7 @@ import LanguageDetection.domain.DomainService.LanguageAnalyzer;
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.TaskResult;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.infrastructure.repositories.TaskRepositoryRepository;
+import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 
 import java.util.Optional;
-import java.util.concurrent.Callable;
 
 @Async
 @Slf4j
@@ -26,7 +25,7 @@ public class LanguageDetectionService implements Runnable{
         private Task taskToBeAnalyzed;
 
     @Setter
-    TaskRepositoryRepository taskRepository;
+    TaskRepository taskRepository;
 
     @SneakyThrows
     @Override

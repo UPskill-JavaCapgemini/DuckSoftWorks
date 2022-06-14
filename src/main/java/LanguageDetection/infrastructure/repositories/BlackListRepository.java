@@ -21,7 +21,7 @@ import java.util.Optional;
  */
 
 @Repository
-public class BlackListRepositoryRepository implements IBlackListItemRepository {
+public class BlackListRepository implements IBlackListItemRepository {
 
     @Autowired
     BlackListJpaRepository blackListJpaRepository;
