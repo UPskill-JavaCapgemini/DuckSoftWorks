@@ -174,7 +174,7 @@ public class TaskService {
      */
     private void languageAnalysis(Task taskrepo) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
-        analyzerService.setTask(taskrepo);
+        analyzerService.setTaskToBeAnalyzed(taskrepo);
         analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();

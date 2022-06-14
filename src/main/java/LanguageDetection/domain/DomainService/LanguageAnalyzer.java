@@ -1,5 +1,7 @@
 package LanguageDetection.domain.DomainService;
 
+import LanguageDetection.domain.ValueObjects.Language;
+import LanguageDetection.domain.entities.Task;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -48,16 +50,17 @@ public class LanguageAnalyzer implements ILanguageDetector {
     /**
      * This method serves the purpouse of identifying the language used in a string that is passed as a paramether.
      *
-     * @param query - the string that is analized.
+     * @param task - the task that is meant to be analyzed.
      * @return of a string of the most probable language found.
      * @throws IOException - thrown by IndexReader class if some sort of I/O problem occurred
      */
 
-    public String analyze(String query) throws IOException, ParseException {
+    public Language analyze(Task task) throws IOException, ParseException {
 
         //maximum value of an Integer to allow the most hits possible for an IndexSearcher
         IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
 
+        String query = task.getInputUrl().getUrl();
         String text = createNewText(query);
 
         String cleanedUp = cleanUpInputText(text);
@@ -67,7 +70,9 @@ public class LanguageAnalyzer implements ILanguageDetector {
         TopDocs docs = searcher.search(q, HITS_PER_PAGE);
         ScoreDoc[] hits = docs.scoreDocs;
 
-        return searcher.doc(hits[0].doc).get("language");
+        Language language = Language.valueOf(searcher.doc(hits[0].doc).get("language"));
+
+        return language;
     }
 
     /**
@@ -83,7 +88,7 @@ public class LanguageAnalyzer implements ILanguageDetector {
                 .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
     }
 
-    protected String parseURLtoString(URL url) throws IOException {
+    protected String parseContentOfUrlToString(URL url) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 
         String text = "";
@@ -107,7 +112,7 @@ public class LanguageAnalyzer implements ILanguageDetector {
 
     protected String createNewText(String stringURL) throws IOException {
         URL url = new URL(stringURL);
-        String textBody = parseURLtoString(url);
+        String textBody = parseContentOfUrlToString(url);
         return textBody;
     }
 }
