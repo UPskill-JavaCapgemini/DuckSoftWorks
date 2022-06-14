@@ -3,7 +3,6 @@ package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.*;
 
-import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
@@ -14,7 +13,7 @@ import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.infrastructure.repositories.TaskRepositoryRepository;
+import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +24,6 @@ import java.net.MalformedURLException;
 import java.util.*;
 
 import java.util.concurrent.*;
-
-import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
 
 
 /**
@@ -45,7 +42,7 @@ public class TaskService {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    TaskRepositoryRepository taskRepo;
+    TaskRepository taskRepo;
 
     @Autowired
     ITaskRepository iTaskRepository;
