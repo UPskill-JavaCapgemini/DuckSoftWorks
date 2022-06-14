@@ -1,12 +1,12 @@
 package LanguageDetection.domain.entities;
 
+import LanguageDetection.domain.ValueObjects.TaskResult;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.*;
@@ -44,9 +44,9 @@ public class Task implements AggregateRoot<Long> {
     /**
      * The language detected on the text
      */
-    @Enumerated(EnumType.STRING)
     @Getter
-    Language language;
+    @Embedded
+    TaskResult taskResult;
     /**
      * The actual state of the task
      */
@@ -83,7 +83,7 @@ public class Task implements AggregateRoot<Long> {
         this.id = null;
         this.date = null;
         this.inputUrl = new InputUrl(inputUrl);
-        this.language = null;
+        this.taskResult = null;
         this.currentStatus = TaskStatus.Processing;
         this.timeOut = new TimeOut(timeOut);
         this.category = category;
@@ -119,10 +119,10 @@ public class Task implements AggregateRoot<Long> {
 
     /**
      * TODO: When language is updated then status should go to completed.
-     * @param language
+     * @param updatedTaskResult
      */
-    public void updateLanguage(String language) {
-        this.language = Task.Language.valueOf(language);
+    public void updateTaskResultLanguage(TaskResult updatedTaskResult) {
+        this.taskResult = updatedTaskResult;
         this.updateStatus(TaskStatus.Concluded);
     }
 
@@ -134,11 +134,6 @@ public class Task implements AggregateRoot<Long> {
     /**
      * Possibilities of what can be the Task language
      */
-    public enum Language {
-        ENGLISH,
-        PORTUGUESE,
-        SPANISH
-    }
 
     /**
      * Possibilities of what can be the Task status
@@ -156,7 +151,7 @@ public class Task implements AggregateRoot<Long> {
                 "id=" + id +
                 ", date=" + date +
                 ", url=" + inputUrl +
-                ", language=" + language +
+                ", language=" + taskResult.getLanguage().toString() +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category;

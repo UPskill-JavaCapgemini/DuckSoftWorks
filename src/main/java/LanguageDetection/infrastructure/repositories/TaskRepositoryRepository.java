@@ -67,7 +67,7 @@ public class TaskRepositoryRepository implements ITaskRepository {
 	 * @return List of all tasks present with the category and status passed
 	 */
 	public List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category) {
-		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLike(category, status);
+		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentTaskStatusLike(category, status);
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
 	}

@@ -11,7 +11,7 @@ public interface TaskJpaRepository extends CrudRepository <Task, Long> {
 
     Iterable<Task> findTaskByCategoryLike(CategoryName catName);
 
-    Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLike(Category category, Task.TaskStatus status);
+    Iterable<Task> findTaskByCategoryLikeAndCurrentTaskStatusLike(Category category, Task.TaskStatus status);
 
 
 //    Optional<Task> findById(String name);

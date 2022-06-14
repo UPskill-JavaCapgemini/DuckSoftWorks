@@ -1,6 +1,7 @@
 package LanguageDetection.application.DTO;
 
 import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.ValueObjects.TaskResult;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.Task;
@@ -15,16 +16,16 @@ public class TaskDTO {
     Long id;
     Date date;
     InputUrl inputUrl;
-    Task.Language language;
+    TaskResult taskResult;
     Task.TaskStatus currentStatus;
     TimeOut timeOut;
     Category category;
 
-    public TaskDTO(Long id, Date date, InputUrl inputUrl, Task.Language language, Task.TaskStatus currentStatus, TimeOut timeOut, Category category) {
+    public TaskDTO(Long id, Date date, InputUrl inputUrl, TaskResult taskResult, Task.TaskStatus currentStatus, TimeOut timeOut, Category category) {
         this.id = id;
         this.date = date;
         this.inputUrl = inputUrl;
-        this.language = language;
+        this.taskResult = taskResult;
         this.currentStatus = currentStatus;
         this.timeOut = timeOut;
         this.category = category;
@@ -35,7 +36,7 @@ public class TaskDTO {
         return "Task :" +
                 "date=" + date +
                 ", inputUrl=" + inputUrl +
-                ", language=" + language +
+                ", language=" + taskResult.getLanguage().toString() +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category +

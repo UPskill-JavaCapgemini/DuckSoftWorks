@@ -2,6 +2,7 @@
 package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.domain.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.entities.BlackListItem;
 import LanguageDetection.domain.entities.IBlackListItemRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.BlackListJpaRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,12 +70,12 @@ public class BlackListRepositoryRepository implements IBlackListItemRepository {
     /**
      * Method that allows to check if an url is already inserted in the DB
      *
-     * @param blackListItem
+     * @param inputUrl
      * @return an Optinal of the found blackListItem
      */
 
-    public boolean isBlackListed(BlackListItem blackListItem) {
-        BlackListUrl blackListUrl = blackListItem.getBlackListUrl();
+    public boolean isBlackListed(InputUrl inputUrl) throws MalformedURLException {
+        BlackListUrl blackListUrl = new BlackListUrl(inputUrl.getUrl());
         Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         return blackListRepoUrl.isPresent();
     }
