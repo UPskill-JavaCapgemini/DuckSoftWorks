@@ -4,13 +4,10 @@ import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ICategory;
-import org.apache.lucene.queryparser.classic.ParseException;
+import LanguageDetection.domain.entities.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +24,7 @@ public class CategoryService {
     CategoryDomainDTOAssembler dtoAssembler;
 
     @Autowired
-    ICategory iCategory;
-
+    ICategoryRepository iCategoryRepository;
     /**
      * Creates a new category with a NewCategoryInfoDTO received by parameter.
      * The method verifies if category already exists in the repository before
@@ -40,9 +36,9 @@ public class CategoryService {
 
     public Optional<CategoryDTO> createAndSaveCategory(NewCategoryInfoDTO infoDTO) {
         Category category = new Category(infoDTO.getCategory());
-        Optional<Category> findCategory = iCategory.findCategoryById(category);
+        Optional<Category> findCategory = iCategoryRepository.findCategoryById(category);
         if (findCategory.isEmpty()) {
-            Category categoryRepo = iCategory.saveCategory(category);
+            Category categoryRepo = iCategoryRepository.saveCategory(category);
             return Optional.of(dtoAssembler.toDTO(categoryRepo));
         } else {
             return Optional.empty();
@@ -55,7 +51,7 @@ public class CategoryService {
      */
 
     public List<CategoryDTO> getAllCategory() {
-        List<Category> categories = iCategory.findAll();
+        List<Category> categories = iCategoryRepository.findAll();
 
         List<CategoryDTO> categoryDTOS = new ArrayList<>();
 
@@ -74,7 +70,7 @@ public class CategoryService {
 
     public boolean deleteCategory(NewCategoryInfoDTO category) {
         Category duplicatedCategory = new Category(category.getCategory());
-        return iCategory.deleteByName(duplicatedCategory);
+        return iCategoryRepository.deleteByName(duplicatedCategory);
     }
 
     /**
@@ -83,8 +79,8 @@ public class CategoryService {
      * @return if the category was successfully found it returns an Optional with the category
      */
 
-    public Optional<Category> findById(Category category) {
-        Optional<Category> opCategoryRepo = iCategory.findCategoryById(category);
+    public Optional<Category> findCategoryByName(Category category) {
+        Optional<Category> opCategoryRepo = iCategoryRepository.findCategoryById(category);
 
         return opCategoryRepo;
     }

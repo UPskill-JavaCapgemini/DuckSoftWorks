@@ -1,6 +1,7 @@
 package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.CategoryName;
+import LanguageDetection.domain.shared.AggregateRoot;
 import LanguageDetection.domain.shared.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 @Component
 @javax.persistence.Entity
 @Table
-public class Category implements Entity {
+public class Category implements AggregateRoot {
 
     /**
      * Gets the Value Object CategoryName where the business validations are implemented.

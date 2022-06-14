@@ -1,13 +1,10 @@
 package LanguageDetection.domain.entities;
 
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
-public interface IBlackListItem {
+public interface IBlackListItemRepository {
 
     BlackListItem saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException;
 

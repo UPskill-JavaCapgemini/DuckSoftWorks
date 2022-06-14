@@ -4,9 +4,7 @@ import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.IBlackListItem;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.entities.IBlackListItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,15 +19,15 @@ import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
 public class BlackListService {
 
     @Autowired
-    IBlackListItem iBlackListItem;
+    IBlackListItemRepository iBlackListItemRepository;
     @Autowired
-    BlackListDomainDTOAssembler assembler;
+    BlackListDomainDTOAssembler blackListDomainDTOAssembler;
 
     /**
      * Creates a new BlackListItem with a NewBlackListInfoDTO received by parameter.
      * The method verifies if the Item already exists in the repository before
      * the creation with the method isBlackListed.
-     * Then it saves it through the Interface IBlackListItem in the Data Base Repository.
+     * Then it saves it through the Interface IBlackListItemRepository in the Data Base Repository.
      *
      * @param blackListInputUrlDTO the NewBlackListInfoDTO object that contains an Url as a String.
      * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional.
@@ -39,11 +37,11 @@ public class BlackListService {
     public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) throws MalformedURLException {
         if (isUrlValid(blackListInputUrlDTO.getUrl()) && !isBlackListed(blackListInputUrlDTO)) {
             BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
-            Optional<BlackListItem> persistedBlackListItem = iBlackListItem.findByBlackListItem(blackListItem);
+            Optional<BlackListItem> persistedBlackListItem = iBlackListItemRepository.findByBlackListItem(blackListItem);
             if (persistedBlackListItem.isEmpty()) {
                 try {
-                    BlackListItem blackListToRepo = iBlackListItem.saveBlackListItem(blackListItem);
-                    return Optional.of(assembler.toDTO(blackListToRepo));
+                    BlackListItem blackListToRepo = iBlackListItemRepository.saveBlackListItem(blackListItem);
+                    return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo));
                 } catch (IllegalArgumentException e){
                     return Optional.empty();
                 }
@@ -63,7 +61,7 @@ public class BlackListService {
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) throws MalformedURLException {
         String url = blackListInfoDTO.getUrl();
         BlackListItem blackListItem = new BlackListItem(url);
-        return iBlackListItem.deleteByBlackListUrl(blackListItem);
+        return iBlackListItemRepository.deleteByBlackListUrl(blackListItem);
     }
 
     /**
@@ -74,12 +72,12 @@ public class BlackListService {
      */
 
     public List<BlackListDTO> getAllBlackListItems() throws MalformedURLException {
-        List<BlackListItem> blackListItems = iBlackListItem.findAllBlackListItems();
+        List<BlackListItem> blackListItems = iBlackListItemRepository.findAllBlackListItems();
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();
 
-        for (BlackListItem blackList : blackListItems) {
-            BlackListDTO blackListDTO = assembler.toDTO(blackList);
+        for (BlackListItem blackListItem : blackListItems) {
+            BlackListDTO blackListDTO = blackListDomainDTOAssembler.toDTO(blackListItem);
             blackListDTOS.add(blackListDTO);
         }
 
@@ -95,7 +93,7 @@ public class BlackListService {
      */
 
     public boolean isBlackListed(NewBlackListInfoDTO inputBlackList) throws MalformedURLException {
-        BlackListItem blackList = new BlackListItem(inputBlackList.getUrl());
-        return iBlackListItem.isBlackListed(blackList);
+        BlackListItem blackListItem = new BlackListItem(inputBlackList.getUrl());
+        return iBlackListItemRepository.isBlackListed(blackListItem);
     }
 }

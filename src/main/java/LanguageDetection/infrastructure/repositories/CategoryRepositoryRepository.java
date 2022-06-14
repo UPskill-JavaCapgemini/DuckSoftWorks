@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ICategory;
+import LanguageDetection.domain.entities.ICategoryRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,13 +12,13 @@ import java.util.Optional;
 
 /**
  * Represents the category repository responsible for handling all interactions with DB of this Domain object.
- * Implements the ICategory interface to allow decoupling and easier transition to other DB in the future.
+ * Implements the ICategoryRepository interface to allow decoupling and easier transition to other DB in the future.
  *
  * @author DuckSoftWorks Team
  */
 
 @Repository
-public class CategoryRepository implements ICategory {
+public class CategoryRepositoryRepository implements ICategoryRepository {
 
 
     @Autowired

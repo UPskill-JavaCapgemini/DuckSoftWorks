@@ -9,9 +9,9 @@ import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITask;
+import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.infrastructure.repositories.TaskRepository;
+import LanguageDetection.infrastructure.repositories.TaskRepositoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,10 +42,10 @@ public class TaskService {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    TaskRepository taskRepo;
+    TaskRepositoryRepository taskRepo;
 
     @Autowired
-    ITask iTask;
+    ITaskRepository iTaskRepository;
 
     @Autowired
     BlackListService blackListService;
@@ -69,7 +69,7 @@ public class TaskService {
             Category persistedCategory = findCategoryOrDefault(userInput);
            try {
                Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory);
-               Task savedTask = this.iTask.saveTask(task);
+               Task savedTask = this.iTaskRepository.saveTask(task);
                languageAnalysis(savedTask);
                return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
            } catch (IllegalArgumentException e){
@@ -85,7 +85,7 @@ public class TaskService {
      * @return List of TaskDTO with all information
      */
     public List<TaskDTO> getAllTasks() {
-        List<Task> listAllTasks = iTask.findAllTasks();
+        List<Task> listAllTasks = iTaskRepository.findAllTasks();
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
         for (Task task : listAllTasks) {
@@ -103,7 +103,7 @@ public class TaskService {
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
-        List<Task> listTasksByStatus = iTask.findByStatusContaining(status);
+        List<Task> listTasksByStatus = iTaskRepository.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -121,7 +121,7 @@ public class TaskService {
      */
     public List<TaskDTO> findByCategoryContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
-        List<Task> listTasksByCategory = iTask.findByCategoryContaining(category);
+        List<Task> listTasksByCategory = iTaskRepository.findByCategoryContaining(category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -144,7 +144,7 @@ public class TaskService {
         Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
-        List<Task> listTasksByStatusAndByCategory = iTask.findByStatusAndByCategoryContaining(status, category);
+        List<Task> listTasksByStatusAndByCategory = iTaskRepository.findByStatusAndByCategoryContaining(status, category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -162,7 +162,7 @@ public class TaskService {
      */
     protected Category findCategoryOrDefault(NewTaskInfoDTO userInput) {
         Category inputCategory = new Category(userInput.getCategory());
-        Optional<Category> category = categoryService.findById(inputCategory);
+        Optional<Category> category = categoryService.findCategoryByName(inputCategory);
         if(category.isPresent()){
             return category.get();
         }
@@ -222,10 +222,10 @@ public class TaskService {
      * @throws MalformedURLException thrown only if some sort of update done to URL on database.
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<Task> optionalTask = iTask.findById(id.getId());
+        Optional<Task> optionalTask = iTaskRepository.findById(id.getId());
         if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
             Task task = optionalTask.get();
-            iTask.saveTask(task);
+            iTaskRepository.saveTask(task);
             return Optional.of(taskDomainDTOAssembler.toCompleteDTO(optionalTask.get()));
         }
         return Optional.empty();

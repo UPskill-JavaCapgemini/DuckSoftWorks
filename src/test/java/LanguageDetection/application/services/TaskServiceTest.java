@@ -5,7 +5,7 @@ import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITask;
+import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
 import org.junit.Assert;
 import org.junit.Test;
@@ -44,7 +44,7 @@ public class TaskServiceTest {
     CategoryService categoryService;
 
     @Mock
-    ITask iTask;
+    ITaskRepository iTaskRepository;
 
 
     @BeforeEach
@@ -104,7 +104,7 @@ public class TaskServiceTest {
 
         NewCancelThreadDTO cancelThreadDTO = new NewCancelThreadDTO(1L);
 
-        when(iTask.findById(cancelThreadDTO.getId())).thenReturn(opTestableTask);
+        when(iTaskRepository.findById(cancelThreadDTO.getId())).thenReturn(opTestableTask);
         when(taskDomainDTOAssembler.toCompleteDTO(testableTask)).thenReturn(taskDto);
 
         // Act
@@ -112,8 +112,8 @@ public class TaskServiceTest {
         String cancelledDTO = returnedCancelledTaskDTO.get().toString();
 
         // Assert
-        Mockito.verify(iTask,times(1)).findById(cancelThreadDTO.getId());
-        Mockito.verify(iTask,times(1)).saveTask(Mockito.any());
+        Mockito.verify(iTaskRepository,times(1)).findById(cancelThreadDTO.getId());
+        Mockito.verify(iTaskRepository,times(1)).saveTask(Mockito.any());
         Mockito.verify(taskDomainDTOAssembler,times(1)).toCompleteDTO(testableTask);
         Assert.assertTrue(cancelledDTO.contains("Canceled"));
 
@@ -128,7 +128,7 @@ public class TaskServiceTest {
         Category category = new Category("Sports");
 
         when(blService.isBlackListed(blackListInfoDTO)).thenReturn(true);
-        when(categoryService.findById(category)).thenReturn(Optional.of(category));
+        when(categoryService.findCategoryByName(category)).thenReturn(Optional.of(category));
 
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
@@ -140,7 +140,7 @@ public class TaskServiceTest {
         Category category = new Category("Economy");
 
         when(blService.isBlackListed(blackListInfoDTO)).thenReturn(false);
-        when(categoryService.findById(category)).thenReturn(Optional.of(category));
+        when(categoryService.findCategoryByName(category)).thenReturn(Optional.of(category));
 
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
@@ -154,7 +154,7 @@ public class TaskServiceTest {
         Category category = new Category("Sports");
 
         when(blService.isBlackListed(blackListInfoDTO)).thenReturn(true);
-        when(categoryService.findById(category)).thenReturn(Optional.of(category));
+        when(categoryService.findCategoryByName(category)).thenReturn(Optional.of(category));
 
         Assertions.assertEquals(taskService.createAndSaveTask(infoDTO), Optional.empty());
     }
@@ -174,7 +174,7 @@ public class TaskServiceTest {
         TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category1);
         TaskDTO taskDTO2 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category2);
 
-        when(iTask.findAllTasks()).thenReturn(List.of(task1, task2));
+        when(iTaskRepository.findAllTasks()).thenReturn(List.of(task1, task2));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
         when(taskDomainDTOAssembler.toCompleteDTO(task2)).thenReturn(taskDTO2);
 
@@ -194,7 +194,7 @@ public class TaskServiceTest {
 
         StatusDTO statusDTO = new StatusDTO("Processing");
 
-        when(iTask.findByStatusContaining(Task.TaskStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
+        when(iTaskRepository.findByStatusContaining(Task.TaskStatus.valueOf(statusDTO.getStatus()))).thenReturn(List.of(task1));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
 
         List<TaskDTO> tasks = taskService.findByStatusContaining(statusDTO);
@@ -213,7 +213,7 @@ public class TaskServiceTest {
         java.util.Date date = new java.util.Date(2);
         TaskDTO taskDTO1 = new TaskDTO(1L, date, url1, Task.Language.ENGLISH, Task.TaskStatus.Processing, timeOut, category1);
 
-        Mockito.when(iTask.findByCategoryContaining(Mockito.any())).thenReturn(List.of(task1));
+        Mockito.when(iTaskRepository.findByCategoryContaining(Mockito.any())).thenReturn(List.of(task1));
         Mockito.when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
 
         List<TaskDTO> tasks = taskService.findByCategoryContaining(catName);
@@ -234,7 +234,7 @@ public class TaskServiceTest {
 
         StatusDTO statusDTO = new StatusDTO("Processing");
 
-        when(iTask.findByStatusAndByCategoryContaining(any(), any())).thenReturn(List.of(task1));
+        when(iTaskRepository.findByStatusAndByCategoryContaining(any(), any())).thenReturn(List.of(task1));
         when(taskDomainDTOAssembler.toCompleteDTO(task1)).thenReturn(taskDTO1);
 
         List<TaskDTO> tasks = taskService.findByStatusContainingAndCategoryContaining(statusDTO, categoryInfoDTO);

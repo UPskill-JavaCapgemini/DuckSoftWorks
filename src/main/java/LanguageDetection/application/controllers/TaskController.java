@@ -24,10 +24,10 @@ import java.util.Optional;
 public class TaskController {
 
     @Autowired
-    private TaskService service;
+    private TaskService taskService;
 
-    public TaskController(TaskService service) {
-        this.service = service;
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
     }
 
     /**
@@ -40,7 +40,7 @@ public class TaskController {
      */
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) throws IOException {
-        Optional<TaskStatusDTO> taskCreated = service.createAndSaveTask(info);
+        Optional<TaskStatusDTO> taskCreated = taskService.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
         } else {
@@ -66,13 +66,13 @@ public class TaskController {
         List<TaskDTO> tasks;
 
         if (status == null && categoryName == null)
-            tasks = service.getAllTasks();
+            tasks = taskService.getAllTasks();
         else if (status != null && categoryName == null){
-            tasks = service.findByStatusContaining(status);}
+            tasks = taskService.findByStatusContaining(status);}
         else if (status == null){
-            tasks = service.findByCategoryContaining(categoryName); }
+            tasks = taskService.findByCategoryContaining(categoryName); }
         else {
-            tasks = service.findByStatusContainingAndCategoryContaining(status, categoryName);
+            tasks = taskService.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
         return new ResponseEntity<>(tasks.toString(), HttpStatus.OK);
     }
@@ -87,7 +87,7 @@ public class TaskController {
 
     @PostMapping("/cancel")
     public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<TaskDTO> cancelTask = service.cancelTaskAnalysis(id);
+        Optional<TaskDTO> cancelTask = taskService.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){
             return new ResponseEntity<>(cancelTask.get().toString(), HttpStatus.ACCEPTED);
         } else {
