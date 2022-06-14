@@ -14,6 +14,6 @@ public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
     Task.TaskStatus status;
 
     public TaskStatusDTO(Task status) {
-        this.status = status.getCurrentStatus();
+        this.status = status.getStatus();
     }
 }

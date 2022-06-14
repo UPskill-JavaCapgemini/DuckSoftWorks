@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class CategoryRepositoryTest {
 
     @InjectMocks
-    CategoryRepository categoryRepository;
+    CategoryRepositoryRepository categoryRepository;
 
     @Mock
     CategoryJpaRepository jpaRepository;

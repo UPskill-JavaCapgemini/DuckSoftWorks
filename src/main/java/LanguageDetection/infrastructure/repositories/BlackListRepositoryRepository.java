@@ -3,7 +3,7 @@ package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.domain.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.IBlackListRepository;
+import LanguageDetection.domain.entities.IBlackListItemRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.BlackListJpaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
@@ -17,11 +17,11 @@ import java.util.Optional;
 
 /**
  * Represents the BlackList Repository   responsible for handling all interactions with DB of this Domain object.
- * Implements the IBlackListItem interface to allow decoupling and easier transition to other DB in the future.
+ * Implements the IBlackListItemRepository interface to allow decoupling and easier transition to other DB in the future.
  */
 
 @Repository
-public class BlackListRepository implements IBlackListRepository {
+public class BlackListRepositoryRepository implements IBlackListItemRepository {
 
     @Autowired
     BlackListJpaRepository blackListJpaRepository;
@@ -74,7 +74,7 @@ public class BlackListRepository implements IBlackListRepository {
      */
 
     public boolean isBlackListed(BlackListItem blackListItem) {
-        BlackListUrl blackListUrl = blackListItem.getUrl();
+        BlackListUrl blackListUrl = blackListItem.getBlackListUrl();
         Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         return blackListRepoUrl.isPresent();
     }
@@ -82,7 +82,7 @@ public class BlackListRepository implements IBlackListRepository {
     /*@Override
     public Optional<BlackListItem> findByBlackListItem(BlackListItem blackListItem) {
 
-        BlackListUrl blackListUrl = blackListItem.getUrl();
+        BlackListUrl blackListUrl = blackListItem.getBlackListUrl();
         Optional<BlackListItem> opBlackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         if (opBlackListRepoUrl.isPresent())
             return opBlackListRepoUrl;

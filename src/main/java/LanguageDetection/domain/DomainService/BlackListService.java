@@ -1,7 +1,7 @@
 package LanguageDetection.domain.DomainService;
 
 import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.IBlackListRepository;
+import LanguageDetection.domain.entities.IBlackListItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,21 +14,21 @@ public class BlackListService {
 
 
     @Autowired
-    IBlackListRepository iBlackListRepository;
+    IBlackListItemRepository blackListItemRepository;
 
     public Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException {
-        return iBlackListRepository.saveBlackListItem(blackListItem);
+        return blackListItemRepository.saveBlackListItem(blackListItem);
     }
 
     public boolean deleteByBlackListUrl(BlackListItem blackListItem) {
-        return iBlackListRepository.deleteByBlackListUrl(blackListItem);
+        return blackListItemRepository.deleteByBlackListUrl(blackListItem);
     }
 
     public boolean isBlackListed(BlackListItem blackList) {
-        return iBlackListRepository.isBlackListed(blackList);
+        return blackListItemRepository.isBlackListed(blackList);
     }
 
     public List<BlackListItem> findAllBlackListItems() throws MalformedURLException {
-        return iBlackListRepository.findAllBlackListItems();
+        return blackListItemRepository.findAllBlackListItems();
     }
 }

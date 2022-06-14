@@ -9,7 +9,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 @Embeddable
-@Table
 public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
 
     /**
@@ -43,7 +42,7 @@ public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
 
     @Override
     public boolean equals(Object otherBlackListUrl) {
-        BlackListUrl url = (BlackListUrl) otherBlackListUrl;
+        BlackListUrl blackListUrl = (BlackListUrl) otherBlackListUrl;
 
         return this.blackListUrl.toString().equals(otherBlackListUrl.toString());
     }

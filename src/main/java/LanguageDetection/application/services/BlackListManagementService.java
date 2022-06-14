@@ -5,7 +5,6 @@ import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembl
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.IBlackListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +18,15 @@ public class BlackListManagementService {
 
     @Autowired
     BlackListService blackListService;
+
     @Autowired
-    IBlackListRepository iBlackListRepository;
-    @Autowired
-    BlackListDomainDTOAssembler assembler;
+    BlackListDomainDTOAssembler blackListDomainDTOAssembler;
 
     /**
      * Creates a new BlackListItem with a NewBlackListInfoDTO received by parameter.
      * The method verifies if the Item already exists in the repository before
      * the creation with the method isBlackListed.
-     * Then it saves it through the Interface IBlackListItem in the Data Base Repository.
+     * Then it saves it through the Interface IBlackListItemRepository in the Data Base Repository.
      *
      * @param blackListInputUrlDTO the NewBlackListInfoDTO object that contains an Url as a String.
      * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional.
@@ -38,11 +36,11 @@ public class BlackListManagementService {
     /*public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) throws MalformedURLException {
         if (isUrlValid(blackListInputUrlDTO.getUrl()) && !isBlackListed(blackListInputUrlDTO)) {
             BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
-            Optional<BlackListItem> persistedBlackListItem = iBlackListItem.findByBlackListItem(blackListItem);
+            Optional<BlackListItem> persistedBlackListItem = iBlackListItemRepository.findByBlackListItem(blackListItem);
             if (persistedBlackListItem.isEmpty()) {
                 try {
-                    BlackListItem blackListToRepo = iBlackListItem.saveBlackListItem(blackListItem);
-                    return Optional.of(assembler.toDTO(blackListToRepo));
+                    BlackListItem blackListToRepo = iBlackListItemRepository.saveBlackListItem(blackListItem);
+                    return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo));
                 } catch (IllegalArgumentException e){
                     return Optional.empty();
                 }
@@ -54,7 +52,7 @@ public class BlackListManagementService {
         BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
         Optional<BlackListItem> blackListToRepo = blackListService.saveBlackListItem(blackListItem);
         if(blackListToRepo.isPresent()){
-            return Optional.of(assembler.toDTO(blackListToRepo.get()));
+            return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo.get()));
         } else {
             return Optional.empty();
         }
@@ -86,8 +84,8 @@ public class BlackListManagementService {
 
         List<BlackListDTO> blackListDTOS = new ArrayList<>();
 
-        for (BlackListItem blackList : blackListItems) {
-            BlackListDTO blackListDTO = assembler.toDTO(blackList);
+        for (BlackListItem blackListItem : blackListItems) {
+            BlackListDTO blackListDTO = blackListDomainDTOAssembler.toDTO(blackListItem);
             blackListDTOS.add(blackListDTO);
         }
 

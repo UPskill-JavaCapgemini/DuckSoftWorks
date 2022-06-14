@@ -3,7 +3,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.DomainService.LanguageAnalyzer;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.infrastructure.repositories.TaskRepository;
+import LanguageDetection.infrastructure.repositories.TaskRepositoryRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class LanguageDetectionService implements Callable<String> {
     private Task task;
 
     @Setter
-    TaskRepository taskRepository;
+    TaskRepositoryRepository taskRepository;
 
     @Override
     public String call() throws Exception {

@@ -4,7 +4,8 @@ import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
-public interface IBlackListRepository {
+public interface IBlackListItemRepository {
+
 
     Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) throws MalformedURLException;
 

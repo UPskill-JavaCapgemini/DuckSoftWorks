@@ -5,6 +5,7 @@ import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
@@ -18,8 +19,7 @@ import java.util.Date;
  */
 
 @EqualsAndHashCode
-@NoArgsConstructor
-@Repository
+@Component
 @Entity
 @Table
 public class Task implements AggregateRoot<Long> {
@@ -52,7 +52,9 @@ public class Task implements AggregateRoot<Long> {
      */
     @Enumerated(EnumType.STRING)
     @Getter
+
     TaskStatus currentStatus;
+
     /**
      * The time task has to be concluded before it is automatically canceled
      */
@@ -65,6 +67,8 @@ public class Task implements AggregateRoot<Long> {
     @Getter
     @ManyToOne
     Category category;
+
+    protected Task (){}
 
     /**
      * Constructor that receives all the information necessary to create a Task from user input
@@ -124,6 +128,7 @@ public class Task implements AggregateRoot<Long> {
 
     public void updateStatus(TaskStatus status){
         this.currentStatus = status;
+
     }
 
     /**

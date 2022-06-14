@@ -8,10 +8,12 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITask;
+import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.infrastructure.repositories.TaskRepository;
+import LanguageDetection.infrastructure.repositories.TaskRepositoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,16 +44,19 @@ public class TaskService {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    TaskRepository taskRepo;
+    TaskRepositoryRepository taskRepo;
 
     @Autowired
-    ITask iTask;
+    ITaskRepository iTaskRepository;
 
     @Autowired
     BlackListManagementService blackListManagementService;
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    TaskFactory taskFactory;
 
 
     /**
@@ -64,28 +69,21 @@ public class TaskService {
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
-        NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-        if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListManagementService.isBlackListed(newBlackListInfoDTO)) {
-            Category persistedCategory = findCategoryOrDefault(userInput);
-           try {
-               Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory);
-               Task savedTask = this.iTask.saveTask(task);
-               languageAnalysis(savedTask);
-               return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
-           } catch (IllegalArgumentException e){
-               return Optional.empty();
-           }
-        }
-        return Optional.empty();
+        InputUrl inputUrl = new InputUrl(userInput.getUrl());
+        TimeOut timeOut= new TimeOut(userInput.getTimeOut());
+        Category category = new Category(userInput.getCategory());
+        Task createdTask = taskFactory.createTask(inputUrl,timeOut,category);
+        Task savedTask = this.iTaskRepository.saveTask(createdTask);
+        languageAnalysis(savedTask);
+        return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
     }
-
 
     /**
      * Fetch all tasks found in database
      * @return List of TaskDTO with all information
      */
     public List<TaskDTO> getAllTasks() {
-        List<Task> listAllTasks = iTask.findAllTasks();
+        List<Task> listAllTasks = iTaskRepository.findAllTasks();
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
         for (Task task : listAllTasks) {
@@ -103,7 +101,7 @@ public class TaskService {
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
-        List<Task> listTasksByStatus = iTask.findByStatusContaining(status);
+        List<Task> listTasksByStatus = iTaskRepository.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -121,7 +119,7 @@ public class TaskService {
      */
     public List<TaskDTO> findByCategoryContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
-        List<Task> listTasksByCategory = iTask.findByCategoryContaining(category);
+        List<Task> listTasksByCategory = iTaskRepository.findByCategoryContaining(category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -144,7 +142,7 @@ public class TaskService {
         Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
-        List<Task> listTasksByStatusAndByCategory = iTask.findByStatusAndByCategoryContaining(status, category);
+        List<Task> listTasksByStatusAndByCategory = iTaskRepository.findByStatusAndByCategoryContaining(status, category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -162,7 +160,7 @@ public class TaskService {
      */
     protected Category findCategoryOrDefault(NewTaskInfoDTO userInput) {
         Category inputCategory = new Category(userInput.getCategory());
-        Optional<Category> category = categoryService.findById(inputCategory);
+        Optional<Category> category = categoryService.findCategoryByName(inputCategory);
         if(category.isPresent()){
             return category.get();
         }
@@ -176,7 +174,9 @@ public class TaskService {
      */
     private void languageAnalysis(Task task) {
         LanguageDetectionService analyzerService = new LanguageDetectionService();
+
         analyzerService.setTask(task);
+
         analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -222,10 +222,10 @@ public class TaskService {
      * @throws MalformedURLException thrown only if some sort of update done to URL on database.
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<Task> optionalTask = iTask.findById(id.getId());
+        Optional<Task> optionalTask = iTaskRepository.findById(id.getId());
         if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
             Task task = optionalTask.get();
-            iTask.saveTask(task);
+            iTaskRepository.saveTask(task);
             return Optional.of(taskDomainDTOAssembler.toCompleteDTO(optionalTask.get()));
         }
         return Optional.empty();
