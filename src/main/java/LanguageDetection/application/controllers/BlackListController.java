@@ -2,7 +2,7 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.application.services.BlackListService;
+import LanguageDetection.application.services.BlackListManagementService;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.Optional;
 public class BlackListController {
 
     @Autowired
-    BlackListService blackListService;
+    BlackListManagementService blackListManagementService;
 
 
     /**
@@ -34,7 +34,7 @@ public class BlackListController {
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<Object> getAllBlackListItems() throws ParseException, IOException {
-        List<BlackListDTO> blackListItems = blackListService.getAllBlackListItems();
+        List<BlackListDTO> blackListItems = blackListManagementService.getAllBlackListItems();
         return new ResponseEntity<>(blackListItems.toString(), HttpStatus.OK);
     }
     /**
@@ -50,7 +50,7 @@ public class BlackListController {
 
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) throws MalformedURLException {
-        Optional<BlackListDTO> blackListDTO = blackListService.createAndSaveBlackListItem(url);
+        Optional<BlackListDTO> blackListDTO = blackListManagementService.createAndSaveBlackListItem(url);
         if (blackListDTO.isPresent()){
             return new ResponseEntity<>(blackListDTO.get().toString(), HttpStatus.CREATED);
         }else {
@@ -66,7 +66,7 @@ public class BlackListController {
      */
     @DeleteMapping("")
     public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) throws ParseException, IOException {
-        if (blackListService.deleteBlackListItem(blackListInfoDTO)) {
+        if (blackListManagementService.deleteBlackListItem(blackListInfoDTO)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Black list item does not exist", HttpStatus.NOT_FOUND);

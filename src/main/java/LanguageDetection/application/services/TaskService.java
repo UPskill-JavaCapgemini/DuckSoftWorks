@@ -48,7 +48,7 @@ public class TaskService {
     ITask iTask;
 
     @Autowired
-    BlackListService blackListService;
+    BlackListManagementService blackListManagementService;
 
     @Autowired
     CategoryService categoryService;
@@ -65,7 +65,7 @@ public class TaskService {
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
         NewBlackListInfoDTO newBlackListInfoDTO = new NewBlackListInfoDTO(userInput.getUrl());
-        if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListService.isBlackListed(newBlackListInfoDTO)) {
+        if (isUrlValid(newBlackListInfoDTO.getUrl()) && !blackListManagementService.isBlackListed(newBlackListInfoDTO)) {
             Category persistedCategory = findCategoryOrDefault(userInput);
            try {
                Task task = new Task(userInput.getUrl(), userInput.getTimeOut(), persistedCategory);

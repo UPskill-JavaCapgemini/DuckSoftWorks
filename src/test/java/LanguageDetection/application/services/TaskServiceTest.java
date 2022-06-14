@@ -38,7 +38,7 @@ public class TaskServiceTest {
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Mock
-    BlackListService blService;
+    BlackListManagementService blService;
 
     @Mock
     CategoryService categoryService;

@@ -3,12 +3,11 @@ package LanguageDetection.application.Bootstrap;
 
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.services.BlackListService;
+import LanguageDetection.application.services.BlackListManagementService;
 import LanguageDetection.application.services.CategoryService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.net.MalformedURLException;
@@ -17,7 +16,7 @@ import java.net.MalformedURLException;
 public class Bootstrap implements InitializingBean {
 
     @Autowired
-    BlackListService blackListService;
+    BlackListManagementService blackListManagementService;
 
     @Autowired
     CategoryService categoryService;
@@ -31,7 +30,7 @@ public class Bootstrap implements InitializingBean {
 
     private void createAndSaveBlackListItem() throws MalformedURLException {
         NewBlackListInfoDTO blackListInfoDTO = new NewBlackListInfoDTO("http://127.0.0.1");
-        blackListService.createAndSaveBlackListItem(blackListInfoDTO);
+        blackListManagementService.createAndSaveBlackListItem(blackListInfoDTO);
     }
 
     private void createBaseCategories() {
