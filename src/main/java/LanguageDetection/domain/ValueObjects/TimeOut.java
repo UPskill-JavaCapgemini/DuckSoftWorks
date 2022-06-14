@@ -8,7 +8,6 @@ import javax.persistence.Table;
 
 
 @Embeddable
-@Table
 public class TimeOut implements ValueObject {
     private final int timeOut;
 
@@ -18,7 +17,7 @@ public class TimeOut implements ValueObject {
     }
 
     /* For ORM purposes */
-    public TimeOut(){ this.timeOut = 0;}
+    protected TimeOut(){ this.timeOut = 0;}
 
     @Override
     public String toString() {

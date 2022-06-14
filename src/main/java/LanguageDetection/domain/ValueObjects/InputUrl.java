@@ -12,7 +12,6 @@ import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
 
 
 @Embeddable
-@Table
 public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
 
@@ -33,7 +32,7 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
     }
 
     /* For ORM purposes */
-    public InputUrl(){
+    protected InputUrl(){
         this.url=null;
     }
 
