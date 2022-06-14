@@ -5,6 +5,8 @@ import LanguageDetection.domain.util.BusinessValidation;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
@@ -16,7 +18,7 @@ public class CategoryName implements ValueObject {
      */
     String categoryName;
 
-    private static final String DEFAULT_CATEGORY = "TODO";
+    private static final String DEFAULT_CATEGORY = "Unassigned";
 
     protected CategoryName() {
     }
@@ -26,11 +28,17 @@ public class CategoryName implements ValueObject {
      * it prevents the category name to be created with only special characters, only numbers and only spaces or without any input.
      */
     public CategoryName(String categoryName) {
-        if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
-            this.categoryName = DEFAULT_CATEGORY;
-        }
-        this.categoryName = categoryName;
-    }
+       try {
+           if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty())
+               this.categoryName = DEFAULT_CATEGORY;
+           else{
+            this.categoryName  = categoryName;
+           }
+       }catch (NullPointerException nullPointerException)
+       {
+           this.categoryName = DEFAULT_CATEGORY;
+       }
+}
 
     @Override
     public String toString() {

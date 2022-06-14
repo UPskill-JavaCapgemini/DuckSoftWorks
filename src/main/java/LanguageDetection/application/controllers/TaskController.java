@@ -69,11 +69,11 @@ public class TaskController {
             tasks = taskService.getAllTasks();
         else if (status != null && categoryName == null){
             tasks = taskService.findByStatusContaining(status);}
-        else{
+        else if(status == null) {
             tasks = taskService.findByCategoryContaining(categoryName); }
-        /*else {
+        else {
             tasks = taskService.findByStatusContainingAndCategoryContaining(status, categoryName);
-        }*/
+        }
         return new ResponseEntity<>(tasks.toString(), HttpStatus.OK);
     }
 

@@ -143,7 +143,7 @@ public class TaskService {
      * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance and
      * status the same as string inside StatusDTO instance
      */
-    /*public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
+    public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
         Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
@@ -156,7 +156,7 @@ public class TaskService {
             taskDTOList.add(assemble);
         }
         return taskDTOList;
-    }*/
+    }
 
     /**
      * Fetches if a category passed by user input already exists on database.
