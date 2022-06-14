@@ -61,17 +61,27 @@ class TaskRepositoryTest {
         Assertions.assertEquals(repository.findByStatusContaining(status), List.of(task1, task2));
     }
 
+<<<<<<< HEAD
 //    @Test
 //    void findByCategoryContainingShouldReturnListWithTaskThatHaveCategory2() {
 //        when(repository.findByCategoryContaining(category2)).thenReturn(List.of(task2));
 //
 //        Assertions.assertEquals(repository.findByCategoryContaining(category2), List.of(task2));
 //    }
-
+=======
     @Test
+    void findByCategoryContainingShouldReturnListWithTaskThatHaveCategory2() {
+        when(repository.findByCategoryContaining(category2)).thenReturn(List.of(task2));
+
+        Assertions.assertEquals(repository.findByCategoryContaining(category2), List.of(task2));
+    }
+}
+>>>>>>> 390a15174c08c282b99d16f017d7ba5adb0dc1b8
+
+    /*@Test
     void findByStatusAndByCategoryContainingShouldReturnListOfTaskWithCategoryAndStatusThatMatch() {
         when(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1)).thenReturn(List.of(task1));
 
         Assertions.assertEquals(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1), List.of(task1));
     }
-}
+}*/

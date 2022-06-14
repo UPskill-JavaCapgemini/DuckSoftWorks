@@ -36,7 +36,7 @@ public class TaskDTO {
         return "Task :" +
                 "date=" + date +
                 ", inputUrl=" + inputUrl +
-                ", language=" + taskResult.getLanguage().toString() +
+                ", language=" + taskResult +
                 ", currentStatus=" + currentStatus +
                 ", timeOut=" + timeOut +
                 ", category=" + category +
