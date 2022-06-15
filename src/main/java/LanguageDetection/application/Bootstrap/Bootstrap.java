@@ -5,6 +5,8 @@ import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.BlackListManagementService;
 import LanguageDetection.application.services.CategoryService;
+import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.entities.ICategoryRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,7 @@ public class Bootstrap implements InitializingBean {
     BlackListManagementService blackListManagementService;
 
     @Autowired
-    CategoryService categoryService;
+    ICategoryRepository iCategoryRepository;
 
     @Override
     @Transactional
@@ -35,16 +37,24 @@ public class Bootstrap implements InitializingBean {
 
     private void createBaseCategories() {
 
-        NewCategoryInfoDTO economics = new NewCategoryInfoDTO("Economics");
-        NewCategoryInfoDTO philosophy = new NewCategoryInfoDTO("Philosophy");
-        NewCategoryInfoDTO mechanics = new NewCategoryInfoDTO("Mechanics");
-        NewCategoryInfoDTO nutrition = new NewCategoryInfoDTO("Nutrition");
-        NewCategoryInfoDTO sports = new NewCategoryInfoDTO("Sports");
+        Category economics = new Category("Economics");
+        Category philosophy = new Category("Philosophy");
+        Category mechanics = new Category("Mechanics");
+        Category nutrition = new Category("Nutrition");
+        Category sports = new Category("Sports");
 
-        categoryService.createAndSaveCategory(economics);
-        categoryService.createAndSaveCategory(philosophy);
-        categoryService.createAndSaveCategory(mechanics);
-        categoryService.createAndSaveCategory(nutrition);
-        categoryService.createAndSaveCategory(sports);
+        Category.defineAsBaseCategory(economics);
+        Category.defineAsBaseCategory(philosophy);
+        Category.defineAsBaseCategory(mechanics);
+        Category.defineAsBaseCategory(nutrition);
+        Category.defineAsBaseCategory(sports);
+
+        iCategoryRepository.saveCategory(economics);
+        iCategoryRepository.saveCategory(philosophy);
+        iCategoryRepository.saveCategory(mechanics);
+        iCategoryRepository.saveCategory(nutrition);
+        iCategoryRepository.saveCategory(sports);
+
+
     }
 }

@@ -29,7 +29,7 @@ public class LanguageDetectionService implements Runnable{
 
     @SneakyThrows
     @Override
-    //todo check if passing a TaskResult is appropriated
+    //TODO check if passing a TaskResult is appropriated
     public void run() {
         ILanguageDetector lang = new LanguageAnalyzer();
         Language analyzedLanguage = lang.analyze(taskToBeAnalyzed);

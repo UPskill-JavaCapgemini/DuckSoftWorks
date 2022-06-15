@@ -29,6 +29,8 @@ public class Category implements AggregateRoot {
     @EmbeddedId
     CategoryName categoryName;
 
+    private static boolean isBaseCategory = false;
+
 
     protected Category() {
     }
@@ -39,6 +41,14 @@ public class Category implements AggregateRoot {
     public Category(String categoryDescription) {
 
         this.categoryName = new CategoryName(categoryDescription);
+    }
+
+    /**
+     * Method to be used when bootstrapping data to define Base Categories that cannot be deleted.
+     * @param baseCategory
+     */
+    public static void defineAsBaseCategory(Category baseCategory) {
+       baseCategory.isBaseCategory = true;
     }
 
     @Override
