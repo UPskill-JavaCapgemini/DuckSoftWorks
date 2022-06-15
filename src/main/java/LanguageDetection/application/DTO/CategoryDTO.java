@@ -11,15 +11,10 @@ import lombok.ToString;
 public class CategoryDTO {
 
     @Getter
-    Category category;
+    String category;
 
 
     public CategoryDTO(Category category) {
-        this.category = category;
-    }
-
-    @Override
-    public String toString() {
-        return category.toString();
+        this.category = category.getCategoryName().getCategoryName();
     }
 }

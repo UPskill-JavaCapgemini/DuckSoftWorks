@@ -29,14 +29,12 @@ public class CategoryController {
 
     /**
      * @return all categories already created
-     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllCategories() throws ParseException, IOException {
+    public ResponseEntity<List<CategoryDTO>> getAllCategories(){
         List<CategoryDTO> categories = categoryService.getAllCategory();
-        return new ResponseEntity<>(categories.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     /**
@@ -53,7 +51,7 @@ public class CategoryController {
     public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
         Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
-            return new ResponseEntity<>(categoryDTO.get().toString(), HttpStatus.CREATED);
+            return new ResponseEntity<>(categoryDTO.get(), HttpStatus.CREATED);
         }else {
                 return new ResponseEntity("Unable to create, category already exists or invalid characters", HttpStatus.BAD_REQUEST);
             }

@@ -2,6 +2,8 @@ package LanguageDetection.domain.ValueObjects;
 
 import LanguageDetection.domain.shared.ValueObject;
 import LanguageDetection.domain.util.BusinessValidation;
+import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 
@@ -11,16 +13,15 @@ import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
 @Embeddable
-public class CategoryName implements ValueObject {
+public class CategoryName implements ValueObject, Comparable<CategoryName> {
 
-    /**
-     * getter for the category's name as a string
-     */
-    String categoryName;
+    private String categoryName;
 
     private static final String DEFAULT_CATEGORY = "Unassigned";
 
-    protected CategoryName() {
+    /* For ORM purposes */
+    protected CategoryName(){
+        this.categoryName = null;
     }
 
     /**
@@ -40,8 +41,18 @@ public class CategoryName implements ValueObject {
        }
 }
 
+    public String getCategoryName() {
+        return categoryName;
+        //TODO: Can we use a getter here?
+    }
+
     @Override
     public String toString() {
         return categoryName;
+    }
+
+    @Override
+    public int compareTo(@NotNull CategoryName o) {
+        return this.categoryName.compareTo(o.categoryName);
     }
 }

@@ -2,7 +2,6 @@ package LanguageDetection.domain.entities;
 
 import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.shared.AggregateRoot;
-import LanguageDetection.domain.shared.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
@@ -17,9 +17,9 @@ import javax.persistence.Table;
  * The cateory of the text will be choosen by the user.
  */
 @Component
-@javax.persistence.Entity
+@Entity
 @Table
-public class Category implements AggregateRoot {
+public class Category implements AggregateRoot<CategoryName> {
 
     /**
      * Gets the Value Object CategoryName where the business validations are implemented.
@@ -60,18 +60,20 @@ public class Category implements AggregateRoot {
      * method that identify the category
      * @return the name of the category
      */
-    @Override
-    public Object identity() {
-        return this.categoryName;
-    }
 
-    @Override
-    public int compareTo(@NotNull Object o) {
-        return 0;
-    }
 
     @Override
     public String toString() {
         return categoryName.toString();
+    }
+
+    @Override
+    public CategoryName identity() {
+        return this.categoryName;
+    }
+
+    @Override
+    public boolean hasIdentity(CategoryName id) {
+        return AggregateRoot.super.hasIdentity(id);
     }
 }

@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.NewCancelThreadDTO;
@@ -105,4 +106,4 @@ class TaskControllerTest {
         // Assert
         assertEquals(responseEntity.getStatusCodeValue(), 202);
     }
-}
+}*/

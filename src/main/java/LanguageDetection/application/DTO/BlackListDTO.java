@@ -1,25 +1,21 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.entities.BlackListItem;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+
+import java.net.URL;
 
 @NoArgsConstructor
 @EqualsAndHashCode
 public class BlackListDTO {
 
     @Getter
-    BlackListUrl url;
+    URL url;
 
     public BlackListDTO(BlackListItem blackListItem) {
-        this.url = blackListItem.identity();
+        this.url = blackListItem.identity().getBlackListUrlObject();
     }
 
-    @Override
-    public String toString(){
-        return url.getBlackListUrlObject().toString();
-    }
 }
