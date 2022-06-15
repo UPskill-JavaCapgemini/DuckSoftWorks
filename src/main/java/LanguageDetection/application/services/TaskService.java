@@ -227,12 +227,12 @@ public class TaskService {
      * Handles the cancellation process of a language analysis from user input
      * @param id if of a task that user wants to cancel
      * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
-     * @throws MalformedURLException thrown only if some sort of update done to URL on database.
      */
-    public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
+    public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
         Optional<Task> optionalTask = iTaskRepository.findById(id.getId());
         if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
             Task task = optionalTask.get();
+            task.updateStatus(Task.TaskStatus.Canceled);
             iTaskRepository.saveTask(task);
             return Optional.of(taskDomainDTOAssembler.toCompleteDTO(optionalTask.get()));
         }
