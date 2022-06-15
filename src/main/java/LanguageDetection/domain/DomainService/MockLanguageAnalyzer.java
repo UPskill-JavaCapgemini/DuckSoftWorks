@@ -1,10 +1,12 @@
+/*
 package LanguageDetection.domain.DomainService;
 
 import java.io.IOException;
 import java.util.Locale;
 
 public class MockLanguageAnalyzer extends LanguageAnalyzer{
-    /**
+    */
+/**
      * This constructor creates a new instance of the SimpleAnalyse.
      * It uses the Directory to indicate where the IndexReader should act. For that,
      * the Directory comunicates to the DicrionaryService and uses one of its instances to
@@ -13,7 +15,8 @@ public class MockLanguageAnalyzer extends LanguageAnalyzer{
      * instance (reader) as a paramether.
      *
      * @throws IOException - thrown by IndexReader class if some sort of I/O problem occurred
-     */
+     *//*
+
     public MockLanguageAnalyzer() throws IOException {
     }
 
@@ -24,3 +27,4 @@ public class MockLanguageAnalyzer extends LanguageAnalyzer{
                .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
    }
 }
+*/

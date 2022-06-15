@@ -2,6 +2,7 @@ package LanguageDetection.domain.DomainService;
 
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.util.BusinessValidation;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -15,6 +16,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Locale;
+
+import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
+import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
 @Service
 public class LanguageAnalyzer implements ILanguageDetector {
@@ -65,14 +69,15 @@ public class LanguageAnalyzer implements ILanguageDetector {
 
         String cleanedUp = cleanUpInputText(text);
 
-        Query q = new QueryParser("dictionary", analyzer).parse(cleanedUp);
-
-        TopDocs docs = searcher.search(q, HITS_PER_PAGE);
-        ScoreDoc[] hits = docs.scoreDocs;
-
-        Language language = Language.valueOf(searcher.doc(hits[0].doc).get("language"));
-
-        return language;
+        //TODO: Can we do this here? Business logic?
+        if(isOnlyNumbers(cleanedUp) || isOnlySpecialCharacters(cleanedUp) || cleanedUp.isEmpty() || cleanedUp.isBlank()){
+            return Language.UNDEFINED;
+        } else {
+            Query q = new QueryParser("dictionary", analyzer).parse(cleanedUp);
+            TopDocs docs = searcher.search(q, HITS_PER_PAGE);
+            ScoreDoc[] hits = docs.scoreDocs;
+            return Language.valueOf(searcher.doc(hits[0].doc).get("language"));
+        }
     }
 
     /**

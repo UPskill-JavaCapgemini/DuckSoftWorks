@@ -10,5 +10,7 @@ import LanguageDetection.domain.shared.ValueObject;
 public enum Language implements ValueObject {
     ENGLISH,
     PORTUGUESE,
-    SPANISH
+    SPANISH,
+    UNDEFINED
+    //TODO: Is this possible? Undefined?
 }

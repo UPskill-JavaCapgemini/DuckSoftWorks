@@ -25,21 +25,29 @@ import java.util.Date;
 @Table
 public class Task implements AggregateRoot<Long> {
 
+    /**
+     * Task ID used to identify each Task
+     */
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
     /**
-     * The date of the task
+     * Version of id used on concurrent access to database
      */
 
     @Version
     Long version_id;
 
+    /**
+     * The date of the task
+     */
     @Getter
     @CreationTimestamp
     @Column(name = "timestamp", nullable = false, updatable = false)
     Date date;
+
     /**
      * The text of the task
      */
