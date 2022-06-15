@@ -11,9 +11,13 @@ import org.springframework.hateoas.RepresentationModel;
 public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
 
     @Getter
+    Long id;
+    @Getter
     Task.TaskStatus status;
 
-    public TaskStatusDTO(Task status) {
-        this.status = status.getCurrentStatus();
+
+    public TaskStatusDTO(Long id, Task.TaskStatus status) {
+        this.id = id;
+        this.status = status;
     }
 }

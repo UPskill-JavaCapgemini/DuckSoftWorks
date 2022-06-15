@@ -4,6 +4,7 @@ import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -74,7 +75,7 @@ public class TaskController {
         else {
             tasks = taskService.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
-        return new ResponseEntity<>(tasks.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     /**
@@ -82,16 +83,15 @@ public class TaskController {
      * with that task.
      * @param id object of NewCancelThreadDTO which is created automatically by Spring Boot if a Long id of a task is sent by JSON body.
      * @return String with information of the canceled task and with HTTPStatus Accepted(202) if an id valid is sent, or HTTPStatus NotFound(404) if an invalid id is sent.
-     * @throws MalformedURLException thrown if a URL from Task is malformed. Its never thrown here unless URL is changed directly from Database
      */
 
-    @PostMapping("/cancel")
-    public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) throws MalformedURLException {
+    @PostMapping(value = "/cancel", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) {
         Optional<TaskDTO> cancelTask = taskService.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){
-            return new ResponseEntity<>(cancelTask.get().toString(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cancelTask.get(), HttpStatus.ACCEPTED);
         } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Invalid ID of Task", HttpStatus.NOT_FOUND);
         }
     }
 

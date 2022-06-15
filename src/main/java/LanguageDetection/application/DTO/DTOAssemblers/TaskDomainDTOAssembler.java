@@ -13,7 +13,7 @@ public class TaskDomainDTOAssembler {
     }
 
     public TaskStatusDTO toDTO(Task task) {
-        return new TaskStatusDTO(task);
+        return new TaskStatusDTO(task.getId(), task.getCurrentStatus());
     }
 
     public TaskDTO toCompleteDTO(Task task){

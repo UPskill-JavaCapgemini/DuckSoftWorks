@@ -42,7 +42,6 @@ public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
 
     @Override
     public boolean equals(Object otherBlackListUrl) {
-        BlackListUrl blackListUrl = (BlackListUrl) otherBlackListUrl;
 
         return this.blackListUrl.toString().equals(otherBlackListUrl.toString());
     }
