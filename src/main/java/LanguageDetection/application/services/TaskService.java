@@ -68,18 +68,20 @@ public class TaskService {
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
 
-        InputUrl inputUrl = new InputUrl(userInput.getUrl());
-        TimeOut timeOut= new TimeOut(userInput.getTimeOut());
-        Category category = new Category(userInput.getCategory());
-
-        Optional<Task> opCreatedTask = taskFactory.createTask(inputUrl,timeOut,category);
-
-        if (opCreatedTask.isPresent())
-        {
-            Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
-            languageAnalysis(savedTask);
-            return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
-
+        // TODO: should this really be here?
+        try {
+            InputUrl inputUrl = new InputUrl(userInput.getUrl());
+            TimeOut timeOut = new TimeOut(userInput.getTimeOut());
+            Category category = new Category(userInput.getCategory());
+            Optional<Task> opCreatedTask = taskFactory.createTask(inputUrl,timeOut,category);
+            if (opCreatedTask.isPresent())
+            {
+                Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
+                languageAnalysis(savedTask);
+                return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
+            }
+        } catch (IllegalArgumentException e) {
+            return Optional.empty();
         }
         return Optional.empty();
     }
