@@ -3,6 +3,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,12 @@ public class CategoryService {
      */
 
     public boolean deleteCategory(NewCategoryInfoDTO category) {
-        return iCategoryRepository.deleteByName(category.getCategory());
+        try {
+            CategoryName categoryName = new CategoryName(category.getCategory());
+            return iCategoryRepository.deleteByName(categoryName);
+        }catch (IllegalArgumentException | NullPointerException e){
+            return false;
+        }
     }
 
     /**

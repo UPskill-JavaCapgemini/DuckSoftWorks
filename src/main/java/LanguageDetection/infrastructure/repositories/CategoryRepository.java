@@ -1,5 +1,6 @@
 package LanguageDetection.infrastructure.repositories;
 
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ICategoryRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
@@ -67,11 +68,6 @@ public class CategoryRepository implements ICategoryRepository {
         return categoryJpaRepository.findByCategoryName(category.getCategoryName());
     }
 
-    @Override
-    public Optional<Category> findCategoryById(String categoryName) {
-        return categoryJpaRepository.findById(categoryName);
-    }
-
     /**
      * Method that allows to save a category to the DB
      *
@@ -87,15 +83,14 @@ public class CategoryRepository implements ICategoryRepository {
     /**
      * Method that allows to delete a category by its name from DB
      *
-     * @param category
+     * @param categoryName
      * @return true if it was sucessfully deleted
      */
     @Override
     @Transactional
-    public boolean deleteByName(String category) {
-        int verify = categoryJpaRepository.deleteCategoryIfNotBase(category);
+    public boolean deleteByName(CategoryName categoryName) {
+        int verify = categoryJpaRepository.deleteByCategoryNameAndIsBaseCategoryFalse(categoryName);
         return verify >= 1;
-        //TODO: verify this method. Can we pass a String here? Or it is better to do a find and use it later?
     }
 
     /**

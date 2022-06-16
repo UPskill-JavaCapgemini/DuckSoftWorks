@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Component
 @Entity
-@Table
+@Table(name = "TaskCategory")
 public class Category implements AggregateRoot<CategoryName> {
 
     /**
