@@ -47,7 +47,6 @@ public class BlackListManagementService {
      *
      * @param blackListInfoDTO
      * @return a deleted blackListItem
-     * @throws MalformedURLException
      */
 
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) {
@@ -64,7 +63,6 @@ public class BlackListManagementService {
      * Method that allows the search for all the BlacklList items in the repository.
      *
      * @return list of blackListDTOS
-     * @throws MalformedURLException
      */
 
     public List<BlackListDTO> getAllBlackListItems() {

@@ -20,7 +20,7 @@ public class CategoryName implements ValueObject, Comparable<CategoryName> {
     private static final String DEFAULT_CATEGORY = "Philosophy";
 
     /* For ORM purposes */
-    protected CategoryName(){
+    protected CategoryName() {
         this.categoryName = null;
     }
 
@@ -29,17 +29,14 @@ public class CategoryName implements ValueObject, Comparable<CategoryName> {
      * it prevents the category name to be created with only special characters, only numbers and only spaces or without any input.
      */
     public CategoryName(String categoryName) {
-       try {
-           if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty())
-               this.categoryName = DEFAULT_CATEGORY;
-           else{
-            this.categoryName  = categoryName;
-           }
-       }catch (NullPointerException nullPointerException)
-       {
-           this.categoryName = DEFAULT_CATEGORY;
-       }
-}
+        if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
+            this.categoryName = DEFAULT_CATEGORY;
+            throw new IllegalArgumentException();
+        }
+        else {
+            this.categoryName = categoryName;
+        }
+    }
 
     public String getCategoryName() {
         return categoryName;

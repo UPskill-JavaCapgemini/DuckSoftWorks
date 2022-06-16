@@ -32,7 +32,7 @@ public class CategoryController {
      */
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<List<CategoryDTO>> getAllCategories(){
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         List<CategoryDTO> categories = categoryService.getAllCategory();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
@@ -44,27 +44,23 @@ public class CategoryController {
      * the ResponseEntity object.
      *
      * @param category receives a JSON file that is automatically transformed into a NewCategoryInfoDTO object
-     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) {
         Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
             return new ResponseEntity<>(categoryDTO.get(), HttpStatus.CREATED);
-        }else {
-                return new ResponseEntity("Unable to create, category already exists or invalid characters", HttpStatus.BAD_REQUEST);
-            }
+        } else {
+            return new ResponseEntity("Unable to create. Either already exists or invalid characters", HttpStatus.BAD_REQUEST);
+        }
     }
 
     /**
      * @param category
      * @return the deletion of a certain category
-     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @DeleteMapping("")
-    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category){
+    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) {
         if (categoryService.deleteCategory(category)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {
