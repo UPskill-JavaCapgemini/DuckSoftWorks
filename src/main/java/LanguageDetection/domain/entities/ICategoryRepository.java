@@ -1,5 +1,7 @@
 package LanguageDetection.domain.entities;
 
+import LanguageDetection.domain.ValueObjects.CategoryName;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,8 +14,7 @@ public interface ICategoryRepository {
 
     List<Category> findAll();
 
-    Optional<Category> findCategoryById(Category category);
+    Optional<Category> findCategoryById(CategoryName CategoryName);
 
-    Optional<Category> findCategoryById(String categoryName);
 
 }

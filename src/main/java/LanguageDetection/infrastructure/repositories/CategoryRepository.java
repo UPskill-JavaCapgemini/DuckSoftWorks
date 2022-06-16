@@ -1,5 +1,6 @@
 package LanguageDetection.infrastructure.repositories;
 
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ICategoryRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
@@ -59,17 +60,12 @@ public class CategoryRepository implements ICategoryRepository {
     /**
      * Method that allows the search of a category by its ID
      *
-     * @param category
+     * @param categoryName
      * @return an Optinal of the found category
      */
     @Override
-    public Optional<Category> findCategoryById(Category category) {
-        return categoryJpaRepository.findByCategoryName(category.getCategoryName());
-    }
-
-    @Override
-    public Optional<Category> findCategoryById(String categoryName) {
-        return categoryJpaRepository.findById(categoryName);
+    public Optional<Category> findCategoryById(CategoryName categoryName) {
+        return categoryJpaRepository.findByCategoryName(categoryName);
     }
 
     /**

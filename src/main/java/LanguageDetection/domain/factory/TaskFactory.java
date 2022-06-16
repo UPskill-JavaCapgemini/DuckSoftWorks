@@ -1,6 +1,8 @@
 package LanguageDetection.domain.factory;
 
+import LanguageDetection.application.services.CategoryService;
 import LanguageDetection.domain.DomainService.BlackListService;
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
@@ -16,13 +18,27 @@ import java.util.Optional;
 public class TaskFactory {
 
     @Autowired
-     BlackListService blackListService;
-    public Optional<Task> createTask(InputUrl inputUrl, TimeOut timeOut, Category category) throws MalformedURLException {
-        if (!blackListService.isBlackListed(inputUrl))
-        {
-            Task task = new Task(inputUrl.getUrl(),timeOut.getTimeOut(),category);
-            return Optional.of(task);
+    BlackListService blackListService;
+
+    @Autowired
+    CategoryService categoryService;
+
+    public Optional<Task> createTask(String userInputUrl, int userTimeOut, String userCategoryName) throws MalformedURLException {
+
+        try {
+            InputUrl inputUrl = new InputUrl(userInputUrl);
+            TimeOut timeOut = new TimeOut(userTimeOut);
+            CategoryName categoryName = new CategoryName(userCategoryName);
+            Optional<Category> categoryRepository = categoryService.findCategoryByName(categoryName);
+
+            if (!blackListService.isBlackListed(inputUrl) && categoryRepository.isPresent()) {
+                Task task = new Task(inputUrl.getUrl(), timeOut.getTimeOut(), categoryRepository.get());
+                return Optional.of(task);
+            }
+            return Optional.empty();
+
+        } catch (IllegalArgumentException | MalformedURLException | NullPointerException e) {
+            return Optional.empty();
         }
-        return Optional.empty();
     }
 }

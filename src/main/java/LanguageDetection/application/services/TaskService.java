@@ -17,6 +17,8 @@ import LanguageDetection.domain.factory.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.StaleObjectStateException;
+import org.hibernate.TransientObjectException;
+import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -72,17 +74,14 @@ public class TaskService {
 
 
         try {
-            InputUrl inputUrl = new InputUrl(userInput.getUrl());
-            TimeOut timeOut = new TimeOut(userInput.getTimeOut());
-            Category category = new Category(userInput.getCategory());
-            Optional<Task> opCreatedTask = taskFactory.createTask(inputUrl,timeOut,category);
+            Optional<Task> opCreatedTask = taskFactory.createTask(userInput.getUrl(),userInput.getTimeOut(), userInput.getCategory());
             if (opCreatedTask.isPresent())
             {
                 Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
                 languageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
-        } catch (IllegalArgumentException | MalformedURLException | NullPointerException e) {
+        } catch (MalformedURLException e) {
             return Optional.empty();
         }
         return Optional.empty();

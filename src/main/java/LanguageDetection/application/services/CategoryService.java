@@ -3,6 +3,7 @@ package LanguageDetection.application.services;
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
+import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,13 +74,14 @@ public class CategoryService {
 
     /**
      * Method that allows the search in the repository of a category by its ID(CategoryName)
-     * @param category
+     * @param categoryName
      * @return if the category was successfully found it returns an Optional with the category
      */
 
-    public Optional<Category> findCategoryByName(Category category) {
-        Optional<Category> opCategoryRepo = iCategoryRepository.findCategoryById(category);
+    public Optional<Category> findCategoryByName(CategoryName categoryName) {
+        Optional<Category> opCategoryRepo = iCategoryRepository.findCategoryById(categoryName);
 
         return opCategoryRepo;
     }
+
 }
