@@ -16,7 +16,9 @@ import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factory.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -216,8 +218,14 @@ public class TaskService {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                task.updateStatus(Task.TaskStatus.Canceled);
-                taskRepo.saveTask(task);
+                try {
+                    task.updateStatus(Task.TaskStatus.Canceled);
+                    taskRepo.saveTask(task);
+                }catch (ObjectOptimisticLockingFailureException e){
+                    log.warn("Unsuccessful save: " + e.getMessage());
+                }catch (StaleObjectStateException e){
+                    log.warn("Unsuccessful save: " + e.getMessage());
+                }
             }
         };
         return timerTask;
