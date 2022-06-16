@@ -8,8 +8,6 @@ import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.ValueObjects.TimeOut;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
@@ -17,8 +15,6 @@ import LanguageDetection.domain.factory.TaskFactory;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.StaleObjectStateException;
-import org.hibernate.TransientObjectException;
-import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -51,12 +47,6 @@ public class TaskService {
 
     @Autowired
     ITaskRepository iTaskRepository;
-
-    @Autowired
-    BlackListManagementService blackListManagementService;
-
-    @Autowired
-    CategoryService categoryService;
 
     @Autowired
     TaskFactory taskFactory;

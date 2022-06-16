@@ -2,15 +2,13 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.services.CategoryService;
-import org.apache.lucene.queryparser.classic.ParseException;
+import LanguageDetection.application.services.CategoryManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,10 +19,10 @@ import java.util.Optional;
 public class CategoryController {
 
     @Autowired
-    CategoryService categoryService;
+    CategoryManagementService categoryManagementService;
 
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
+    public CategoryController(CategoryManagementService categoryManagementService) {
+        this.categoryManagementService = categoryManagementService;
     }
 
     /**
@@ -33,7 +31,7 @@ public class CategoryController {
     @GetMapping("")
     @ResponseBody
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
-        List<CategoryDTO> categories = categoryService.getAllCategory();
+        List<CategoryDTO> categories = categoryManagementService.getAllCategory();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -47,7 +45,7 @@ public class CategoryController {
      */
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) {
-        Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
+        Optional<CategoryDTO> categoryDTO = categoryManagementService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
             return new ResponseEntity<>(categoryDTO.get(), HttpStatus.CREATED);
         } else {
@@ -61,7 +59,7 @@ public class CategoryController {
      */
     @DeleteMapping("")
     public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) {
-        if (categoryService.deleteCategory(category)) {
+        if (categoryManagementService.deleteCategory(category)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Unable to delete", HttpStatus.BAD_REQUEST);

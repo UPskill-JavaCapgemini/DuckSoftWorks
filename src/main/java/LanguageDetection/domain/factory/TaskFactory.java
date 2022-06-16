@@ -1,7 +1,8 @@
 package LanguageDetection.domain.factory;
 
-import LanguageDetection.application.services.CategoryService;
+import LanguageDetection.application.services.CategoryManagementService;
 import LanguageDetection.domain.DomainService.BlackListService;
+import LanguageDetection.domain.DomainService.CategoryService;
 import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.ValueObjects.TimeOut;

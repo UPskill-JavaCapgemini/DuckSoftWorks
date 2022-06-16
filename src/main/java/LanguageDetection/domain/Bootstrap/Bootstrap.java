@@ -1,15 +1,10 @@
 package LanguageDetection.domain.Bootstrap;
 
 
-import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.services.BlackListManagementService;
-import LanguageDetection.application.services.CategoryService;
 import LanguageDetection.domain.entities.BlackListItem;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.IBlackListItemRepository;
 import LanguageDetection.domain.entities.ICategoryRepository;
-import LanguageDetection.domain.factory.TaskFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
