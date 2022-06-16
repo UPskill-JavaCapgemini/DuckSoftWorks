@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IBlackListItemRepository {
 
 
-    Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem);
+    BlackListItem saveBlackListItem(BlackListItem blackListItem);
 
     boolean deleteByBlackListUrl(BlackListUrl blackListUrl);
 

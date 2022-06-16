@@ -26,13 +26,8 @@ public class BlackListRepository implements IBlackListItemRepository {
     @Autowired
     BlackListJpaRepository blackListJpaRepository;
 
-    public Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) {
-        try {
-            BlackListItem savedBlackListItem = blackListJpaRepository.save(blackListItem);
-            return Optional.of(savedBlackListItem);
-        } catch (ConstraintViolationException e) {
-            return Optional.empty();
-        }
+    public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
+        return blackListJpaRepository.save(blackListItem);
     }
 
     /**

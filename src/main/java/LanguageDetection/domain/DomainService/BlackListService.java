@@ -18,7 +18,7 @@ public class BlackListService {
     @Autowired
     IBlackListItemRepository blackListItemRepository;
 
-    public Optional<BlackListItem> saveBlackListItem(BlackListItem blackListItem) {
+    public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
         return blackListItemRepository.saveBlackListItem(blackListItem);
     }
 
