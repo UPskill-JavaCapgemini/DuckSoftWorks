@@ -40,7 +40,7 @@ public class TaskController {
      * @throws IOException signals that an I/O exception of some sort occurred. For example input of a Bad URL
      */
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) throws IOException {
+    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) {
         Optional<TaskStatusDTO> taskCreated = taskService.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);

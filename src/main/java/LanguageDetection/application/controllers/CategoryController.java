@@ -48,7 +48,7 @@ public class CategoryController {
      * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
+    public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) {
         Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
             return new ResponseEntity<>(categoryDTO.get(), HttpStatus.CREATED);
@@ -64,7 +64,7 @@ public class CategoryController {
      * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @DeleteMapping("")
-    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
+    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category){
         if (categoryService.deleteCategory(category)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {

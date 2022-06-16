@@ -68,7 +68,7 @@ public class TaskService {
      * @return TaskStatusDTO assembled by taskDomainDTOAssembler, with information of Status when created(Processing) or empty if url is on blacklist and unable to crate
      * @throws IOException thrown if URL is malformed
      */
-    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
+    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
 
         // TODO: should this really be here?
         try {
@@ -82,7 +82,7 @@ public class TaskService {
                 languageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | MalformedURLException e) {
             return Optional.empty();
         }
         return Optional.empty();
