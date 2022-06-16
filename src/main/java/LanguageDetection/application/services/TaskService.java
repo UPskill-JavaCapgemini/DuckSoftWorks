@@ -70,7 +70,7 @@ public class TaskService {
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
 
-        // TODO: should this really be here?
+
         try {
             InputUrl inputUrl = new InputUrl(userInput.getUrl());
             TimeOut timeOut = new TimeOut(userInput.getTimeOut());
@@ -82,7 +82,7 @@ public class TaskService {
                 languageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
-        } catch (IllegalArgumentException | MalformedURLException e) {
+        } catch (IllegalArgumentException | MalformedURLException | NullPointerException e) {
             return Optional.empty();
         }
         return Optional.empty();
