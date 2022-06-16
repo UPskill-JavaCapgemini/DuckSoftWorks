@@ -46,11 +46,11 @@ public class Bootstrap implements InitializingBean {
         Category nutrition = new Category("Nutrition");
         Category sports = new Category("Sports");
 
-        Category.defineAsBaseCategory(economics);
-        Category.defineAsBaseCategory(philosophy);
-        Category.defineAsBaseCategory(mechanics);
-        Category.defineAsBaseCategory(nutrition);
-        Category.defineAsBaseCategory(sports);
+        economics.defineAsBaseCategory();
+        philosophy.defineAsBaseCategory();
+        mechanics.defineAsBaseCategory();
+        nutrition.defineAsBaseCategory();
+        sports.defineAsBaseCategory();
 
         iCategoryRepository.saveCategory(economics);
         iCategoryRepository.saveCategory(philosophy);

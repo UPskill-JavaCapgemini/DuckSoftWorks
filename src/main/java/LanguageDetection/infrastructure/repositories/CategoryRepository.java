@@ -58,6 +58,7 @@ public class CategoryRepository implements ICategoryRepository {
 
     /**
      * Method that allows the search of a category by its ID
+     *
      * @param category
      * @return an Optinal of the found category
      */
@@ -66,8 +67,14 @@ public class CategoryRepository implements ICategoryRepository {
         return categoryJpaRepository.findByCategoryName(category.getCategoryName());
     }
 
+    @Override
+    public Optional<Category> findCategoryById(String categoryName) {
+        return categoryJpaRepository.findById(categoryName);
+    }
+
     /**
      * Method that allows to save a category to the DB
+     *
      * @param category
      * @return the saved category
      */
@@ -79,24 +86,21 @@ public class CategoryRepository implements ICategoryRepository {
 
     /**
      * Method that allows to delete a category by its name from DB
+     *
      * @param category
      * @return true if it was sucessfully deleted
      */
-
     @Override
     @Transactional
-    public boolean deleteByName(Category category) {
-
-        Optional<Category> categoryRepo = categoryJpaRepository.findByCategoryName(category.getCategoryName());
-        if (!isBaseCategory(categoryRepo)) {
-            categoryJpaRepository.delete(categoryRepo.get());
-            return true;
-        }
-        return false;
+    public boolean deleteByName(String category) {
+        int verify = categoryJpaRepository.deleteCategoryIfNotBase(category);
+        return verify >= 1;
+        //TODO: verify this method. Can we pass a String here? Or it is better to do a find and use it later?
     }
 
     /**
      * Method that returns all the category found on DB in a list
+     *
      * @return a list with all the category found
      */
 
@@ -111,7 +115,7 @@ public class CategoryRepository implements ICategoryRepository {
      * @return true if the category cannot be deleted.
      */
 
-    protected boolean isBaseCategory(Optional<Category> category) {
+    /*protected boolean isBaseCategory(Optional<Category> category) {
         boolean isBase = false;
 
         if (category.isPresent()) {
@@ -127,6 +131,6 @@ public class CategoryRepository implements ICategoryRepository {
             }
         }
         return isBase;
-    }
+    }*/
 }
 

@@ -11,4 +11,8 @@ import java.util.Optional;
 public interface CategoryJpaRepository extends CrudRepository<Category, String> {
 
     Optional<Category> findByCategoryName(CategoryName categoryName);
+
+    @Modifying
+    @Query(value = "DELETE FROM CATEGORY WHERE CATEGORY_NAME= ?1 AND IS_BASE_CATEGORY = 0", nativeQuery = true)
+    int deleteCategoryIfNotBase(String category_name);
 }

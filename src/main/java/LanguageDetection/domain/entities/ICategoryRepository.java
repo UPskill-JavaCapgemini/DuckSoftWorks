@@ -8,10 +8,12 @@ public interface ICategoryRepository {
 
     Category saveCategory(Category category);
 
-    boolean deleteByName(Category category);
+    boolean deleteByName(String category);
 
     List<Category> findAll();
 
     Optional<Category> findCategoryById(Category category);
+
+    Optional<Category> findCategoryById(String categoryName);
 
 }

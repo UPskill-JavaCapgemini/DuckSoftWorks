@@ -17,7 +17,7 @@ public class CategoryName implements ValueObject, Comparable<CategoryName> {
 
     private String categoryName;
 
-    private static final String DEFAULT_CATEGORY = "Unassigned";
+    private static final String DEFAULT_CATEGORY = "Philosophy";
 
     /* For ORM purposes */
     protected CategoryName(){

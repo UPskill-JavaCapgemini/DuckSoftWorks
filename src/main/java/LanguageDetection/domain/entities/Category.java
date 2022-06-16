@@ -3,10 +3,7 @@ package LanguageDetection.domain.entities;
 import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -29,7 +26,8 @@ public class Category implements AggregateRoot<CategoryName> {
     @EmbeddedId
     CategoryName categoryName;
 
-    private static boolean isBaseCategory = false;
+
+    private boolean isBaseCategory = false;
 
 
     protected Category() {
@@ -45,10 +43,13 @@ public class Category implements AggregateRoot<CategoryName> {
 
     /**
      * Method to be used when bootstrapping data to define Base Categories that cannot be deleted.
-     * @param baseCategory
      */
-    public static void defineAsBaseCategory(Category baseCategory) {
-       baseCategory.isBaseCategory = true;
+    public void defineAsBaseCategory() {
+       this.isBaseCategory = true;
+    }
+
+    public boolean isBaseCategory(){
+        return this.isBaseCategory;
     }
 
     @Override
