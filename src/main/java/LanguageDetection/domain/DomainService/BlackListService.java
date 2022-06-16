@@ -1,5 +1,6 @@
 package LanguageDetection.domain.DomainService;
 
+import LanguageDetection.domain.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.ValueObjects.InputUrl;
 import LanguageDetection.domain.entities.BlackListItem;
 import LanguageDetection.domain.entities.IBlackListItemRepository;
@@ -21,8 +22,8 @@ public class BlackListService {
         return blackListItemRepository.saveBlackListItem(blackListItem);
     }
 
-    public boolean deleteByBlackListUrl(BlackListItem blackListItem) {
-        return blackListItemRepository.deleteByBlackListUrl(blackListItem);
+    public boolean deleteByBlackListUrl(BlackListUrl blackListUrl) {
+        return blackListItemRepository.deleteByBlackListUrl(blackListUrl);
     }
 
     /**

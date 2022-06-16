@@ -4,6 +4,7 @@ import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.DomainService.BlackListService;
+import LanguageDetection.domain.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.entities.BlackListItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,8 +57,8 @@ public class BlackListManagementService {
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) {
         try {
             String url = blackListInfoDTO.getUrl();
-            BlackListItem blackListItem = new BlackListItem(url);
-            return blackListService.deleteByBlackListUrl(blackListItem);
+            BlackListUrl blackListUrl = new BlackListUrl(url);
+            return blackListService.deleteByBlackListUrl(blackListUrl);
         } catch (MalformedURLException urlException){
             return false;
         }

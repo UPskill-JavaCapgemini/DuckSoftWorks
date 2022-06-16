@@ -38,21 +38,16 @@ public class BlackListRepository implements IBlackListItemRepository {
     /**
      * Method that allows to delete a BlackList Item by its url from DB
      *
-     * @param blackListItem
+     * @param blackListUrl
      * @return true if it was sucessfully deleted
      */
 
     @Override
     @Transactional
-    public boolean deleteByBlackListUrl(BlackListItem blackListItem) {
-        try {
-            blackListJpaRepository.delete(blackListItem);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            //TODO: Verify what exception is thrown here
-            return false;
-        }
+    public boolean deleteByBlackListUrl(BlackListUrl blackListUrl) {
+        int deleted = blackListJpaRepository.deleteByBlackListUrl(blackListUrl);
+        return deleted >= 1;
+
 
     }
 
