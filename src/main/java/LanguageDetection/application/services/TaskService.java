@@ -164,21 +164,6 @@ public class TaskService {
     }
 
     /**
-     * Fetches if a category passed by user input already exists on database.
-     * @param userInput category name that as passed by from user input - instance of NewTaskInfoDTO
-     * @return persisted category if already on database
-     */
-    protected Category findCategoryOrDefault(NewTaskInfoDTO userInput) {
-        Category inputCategory = new Category(userInput.getCategory());
-        Optional<Category> category = categoryService.findCategoryByName(inputCategory);
-        if(category.isPresent()){
-            return category.get();
-        }
-        //TODO
-        return new Category("");
-    }
-
-    /**
      * Responsible for instantiate a new Thread for asynchronous language analysis.
      * @param task instance of object already created
      */
