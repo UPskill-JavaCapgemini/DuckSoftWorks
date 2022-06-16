@@ -205,9 +205,7 @@ public class TaskService {
                 try {
                     task.updateStatus(Task.TaskStatus.Canceled);
                     taskRepo.saveTask(task);
-                }catch (ObjectOptimisticLockingFailureException e){
-                    log.warn("Unsuccessful save: " + e.getMessage());
-                }catch (StaleObjectStateException e){
+                }catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e){
                     log.warn("Unsuccessful save: " + e.getMessage());
                 }
             }

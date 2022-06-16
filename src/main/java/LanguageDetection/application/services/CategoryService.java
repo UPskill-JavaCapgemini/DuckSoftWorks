@@ -69,7 +69,12 @@ public class CategoryService {
      */
 
     public boolean deleteCategory(NewCategoryInfoDTO category) {
-        return iCategoryRepository.deleteByName(category.getCategory());
+        try {
+            CategoryName categoryName = new CategoryName(category.getCategory());
+            return iCategoryRepository.deleteByName(categoryName);
+        }catch (IllegalArgumentException | NullPointerException e){
+            return false;
+        }
     }
 
     /**

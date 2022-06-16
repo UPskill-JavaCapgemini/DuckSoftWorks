@@ -15,7 +15,7 @@ import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialChar
 @Embeddable
 public class CategoryName implements ValueObject, Comparable<CategoryName> {
 
-    private String categoryName;
+    private final String categoryName;
 
     private static final String DEFAULT_CATEGORY = "Philosophy";
 
@@ -40,12 +40,11 @@ public class CategoryName implements ValueObject, Comparable<CategoryName> {
 
     public String getCategoryName() {
         return categoryName;
-        //TODO: Can we use a getter here?
     }
 
     @Override
     public String toString() {
-        return categoryName;
+        return this.categoryName;
     }
 
     @Override

@@ -83,15 +83,14 @@ public class CategoryRepository implements ICategoryRepository {
     /**
      * Method that allows to delete a category by its name from DB
      *
-     * @param category
+     * @param categoryName
      * @return true if it was sucessfully deleted
      */
     @Override
     @Transactional
-    public boolean deleteByName(String category) {
-        int verify = categoryJpaRepository.deleteCategoryIfNotBase(category);
+    public boolean deleteByName(CategoryName categoryName) {
+        int verify = categoryJpaRepository.deleteByCategoryNameAndIsBaseCategoryFalse(categoryName);
         return verify >= 1;
-        //TODO: verify this method. Can we pass a String here? Or it is better to do a find and use it later?
     }
 
     /**
