@@ -1,4 +1,4 @@
-package LanguageDetection.domain.DomainService;
+package LanguageDetection.infrastructure.repositories.analyzer;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;

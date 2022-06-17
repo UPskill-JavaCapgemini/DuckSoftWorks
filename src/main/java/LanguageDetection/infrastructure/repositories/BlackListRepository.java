@@ -65,7 +65,7 @@ public class BlackListRepository implements IBlackListItemRepository {
      */
 
     public boolean isBlackListed(InputUrl inputUrl) throws MalformedURLException {
-        BlackListUrl blackListUrl = new BlackListUrl(inputUrl.getUrl());
+        BlackListUrl blackListUrl = new BlackListUrl(inputUrl.toString());
         Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
         return blackListRepoUrl.isPresent();
     }

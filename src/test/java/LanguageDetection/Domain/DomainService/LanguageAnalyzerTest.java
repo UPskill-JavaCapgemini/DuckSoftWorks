@@ -1,6 +1,6 @@
 //package LanguageDetection.Domain.DomainService;
 //
-//import LanguageDetection.domain.DomainService.LanguageAnalyzer;
+//import LanguageDetection.infrastructure.repositories.analyzer.LanguageAnalyzer;
 //import org.apache.lucene.queryparser.classic.ParseException;
 //import org.junit.Assert;
 //import org.junit.jupiter.api.Assertions;

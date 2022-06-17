@@ -7,16 +7,13 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.DomainService.LanguageDetectionService;
 import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factory.TaskFactory;
-import LanguageDetection.infrastructure.repositories.TaskRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -24,7 +21,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.*;
 
-import java.util.concurrent.*;
 
 
 /**
@@ -32,24 +28,22 @@ import java.util.concurrent.*;
  *
  * @author DuckSoftWorks Team
  */
-@Slf4j
 @Service
 public class TaskService {
 
 
-    private static final long CONSTANT_TO_MINUTES = 60000L;
 
     @Autowired
     TaskDomainDTOAssembler taskDomainDTOAssembler;
-
-    @Autowired
-    TaskRepository taskRepo;
 
     @Autowired
     ITaskRepository iTaskRepository;
 
     @Autowired
     TaskFactory taskFactory;
+
+    @Autowired
+    LanguageDetectionService languageDetectionService;
 
 
     /**
@@ -62,13 +56,12 @@ public class TaskService {
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
 
-
         try {
             Optional<Task> opCreatedTask = taskFactory.createTask(userInput.getUrl(),userInput.getTimeOut(), userInput.getCategory());
             if (opCreatedTask.isPresent())
             {
                 Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
-                languageAnalysis(savedTask);
+                languageDetectionService.languageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
         } catch (MalformedURLException e) {
@@ -150,57 +143,6 @@ public class TaskService {
             taskDTOList.add(assemble);
         }
         return taskDTOList;
-    }
-
-    /**
-     * Responsible for instantiate a new Thread for asynchronous language analysis.
-     * @param task instance of object already created
-     */
-    private void languageAnalysis(Task task) {
-        LanguageDetectionService analyzerService = new LanguageDetectionService();
-
-        analyzerService.setTaskToBeAnalyzed(task);
-
-        analyzerService.setTaskRepository(taskRepo);
-
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.submit(analyzerService);
-
-        initializeTimer(task);
-
-        executorService.shutdown();
-    }
-
-    /**
-     * Initializes a new timer to handle timeout for language analysis which was sent from user input.
-     * @param taskrepo Task instance which was already created and has timeout limit.
-     * @return timer
-     */
-    protected Timer initializeTimer(Task taskrepo) {
-        Timer timer = new Timer(Thread.currentThread().getName(), true);
-        TimerTask interruptReturnedValues = timeOutAnalysis(taskrepo);
-        timer.schedule(interruptReturnedValues, (taskrepo.getTimeOut().getTimeOut() * CONSTANT_TO_MINUTES));
-        return timer;
-    }
-
-    /**
-     * Handles the canceling method after timelimit reaches.
-     * @param task task instance of what needs to be canceled.
-     * @return Timer task
-     */
-    protected TimerTask timeOutAnalysis(Task task) {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    task.updateStatus(Task.TaskStatus.Canceled);
-                    taskRepo.saveTask(task);
-                }catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e){
-                    log.warn("Unsuccessful save: " + e.getMessage());
-                }
-            }
-        };
-        return timerTask;
     }
 
     /**

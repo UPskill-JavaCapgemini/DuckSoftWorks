@@ -1,8 +1,8 @@
-package LanguageDetection.domain.DomainService;
+package LanguageDetection.infrastructure.repositories.analyzer;
 
+import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.entities.Task;
-import LanguageDetection.domain.util.BusinessValidation;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -64,12 +64,12 @@ public class LanguageAnalyzer implements ILanguageDetector {
         //maximum value of an Integer to allow the most hits possible for an IndexSearcher
         IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
 
-        String query = task.getInputUrl().getUrl();
+        String query = task.getInputUrl().toString();
         String text = createNewText(query);
 
         String cleanedUp = cleanUpInputText(text);
 
-        //TODO: Can we do this here? Business logic?
+        //TODO: We can't do this here...
         if(isOnlyNumbers(cleanedUp) || isOnlySpecialCharacters(cleanedUp) || cleanedUp.isEmpty() || cleanedUp.isBlank()){
             return Language.UNDEFINED;
         } else {

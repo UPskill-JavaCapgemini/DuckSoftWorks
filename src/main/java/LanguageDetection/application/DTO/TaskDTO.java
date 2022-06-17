@@ -27,7 +27,7 @@ public class TaskDTO {
     public TaskDTO(Long id, Date date, InputUrl inputUrl, TaskResult taskResult, Task.TaskStatus currentStatus, TimeOut timeOut, Category category) {
         this.id = id;
         this.date = date;
-        this.inputUrl = inputUrl.getUrl();
+        this.inputUrl = inputUrl.toString();
         this.taskResult = taskResult;
         this.currentStatus = currentStatus;
         this.timeOut = timeOut.getTimeOut();
