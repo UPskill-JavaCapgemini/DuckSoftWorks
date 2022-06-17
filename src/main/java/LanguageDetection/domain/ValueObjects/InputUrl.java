@@ -36,10 +36,6 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
         this.url=null;
     }
 
-    public String getUrl(){
-        return this.url.toString();
-    }
-
     public URL getUrlObject(){
         return this.url;
     }
