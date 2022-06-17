@@ -2,9 +2,12 @@ package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -12,10 +15,14 @@ import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
 
 
 @Embeddable
+@Component
 public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
 
     private final java.net.URL url;
+
+    @Transient
+    Text text;
 
 
     public InputUrl(String url) throws MalformedURLException {
@@ -24,6 +31,7 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
         } else {
             throw new IllegalArgumentException("The URL doesn't contain a txt file or it´s not valid");
         }
+        this.text = new Text(url);
     }
 
     @Override
