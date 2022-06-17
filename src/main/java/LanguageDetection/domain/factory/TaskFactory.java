@@ -33,6 +33,7 @@ public class TaskFactory {
 
             if (!blackListService.isBlackListed(inputUrl) && categoryRepository.isPresent()) {
                 Task task = new Task(inputUrl.getUrl(), timeOut.getTimeOut(), categoryRepository.get());
+
                 return Optional.of(task);
             }
             return Optional.empty();

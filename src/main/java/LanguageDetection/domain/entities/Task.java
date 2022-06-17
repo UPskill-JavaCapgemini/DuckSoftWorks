@@ -172,4 +172,6 @@ public class Task implements AggregateRoot<Long> {
                 ", timeOut=" + timeOut +
                 ", category=" + category;
     }
+
+
 }
