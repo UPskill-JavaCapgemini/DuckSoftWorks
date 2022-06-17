@@ -2,6 +2,7 @@ package LanguageDetection.domain.DomainService;
 
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.TaskResult;
+import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import LanguageDetection.infrastructure.repositories.analyzer.LanguageAnalyzer;
@@ -97,7 +98,7 @@ class AsyncMethod implements Runnable {
     private Task taskToBeAnalyzed;
 
     @Setter
-    TaskRepository taskRepository;
+    ITaskRepository taskRepository;
 
     @SneakyThrows
     @Override
