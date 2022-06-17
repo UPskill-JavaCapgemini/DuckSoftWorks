@@ -37,7 +37,6 @@ public class TaskController {
      *
      * @param info receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
      * @return information of Processing status with HTTPStatus 201(Created) or String with error information of HTTPStatus 400(Bad Request) if some error occurred
-     * @throws IOException signals that an I/O exception of some sort occurred. For example input of a Bad URL
      */
     @PostMapping("")
     public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) {

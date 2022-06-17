@@ -9,12 +9,9 @@ import java.util.Optional;
 
 public interface IBlackListItemRepository {
 
-
     BlackListItem saveBlackListItem(BlackListItem blackListItem);
 
     boolean deleteByBlackListUrl(BlackListUrl blackListUrl);
-
-    boolean isBlackListed(InputUrl inputUrl) throws MalformedURLException;
 
     List<BlackListItem> findAllBlackListItems();
 

@@ -56,17 +56,4 @@ public class BlackListRepository implements IBlackListItemRepository {
         List<BlackListItem> blackListItems = (List<BlackListItem>) blackListJpaRepository.findAll();
         return blackListItems;
     }
-
-    /**
-     * Method that allows to check if an url is already inserted in the DB
-     *
-     * @param inputUrl
-     * @return an Optinal of the found blackListItem
-     */
-
-    public boolean isBlackListed(InputUrl inputUrl) throws MalformedURLException {
-        BlackListUrl blackListUrl = new BlackListUrl(inputUrl.toString());
-        Optional<BlackListItem> blackListRepoUrl = blackListJpaRepository.findById(blackListUrl);
-        return blackListRepoUrl.isPresent();
-    }
 }
