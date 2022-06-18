@@ -30,10 +30,11 @@
       </style>
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark" id="nav">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Consult Tasks</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <a href=login.html> Logout </a>
@@ -42,8 +43,8 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="createTask.html">Check Language</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href=cancelTask.html>Cancel Tasks</a>
+          <li class="nav-item ">
+            <a class="nav-link active" aria-current="page" href="cancelTask.html">Cancel Tasks</a>
           </li>
         </ul>
       </div>
@@ -55,7 +56,7 @@
 <body class="bg-light">
   
 <div class="container">
-<main>
+
   <div class="py-5 text-center">
     <img class="d-block mx-auto mb-4" src="images/black duck.jpg" alt="" width="150" height="150">
     <h2>Ducked Language Detection</h2>
@@ -93,9 +94,9 @@
       </div>
 
 
-      
+
       <div class="col-2">
-        <a class="w-100 btn btn-md btn-dark" href="tasksByStatus.html" role="button">Consult</a>
+        <a class="w-100 btn btn-md btn-dark" href="tasksTable.html" role="button">Consult</a>
       </div>
       <div class="col-6">
       </div>

@@ -43,7 +43,7 @@
                 <a class="nav-link active" aria-current="page" href=consultTasks.html>Consult Tasks</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href=createTask.html>Check Language</a>
+                <a class="nav-link active" aria-current="page" href=createTask.html>Check Language</a>
               </li>
             </ul>
           </div>
@@ -61,53 +61,59 @@
     <h2>Ducked Language Detection</h2>
   </div>
 
-  <div class="container flex center">
+  
+
+  <div class="container-fluid center">
     <div class="row justify-content-around">
-    <div class="col-md-8 col-lg-8">
-      <h4 class="mb-3">Please insert your text</h4>
+    <div class="col-sm-5 col-md-8 col-lg-12">
       <form class="needs-validation" novalidate>
-        <div class="row g-3">
-          <div class="col-sm-8 col-md-8 col-lg-10">
-            <label for="link" class="form-label">URL</label>
-            <input type="text" class="form-control" id="link" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid first url with plain text is required.
-            </div>
-          </div>
-        </div>
-          
-          <div class="col-md-5">
-            <label for="category" class="form-label">Text Category</label>
-            <select class="form-select" id="category" required>
-              <option value="">Philosophy</option>
-              <option>Mechanics</option>
-              <option>Sports</option>
-              <option>Economics</option>
-              <option>Nutricion</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid category.
-            </div>
-          </div>
+        
 
-          <div class="col-md-4">
-            <label for="time limit" class="form-label">Time limit (in minutes)</label>
-            <select class="form-select" id="time limit" required>
-              <option value="">1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-            <div class="invalid-feedback">
-              Please provide a valid time limit.
-            </div>
-          </div>
+        <style>
+          table {
+              border-collapse: collapse;
+              width: 100%;
+          }
 
-          
-        <hr class="my-4">
+          td {
+              border: 1px solid #000000;
+              background-color:rgb(240, 240, 240);
+              text-align: left;
+              padding: 8px;
+          }
 
-        <button class="w-100 btn btn-dark btn-lg" type="submit">Check Language</button>
+          th {
+              border: 1px solid #000000;
+              background-color: darkgrey;
+              text-align: left;
+              padding: 4px;
+          }
+      </style>
+  
+      <h2 id="Tasks Consult Table">Your Tasks</h2>
+  
+      <div id="data-table">
+          <table id="html-data-table">
+              <tr>
+                  <th>Task ID</th>
+                  <th>Date</th>
+                  <th>Text Category</th>
+                  <th>URL</th>
+                  <th>Task Status</th>
+                  <th>Text Language</th>
+                  <th>Time</th>
+              </tr>
+              <tr>
+                  <td>12</td>
+                  <td>18-06-2022</td>
+                  <td>Sports</td>
+                  <td>http//:somthingaboutsports.com.txt</td>
+                  <td>Completed</td>
+                  <td>English</td>
+                  <td>2</td>
+              </tr>
+          </table>    
+      </div>
       </form>
     </div>
   </div>
