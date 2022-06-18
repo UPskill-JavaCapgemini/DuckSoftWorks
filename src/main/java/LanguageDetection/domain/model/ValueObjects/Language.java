@@ -1,4 +1,4 @@
-package LanguageDetection.domain.ValueObjects;
+package LanguageDetection.domain.model.ValueObjects;
 
 
 import LanguageDetection.domain.shared.ValueObject;
@@ -10,5 +10,5 @@ import LanguageDetection.domain.shared.ValueObject;
 public enum Language implements ValueObject {
     ENGLISH,
     PORTUGUESE,
-    SPANISH
+    SPANISH,
 }

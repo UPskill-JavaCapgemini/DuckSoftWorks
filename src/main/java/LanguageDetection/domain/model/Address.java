@@ -1,4 +1,4 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

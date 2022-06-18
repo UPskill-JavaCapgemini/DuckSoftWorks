@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import LanguageDetection.domain.ValueObjects.PersonId;
-import LanguageDetection.domain.entities.Person;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
+import LanguageDetection.domain.model.Person;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

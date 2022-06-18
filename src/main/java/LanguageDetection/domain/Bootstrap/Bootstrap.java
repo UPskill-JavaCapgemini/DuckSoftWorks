@@ -4,12 +4,12 @@ package LanguageDetection.domain.Bootstrap;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.BlackListManagementService;
-import LanguageDetection.application.services.CategoryService;
-import LanguageDetection.domain.ValueObjects.ERole;
-import LanguageDetection.domain.ValueObjects.PersonId;
-import LanguageDetection.domain.ValueObjects.RoleId;
-import LanguageDetection.domain.entities.*;
-import LanguageDetection.domain.factory.TaskFactory;
+import LanguageDetection.domain.DomainService.CategoryService;
+import LanguageDetection.domain.model.ValueObjects.ERole;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.RoleId;
+import LanguageDetection.domain.model.*;
+import LanguageDetection.domain.model.TaskFactory;
 import LanguageDetection.infrastructure.repositories.PersonRepository;
 import LanguageDetection.infrastructure.repositories.RoleRepository;
 import org.springframework.beans.factory.InitializingBean;
@@ -62,11 +62,11 @@ public class Bootstrap implements InitializingBean {
         Category nutrition = new Category("Nutrition");
         Category sports = new Category("Sports");
 
-        Category.defineAsBaseCategory(economics);
-        Category.defineAsBaseCategory(philosophy);
-        Category.defineAsBaseCategory(mechanics);
-        Category.defineAsBaseCategory(nutrition);
-        Category.defineAsBaseCategory(sports);
+        economics.defineAsBaseCategory();
+        philosophy.defineAsBaseCategory();
+        mechanics.defineAsBaseCategory();
+        nutrition.defineAsBaseCategory();
+        sports.defineAsBaseCategory();
 
         iCategoryRepository.saveCategory(economics);
         iCategoryRepository.saveCategory(philosophy);

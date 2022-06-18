@@ -1,6 +1,6 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.Task;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -11,9 +11,13 @@ import org.springframework.hateoas.RepresentationModel;
 public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
 
     @Getter
+    Long id;
+    @Getter
     Task.TaskStatus status;
 
-    public TaskStatusDTO(Task status) {
-        this.status = status.getCurrentStatus();
+
+    public TaskStatusDTO(Long id, Task.TaskStatus status) {
+        this.id = id;
+        this.status = status;
     }
 }

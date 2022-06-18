@@ -1,6 +1,6 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories;
 
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.AddressJpa;
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories.jpa;
 
-import LanguageDetection.domain.ValueObjects.ERole;
-import LanguageDetection.domain.ValueObjects.RoleId;
+import LanguageDetection.domain.model.ValueObjects.ERole;
+import LanguageDetection.domain.model.ValueObjects.RoleId;
 
 import javax.persistence.*;
 

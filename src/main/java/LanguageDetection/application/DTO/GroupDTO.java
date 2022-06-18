@@ -1,6 +1,6 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.ValueObjects.GroupId;
+import LanguageDetection.domain.model.ValueObjects.GroupId;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

@@ -1,24 +1,18 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-//import org.apache.commons.validator.routines.UrlValidator;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.net.MalformedURLException;
 
-//import static org.apache.commons.validator.routines.UrlValidator.ALLOW_ALL_SCHEMES;
-//import static org.apache.commons.validator.routines.UrlValidator.ALLOW_LOCAL_URLS;
 
 /**
  * Class that that represents the Items that are going to be placed in a BlackList of not accepted Urls
@@ -27,7 +21,6 @@ import java.net.MalformedURLException;
  */
 
 @Getter
-@EqualsAndHashCode
 @Component
 @Entity
 @Table

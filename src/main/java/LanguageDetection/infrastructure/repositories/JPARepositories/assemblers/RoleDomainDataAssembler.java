@@ -1,6 +1,6 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories.assemblers;
 
-import LanguageDetection.domain.entities.Role;
+import LanguageDetection.domain.model.Role;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.RoleJpa;
 import org.springframework.stereotype.Service;
 

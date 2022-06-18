@@ -1,6 +1,6 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories.jpa;
 
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories.assemblers;
 
-import LanguageDetection.domain.ValueObjects.PersonId;
-import LanguageDetection.domain.entities.Group;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
+import LanguageDetection.domain.model.Group;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.GroupJpa;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class GroupDomainDataAssembler {
 
 	public GroupJpa toData(Group group ) {
-		GroupJpa groupJpa = new GroupJpa(group.getId(), group.getName());
+		GroupJpa groupJpa = new GroupJpa(group.getId(),group.getName());
 
 		return groupJpa;
 	}

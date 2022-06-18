@@ -1,7 +1,7 @@
 package LanguageDetection.application.DTO;
 
 
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
 import org.springframework.hateoas.RepresentationModel;
 
 import lombok.AllArgsConstructor;

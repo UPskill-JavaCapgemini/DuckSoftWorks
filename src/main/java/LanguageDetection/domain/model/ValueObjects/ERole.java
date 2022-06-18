@@ -1,4 +1,4 @@
-package LanguageDetection.domain.ValueObjects;
+package LanguageDetection.domain.model.ValueObjects;
 
 public enum ERole {
     ROLE_USER,

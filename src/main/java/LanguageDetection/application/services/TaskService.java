@@ -7,24 +7,18 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITaskRepository;
-import LanguageDetection.domain.entities.Task;
-import LanguageDetection.domain.factory.TaskFactory;
-import LanguageDetection.infrastructure.repositories.TaskRepository;
-import lombok.extern.slf4j.Slf4j;
+import LanguageDetection.infrastructure.repositories.analyzer.LanguageDetectionService;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.ITaskRepository;
+import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.TaskFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 import java.net.MalformedURLException;
 import java.util.*;
 
-import java.util.concurrent.*;
 
 
 /**
@@ -32,30 +26,22 @@ import java.util.concurrent.*;
  *
  * @author DuckSoftWorks Team
  */
-@Slf4j
 @Service
 public class TaskService {
 
 
-    private static final long CONSTANT_TO_MINUTES = 60000L;
 
     @Autowired
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
-    TaskRepository taskRepo;
-
-    @Autowired
     ITaskRepository iTaskRepository;
 
     @Autowired
-    BlackListManagementService blackListManagementService;
-
-    @Autowired
-    CategoryService categoryService;
-
-    @Autowired
     TaskFactory taskFactory;
+
+    @Autowired
+    LanguageDetectionService languageDetectionService;
 
 
     /**
@@ -64,23 +50,18 @@ public class TaskService {
      *
      * @param userInput the string containing the text within NewTaskInfoDTO.
      * @return TaskStatusDTO assembled by taskDomainDTOAssembler, with information of Status when created(Processing) or empty if url is on blacklist and unable to crate
-     * @throws IOException thrown if URL is malformed
      */
-    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) throws IOException {
+    public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
 
-        // TODO: should this really be here?
         try {
-            InputUrl inputUrl = new InputUrl(userInput.getUrl());
-            TimeOut timeOut = new TimeOut(userInput.getTimeOut());
-            Category category = new Category(userInput.getCategory());
-            Optional<Task> opCreatedTask = taskFactory.createTask(inputUrl,timeOut,category);
+            Optional<Task> opCreatedTask = taskFactory.createTask(userInput.getUrl(),userInput.getTimeOut(), userInput.getCategory());
             if (opCreatedTask.isPresent())
             {
                 Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
-                languageAnalysis(savedTask);
+                languageDetectionService.languageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
-        } catch (IllegalArgumentException e) {
+        } catch (MalformedURLException e) {
             return Optional.empty();
         }
         return Optional.empty();
@@ -162,77 +143,15 @@ public class TaskService {
     }
 
     /**
-     * Fetches if a category passed by user input already exists on database.
-     * @param userInput category name that as passed by from user input - instance of NewTaskInfoDTO
-     * @return persisted category if already on database
-     */
-    protected Category findCategoryOrDefault(NewTaskInfoDTO userInput) {
-        Category inputCategory = new Category(userInput.getCategory());
-        Optional<Category> category = categoryService.findCategoryByName(inputCategory);
-        if(category.isPresent()){
-            return category.get();
-        }
-        //TODO
-        return new Category("");
-    }
-
-    /**
-     * Responsible for instantiate a new Thread for asynchronous language analysis.
-     * @param task instance of object already created
-     */
-    private void languageAnalysis(Task task) {
-        LanguageDetectionService analyzerService = new LanguageDetectionService();
-
-        analyzerService.setTaskToBeAnalyzed(task);
-
-        analyzerService.setTaskRepository(taskRepo);
-
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.submit(analyzerService);
-
-        initializeTimer(task);
-
-        executorService.shutdown();
-    }
-
-    /**
-     * Initializes a new timer to handle timeout for language analysis which was sent from user input.
-     * @param taskrepo Task instance which was already created and has timeout limit.
-     * @return timer
-     */
-    protected Timer initializeTimer(Task taskrepo) {
-        Timer timer = new Timer(Thread.currentThread().getName(), true);
-        TimerTask interruptReturnedValues = timeOutAnalysis(taskrepo);
-        timer.schedule(interruptReturnedValues, (taskrepo.getTimeOut().getTimeOut() * CONSTANT_TO_MINUTES));
-        return timer;
-    }
-
-    /**
-     * Handles the canceling method after timelimit reaches.
-     * @param task task instance of what needs to be canceled.
-     * @return Timer task
-     */
-    protected TimerTask timeOutAnalysis(Task task) {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                task.updateStatus(Task.TaskStatus.Canceled);
-                taskRepo.saveTask(task);
-            }
-        };
-        return timerTask;
-    }
-
-    /**
      * Handles the cancellation process of a language analysis from user input
      * @param id if of a task that user wants to cancel
      * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
-     * @throws MalformedURLException thrown only if some sort of update done to URL on database.
      */
-    public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) throws MalformedURLException {
-        Optional<Task> optionalTask = iTaskRepository.findById(id.getId());
+    public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
+        Optional<Task> optionalTask = iTaskRepository.findByTaskId(id.getId());
         if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
             Task task = optionalTask.get();
+            task.updateStatus(Task.TaskStatus.Canceled);
             iTaskRepository.saveTask(task);
             return Optional.of(taskDomainDTOAssembler.toCompleteDTO(optionalTask.get()));
         }

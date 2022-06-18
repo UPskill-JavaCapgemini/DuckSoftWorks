@@ -1,7 +1,8 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
 import LanguageDetection.application.DTO.AddressDTO;
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
+import LanguageDetection.domain.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

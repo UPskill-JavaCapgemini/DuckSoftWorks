@@ -2,7 +2,7 @@ package LanguageDetection.application.DTO.DTOAssemblers;
 
 import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.Task;
 import org.springframework.stereotype.Service;
 
 
@@ -13,7 +13,7 @@ public class TaskDomainDTOAssembler {
     }
 
     public TaskStatusDTO toDTO(Task task) {
-        return new TaskStatusDTO(task);
+        return new TaskStatusDTO(task.getId(), task.getCurrentStatus());
     }
 
     public TaskDTO toCompleteDTO(Task task){

@@ -1,8 +1,8 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories.assemblers;
 
 import LanguageDetection.application.DTO.AddressDTO;
-import LanguageDetection.domain.entities.Person;
-import LanguageDetection.domain.entities.Role;
+import LanguageDetection.domain.model.Person;
+import LanguageDetection.domain.model.Role;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.AddressJpa;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.PersonJpa;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.RoleJpa;

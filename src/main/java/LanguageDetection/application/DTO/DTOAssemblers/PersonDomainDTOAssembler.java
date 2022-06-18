@@ -1,7 +1,7 @@
 package LanguageDetection.application.DTO.DTOAssemblers;
 
 import LanguageDetection.application.DTO.PersonDTO;
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
 import org.springframework.stereotype.Service;
 
 @Service

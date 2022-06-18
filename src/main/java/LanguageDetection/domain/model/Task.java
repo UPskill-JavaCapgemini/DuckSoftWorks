@@ -1,8 +1,8 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.TaskResult;
-import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.domain.model.ValueObjects.TimeOut;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,6 +15,7 @@ import java.util.Date;
 
 /**
  * This Class represents the tasks created to detect predominant language of text present in the given URL
+ *
  * @author DuckSoftWorks
  */
 
@@ -24,17 +25,29 @@ import java.util.Date;
 @Table
 public class Task implements AggregateRoot<Long> {
 
+    /**
+     * Task ID used to identify each Task
+     */
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
+    /**
+     * Version of id used on concurrent access to database
+     */
+
+    @Version
+    Long version_id;
+
     /**
      * The date of the task
      */
     @Getter
     @CreationTimestamp
-    @Column(name="timestamp", nullable = false, updatable = false)
+    @Column(name = "TimeOfCreation", nullable = false, updatable = false)
     Date date;
+
     /**
      * The text of the task
      */
@@ -68,24 +81,25 @@ public class Task implements AggregateRoot<Long> {
     @ManyToOne
     Category category;
 
-    protected Task (){}
+    protected Task() {
+    }
 
     /**
      * Constructor that receives all the information necessary to create a Task from user input
      *
      * @param inputUrl URL of the text to be analyzed
-     * @param timeOut time limit to conclude the task
+     * @param timeOut  time limit to conclude the task
      * @param category chosen by the client for a type of text
      * @throws MalformedURLException thrown if an url from input is invalid
      */
 
-    public Task(String inputUrl, int timeOut, Category category) throws MalformedURLException {
+    protected Task(InputUrl inputUrl, TimeOut timeOut, Category category) throws MalformedURLException {
         this.id = null;
         this.date = null;
-        this.inputUrl = new InputUrl(inputUrl);
+        this.inputUrl = inputUrl;
         this.taskResult = null;
         this.currentStatus = TaskStatus.Processing;
-        this.timeOut = new TimeOut(timeOut);
+        this.timeOut = timeOut;
         this.category = category;
     }
 
@@ -101,6 +115,7 @@ public class Task implements AggregateRoot<Long> {
 
     /**
      * method that identify the task
+     *
      * @return the date of the task
      */
     @Override
@@ -113,12 +128,13 @@ public class Task implements AggregateRoot<Long> {
         return AggregateRoot.super.hasIdentity(id);
     }
 
-    public boolean isStatusProcessing(){
+    public boolean isStatusProcessing() {
         return this.currentStatus == TaskStatus.Processing;
     }
 
     /**
-     * TODO: When language is updated then status should go to completed.
+     * Only to be used at asynchronous process, after language analysis
+     *
      * @param updatedTaskResult
      */
     public void updateTaskResultLanguage(TaskResult updatedTaskResult) {
@@ -126,14 +142,14 @@ public class Task implements AggregateRoot<Long> {
         this.updateStatus(TaskStatus.Concluded);
     }
 
-    public void updateStatus(TaskStatus status){
-        this.currentStatus = status;
-
-    }
-
     /**
-     * Possibilities of what can be the Task language
+     * Used to update Task status
+     *
+     * @param status new task status
      */
+    public void updateStatus(TaskStatus status) {
+        this.currentStatus = status;
+    }
 
     /**
      * Possibilities of what can be the Task status
@@ -156,4 +172,6 @@ public class Task implements AggregateRoot<Long> {
                 ", timeOut=" + timeOut +
                 ", category=" + category;
     }
+
+
 }

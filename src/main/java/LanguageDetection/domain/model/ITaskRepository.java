@@ -1,6 +1,6 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +9,7 @@ public interface ITaskRepository {
 
     Task saveTask(Task task);
 
-    Optional<Task> findById(Long identity);
+    Optional<Task> findByTaskId(Long identity);
 
     List<Task> findAllTasks();
 

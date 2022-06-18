@@ -4,12 +4,11 @@ import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,10 +35,9 @@ public class TaskController {
      *
      * @param info receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
      * @return information of Processing status with HTTPStatus 201(Created) or String with error information of HTTPStatus 400(Bad Request) if some error occurred
-     * @throws IOException signals that an I/O exception of some sort occurred. For example input of a Bad URL
      */
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) throws IOException {
+    public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) {
         Optional<TaskStatusDTO> taskCreated = taskService.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
@@ -59,7 +57,7 @@ public class TaskController {
      */
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllCategoryByNameStatus(
+    public ResponseEntity<Object> getAllTasksFilter(
             @RequestParam (name = "categoryName", required = false) CategoryNameDTO categoryName,
             @RequestParam (name = "status", required = false) StatusDTO status) {
 
@@ -74,7 +72,7 @@ public class TaskController {
         else {
             tasks = taskService.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
-        return new ResponseEntity<>(tasks.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     /**
@@ -82,16 +80,15 @@ public class TaskController {
      * with that task.
      * @param id object of NewCancelThreadDTO which is created automatically by Spring Boot if a Long id of a task is sent by JSON body.
      * @return String with information of the canceled task and with HTTPStatus Accepted(202) if an id valid is sent, or HTTPStatus NotFound(404) if an invalid id is sent.
-     * @throws MalformedURLException thrown if a URL from Task is malformed. Its never thrown here unless URL is changed directly from Database
      */
 
-    @PostMapping("/cancel")
-    public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) throws MalformedURLException {
+    @PostMapping(value = "/cancel", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) {
         Optional<TaskDTO> cancelTask = taskService.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){
-            return new ResponseEntity<>(cancelTask.get().toString(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(cancelTask.get(), HttpStatus.ACCEPTED);
         } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Invalid ID of Task", HttpStatus.NOT_FOUND);
         }
     }
 

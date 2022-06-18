@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.ValueObjects.ERole;
-import LanguageDetection.domain.entities.Role;
+import LanguageDetection.domain.model.ValueObjects.ERole;
+import LanguageDetection.domain.model.Role;
 import LanguageDetection.infrastructure.repositories.JPARepositories.RoleJpaRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.assemblers.RoleDomainDataAssembler;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.RoleJpa;

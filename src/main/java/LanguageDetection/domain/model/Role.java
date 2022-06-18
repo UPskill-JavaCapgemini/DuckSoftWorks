@@ -1,7 +1,7 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.ERole;
-import LanguageDetection.domain.ValueObjects.RoleId;
+import LanguageDetection.domain.model.ValueObjects.ERole;
+import LanguageDetection.domain.model.ValueObjects.RoleId;
 import lombok.Getter;
 import lombok.ToString;
 

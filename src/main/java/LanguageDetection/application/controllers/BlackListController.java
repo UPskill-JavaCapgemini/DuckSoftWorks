@@ -28,9 +28,9 @@ public class BlackListController {
 
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllBlackListItems() {
+    public ResponseEntity<List<BlackListDTO>> getAllBlackListItems() {
         List<BlackListDTO> blackListItems = blackListManagementService.getAllBlackListItems();
-        return new ResponseEntity<>(blackListItems.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(blackListItems, HttpStatus.OK);
     }
     /**
      * This method receives a NewCategoryInfoDTO object, that is automatically created from a
@@ -45,7 +45,7 @@ public class BlackListController {
     public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) {
         Optional<BlackListDTO> blackListDTO = blackListManagementService.createAndSaveBlackListItem(url);
         if (blackListDTO.isPresent()){
-            return new ResponseEntity<>(blackListDTO.get().toString(), HttpStatus.CREATED);
+            return new ResponseEntity<>(blackListDTO.get(), HttpStatus.CREATED);
         }else {
             return new ResponseEntity<>("Unable to create, URL already exits in the Blacklist or is invalid", HttpStatus.BAD_REQUEST);
         }

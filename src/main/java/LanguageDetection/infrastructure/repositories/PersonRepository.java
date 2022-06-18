@@ -10,8 +10,8 @@ import java.util.List;
 
 
 import LanguageDetection.application.DTO.AddressDTO;
-import LanguageDetection.domain.ValueObjects.PersonId;
-import LanguageDetection.domain.entities.Person;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
+import LanguageDetection.domain.model.Person;
 import LanguageDetection.infrastructure.repositories.JPARepositories.AddressJpaRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.PersonJpaRepository;
 import LanguageDetection.infrastructure.repositories.JPARepositories.assemblers.PersonDomainDataAssembler;

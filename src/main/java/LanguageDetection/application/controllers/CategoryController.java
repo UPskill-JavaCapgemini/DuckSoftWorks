@@ -2,15 +2,13 @@ package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.services.CategoryService;
-import org.apache.lucene.queryparser.classic.ParseException;
+import LanguageDetection.application.services.CategoryManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,22 +19,20 @@ import java.util.Optional;
 public class CategoryController {
 
     @Autowired
-    CategoryService categoryService;
+    CategoryManagementService categoryManagementService;
 
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
+    public CategoryController(CategoryManagementService categoryManagementService) {
+        this.categoryManagementService = categoryManagementService;
     }
 
     /**
      * @return all categories already created
-     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllCategories() throws ParseException, IOException {
-        List<CategoryDTO> categories = categoryService.getAllCategory();
-        return new ResponseEntity<>(categories.toString(), HttpStatus.OK);
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
+        List<CategoryDTO> categories = categoryManagementService.getAllCategory();
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     /**
@@ -46,28 +42,24 @@ public class CategoryController {
      * the ResponseEntity object.
      *
      * @param category receives a JSON file that is automatically transformed into a NewCategoryInfoDTO object
-     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @PostMapping("")
-    public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
-        Optional<CategoryDTO> categoryDTO = categoryService.createAndSaveCategory(category);
+    public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) {
+        Optional<CategoryDTO> categoryDTO = categoryManagementService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
-            return new ResponseEntity<>(categoryDTO.get().toString(), HttpStatus.CREATED);
-        }else {
-                return new ResponseEntity("Unable to create, category already exists or invalid characters", HttpStatus.BAD_REQUEST);
-            }
+            return new ResponseEntity<>(categoryDTO.get(), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity("Unable to create. Either already exists or invalid characters", HttpStatus.BAD_REQUEST);
+        }
     }
 
     /**
      * @param category
      * @return the deletion of a certain category
-     * @throws ParseException thrown by QueryParser, it can occur when fail to parse a String that is ought to have a special format
-     * @throws IOException    thrown by IndexReader class if some sort of I/O problem occurred
      */
     @DeleteMapping("")
-    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) throws ParseException, IOException {
-        if (categoryService.deleteCategory(category)) {
+    public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) {
+        if (categoryManagementService.deleteCategory(category)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Unable to delete", HttpStatus.BAD_REQUEST);

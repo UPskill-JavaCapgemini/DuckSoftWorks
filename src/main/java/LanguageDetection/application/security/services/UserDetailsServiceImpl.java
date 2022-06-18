@@ -1,6 +1,6 @@
 package LanguageDetection.application.security.services;
 
-import LanguageDetection.domain.entities.Person;
+import LanguageDetection.domain.model.Person;
 import LanguageDetection.infrastructure.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

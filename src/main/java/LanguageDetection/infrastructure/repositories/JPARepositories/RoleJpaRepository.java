@@ -1,6 +1,6 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories;
 
-import LanguageDetection.domain.ValueObjects.ERole;
+import LanguageDetection.domain.model.ValueObjects.ERole;
 import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.RoleJpa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

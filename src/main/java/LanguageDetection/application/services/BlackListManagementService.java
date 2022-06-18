@@ -4,7 +4,8 @@ import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.DomainService.BlackListService;
-import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.model.BlackListItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,12 +35,8 @@ public class BlackListManagementService {
     public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) {
         try {
             BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
-            Optional<BlackListItem> blackListToRepo = blackListService.saveBlackListItem(blackListItem);
-            if(blackListToRepo.isPresent()){
-                return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo.get()));
-            } else {
-                return Optional.empty();
-            }
+            BlackListItem blackListToRepo = blackListService.saveBlackListItem(blackListItem);
+            return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo));
         }catch (MalformedURLException e){
             return Optional.empty();
         }
@@ -50,14 +47,13 @@ public class BlackListManagementService {
      *
      * @param blackListInfoDTO
      * @return a deleted blackListItem
-     * @throws MalformedURLException
      */
 
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) {
         try {
             String url = blackListInfoDTO.getUrl();
-            BlackListItem blackListItem = new BlackListItem(url);
-            return blackListService.deleteByBlackListUrl(blackListItem);
+            BlackListUrl blackListUrl = new BlackListUrl(url);
+            return blackListService.deleteByBlackListUrl(blackListUrl);
         } catch (MalformedURLException urlException){
             return false;
         }
@@ -67,7 +63,6 @@ public class BlackListManagementService {
      * Method that allows the search for all the BlacklList items in the repository.
      *
      * @return list of blackListDTOS
-     * @throws MalformedURLException
      */
 
     public List<BlackListDTO> getAllBlackListItems() {

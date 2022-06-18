@@ -1,6 +1,6 @@
 package LanguageDetection.Domain.ValueObjects;
 
-import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

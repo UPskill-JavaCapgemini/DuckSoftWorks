@@ -1,7 +1,7 @@
 package LanguageDetection.application.DTO.DTOAssemblers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
-import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.model.BlackListItem;
 import org.springframework.stereotype.Service;
 
 @Service

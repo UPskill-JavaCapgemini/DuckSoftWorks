@@ -1,7 +1,7 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories.jpa;
 
-import LanguageDetection.domain.ValueObjects.GroupId;
-import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.model.ValueObjects.GroupId;
+import LanguageDetection.domain.model.ValueObjects.PersonId;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
