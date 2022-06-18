@@ -45,7 +45,7 @@ public class Task implements AggregateRoot<Long> {
      */
     @Getter
     @CreationTimestamp
-    @Column(name = "timestamp", nullable = false, updatable = false)
+    @Column(name = "TimeOfCreation", nullable = false, updatable = false)
     Date date;
 
     /**

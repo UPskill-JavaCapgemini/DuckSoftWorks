@@ -30,7 +30,7 @@ public class LanguageDetectionService {
 
 
     @Autowired
-    TaskRepository taskRepo;
+    ITaskRepository taskRepo;
 
     /**
      * Responsible for instantiate a new Thread for asynchronous language analysis.
