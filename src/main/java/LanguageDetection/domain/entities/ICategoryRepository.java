@@ -14,6 +14,7 @@ public interface ICategoryRepository {
 
     List<Category> findAll();
 
-    Optional<Category> findCategoryById(CategoryName CategoryName);
+    Optional<Category> findCategoryByCategoryName(CategoryName CategoryName);
 
 }
+

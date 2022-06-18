@@ -64,7 +64,8 @@ public class CategoryRepository implements ICategoryRepository {
      * @return an Optinal of the found category
      */
     @Override
-    public Optional<Category> findCategoryById(CategoryName categoryName) {
+    //alterar noma para findCategoryByCategoryName
+    public Optional<Category> findCategoryByCategoryName(CategoryName categoryName) {
         return categoryJpaRepository.findByCategoryName(categoryName);
     }
 

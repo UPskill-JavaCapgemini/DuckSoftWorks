@@ -28,6 +28,6 @@ public class CategoryService {
     }
 
     public Optional<Category> findCategoryByName(CategoryName categoryName) {
-        return iCategoryRepository.findCategoryById(categoryName);
+        return iCategoryRepository.findCategoryByCategoryName(categoryName);
     }
 }
