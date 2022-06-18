@@ -1,10 +1,9 @@
-package LanguageDetection.domain.ValueObjects;
+package LanguageDetection.domain.model.ValueObjects;
 
 import LanguageDetection.domain.shared.ValueObject;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
 import java.net.MalformedURLException;
 import java.net.URL;
 

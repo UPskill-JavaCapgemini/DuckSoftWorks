@@ -1,4 +1,4 @@
-package LanguageDetection.domain.ValueObjects;
+package LanguageDetection.domain.model.ValueObjects;
 
 import LanguageDetection.domain.shared.ValueObject;
 
@@ -14,7 +14,7 @@ public class Text implements ValueObject {
 
     public Text(String text) {
         String cleanedText = cleanUpInputText(text);
-        if(isOnlyNumbers(cleanedText) || isOnlySpecialCharacters(cleanedText) || cleanedText.isEmpty() || cleanedText.isBlank()) {
+        if(cleanedText.isEmpty() || cleanedText.isBlank()) {
             throw new IllegalArgumentException("The text is not valid");
         } else {
             this.text = cleanedText;

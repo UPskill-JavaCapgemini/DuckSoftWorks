@@ -1,8 +1,8 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.TaskResult;
-import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.domain.model.ValueObjects.TimeOut;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -93,7 +93,7 @@ public class Task implements AggregateRoot<Long> {
      * @throws MalformedURLException thrown if an url from input is invalid
      */
 
-    public Task(InputUrl inputUrl, TimeOut timeOut, Category category) throws MalformedURLException {
+    protected Task(InputUrl inputUrl, TimeOut timeOut, Category category) throws MalformedURLException {
         this.id = null;
         this.date = null;
         this.inputUrl = inputUrl;

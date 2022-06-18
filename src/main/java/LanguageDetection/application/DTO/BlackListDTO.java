@@ -1,6 +1,6 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.model.BlackListItem;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

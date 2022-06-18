@@ -1,13 +1,12 @@
 package LanguageDetection.domain.DomainService;
 
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.IBlackListItemRepository;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.BlackListItem;
+import LanguageDetection.domain.model.IBlackListItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.net.MalformedURLException;
 import java.util.List;
 
 @Component

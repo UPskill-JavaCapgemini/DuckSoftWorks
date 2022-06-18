@@ -1,8 +1,8 @@
 package LanguageDetection.infrastructure.repositories.analyzer;
 
 import LanguageDetection.domain.DomainService.ILanguageDetector;
-import LanguageDetection.domain.ValueObjects.Language;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.ValueObjects.Language;
+import LanguageDetection.domain.model.Task;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -11,14 +11,7 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.Locale;
-
-import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
-import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
 @Service
 public class LanguageAnalyzer implements ILanguageDetector {

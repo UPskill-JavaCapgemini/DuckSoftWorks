@@ -1,6 +1,6 @@
 package LanguageDetection.Domain.ValueObjects;
 
-import LanguageDetection.domain.ValueObjects.TimeOut;
+import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

@@ -1,12 +1,10 @@
 package LanguageDetection.infrastructure.repositories.analyzer;
 
 import LanguageDetection.domain.DomainService.ILanguageDetector;
-import LanguageDetection.domain.ValueObjects.Language;
-import LanguageDetection.domain.ValueObjects.TaskResult;
-import LanguageDetection.domain.entities.ITaskRepository;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.ValueObjects.Language;
+import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.domain.model.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
-import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -105,7 +103,7 @@ class AsyncClass implements Runnable {
     public void run() {
         ILanguageDetector lang = new LanguageAnalyzer();
         Language analyzedLanguage = lang.analyze(taskToBeAnalyzed);
-        Optional<Task> currentTask = taskRepository.findById(taskToBeAnalyzed.getId());
+        Optional<Task> currentTask = taskRepository.findByTaskId(taskToBeAnalyzed.getId());
 
         if (currentTask.isPresent() && currentTask.get().isStatusProcessing()) {
             TaskResult updatedTaskResult = new TaskResult(analyzedLanguage);
