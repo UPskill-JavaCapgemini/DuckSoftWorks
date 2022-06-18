@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +57,7 @@ public class TaskController {
      */
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<Object> getAllCategoryByNameStatus(
+    public ResponseEntity<Object> getAllTasksFilter(
             @RequestParam (name = "categoryName", required = false) CategoryNameDTO categoryName,
             @RequestParam (name = "status", required = false) StatusDTO status) {
 
