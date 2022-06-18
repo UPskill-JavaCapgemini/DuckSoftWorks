@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.domain.entities.Category;
@@ -71,7 +72,8 @@ class TaskRepositoryTest {
 }
 
 
-    /*@Test
+    */
+/*@Test
     void findByStatusAndByCategoryContainingShouldReturnListOfTaskWithCategoryAndStatusThatMatch() {
         when(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1)).thenReturn(List.of(task1));
 

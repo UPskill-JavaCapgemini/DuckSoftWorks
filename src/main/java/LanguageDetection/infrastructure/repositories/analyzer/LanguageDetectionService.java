@@ -93,7 +93,6 @@ public class LanguageDetectionService {
 @Slf4j
 @Component
 class AsyncClass implements Runnable {
-    @Getter
     @Setter
     private Task taskToBeAnalyzed;
 

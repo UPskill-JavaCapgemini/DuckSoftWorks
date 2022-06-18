@@ -33,7 +33,7 @@ public class TaskFactory {
             Optional<Category> categoryRepository = categoryService.findCategoryByName(categoryName);
 
             if (!blackListService.isBlackListed(inputUrl) && categoryRepository.isPresent()) {
-                Task task = new Task(inputUrl.toString(), timeOut.getTimeOut(), categoryRepository.get());
+                Task task = new Task(inputUrl, timeOut, categoryRepository.get());
 
                 return Optional.of(task);
             }

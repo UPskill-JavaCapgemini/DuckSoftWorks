@@ -1,20 +1,17 @@
 package LanguageDetection.domain.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static LanguageDetection.domain.util.BusinessValidation.isUrlValid;
+import java.nio.charset.StandardCharsets;
 
 
 @Embeddable
@@ -26,9 +23,6 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     @Transient
     Text text;
-
-// TODO verify if this needs Transient as static
-    private static final int MAX_TOKENS = Integer.MAX_VALUE;
 
 
     public InputUrl(String url) throws MalformedURLException {
@@ -81,26 +75,9 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
         return url.toString().compareTo(o.getUrlObject().toString());
     }
 
-
     protected String parseContentOfUrlToString(URL url) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-
-        String text = "";
-
-        int wordCount = 0;
-        String temp;
-        while ((temp = in.readLine()) != null && wordCount < MAX_TOKENS) {
-            String[] words = temp.split(" ");
-
-            for (String word : words) {
-                if (wordCount < MAX_TOKENS) {
-                    text += word + " ";
-                    wordCount++;
-                } else
-                    break;
-            }
+        try (InputStream inputStream = url.openStream()) {
+            return IOUtils.toString(inputStream, StandardCharsets.UTF_8);
         }
-        in.close();
-        return text;
     }
 }

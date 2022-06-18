@@ -11,6 +11,4 @@ public enum Language implements ValueObject {
     ENGLISH,
     PORTUGUESE,
     SPANISH,
-    UNDEFINED
-    //TODO: Is this possible? Undefined?
 }
