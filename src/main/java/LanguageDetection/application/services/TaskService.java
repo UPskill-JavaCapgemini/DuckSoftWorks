@@ -7,7 +7,7 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.DomainService.LanguageDetectionService;
+import LanguageDetection.infrastructure.repositories.analyzer.LanguageDetectionService;
 import LanguageDetection.domain.ValueObjects.CategoryName;
 import LanguageDetection.domain.entities.Category;
 import LanguageDetection.domain.entities.ITaskRepository;
@@ -15,8 +15,6 @@ import LanguageDetection.domain.entities.Task;
 import LanguageDetection.domain.factory.TaskFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 import java.net.MalformedURLException;
 import java.util.*;
@@ -52,7 +50,6 @@ public class TaskService {
      *
      * @param userInput the string containing the text within NewTaskInfoDTO.
      * @return TaskStatusDTO assembled by taskDomainDTOAssembler, with information of Status when created(Processing) or empty if url is on blacklist and unable to crate
-     * @throws IOException thrown if URL is malformed
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
 

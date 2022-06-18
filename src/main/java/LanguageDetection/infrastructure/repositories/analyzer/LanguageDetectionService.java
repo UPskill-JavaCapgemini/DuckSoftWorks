@@ -1,11 +1,10 @@
-package LanguageDetection.domain.DomainService;
+package LanguageDetection.infrastructure.repositories.analyzer;
 
+import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.TaskResult;
-import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
-import LanguageDetection.infrastructure.repositories.analyzer.LanguageAnalyzer;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
@@ -38,7 +37,7 @@ public class LanguageDetectionService {
      * @param task instance of object already created
      */
     public void languageAnalysis(Task task) {
-        AsyncMethod analyzerService = new AsyncMethod();
+        AsyncClass analyzerService = new AsyncClass();
 
         analyzerService.setTaskToBeAnalyzed(task);
 
@@ -92,13 +91,13 @@ public class LanguageDetectionService {
 @Async
 @Slf4j
 @Component
-class AsyncMethod implements Runnable {
+class AsyncClass implements Runnable {
     @Getter
     @Setter
     private Task taskToBeAnalyzed;
 
     @Setter
-    ITaskRepository taskRepository;
+    TaskRepository taskRepository;
 
     @SneakyThrows
     @Override
