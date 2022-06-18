@@ -5,17 +5,22 @@ import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.BlackListManagementService;
 import LanguageDetection.application.services.CategoryService;
-import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.IBlackListItemRepository;
-import LanguageDetection.domain.entities.ICategoryRepository;
+import LanguageDetection.domain.ValueObjects.ERole;
+import LanguageDetection.domain.ValueObjects.PersonId;
+import LanguageDetection.domain.ValueObjects.RoleId;
+import LanguageDetection.domain.entities.*;
 import LanguageDetection.domain.factory.TaskFactory;
+import LanguageDetection.infrastructure.repositories.PersonRepository;
+import LanguageDetection.infrastructure.repositories.RoleRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.net.MalformedURLException;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class Bootstrap implements InitializingBean {
@@ -26,11 +31,22 @@ public class Bootstrap implements InitializingBean {
     @Autowired
     ICategoryRepository iCategoryRepository;
 
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    PersonRepository personRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional
     public void afterPropertiesSet() throws Exception {
         createAndSaveBlackListItem();
         createBaseCategories();
+        createRoles();
+        createAdmin();
     }
 
     private void createAndSaveBlackListItem() throws MalformedURLException {
@@ -58,6 +74,37 @@ public class Bootstrap implements InitializingBean {
         iCategoryRepository.saveCategory(nutrition);
         iCategoryRepository.saveCategory(sports);
 
+
+    }
+
+    private void createRoles(){
+        RoleId adminId = new RoleId(1);
+        RoleId userId = new RoleId(2);
+
+        Role admin = new Role(adminId, ERole.ROLE_ADMIN);
+        Role user = new Role(userId,ERole.ROLE_USER);
+
+        roleRepository.save(admin);
+        roleRepository.save(user);
+    }
+
+    private void createAdmin(){
+        PersonId adminId = new PersonId(1);
+        String adminPW = "passwordfixe";
+
+
+        Person admin = new Person(adminId,"Daniel",
+                "Lima",
+                "danilima90@hotmail.com",
+                "danilima90",
+                passwordEncoder.encode(adminPW));
+
+        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN).get();
+        Set<Role> roles = new HashSet<>();
+        roles.add(adminRole);
+        admin.setRoles(roles);
+
+        personRepository.save(admin);
 
     }
 }
