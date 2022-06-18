@@ -1,8 +1,8 @@
 package LanguageDetection.domain.DomainService;
 
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ICategoryRepository;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

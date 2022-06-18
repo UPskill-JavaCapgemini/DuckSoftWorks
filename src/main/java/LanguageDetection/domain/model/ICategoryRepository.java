@@ -1,6 +1,6 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
 
 import java.util.List;
 import java.util.Optional;

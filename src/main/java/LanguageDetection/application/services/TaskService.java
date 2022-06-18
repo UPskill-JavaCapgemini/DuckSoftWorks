@@ -8,11 +8,11 @@ import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.infrastructure.repositories.analyzer.LanguageDetectionService;
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITaskRepository;
-import LanguageDetection.domain.entities.Task;
-import LanguageDetection.domain.factory.TaskFactory;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.ITaskRepository;
+import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.TaskFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -148,7 +148,7 @@ public class TaskService {
      * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
-        Optional<Task> optionalTask = iTaskRepository.findById(id.getId());
+        Optional<Task> optionalTask = iTaskRepository.findByTaskId(id.getId());
         if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
             Task task = optionalTask.get();
             task.updateStatus(Task.TaskStatus.Canceled);

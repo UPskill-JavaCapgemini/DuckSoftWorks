@@ -1,6 +1,6 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 
 import com.fasterxml.jackson.annotation.JsonGetter;

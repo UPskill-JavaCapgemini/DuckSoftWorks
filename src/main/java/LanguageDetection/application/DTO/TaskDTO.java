@@ -1,11 +1,10 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.ValueObjects.TaskResult;
-import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.domain.model.ValueObjects.TimeOut;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.Task;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

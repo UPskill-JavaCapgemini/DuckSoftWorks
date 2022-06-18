@@ -1,9 +1,7 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories;
 
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.entities.Category;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

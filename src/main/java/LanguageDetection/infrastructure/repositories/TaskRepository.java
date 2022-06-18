@@ -1,9 +1,9 @@
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.ITaskRepository;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.ITaskRepository;
+import LanguageDetection.domain.model.Task;
 import LanguageDetection.infrastructure.repositories.JPARepositories.TaskJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -77,7 +77,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @param identity the id of a task
 	 * @return task object if id is found in database
 	 */
-    public Optional<Task> findById(Long identity) {
+    public Optional<Task> findByTaskId(Long identity) {
 		return taskJpaRepository.findById(identity);
     }
 

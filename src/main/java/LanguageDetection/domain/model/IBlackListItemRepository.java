@@ -1,11 +1,8 @@
-package LanguageDetection.domain.entities;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
-import LanguageDetection.domain.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 
-import java.net.MalformedURLException;
 import java.util.List;
-import java.util.Optional;
 
 public interface IBlackListItemRepository {
 

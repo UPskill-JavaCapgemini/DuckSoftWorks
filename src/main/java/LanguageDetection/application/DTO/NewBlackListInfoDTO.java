@@ -1,6 +1,5 @@
 package LanguageDetection.application.DTO;
 
-import LanguageDetection.domain.ValueObjects.InputUrl;
 import lombok.*;
 
 @AllArgsConstructor

@@ -4,8 +4,8 @@ import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.BlackListDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.domain.DomainService.BlackListService;
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
-import LanguageDetection.domain.entities.BlackListItem;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.model.BlackListItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

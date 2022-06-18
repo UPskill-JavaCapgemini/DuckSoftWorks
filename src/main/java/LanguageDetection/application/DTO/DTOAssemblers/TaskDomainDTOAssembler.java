@@ -2,7 +2,7 @@ package LanguageDetection.application.DTO.DTOAssemblers;
 
 import LanguageDetection.application.DTO.TaskDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.Task;
 import org.springframework.stereotype.Service;
 
 

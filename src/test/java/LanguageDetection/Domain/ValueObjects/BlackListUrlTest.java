@@ -1,8 +1,6 @@
 package LanguageDetection.Domain.ValueObjects;
 
-import LanguageDetection.domain.ValueObjects.BlackListUrl;
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

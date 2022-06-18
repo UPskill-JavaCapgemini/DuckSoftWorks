@@ -1,13 +1,9 @@
-package LanguageDetection.domain.ValueObjects;
+package LanguageDetection.domain.model.ValueObjects;
 
 import LanguageDetection.domain.shared.ValueObject;
-import LanguageDetection.domain.util.BusinessValidation;
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
-
-import java.util.Objects;
 
 import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;

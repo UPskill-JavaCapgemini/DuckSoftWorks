@@ -1,4 +1,4 @@
-package LanguageDetection.domain.ValueObjects;
+package LanguageDetection.domain.model.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;

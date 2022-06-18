@@ -1,13 +1,12 @@
-package LanguageDetection.domain.factory;
+package LanguageDetection.domain.model;
 
-import LanguageDetection.application.services.CategoryManagementService;
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.DomainService.CategoryService;
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.ValueObjects.InputUrl;
-import LanguageDetection.domain.ValueObjects.TimeOut;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

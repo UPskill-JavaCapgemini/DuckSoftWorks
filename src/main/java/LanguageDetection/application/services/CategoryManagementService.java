@@ -4,8 +4,8 @@ import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.domain.DomainService.CategoryService;
-import LanguageDetection.domain.ValueObjects.CategoryName;
-import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,18 +75,6 @@ public class CategoryManagementService {
         }catch (IllegalArgumentException | NullPointerException e){
             return false;
         }
-    }
-
-    /**
-     * Method that allows the search in the repository of a category by its ID(CategoryName)
-     * @param categoryName
-     * @return if the category was successfully found it returns an Optional with the category
-     */
-
-    public Optional<Category> findCategoryByName(CategoryName categoryName) {
-        Optional<Category> opCategoryRepo = categoryService.findCategoryByName(categoryName);
-
-        return opCategoryRepo;
     }
 
 }

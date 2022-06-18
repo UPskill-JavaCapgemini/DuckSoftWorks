@@ -1,10 +1,10 @@
 package LanguageDetection.domain.Bootstrap;
 
 
-import LanguageDetection.domain.entities.BlackListItem;
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.IBlackListItemRepository;
-import LanguageDetection.domain.entities.ICategoryRepository;
+import LanguageDetection.domain.model.BlackListItem;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.IBlackListItemRepository;
+import LanguageDetection.domain.model.ICategoryRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

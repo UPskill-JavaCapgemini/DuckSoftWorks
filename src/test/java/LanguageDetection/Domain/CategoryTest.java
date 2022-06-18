@@ -1,6 +1,6 @@
 package LanguageDetection.Domain;
 
-import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.model.Category;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
