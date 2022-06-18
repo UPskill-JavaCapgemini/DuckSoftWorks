@@ -29,8 +29,9 @@
 
       </style>
 </head>
+</head>
 <body>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark" id="nav">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Consult Tasks</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,51 +62,63 @@
     <h2>Ducked Language Detection</h2>
   </div>
 
+  
+
   <div class="container-fluid center">
     <div class="row justify-content-around">
     <div class="col-sm-5 col-md-8 col-lg-12">
-      <h4 class="mb-3">Consult your tasks</h4>
       <form class="needs-validation" novalidate>
+        
 
-  <div class="container align-items-center">
-    <div class="row">
-      <div class="col-2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Filter by Category
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Philosophy</a></li>
-          <li><a class="dropdown-item" href="#">Mechanics</a></li>
-          <li><a class="dropdown-item" href="#">Sports</a></li>
-          <li><a class="dropdown-item" href="#">Economics</a></li>
-          <li><a class="dropdown-item" href="#">Nutricion</a></li>
-        </ul>
-        </div>
-      <div class="col-2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1-lg-end" data-bs-toggle="dropdown" aria-expanded="false">
-          Filter by Status
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1-lg-end">
-          <li><a class="dropdown-item" href="#">Processing</a></li>
-          <li><a class="dropdown-item" href="#">Completed</a></li>
-          <li><a class="dropdown-item" href="#">Canceled</a></li>
-        </ul>
-      </div>
+        <style>
+          table {
+              border-collapse: collapse;
+              width: 100%;
+          }
 
+          td {
+              border: 1px solid #000000;
+              background-color:rgb(240, 240, 240);
+              text-align: left;
+              padding: 8px;
+          }
 
-      
-      <div class="col-2">
-        <a class="w-100 btn btn-md btn-dark" href="tasksByStatus.html" role="button">Consult</a>
+          th {
+              border: 1px solid #000000;
+              background-color: darkgrey;
+              text-align: left;
+              padding: 4px;
+          }
+      </style>
+  
+      <h2 id="Tasks Consult Table">Your Tasks</h2>
+  
+      <div id="data-table">
+          <table id="html-data-table">
+              <tr>
+                  <th>Task ID</th>
+                  <th>Date</th>
+                  <th>Text Category</th>
+                  <th>URL</th>
+                  <th>Task Status</th>
+                  <th>Text Language</th>
+                  <th>Time</th>
+              </tr>
+              <tr>
+                  <td>12</td>
+                  <td>18-06-2022</td>
+                  <td>Sports</td>
+                  <td>http//:somthingaboutsports.com.txt</td>
+                  <td>Completed</td>
+                  <td>English</td>
+                  <td>2</td>
+              </tr>
+          </table>    
       </div>
-      <div class="col-6">
-      </div>
+      </form>
     </div>
   </div>
-
-  
-
-       
-
+</main>
 
 <footer class="my-5 pt-5 text-muted text-center text-small">
   <p class="mb-1">&copy; 2022 Duck Soft Works & Co.</p>
