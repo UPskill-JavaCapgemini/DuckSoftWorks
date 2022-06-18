@@ -22,6 +22,7 @@ import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialChar
 
 @Service
 public class LanguageAnalyzer implements ILanguageDetector {
+
     private static final int MAX_TOKENS = Integer.MAX_VALUE;
     static org.apache.lucene.analysis.Analyzer analyzer;
     static IndexReader reader;
@@ -61,23 +62,23 @@ public class LanguageAnalyzer implements ILanguageDetector {
 
     public Language analyze(Task task) throws IOException, ParseException {
 
-        //maximum value of an Integer to allow the most hits possible for an IndexSearcher
+//        //maximum value of an Integer to allow the most hits possible for an IndexSearcher
         IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
-
-        String query = task.getInputUrl().toString();
-        String text = createNewText(query);
-
-        String cleanedUp = cleanUpInputText(text);
-
-        //TODO: We can't do this here...
-        if(isOnlyNumbers(cleanedUp) || isOnlySpecialCharacters(cleanedUp) || cleanedUp.isEmpty() || cleanedUp.isBlank()){
-            return Language.UNDEFINED;
-        } else {
-            Query q = new QueryParser("dictionary", analyzer).parse(cleanedUp);
+//
+//        String query = task.getInputUrl().toString();
+//        String text = createNewText(query);
+//
+//        String cleanedUp = cleanUpInputText(text);
+//
+//        //TODO: We can't do this here...
+//        if(isOnlyNumbers(cleanedUp) || isOnlySpecialCharacters(cleanedUp) || cleanedUp.isEmpty() || cleanedUp.isBlank()){
+//            return Language.UNDEFINED;
+//        } else {
+            Query q = new QueryParser("dictionary", analyzer).parse(task.getInputUrl().getTextOfUrl().getTextContent());
             TopDocs docs = searcher.search(q, HITS_PER_PAGE);
             ScoreDoc[] hits = docs.scoreDocs;
             return Language.valueOf(searcher.doc(hits[0].doc).get("language"));
-        }
+//        }
     }
 
     /**
@@ -87,12 +88,15 @@ public class LanguageAnalyzer implements ILanguageDetector {
      * @param text the string that is cleaned up with the regex.
      * @return the cleaned up text.
      */
+
+    //remove here
     protected String cleanUpInputText(String text) {
         return text.trim().toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u024F]", " ")
                 .replaceAll("\\s+", " "); // MULTIPLE_WHITESPACE
     }
 
+    // remove here
     protected String parseContentOfUrlToString(URL url) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 
@@ -115,6 +119,7 @@ public class LanguageAnalyzer implements ILanguageDetector {
         return cleanUpInputText(text);
     }
 
+    //this was redundant and should also be removed
     protected String createNewText(String stringURL) throws IOException {
         URL url = new URL(stringURL);
         String textBody = parseContentOfUrlToString(url);

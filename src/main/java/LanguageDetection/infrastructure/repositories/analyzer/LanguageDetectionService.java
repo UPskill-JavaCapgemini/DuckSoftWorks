@@ -3,6 +3,7 @@ package LanguageDetection.infrastructure.repositories.analyzer;
 import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.ValueObjects.Language;
 import LanguageDetection.domain.ValueObjects.TaskResult;
+import LanguageDetection.domain.entities.ITaskRepository;
 import LanguageDetection.domain.entities.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.Getter;
@@ -29,7 +30,7 @@ public class LanguageDetectionService {
 
 
     @Autowired
-    ITaskRepository taskRepo;
+    TaskRepository taskRepo;
 
     /**
      * Responsible for instantiate a new Thread for asynchronous language analysis.
