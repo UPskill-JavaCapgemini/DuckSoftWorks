@@ -12,14 +12,13 @@ function MyFunction(e) {
   console.log(stringified);
   fetch('http://localhost:8080/LanguageDetection', {
       method: 'POST',
-      mode: 'cors', // no-cors, *cors, same-origin
+     /* mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'include', // include, *same-origin, omit
       redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer',
+      referrerPolicy: 'no-referrer',*/
       headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ url : link, category : categoryOption, timeOut: timeLimitOption })
     }).then(res => console.log(res))

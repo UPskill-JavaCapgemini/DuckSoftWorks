@@ -18,6 +18,7 @@ import java.util.Optional;
  * @authors DuckSoftWorks Team
  */
 @Controller
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "/LanguageDetection")
 public class TaskController {
@@ -37,7 +38,6 @@ public class TaskController {
      * @return information of Processing status with HTTPStatus 201(Created) or String with error information of HTTPStatus 400(Bad Request) if some error occurred
      */
     @PostMapping("")
-    @CrossOrigin
     public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) {
         Optional<TaskStatusDTO> taskCreated = taskService.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
