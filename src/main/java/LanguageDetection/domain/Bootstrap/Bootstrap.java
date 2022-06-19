@@ -35,20 +35,20 @@ public class Bootstrap implements InitializingBean {
 
     private void createBaseCategories() {
 
-        Category economics = new Category("Economics");
         Category philosophy = new Category("Philosophy");
+        Category economics = new Category("Economics");
         Category mechanics = new Category("Mechanics");
         Category nutrition = new Category("Nutrition");
         Category sports = new Category("Sports");
 
-        economics.defineAsBaseCategory();
         philosophy.defineAsBaseCategory();
+        economics.defineAsBaseCategory();
         mechanics.defineAsBaseCategory();
         nutrition.defineAsBaseCategory();
         sports.defineAsBaseCategory();
 
-        iCategoryRepository.saveCategory(economics);
         iCategoryRepository.saveCategory(philosophy);
+        iCategoryRepository.saveCategory(economics);
         iCategoryRepository.saveCategory(mechanics);
         iCategoryRepository.saveCategory(nutrition);
         iCategoryRepository.saveCategory(sports);
