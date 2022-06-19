@@ -79,7 +79,16 @@
           </div>
         </div>
           
-          <div class="col-md-3">
+        <div class="col-md-3">
+        <label for="category" class="form-label">Text Category</label>
+        <select class="form-select" id="category-dropdown" name="category" required>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid category.
+        </div>
+        </div>
+
+<!--           <div class="col-md-3">
             <label for="category" class="form-label">Text Category</label>
             <select class="form-select" id="category" required>
               <option value="Philosophy">Philosophy</option>
@@ -91,7 +100,7 @@
             <div class="invalid-feedback">
               Please select a valid category.
             </div>
-          </div>
+          </div> -->
 
           <div class="col-md-3">
             <label for="time limit" class="form-label">Time limit (in minutes)</label>
@@ -109,8 +118,10 @@
 
           
         <hr class="my-4">
-
-        <button onclick="MyFunction(event)" class="w-100 btn btn-dark btn-lg" type="submit">Check Language</button>
+        <br>
+        <p class="text-center" id="create-task-response"></p>
+        <br>
+        <button onclick="createNewTask(event)" class="w-100 btn btn-dark btn-lg" type="submit">Check Language</button>
       </form>
     </div>
   </div>
