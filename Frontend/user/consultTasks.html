@@ -53,6 +53,11 @@
   
     <link href="form-validation.css" rel="stylesheet">
 </head>
+
+
+
+
+
 <body class="bg-light">
   
 <div class="container">
@@ -62,39 +67,24 @@
     <h2>Ducked Language Detection</h2>
   </div>
 
-  <div class="container-fluid center">
-    <div class="row justify-content-around">
-    <div class="col-sm-5 col-md-8 col-lg-12">
-      <h4 class="mb-3">Consult your tasks</h4>
-      <form class="needs-validation" novalidate>
-
-  <div class="container align-items-center">
-    <div class="row">
-      <div class="col-2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Filter by Category
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Philosophy</a></li>
-          <li><a class="dropdown-item" href="#">Mechanics</a></li>
-          <li><a class="dropdown-item" href="#">Sports</a></li>
-          <li><a class="dropdown-item" href="#">Economics</a></li>
-          <li><a class="dropdown-item" href="#">Nutricion</a></li>
-        </ul>
+<h4>Consult your Tasks</h4>
+      <form class="row gy-2 gx-3 align-items-center">
+      
+        <div class="col-auto">
+          <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+          <select class="form-select" id="autoSizingSelect">
+            <option value="">No Category chosen</option>
+          </select>
         </div>
-      <div class="col-2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1-lg-end" data-bs-toggle="dropdown" aria-expanded="false">
-          Filter by Status
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1-lg-end">
-          <li><a class="dropdown-item" href="#">Processing</a></li>
-          <li><a class="dropdown-item" href="#">Completed</a></li>
-          <li><a class="dropdown-item" href="#">Canceled</a></li>
-        </ul>
-      </div>
-
-
-
+        <div class="col-auto">
+          <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+          <select class="form-select" id="autoSizingSelect">
+            <option value="">No Status chosen</option>
+            <option value="Processing">Processing</option>
+            <option value="Completed">Completed</option>
+            <option value="Canceled">Canceled</option>
+          </select>
+        </div>
       <div class="col-2">
         <a class="w-100 btn btn-md btn-dark" href="tasksTable.html" role="button">Consult</a>
       </div>
