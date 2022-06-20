@@ -81,6 +81,8 @@ public class Task implements AggregateRoot<Long> {
     @ManyToOne
     Category category;
 
+    Long userId;
+
     protected Task() {
     }
 
@@ -93,7 +95,7 @@ public class Task implements AggregateRoot<Long> {
      * @throws MalformedURLException thrown if an url from input is invalid
      */
 
-    protected Task(InputUrl inputUrl, TimeOut timeOut, Category category) throws MalformedURLException {
+    protected Task(InputUrl inputUrl, TimeOut timeOut, Category category, Long userId) throws MalformedURLException {
         this.id = null;
         this.date = null;
         this.inputUrl = inputUrl;
@@ -101,6 +103,7 @@ public class Task implements AggregateRoot<Long> {
         this.currentStatus = TaskStatus.Processing;
         this.timeOut = timeOut;
         this.category = category;
+        this.userId = userId;
     }
 
     @Override
