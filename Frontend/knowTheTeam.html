@@ -9,23 +9,57 @@
     <style>
     
        
-        .nav-scroller {
-          position: relative;
-          z-index: 2;
-          height: 2.75rem;
-          overflow-y: hidden;
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
-  
-        .nav-scroller .nav {
-          display: flex;
-          flex-wrap: nowrap;
-          padding-bottom: 1rem;
-          margin-top: -1px;
-          overflow-x: auto;
-          text-align: center;
-          white-space: nowrap;
-          -webkit-overflow-scrolling: touch;
-        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
 
       </style>
 </head>
@@ -52,7 +86,7 @@
       </nav>
 
       
-</body>
+
 <link href="form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -64,18 +98,48 @@
     <h2>Ducked Language Detection</h2>
   </div>
 
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <img src="images/machadoDuck.png" class="rounded float" alt="Machado" width="100">
+      </div>
+      <div class="col">
+        <img src="images/limaDuck.png" class="rounded float" alt="Lima" width="100">
+      </div>
+      <div class="col">
+        <img src="images/inesDuck.jpg" class="rounded float" alt="Ines" width="100">
+      </div>
+      <div class="col">
+        <img src="images/thalesDuck.jpg" class="rounded float" alt="Thales" width="100">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Daniel Machado
+      </div>
+      <div class="col">
+        Daniel Lima
+      </div>
+      <div class="col">
+        Inês Clavel
+      </div>
+      <div class="col">
+        Thales Lemos
+      </div>
+    </div>
+  </div>
   
+  
+  <p class="mt-5 mb-3 text-muted">&copy; 2022 Duck Soft Works & Co.</p>
+</main>
 
-
-  <main class="form-signin w-100 m-auto">
-  <form>
-    <input type="button" value="Go back!" onclick="history.back()">
-   </form>
+  
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
 
     <script src="form-validation.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  </main>
+
 </body>
 </html>
