@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
 
 @Slf4j
 @Component
-public class LanguageDetectionService {
+public class LanguageDetectionService implements ILanguageDetector{
 
     private static final long CONSTANT_TO_MINUTES = 60000L;
 
@@ -30,17 +30,19 @@ public class LanguageDetectionService {
     @Autowired
     TaskRepository taskRepo;
 
+    @Autowired
+    AsyncClass analyzerService;
+
+
+
     /**
      * Responsible for instantiate a new Thread for asynchronous language analysis.
      *
      * @param task instance of object already created
      */
     public void languageAnalysis(Task task) {
-        AsyncClass analyzerService = new AsyncClass();
 
         analyzerService.setTaskToBeAnalyzed(task);
-
-        analyzerService.setTaskRepository(taskRepo);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(analyzerService);
@@ -87,21 +89,23 @@ public class LanguageDetectionService {
 
 }
 
-@Async
 @Slf4j
 @Component
 class AsyncClass implements Runnable {
     @Setter
     private Task taskToBeAnalyzed;
 
-    @Setter
+    @Autowired
     TaskRepository taskRepository;
+
+    @Autowired
+    LanguageAnalyzer lang;
 
     @SneakyThrows
     @Override
-    //TODO check if passing a TaskResult is appropriated
+    //TODO check if passing a TaskResult is appropriated ??
     public void run() {
-        ILanguageDetector lang = new LanguageAnalyzer();
+        //retirar isto
         Language analyzedLanguage = lang.analyze(taskToBeAnalyzed);
         Optional<Task> currentTask = taskRepository.findByTaskId(taskToBeAnalyzed.getId());
 
