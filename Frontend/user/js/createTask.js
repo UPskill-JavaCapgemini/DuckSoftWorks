@@ -33,7 +33,7 @@ function createNewTask(e) {
 }
 
 
-// method to populate drop down menu
+// method to populate drop down menu of create a task
 function populateCategories(){
 
 let dropdown = document.getElementById('category-dropdown');
