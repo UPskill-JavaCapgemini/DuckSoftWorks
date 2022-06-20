@@ -41,6 +41,7 @@ public class Bootstrap implements InitializingBean {
         createBaseCategories();
         createRoles();
         createAdmin();
+        createUsers();
     }
 
     private void createAndSaveBlackListItem() throws MalformedURLException {
@@ -82,7 +83,7 @@ public class Bootstrap implements InitializingBean {
 
     private void createAdmin(){
 
-        String adminPW = "passwordfixe";
+            String adminPW = "passwordfixe";
 
 
         User admin = new User(
@@ -97,5 +98,24 @@ public class Bootstrap implements InitializingBean {
 
         userRepository.save(admin);
 
+    }
+
+    private void createUsers(){
+
+        String user1PW  = "quackingonce";
+        String user2PW = "quackingtwice";
+
+        User user1  = new User("firstduck","firstduck@gmail.com", passwordEncoder.encode(user1PW));
+        User user2  = new User("secondduck","secondduck@gmail.com", passwordEncoder.encode(user2PW));
+
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER).get();
+        Set<Role> roles = new HashSet<>();
+        roles.add(userRole);
+
+        user1.setRoles(roles);
+        user2.setRoles(roles);
+
+        userRepository.save(user1);
+        userRepository.save(user2);
     }
 }
