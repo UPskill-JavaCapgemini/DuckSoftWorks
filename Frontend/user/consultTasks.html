@@ -79,7 +79,7 @@
         </div>
         <div class="col-auto">
           <label class="visually-hidden" for="autoSizingSelect">Preference</label>
-          <select class="form-select" id="autoSizingSelect">
+          <select class="form-select" id="status-dropdown">
             <option value="">No Status chosen</option>
             <option value="Processing">Processing</option>
             <option value="Completed">Completed</option>
@@ -87,10 +87,11 @@
           </select>
         </div>
       <div class="col-2">
-        <a class="w-100 btn btn-md btn-dark" href="tasksTable.html" role="button">Consult</a>
+        <button onclick="filterTasksStatusCategory(event)" class="w-100 btn btn-dark btn-lg" type="submit">Consult</button>
       </div>
       <div class="col-6">
       </div>
+    </form>
     </div>
   </div>
 
