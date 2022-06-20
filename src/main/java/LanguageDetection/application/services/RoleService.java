@@ -1,8 +1,7 @@
 package LanguageDetection.application.services;
 
-import LanguageDetection.domain.model.ValueObjects.ERole;
-import LanguageDetection.domain.model.ValueObjects.RoleId;
 import LanguageDetection.domain.model.Role;
+import LanguageDetection.domain.model.ValueObjects.ERole;
 
 import LanguageDetection.infrastructure.repositories.RoleRepository;
 
@@ -17,8 +16,8 @@ public class RoleService {
     public RoleService() {
     }
 
-    public Role createAndSaveRole(RoleId id, ERole name ) {
-        Role role = new Role(id,name);
+    public Role createAndSaveRole(ERole name ) {
+        Role role = new Role(name);
 
         return roleRepository.save(role);
     }

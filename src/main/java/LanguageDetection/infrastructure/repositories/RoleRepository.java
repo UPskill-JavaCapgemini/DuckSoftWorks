@@ -1,10 +1,8 @@
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.model.ValueObjects.ERole;
 import LanguageDetection.domain.model.Role;
+import LanguageDetection.domain.model.ValueObjects.ERole;
 import LanguageDetection.infrastructure.repositories.JPARepositories.RoleJpaRepository;
-import LanguageDetection.infrastructure.repositories.JPARepositories.assemblers.RoleDomainDataAssembler;
-import LanguageDetection.infrastructure.repositories.JPARepositories.jpa.RoleJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,23 +15,19 @@ public class RoleRepository {
     @Autowired
     RoleJpaRepository roleJpaRepository;
 
-    @Autowired
-    RoleDomainDataAssembler roleAssembler;
+
 
     public Role save(Role role) {
-        RoleJpa roleJpa = roleAssembler.toData(role);
+        Role savedRole = roleJpaRepository.save(role);
 
-        RoleJpa savedRoleJpa = roleJpaRepository.save(roleJpa);
-
-        return roleAssembler.toDomain(savedRoleJpa);
+        return savedRole;
     }
 
     public Optional<Role> findByName(ERole name) {
-        Optional<RoleJpa> opRole = roleJpaRepository.findByName(name);
+        Optional<Role> opRole = roleJpaRepository.findByName(name);
 
         if (opRole.isPresent()) {
-            Role role = roleAssembler.toDomain(opRole.get());
-            return Optional.of(role);
+            return opRole;
         } else
             return Optional.empty();
     }

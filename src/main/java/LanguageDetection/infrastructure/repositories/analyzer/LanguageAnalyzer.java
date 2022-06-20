@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class LanguageAnalyzer implements ILanguageDetector {
+public class LanguageAnalyzer {
 
     private static final int MAX_TOKENS = Integer.MAX_VALUE;
     static org.apache.lucene.analysis.Analyzer analyzer;

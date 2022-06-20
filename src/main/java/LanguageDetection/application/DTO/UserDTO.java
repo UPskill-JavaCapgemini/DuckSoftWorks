@@ -1,7 +1,6 @@
 package LanguageDetection.application.DTO;
 
 
-import LanguageDetection.domain.model.ValueObjects.PersonId;
 import org.springframework.hateoas.RepresentationModel;
 
 import lombok.AllArgsConstructor;
@@ -12,11 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class PersonDTO extends RepresentationModel<PersonDTO> {
+public class UserDTO extends RepresentationModel<UserDTO> {
     @Getter
-    PersonId id;
-    @Getter
-    String firstName;
-    @Getter
-    String lastName;
+    long id;
 }

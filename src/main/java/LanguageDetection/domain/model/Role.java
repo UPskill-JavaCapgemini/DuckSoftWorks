@@ -1,19 +1,41 @@
 package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.model.ValueObjects.ERole;
-import LanguageDetection.domain.model.ValueObjects.RoleId;
-import lombok.Getter;
-import lombok.ToString;
 
-@ToString
+import javax.persistence.*;
+
+@Entity
+@Table(name = "roles")
 public class Role {
-    @Getter
-    private RoleId id;
-    @Getter
-    private ERole name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
 
-    public Role(RoleId roleId, ERole name) {
-        this.id = roleId;
-        this.name = name;
-    }
+  @Enumerated(EnumType.STRING)
+  @Column(length = 20)
+  private ERole name;
+
+  public Role() {
+
+  }
+
+  public Role(ERole name) {
+    this.name = name;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public ERole getName() {
+    return name;
+  }
+
+  public void setName(ERole name) {
+    this.name = name;
+  }
 }

@@ -11,7 +11,7 @@ import org.springframework.hateoas.RepresentationModel;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class MessageResponse extends RepresentationModel<PersonDTO> {
+public class MessageResponse extends RepresentationModel<UserDTO> {
     @Getter
     String message;
 }

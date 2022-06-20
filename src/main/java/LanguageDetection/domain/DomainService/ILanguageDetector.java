@@ -9,5 +9,6 @@ import java.io.IOException;
 
 public interface ILanguageDetector {
 
-    Language analyze(Task task) throws ParseException, IOException;
+
+    void languageAnalysis(Task task);
 }

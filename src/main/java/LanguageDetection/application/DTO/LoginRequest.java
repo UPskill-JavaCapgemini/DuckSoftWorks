@@ -11,7 +11,7 @@ import org.springframework.hateoas.RepresentationModel;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class LoginRequest extends RepresentationModel<PersonDTO> {
+public class LoginRequest extends RepresentationModel<UserDTO> {
     @Getter
     String username;
     @Getter

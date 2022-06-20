@@ -30,7 +30,7 @@ public class CategoryController {
      * @return all categories already created
      */
     @GetMapping("")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     @ResponseBody
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         List<CategoryDTO> categories = categoryManagementService.getAllCategory();

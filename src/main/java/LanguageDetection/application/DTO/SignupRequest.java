@@ -10,15 +10,9 @@ import org.springframework.hateoas.RepresentationModel;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class SignupRequest extends RepresentationModel<PersonDTO> {
-    @Getter
-    long id;
+public class SignupRequest extends RepresentationModel<UserDTO> {
     @Getter
     String username;
-    @Getter
-    String firstName;
-    @Getter
-    String lastName;
     @Getter
     String email;
     @Getter

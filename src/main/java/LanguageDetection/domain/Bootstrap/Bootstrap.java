@@ -1,16 +1,10 @@
 package LanguageDetection.domain.Bootstrap;
 
 
-import LanguageDetection.application.DTO.NewBlackListInfoDTO;
-import LanguageDetection.application.DTO.NewCategoryInfoDTO;
-import LanguageDetection.application.services.BlackListManagementService;
-import LanguageDetection.domain.DomainService.CategoryService;
 import LanguageDetection.domain.model.ValueObjects.ERole;
-import LanguageDetection.domain.model.ValueObjects.PersonId;
-import LanguageDetection.domain.model.ValueObjects.RoleId;
+import LanguageDetection.domain.model.Role;
 import LanguageDetection.domain.model.*;
-import LanguageDetection.domain.model.TaskFactory;
-import LanguageDetection.infrastructure.repositories.PersonRepository;
+import LanguageDetection.infrastructure.repositories.UserRepository;
 import LanguageDetection.infrastructure.repositories.RoleRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +29,7 @@ public class Bootstrap implements InitializingBean {
     RoleRepository roleRepository;
 
     @Autowired
-    PersonRepository personRepository;
+    UserRepository userRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -78,25 +72,22 @@ public class Bootstrap implements InitializingBean {
     }
 
     private void createRoles(){
-        RoleId adminId = new RoleId(1);
-        RoleId userId = new RoleId(2);
 
-        Role admin = new Role(adminId, ERole.ROLE_ADMIN);
-        Role user = new Role(userId,ERole.ROLE_USER);
+        Role admin = new Role(ERole.ROLE_ADMIN);
+        Role user = new Role(ERole.ROLE_USER);
 
         roleRepository.save(admin);
         roleRepository.save(user);
     }
 
     private void createAdmin(){
-        PersonId adminId = new PersonId(1);
+
         String adminPW = "passwordfixe";
 
 
-        Person admin = new Person(adminId,"Daniel",
-                "Lima",
-                "danilima90@hotmail.com",
+        User admin = new User(
                 "danilima90",
+                "danilima90@hotmail.com",
                 passwordEncoder.encode(adminPW));
 
         Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN).get();
@@ -104,7 +95,7 @@ public class Bootstrap implements InitializingBean {
         roles.add(adminRole);
         admin.setRoles(roles);
 
-        personRepository.save(admin);
+        userRepository.save(admin);
 
     }
 }
