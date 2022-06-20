@@ -7,6 +7,7 @@ import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
+import LanguageDetection.domain.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +33,7 @@ public class TaskFactory {
             Optional<Category> categoryRepository = categoryService.findCategoryByName(categoryName);
 
             if (!blackListService.isBlackListed(inputUrl) && categoryRepository.isPresent()) {
-                Task task = new Task(inputUrl, timeOut, categoryRepository.get());
+                Task task = new Task(inputUrl, timeOut, categoryRepository.get(), Utils.getUserNameId());
 
                 return Optional.of(task);
             }

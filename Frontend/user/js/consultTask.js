@@ -40,3 +40,29 @@ dropdown.selectedIndex = 0;
         console.error('Fetch Error -', err);  
       });
     }
+
+    function filterTasksStatusCategory(e) {
+        e.preventDefault();
+        console.log("hi there");
+        var category = document.getElementById("category-dropdown")
+        var categoryOption = category.options[category.selectedIndex].value
+        var status = document.getElementById("status-dropdown")
+        var statusOption = status.options[status.selectedIndex].value
+        var urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption + "&" + "status=" + statusOption
+       // http://localhost:8080/LanguageDetection?categoryName=Economics&status=Processing
+      fetch(urlToRequest, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+              }
+          } ).then(resp => {
+         //   var responseContent = document.getElementById("create-task-response");
+        if (resp.status === 200) {
+            console.log("The filter is working")
+        } else {
+            console.log("Nope!")
+        }
+    })
+    }
+
+

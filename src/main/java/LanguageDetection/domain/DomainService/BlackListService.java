@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class BlackListService {
@@ -17,6 +18,18 @@ public class BlackListService {
     IBlackListItemRepository blackListItemRepository;
 
     public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
+
+        List<BlackListItem> blackListItemList = findAllBlackListItems();
+        String inputUrlPath = blackListItem.getBlackListUrl().toString();
+
+        //TODO: Verify how we can improve efficiency of this.
+        for (BlackListItem blackListItemRepo : blackListItemList) {
+            String blackListUrlPath = blackListItemRepo.getBlackListUrl().toString();
+            if (inputUrlPath.contains(blackListUrlPath)) {
+
+                throw new IllegalArgumentException();
+            }
+        }
         return blackListItemRepository.saveBlackListItem(blackListItem);
     }
 
