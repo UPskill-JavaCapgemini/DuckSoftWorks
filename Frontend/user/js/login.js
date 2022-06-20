@@ -14,7 +14,8 @@ function logIn(e) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username : userInput, password : passwordInput })
+      body: JSON.stringify({ username : userInput, password : passwordInput }),
+      credentials:"include"
     }).then(resp => {
        // var responseContent = document.getElementById("create-task-response");
     if (resp.status === 200) {

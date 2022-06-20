@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/LanguageDetection/auth")
 public class AuthController {
