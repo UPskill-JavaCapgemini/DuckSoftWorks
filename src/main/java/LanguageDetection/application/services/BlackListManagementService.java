@@ -37,7 +37,8 @@ public class BlackListManagementService {
             BlackListItem blackListItem = new BlackListItem(blackListInputUrlDTO.getUrl());
             BlackListItem blackListToRepo = blackListService.saveBlackListItem(blackListItem);
             return Optional.of(blackListDomainDTOAssembler.toDTO(blackListToRepo));
-        }catch (MalformedURLException e){
+
+        }catch (MalformedURLException  | IllegalArgumentException ie){
             return Optional.empty();
         }
     }
