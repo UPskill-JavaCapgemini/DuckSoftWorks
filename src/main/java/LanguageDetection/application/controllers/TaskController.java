@@ -19,6 +19,7 @@ import java.util.Optional;
  * @authors DuckSoftWorks Team
  */
 @Controller
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "/LanguageDetection")
 public class TaskController {
