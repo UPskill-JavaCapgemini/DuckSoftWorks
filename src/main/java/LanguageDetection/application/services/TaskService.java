@@ -7,15 +7,20 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
+import LanguageDetection.domain.DomainService.ILanguageDetector;
+import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.infrastructure.repositories.TaskRepository;
 import LanguageDetection.infrastructure.repositories.analyzer.LanguageDetectionService;
 import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
+import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.*;
 
@@ -41,7 +46,15 @@ public class TaskService {
     TaskFactory taskFactory;
 
     @Autowired
+    ILanguageDetector iLanguageDetector;
+
+    @Autowired
     LanguageDetectionService languageDetectionService;
+
+/*    public TaskService(TaskRepository taskRepository,LanguageDetectionService languageDetectionService){
+        this.iTaskRepository = taskRepository;
+        this.languageDetectionService = languageDetectionService;
+    }*/
 
 
     /**
@@ -58,7 +71,8 @@ public class TaskService {
             if (opCreatedTask.isPresent())
             {
                 Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
-                languageDetectionService.languageAnalysis(savedTask);
+
+                iLanguageDetector.languageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
         } catch (MalformedURLException e) {

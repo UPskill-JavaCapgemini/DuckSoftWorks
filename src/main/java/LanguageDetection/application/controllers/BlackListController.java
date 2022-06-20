@@ -7,6 +7,7 @@ import LanguageDetection.application.services.BlackListManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,7 @@ public class BlackListController {
      */
 
     @GetMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody
     public ResponseEntity<List<BlackListDTO>> getAllBlackListItems() {
         List<BlackListDTO> blackListItems = blackListManagementService.getAllBlackListItems();
@@ -42,6 +44,7 @@ public class BlackListController {
      */
 
     @PostMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> createAndSaveBlackListItem(@RequestBody NewBlackListInfoDTO url) {
         Optional<BlackListDTO> blackListDTO = blackListManagementService.createAndSaveBlackListItem(url);
         if (blackListDTO.isPresent()){
@@ -56,6 +59,7 @@ public class BlackListController {
      * @return the deletion of a certain blackListItem that was previously created
      */
     @DeleteMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> deleteBlackListItem(@RequestBody NewBlackListInfoDTO blackListInfoDTO) {
         if (blackListManagementService.deleteBlackListItem(blackListInfoDTO)) {
             return new ResponseEntity<>("Deleted", HttpStatus.OK);

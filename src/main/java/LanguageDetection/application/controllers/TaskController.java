@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +39,7 @@ public class TaskController {
      * @return information of Processing status with HTTPStatus 201(Created) or String with error information of HTTPStatus 400(Bad Request) if some error occurred
      */
     @PostMapping("")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) {
         Optional<TaskStatusDTO> taskCreated = taskService.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
@@ -58,6 +60,7 @@ public class TaskController {
      */
     @GetMapping("")
     @ResponseBody
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Object> getAllTasksFilter(
             @RequestParam (name = "categoryName", required = false) CategoryNameDTO categoryName,
             @RequestParam (name = "status", required = false) StatusDTO status) {
@@ -84,6 +87,7 @@ public class TaskController {
      */
 
     @PostMapping(value = "/cancel", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) {
         Optional<TaskDTO> cancelTask = taskService.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){

@@ -6,6 +6,7 @@ import LanguageDetection.application.services.CategoryManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,7 @@ public class CategoryController {
      * @return all categories already created
      */
     @GetMapping("")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     @ResponseBody
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         List<CategoryDTO> categories = categoryManagementService.getAllCategory();
@@ -45,6 +47,7 @@ public class CategoryController {
      * @param category receives a JSON file that is automatically transformed into a NewCategoryInfoDTO object
      */
     @PostMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> createAndSaveCategory(@RequestBody NewCategoryInfoDTO category) {
         Optional<CategoryDTO> categoryDTO = categoryManagementService.createAndSaveCategory(category);
         if (categoryDTO.isPresent()) {
@@ -58,6 +61,7 @@ public class CategoryController {
      * @param category
      * @return the deletion of a certain category
      */
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("")
     public ResponseEntity<Object> deleteCategory(@RequestBody NewCategoryInfoDTO category) {
         if (categoryManagementService.deleteCategory(category)) {
