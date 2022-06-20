@@ -4,6 +4,7 @@ import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.util.Utils;
 import LanguageDetection.infrastructure.repositories.JPARepositories.TaskJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,7 +35,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present in database
 	 */
     public List<Task> findAllTasks() {
-		Iterable<Task> listAllTasks= taskJpaRepository.findAll();
+		Iterable<Task> listAllTasks= taskJpaRepository.findAllByUserId(Utils.getUserNameId());
 
 		return (List<Task>) listAllTasks;
     }
@@ -45,7 +46,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present with the status passed
 	 */
 	public List<Task> findByStatusContaining(Task.TaskStatus st) {
-		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLike(st);
+		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLikeAndUserId(st, Utils.getUserNameId());
 
 		return (List<Task>) listTasksByStatus;
 	}
@@ -56,7 +57,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present with the category passed
 	 */
 	public List<Task> findByCategoryNameContaining(CategoryName catName) {
-		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLike(catName);
+		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserId(catName, Utils.getUserNameId());
 		return (List<Task>) listTasksByCategory;
 	}
 
@@ -67,7 +68,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present with the category and status passed
 	 */
 	public List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category) {
-		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLike(category, status);
+		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(category, status, Utils.getUserNameId());
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
 	}

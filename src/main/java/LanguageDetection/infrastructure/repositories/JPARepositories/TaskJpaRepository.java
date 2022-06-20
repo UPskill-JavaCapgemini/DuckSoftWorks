@@ -9,14 +9,14 @@ import java.util.Optional;
 
 
 public interface TaskJpaRepository extends CrudRepository <Task, Long> {
-    Iterable<Task> findByCurrentStatusLike(Task.TaskStatus st);
+    Iterable<Task> findByCurrentStatusLikeAndUserId(Task.TaskStatus st, Long userId);
 
-    Iterable<Task> findTaskByCategoryLike(CategoryName catName);
+    Iterable<Task> findTaskByCategoryLikeAndUserId(CategoryName catName, Long userId);
 
-    Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLike(Category category, Task.TaskStatus status);
-
+    Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(Category category, Task.TaskStatus status, Long userId);
 
     Optional<Task> findById(String name);
 
+    Iterable<Task> findAllByUserId(Long userId);
 
 }
