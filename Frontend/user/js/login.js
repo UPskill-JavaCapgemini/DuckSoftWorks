@@ -1,29 +1,27 @@
 
 function logIn(e) {
     e.preventDefault();
-    console.log("hi there");
-    var link = document.getElementById("link").value
-    var category = document.getElementById("category-dropdown")
-    var categoryOption = category.options[category.selectedIndex].value
-    var timeLimit = document.getElementById("timeLimit")
-    var timeLimitOption = timeLimit.options[timeLimit.selectedIndex].value
+    console.log("hi there login");
+    var userInput = document.getElementById("userInput").value
+    var passwordInput = document.getElementById("passwordInput").value
 
-  var stringified = JSON.stringify({ url : link, category : categoryOption, timeOut : timeLimitOption })
+  var stringified = JSON.stringify({ username : userInput, password : passwordInput })
+
   console.log(stringified);
-  fetch('http://localhost:8080/LanguageDetection', {
+
+  fetch('http://localhost:8080/LanguageDetection/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ url : link, category : categoryOption, timeOut: timeLimitOption })
+      body: JSON.stringify({ username : userInput, password : passwordInput })
     }).then(resp => {
-        var responseContent = document.getElementById("create-task-response");
-    if (resp.status === 201) {
-        responseContent.textContent = "The task was successfully created!";
-        console.log("Task was successfully created!")
+       // var responseContent = document.getElementById("create-task-response");
+    if (resp.status === 200) {
+        console.log("Login OK")
+        console.log(resp.body)
     } else {
-        responseContent.textContent = "The task couldn't be created!";
-        console.log("Task was successfully created!")
+         console.log("Login NOK")
     }
 })
 }

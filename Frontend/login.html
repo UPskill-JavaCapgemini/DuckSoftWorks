@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
+    <script src="user/js/login.js"></script>
     <title>Signin Template · Bootstrap v5.2</title>
 
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
@@ -78,15 +79,14 @@
     <h1 class="my-4 h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" class="form-control" id="userInput" placeholder="name@example.com">
       <label for="floatingInput">User Name</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="passwordInput" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
-
-    <a class="w-100 btn btn-lg btn-dark" href="user/createTask.html" role="button">Sign in</a>
+  <button onclick="logIn(event)" class="w-100 btn btn-dark btn-lg" type="submit">Sign In</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2022 Duck Soft Works & Co.</p>
   </form>
 </main>
