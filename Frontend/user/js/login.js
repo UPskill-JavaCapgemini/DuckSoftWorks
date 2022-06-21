@@ -25,7 +25,7 @@ function logIn(e) {
             if(role == "ROLE_USER"){
                 window.open("http://localhost:5500/user/home_user.html", "_self")
             } else{
-                window.open("http://localhost:5500/admin/admin_categories.html", "_self")
+                window.open("http://localhost:5500/admin/home_admin.html", "_self")
             }
           });
     } else {
