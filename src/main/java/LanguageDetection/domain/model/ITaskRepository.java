@@ -15,7 +15,7 @@ public interface ITaskRepository {
 
     List<Task> findByStatusContaining(Task.TaskStatus st);
 
-    List<Task> findByCategoryNameContaining(CategoryName categoryname);
+    List<Task> findByCategoryNameContaining(Category category);
 
     List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category);
 
