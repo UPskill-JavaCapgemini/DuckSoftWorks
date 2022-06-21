@@ -2,7 +2,7 @@ window.onload = populateCategories;
 
 function createNewCategory(e) {
     e.preventDefault();
-    console.log("hi there");
+    console.log("createCategoryInitiated");
     var categoryName = document.getElementById("createCategoryInput").value
 
   var stringified = JSON.stringify({ category : categoryName})
@@ -25,6 +25,34 @@ function createNewCategory(e) {
         responseContent.textContent = "The category couldn't be created! Invalid format.";
         console.log("Category not created")
     }
+})
+}
+
+function deleteCategory(e) {
+  e.preventDefault();
+  console.log("deleteCategory Initiated");
+  var categoryName = document.getElementById("createCategoryInput").value
+
+var stringified = JSON.stringify({ category : categoryName})
+console.log(stringified);
+fetch('http://localhost:8080/Category', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ category : categoryName}),
+    credentials:"include"
+  }).then(resp => {
+      var responseContent = document.getElementById("create-category-response");
+  if (resp.status === 201) {
+      responseContent.textContent = "The category " + categoryName + " was successfully created!";
+      console.log("Category was successfully created!")
+      populateCategories();
+
+  } else {
+      responseContent.textContent = "The category couldn't be created! Invalid format.";
+      console.log("Category not created")
+  }
 })
 }
 

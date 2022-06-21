@@ -48,14 +48,6 @@ public class TaskService {
     @Autowired
     ILanguageDetector iLanguageDetector;
 
-    @Autowired
-    LanguageDetectionService languageDetectionService;
-
-/*    public TaskService(TaskRepository taskRepository,LanguageDetectionService languageDetectionService){
-        this.iTaskRepository = taskRepository;
-        this.languageDetectionService = languageDetectionService;
-    }*/
-
 
     /**
      * Creates a new task with a NewTaskInfoDTO received by parameter.
@@ -163,11 +155,12 @@ public class TaskService {
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
         Optional<Task> optionalTask = iTaskRepository.findByTaskId(id.getId());
-        if (optionalTask.isPresent() && optionalTask.get().isStatusProcessing()) {
+        if (optionalTask.isPresent()) {
             Task task = optionalTask.get();
-            task.updateStatus(Task.TaskStatus.Canceled);
-            iTaskRepository.saveTask(task);
-            return Optional.of(taskDomainDTOAssembler.toCompleteDTO(optionalTask.get()));
+            if(task.cancelTask()){
+                iTaskRepository.saveTask(task);
+                return Optional.of(taskDomainDTOAssembler.toCompleteDTO(task));
+            }
         }
         return Optional.empty();
     }
