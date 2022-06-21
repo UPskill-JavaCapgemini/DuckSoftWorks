@@ -27,7 +27,7 @@ public class CategoryName implements ValueObject, Comparable<CategoryName> {
     public CategoryName(String categoryName) {
         if (isOnlySpecialCharacters(categoryName) || isOnlyNumbers(categoryName) || categoryName.isBlank() || categoryName.isEmpty()){
             this.categoryName = DEFAULT_CATEGORY;
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Impossible to create category name");
         }
         else {
             this.categoryName = categoryName;

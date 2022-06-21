@@ -20,8 +20,17 @@ function logIn(e) {
        // var responseContent = document.getElementById("create-task-response");
     if (resp.status === 200) {
         console.log("Login OK")
-        console.log(resp.body)
+        resp.json().then(function(data) {  
+            let role = data.roles;
+            if(role == "ROLE_USER"){
+                window.open("http://localhost:5500/user/home_user.html", "_self")
+            } else{
+                window.open("http://localhost:5500/admin/home_admin.html", "_self")
+            }
+          });
     } else {
+        var responseContent = document.getElementById("create-logIn-response");
+        responseContent.textContent = "FAIL TO LOGIN, PLEASE CHECK YOUR CREDENTIALS!";
          console.log("Login NOK")
     }
 })

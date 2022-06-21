@@ -1,58 +1,48 @@
-/*
 package LanguageDetection.Domain.model.ValueObjects;
 
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.ValueObjects.Text;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TextTest {
 
-    @InjectMocks
-    Text text;
 
-
-
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
-    protected void shouldCleanUpAStringWithSpecialCharacters() {
+    protected void ensureTextCleanUpAStringWithSpecialCharacters() {
         //Arrange
         String testString = "<%a# test>< ! ,string @ with no.. special? characters.";
-        String cleanedUpString;
+        String cleanedUpString = " a test string with no special characters ";
         //Act
-        cleanedUpString = text.cleanUpInputText(testString);
+        Text text = new Text(testString);
         //Assert
-        Assert.assertEquals(" a test string with no special characters ", cleanedUpString);
+        Assertions.assertEquals(text.getTextContent(), cleanedUpString);
     }
 
     @org.junit.Test
-    public void shouldCleanUpAStringWithMultipleSpacing() {
+    public void ensureTextCleanUpAStringWithMultipleSpacing() {
         //Arrange
         String testString = " a         test         string   with    multiple    spaces       ";
-        String cleanedUpString;
+        String cleanedUpString = "a test string with multiple spaces";
         //Act
-        cleanedUpString = text.cleanUpInputText(testString);
+        Text text = new Text(testString);
         //Assert
-        Assert.assertEquals("a test string with multiple spaces", cleanedUpString);
+        Assertions.assertEquals(text.getTextContent(), cleanedUpString);
     }
 
     @Test
-    public void shouldCleanUpAStringWithUpperCase() {
+    public void ensureTextCleanUpAStringWithUpperCase() {
         //Arrange
         String testString = "A tEsT STRing WitH UpPEr CASE";
-        String lowerCaseString;
+        String lowerCaseString = "a test string with upper case";
         //Act
-        lowerCaseString = text.cleanUpInputText(testString);
+        Text text = new Text(testString);
         //Assert
-        Assert.assertEquals("a test string with upper case", lowerCaseString);
+        Assertions.assertEquals(text.getTextContent(), lowerCaseString);
     }
 
 
@@ -60,21 +50,75 @@ class TextTest {
     public void verifyIfTheExtraSpacesAreRetrievedWithCleanUpInputText() {
         ;
         String testString = "Bom  dia";
-        String result = text.cleanUpInputText(testString);
-        org.testng.Assert.assertEquals(result, "bom dia");
+        String result = "bom dia";
+        Text text = new Text(testString);
+        Assertions.assertEquals(text.getTextContent(), result);
     }
 
     @Test
-    public void verifyIfEmptySpacesAreRetrievedWithCleanUpInputText() {
-        String testString = " ";
-        String result = text.cleanUpInputText(testString);
-        org.testng.Assert.assertEquals(result, "");
+    public void ensureTextIsNotCreatedWhenIsOnlySpaces(){
+        String testString = "                                      ";
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new Text(testString);
+        });
+
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The text is not valid");
     }
 
+    @Test
+    public void ensureTextIsNotCreatedWhenIsEmptyString(){
+        String testString = "";
 
-@Test
-    void getTextContent() {
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new Text(testString);
+        });
+
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The text is not valid");
+    }
+
+    @Test
+    public void ensureTextIsNotCreatedWhenTextIsChineseCharacters(){
+        String testString = "漢語漢語漢語漢語漢語漢語";
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new Text(testString);
+        });
+
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The text is not valid");
+    }
+
+    @Test
+    public void ensureTextIsNotCreatedWhenTextIsJapaneseCharacters(){
+        String testString = "平仮名平仮名平仮名平仮名平仮名";
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new Text(testString);
+        });
+
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The text is not valid");
+    }
+
+    @Test
+    public void ensureTextIsNotCreatedWhenTextIsCyrillicCharacters(){
+        String testString = "а́збукаа́збукаа́збука";
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new Text(testString);
+        });
+
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The text is not valid");
+    }
+
+    @Test
+    public void ensureTextIsNotCreatedWhenTextIsArabicCharacters(){
+        String testString = "العربيةالعربية";
+
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
+            new Text(testString);
+        });
+
+        Assert.assertEquals(illegalArgumentException.getMessage(), "The text is not valid");
     }
 
 }
-*/
