@@ -5,6 +5,9 @@ import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.model.BlackListItem;
 import org.springframework.data.repository.CrudRepository;
 
+/**
+ * Represents the BlackListJpaRepository. Extends the CrudRepository Interface
+ */
 public interface BlackListJpaRepository extends CrudRepository<BlackListItem, BlackListUrl> {
 
     int deleteByBlackListUrl(BlackListUrl blackListUrl);

@@ -10,12 +10,25 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Represents the BlackListService.The domain service containing the validation logic for BlackList related functionalities
+ */
 @Component
 public class BlackListService {
 
 
     @Autowired
     IBlackListItemRepository blackListItemRepository;
+
+    /**
+     * This method attempts to save a BlackListItem.
+     * It will save the new BlackListItem if the inputted URL does not contain
+     * any BlackListItem URL previously saved
+     *
+     * @param blackListItem the BlackListItem to be persisted in the database
+     * @throws IllegalArgumentException if the any BlackListItems on the list have a url that contains the inputted url
+     * @return the saved BlackListItem if saving was successful
+     */
 
     public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
 
@@ -33,18 +46,24 @@ public class BlackListService {
         return blackListItemRepository.saveBlackListItem(blackListItem);
     }
 
+    /**
+     * This method deletes a persisted BlackListItem if the item is persisted in the database
+     * Returns a boolean to indicate if the deletion operation was successful
+     *
+     * @param blackListUrl the BlackListItem to be deleted in the database
+     * @return true if it was successfully deleted , false if it not
+     */
     public boolean deleteByBlackListUrl(BlackListUrl blackListUrl) {
         return blackListItemRepository.deleteByBlackListUrl(blackListUrl);
     }
 
     /**
-     * The method that verifies if an Item already exists in the repository.
+     * This method verifies if the inputted URL is blacklisted
      *
-     * @param inputUrl instance of url to verify if it is blacklisted
-     * @return boolean that defines if the url is present in the repository list or not.
+     * @param inputUrl the InputUrl to be verified if it is blacklisted
+     * @return true if it is blacklisted, false if not
      */
     public boolean isBlackListed(InputUrl inputUrl) {
-        boolean isBlackListed = false;
         List<BlackListItem> blackListItemList = findAllBlackListItems();
         String inputUrlPath = inputUrl.toString();
         //TODO: Verify how we can improve efficiency of this.
@@ -54,9 +73,15 @@ public class BlackListService {
                 return true;
             }
         }
-        return isBlackListed;
+        return false;
     }
 
+    /**
+     * This method fetches information for all blackListItems persisted in the database and returns a list containing them if there are any
+     * or an empty list if no BlackListItems were persisted in the database
+     *
+     * @return a BlackListItem list
+     */
     public List<BlackListItem> findAllBlackListItems() {
         return blackListItemRepository.findAllBlackListItems();
     }

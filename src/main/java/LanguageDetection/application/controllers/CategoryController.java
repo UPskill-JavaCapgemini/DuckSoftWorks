@@ -18,6 +18,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping(path = "/Category")
+
 public class CategoryController {
 
     @Autowired
