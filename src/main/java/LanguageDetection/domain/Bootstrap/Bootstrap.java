@@ -83,11 +83,11 @@ public class Bootstrap implements InitializingBean {
 
     private void createAdmin(){
 
-            String adminPW = "passwordfixe";
+            String adminPW = "1234";
 
 
         User admin = new User(
-                "danilima90",
+                "adminduck",
                 "danilima90@hotmail.com",
                 passwordEncoder.encode(adminPW));
 
