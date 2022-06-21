@@ -132,11 +132,11 @@ public class Task implements AggregateRoot<Long> {
         return AggregateRoot.super.hasIdentity(id);
     }
 
-    public boolean isStatusProcessing() {
+    private boolean isStatusProcessing() {
         return this.currentStatus == TaskStatus.Processing;
     }
 
-    public boolean isStatusCanceled() {
+    private boolean isStatusCanceled() {
         return this.currentStatus == TaskStatus.Canceled;
     }
 
@@ -167,7 +167,7 @@ public class Task implements AggregateRoot<Long> {
      *
      * @param status new task status
      */
-    public void updateStatus(TaskStatus status) {
+    private void updateStatus(TaskStatus status) {
         this.currentStatus = status;
     }
 
