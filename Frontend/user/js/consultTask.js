@@ -60,6 +60,8 @@ dropdown.selectedIndex = 0;
          //   var responseContent = document.getElementById("create-task-response");
         if (resp.status === 200) {
             console.log("The filter is working")
+            
+
         } else {
             console.log("Nope!")
         }
