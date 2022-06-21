@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @EqualsAndHashCode
+/**
+ * Represents a CategoryDTO containing the Category that was inputted by the admin
+ */
 public class CategoryDTO {
 
     @Getter

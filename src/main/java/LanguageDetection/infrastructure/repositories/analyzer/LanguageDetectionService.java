@@ -75,7 +75,7 @@ public class LanguageDetectionService implements ILanguageDetector{
             @Override
             public void run() {
                 try {
-                    task.updateStatus(Task.TaskStatus.Canceled);
+                    task.cancelTask();
                     taskRepo.saveTask(task);
                 } catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e) {
                     log.warn("Unsuccessful save: " + e.getMessage());

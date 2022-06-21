@@ -11,8 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Class that that will represent a text.
- * The cateory of the text will be choosen by the user.
+ * Represents a Task Category
  */
 @Component
 @Entity
@@ -22,7 +21,6 @@ public class Category implements AggregateRoot<CategoryName> {
     /**
      * Gets the Value Object CategoryName where the business validations are implemented.
      */
-
     @Getter
     @EmbeddedId
     CategoryName categoryName;
@@ -49,6 +47,12 @@ public class Category implements AggregateRoot<CategoryName> {
        this.isBaseCategory = true;
     }
 
+    /**
+     * This method verifies if a Category is a base Category
+     * Returns a boolean to indicate this
+     *
+     * @return true if it is a base Category, false if not
+     */
     public boolean isBaseCategory(){
         return this.isBaseCategory;
     }
@@ -58,22 +62,34 @@ public class Category implements AggregateRoot<CategoryName> {
         return false;
     }
 
+
     /**
-     * method that identify the category
-     * @return the name of the category
+     * This method represents a Category textually
+     * Returns a String with the Category information
+     *
+     * @return a String with a textual representation of the Category
      */
-
-
     @Override
     public String toString() {
         return categoryName.toString();
     }
 
+    /**
+     * This method returns the Category identity
+     *
+     * @return  a CategoryName as the identity of Category
+     */
     @Override
     public CategoryName identity() {
         return this.categoryName;
     }
 
+    /**
+     * This method verifies if a Category has a provided CategoryName as its id
+     * Returns a boolean to indicate this
+     *
+     * @return true if the provided CategoryName is the identity of Category, false if not
+     */
     @Override
     public boolean hasIdentity(CategoryName id) {
         return AggregateRoot.super.hasIdentity(id);

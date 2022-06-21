@@ -126,6 +126,7 @@
     <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.200" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.oracle.database.jdbc:ojdbc8:21.5.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-inline:3.8.0" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" name="Maven: commons-validator:commons-validator:1.7" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.4" level="project" />

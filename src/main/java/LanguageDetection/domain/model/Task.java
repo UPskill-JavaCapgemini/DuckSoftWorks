@@ -6,6 +6,7 @@ import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -132,11 +133,11 @@ public class Task implements AggregateRoot<Long> {
         return AggregateRoot.super.hasIdentity(id);
     }
 
-    public boolean isStatusProcessing() {
+    private boolean isStatusProcessing() {
         return this.currentStatus == TaskStatus.Processing;
     }
 
-    public boolean isStatusCanceled() {
+    private boolean isStatusCanceled() {
         return this.currentStatus == TaskStatus.Canceled;
     }
 
@@ -167,7 +168,7 @@ public class Task implements AggregateRoot<Long> {
      *
      * @param status new task status
      */
-    public void updateStatus(TaskStatus status) {
+    private void updateStatus(TaskStatus status) {
         this.currentStatus = status;
     }
 
