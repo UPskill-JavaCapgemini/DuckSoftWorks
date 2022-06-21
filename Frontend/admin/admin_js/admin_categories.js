@@ -1,5 +1,8 @@
 window.onload = populateCategories;
 
+
+//CREATE CATEGORY
+
 function createNewCategory(e) {
     e.preventDefault();
     console.log("createCategoryInitiated");
@@ -28,6 +31,8 @@ function createNewCategory(e) {
 })
 }
 
+//DELETE CATEGORY
+
 function deleteCategory(e) {
   e.preventDefault();
   var category = document.getElementById("category-dropdown")
@@ -47,8 +52,6 @@ fetch('http://localhost:8080/Category', {
   if (resp.status === 200) {
       responseContent.textContent = "The category " + categoryOption + " was successfully deleted!";
       console.log("Category was successfully deleted!")
-      populateCategories();
-
   } else {
       responseContent.textContent = "The category couldn't be deleted.";
       console.log("Category not deleted")
