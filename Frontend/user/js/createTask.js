@@ -19,7 +19,8 @@ function createNewTask(e) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ url : link, category : categoryOption, timeOut: timeLimitOption })
+      body: JSON.stringify({ url : link, category : categoryOption, timeOut: timeLimitOption }),
+      credentials:"include"
     }).then(resp => {
         var responseContent = document.getElementById("create-task-response");
     if (resp.status === 201) {
@@ -27,7 +28,7 @@ function createNewTask(e) {
         console.log("Task was successfully created!")
     } else {
         responseContent.textContent = "The task couldn't be created!";
-        console.log("Task was successfully created!")
+        console.log("Task not created")
     }
 })
 }
@@ -41,7 +42,7 @@ dropdown.length = 0;
 
 const categoriesURL = 'http://localhost:8080/Category';
 
-fetch(categoriesURL)  
+fetch(categoriesURL,{credentials:"include"})  
   .then(  
     function(response) {  
       if (response.status !== 200) {  

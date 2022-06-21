@@ -14,7 +14,7 @@ dropdown.selectedIndex = 0;
     
     const categoriesURL = 'http://localhost:8080/Category';
     
-    fetch(categoriesURL)  
+    fetch(categoriesURL,{credentials:"include"})  
       .then(  
         function(response) {  
           if (response.status !== 200) {  
@@ -54,7 +54,8 @@ dropdown.selectedIndex = 0;
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-              }
+              },
+              credentials:"include"
           } ).then(resp => {
          //   var responseContent = document.getElementById("create-task-response");
         if (resp.status === 200) {

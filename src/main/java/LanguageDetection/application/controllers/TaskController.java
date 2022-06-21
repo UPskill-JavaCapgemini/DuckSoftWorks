@@ -19,7 +19,7 @@ import java.util.Optional;
  * @authors DuckSoftWorks Team
  */
 @Controller
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping(path = "/LanguageDetection")
 public class TaskController {

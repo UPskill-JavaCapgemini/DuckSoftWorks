@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping(path = "/BlackList")
 public class BlackListController {

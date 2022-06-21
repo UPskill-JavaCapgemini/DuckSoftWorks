@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @Controller
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping(path = "/Category")
 public class CategoryController {
@@ -31,7 +31,7 @@ public class CategoryController {
      * @return all categories already created
      */
     @GetMapping("")
-    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @ResponseBody
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         List<CategoryDTO> categories = categoryManagementService.getAllCategory();
