@@ -23,9 +23,9 @@ function logIn(e) {
         resp.json().then(function(data) {  
             let role = data.roles;
             if(role == "ROLE_USER"){
-                window.open("http://localhost:5500/user/home_user.html")
+                window.open("http://localhost:5500/user/home_user.html", "_self")
             } else{
-                window.open("http://localhost:5500/admin/admin_categories.html")
+                window.open("http://localhost:5500/admin/admin_categories.html", "_self")
             }
           });
     } else {
