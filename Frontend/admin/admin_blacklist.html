@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blacklist Management</title>
+    <script src="admin_js/admin_blacklist.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <style>
     
@@ -68,14 +69,18 @@
       <label class="visually-hidden" for="link">Insert new URL</label>
       <div class="input-group">
         <div class="input-group-text">URL</div>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Insert new URL">
+        <input type="text" class="form-control" id="BlackListItemInput" placeholder="Insert new URL">
       </div>
     </div>
 
     <div class="col-12">
-        <button type="submit" class="btn btn-success">Add</button>
+        <button onclick="createNewBlackListItem(event)" type="submit" class="btn btn-success">Add</button>
       </div>
     </form>
+
+    <br/>
+    <p class="text-center" id="create-blacklist-response"></p>
+  <br/>
 
   <div class="container-fluid center">
     <div class="row justify-content-around">
@@ -118,15 +123,15 @@
   
       <div id="data-table">
 
-          <table id="html-data-table">
-              <tr>
+          <table id="html-blacklist-table">
+              <!-- <tr>
                   <td>http//:somethingaboutsports.com.txt</td>
                   <td><a class="w-50 btn btn-md btn-dark" href="" role="button">Delete</a></td>
               </tr>
               <tr>
                 <td>http//:somethingaboutmechanics.com.txt</td>
                 <td><a class="w-50 btn btn-md btn-dark" href="" role="button">Delete</a></td>
-            </tr>
+            </tr> -->
           </table>    
       </div>
       </form>
