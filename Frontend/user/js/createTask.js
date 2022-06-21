@@ -6,20 +6,16 @@ window.onload = populateCategories;
 function createNewTask(e) {
     e.preventDefault();
     console.log("hi there");
-    var link = document.getElementById("link").value
-    var category = document.getElementById("category-dropdown")
-    var categoryOption = category.options[category.selectedIndex].value
-    var timeLimit = document.getElementById("timeLimit")
-    var timeLimitOption = timeLimit.options[timeLimit.selectedIndex].value
+    var categoryInput = document.getElementById("createCategoryInput").value
 
-  var stringified = JSON.stringify({ url : link, category : categoryOption, timeOut : timeLimitOption })
+  var stringified = JSON.stringify({ category : categoryInput })
   console.log(stringified);
-  fetch('http://localhost:8080/LanguageDetection', {
+  fetch('http://localhost:8080/Category', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ url : link, category : categoryOption, timeOut: timeLimitOption }),
+      body: JSON.stringify({ category : categoryInput }),
       credentials:"include"
     }).then(resp => {
         var responseContent = document.getElementById("create-task-response");

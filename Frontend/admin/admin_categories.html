@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blacklist Management</title>
+    <script src="admin_js/admin_categories.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <style>
     
@@ -49,6 +50,9 @@
 <link href="../node_modules/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet">
 </head>
 
+
+
+
 <body class="bg-light">
   
 <div class="container">
@@ -58,20 +62,42 @@
     <h2>Ducked Language Detection</h2>
   </div>
 
-  <div class="container-5 text-center">
+
+
+
+  <div class="container text-center">
   <form class="row row-cols-sm-auto align-items-center ">
-    <div class="col-lg-3 text-align-center">
-      <label class="visually-hidden" for="link">Insert new Category</label>
+
+    <div class="col-auto text-align-center">
       <div class="input-group">
-        <div class="input-group-text">Category</div>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Insert Category">
+        <div class="input-group-text">Create a Category</div>
+        <input type="text" class="form-control" id="createCategoryInput" placeholder="Insert Category">
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-auto">
         <button type="submit" class="btn btn-success">Add</button>
+      </div>
+
+      <div class="col-auto">
+        <div class="col-lg-2">
+        </div>
+
+        <div class="input-group-text">Delete a Category</div>
+      </div>
+      <div class="col-sm-3">
+        <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+        <select aria-label="Delete Categories" class="form-select" id="category-dropdown" 
+          name="category" required>
+          </select>
+      </div>
+      <div class="col-auto">
+        <button onclick="createNewTask(event)" class="w-100 btn btn-dark btn-md" type="submit">Delete</button>
+      </div>
+      <div class="col-sm-3">
       </div>
     </form>
   </div>
+
 
   <div class="container-fluid center">
     <div class="row justify-content-around">
@@ -110,9 +136,13 @@
       <br/>
       <br/>
   
-      <h2 id="Categories Table">Categories</h2>
+    
+
+      
+
+
   
-      <div id="data-table">
+      <!-- <div id="data-table">
 
           <table id="html-data-table">
               <tr>
@@ -135,7 +165,7 @@
                 <td>Economics</td>
                 <td><a class="w-50 btn btn-md btn-dark" href="" role="button">Delete</a></td>
             </tr>
-          </table>    
+          </table>     -->
       </div>
       </form>
     </div>
