@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -76,7 +75,7 @@ public class LanguageDetectionService implements ILanguageDetector{
             @Override
             public void run() {
                 try {
-                    task.updateStatus(Task.TaskStatus.Canceled);
+                    task.cancelTask();
                     taskRepo.saveTask(task);
                 } catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e) {
                     log.warn("Unsuccessful save: " + e.getMessage());
@@ -109,10 +108,11 @@ class AsyncClass implements Runnable {
         Language analyzedLanguage = lang.analyze(taskToBeAnalyzed);
         Optional<Task> currentTask = taskRepository.findByTaskId(taskToBeAnalyzed.getId());
 
-        if (currentTask.isPresent() && currentTask.get().isStatusProcessing()) {
+        if (currentTask.isPresent()) {
             TaskResult updatedTaskResult = new TaskResult(analyzedLanguage);
-            currentTask.get().updateTaskResultLanguage(updatedTaskResult);
-            taskRepository.saveTask(currentTask.get());
+            if(currentTask.get().concludeTask(updatedTaskResult)){
+                taskRepository.saveTask(currentTask.get());
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package LanguageDetection.Domain;
+package LanguageDetection.Domain.model;
 
 import LanguageDetection.domain.model.Category;
 import org.junit.jupiter.api.Test;
@@ -23,5 +23,17 @@ public class CategoryTest {
 
         //Assert
         assertEquals(category.getCategoryName().toString(), "Performing Arts");
+    }
+
+    @Test
+    void shouldDefineCategoryAsBaseCategory(){
+        //Arrange
+        Category category = new Category("Performing Arts");
+
+        //Act
+        category.defineAsBaseCategory();
+
+        //Assert
+        assertTrue(category.isBaseCategory());
     }
 }
