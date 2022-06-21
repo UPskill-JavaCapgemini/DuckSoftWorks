@@ -18,6 +18,9 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping(path = "/BlackList")
+/**
+ * Represents the REST Controller for BlackList related functionalities
+ */
 public class BlackListController {
 
     @Autowired
@@ -25,7 +28,9 @@ public class BlackListController {
 
 
     /**
-     * @return all BlackListItems already created
+     * This method fetches information for all blackListItems persisted in the database and returns a list containing them
+     *
+     * @return all BlackListItems already created and persisted in the database
      */
 
     @GetMapping("")
@@ -36,12 +41,10 @@ public class BlackListController {
         return new ResponseEntity<>(blackListItems, HttpStatus.OK);
     }
     /**
-     * This method receives a NewCategoryInfoDTO object, that is automatically created from a
-     * JSON by SpringFrameWork. The information is extracted from it and passed to an instance
-     * of BlackListService that returns a BlackListDTO with the info to be passed to the user in
-     * the ResponseEntity object.
+     * This method attempts to create and save a blackListItem with the information provided by the admin.
      *
-     * @param url receives a JSON file that is automatically transformed into a NewBlackListInfoDTO object
+     * @param url the NewBlackListInfoDTO containing the information about the BlackListItem to be created and saved
+     * @return a ResponseEntity that holds information of a blackListItem either being successfully created or not
      */
 
     @PostMapping("")
@@ -56,8 +59,9 @@ public class BlackListController {
     }
 
     /**
-     * @param blackListInfoDTO
-     * @return the deletion of a certain blackListItem that was previously created
+     * This method deletes a persisted BlackListItem if the item is persisted in the database.
+     * @param blackListInfoDTO the NewBlackListInfoDTO containing the information about the BlackListItem to be deleted
+     * @return a ResponseEntity that holds information of a blackListItem either being successfully deleted or not
      */
     @DeleteMapping("")
     @PreAuthorize("hasRole('ADMIN')")

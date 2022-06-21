@@ -2,6 +2,7 @@ package LanguageDetection.Domain.model.ValueObjects;
 
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -16,7 +17,7 @@ class TimeOutTest {
         TimeOut inputTimeOut = new TimeOut(validTimeOutInput);
 
         //Assert
-        Assert.assertNotNull(inputTimeOut);
+        Assertions.assertEquals(inputTimeOut.getTimeOut(), 1);
     }
 
     @Test
@@ -28,7 +29,7 @@ class TimeOutTest {
             TimeOut inputTimeOut= new TimeOut(invalidTimeOutInput);
         });
         //Assert
-        Assert.assertEquals(illegalArgumentException.getMessage(),"This TimeOut is not in the proper range");
+        Assertions.assertEquals(illegalArgumentException.getMessage(), "This TimeOut is not in the proper range");
     }
 
     @Test
@@ -40,6 +41,6 @@ class TimeOutTest {
             TimeOut inputTimeOut= new TimeOut(invalidTimeOutInput);
         });
         //Assert
-        Assert.assertEquals(illegalArgumentException.getMessage(),"This TimeOut is not in the proper range");
+        Assertions.assertEquals(illegalArgumentException.getMessage(), "This TimeOut is not in the proper range");
     }
 }

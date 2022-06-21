@@ -12,8 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * Represents the BlackList Repository   responsible for handling all interactions with DB of this Domain object.
- * Implements the IBlackListItemRepository interface to allow decoupling and easier transition to other DB in the future.
+ * Represents the BlackListRepository. The implementation of IBlackListItemRepository.
  */
 
 @Repository
@@ -22,15 +21,24 @@ public class BlackListRepository implements IBlackListItemRepository {
     @Autowired
     BlackListJpaRepository blackListJpaRepository;
 
+    /**
+     * This method attempts to save a BlackListItem.
+     *
+     * @param blackListItem the BlackListItem to be persisted in the database
+     * @return the saved BlackListItem if saving was successful
+     */
+
     public BlackListItem saveBlackListItem(BlackListItem blackListItem) {
         return blackListJpaRepository.save(blackListItem);
     }
 
+
     /**
-     * Method that allows to delete a BlackList Item by its url from DB
+     * This method deletes a persisted BlackListItem if the item is persisted in the database
+     * Returns a boolean that indicates if the deletion operation was successful
      *
-     * @param blackListUrl
-     * @return true if it was sucessfully deleted
+     * @param blackListUrl the BlackListUrl containing the information about the BlackListItem to be deleted
+     * @return true if it was sucessfully deleted, false if not
      */
 
     @Override
@@ -43,9 +51,10 @@ public class BlackListRepository implements IBlackListItemRepository {
     }
 
     /**
-     * Method that returns a list of all the BlackList Items found in the DB
+     * This method fetches information for all blackListItems persisted in the database and returns a list containing them if there are any
+     * or an empty list if no BlackListItems were persisted in the database
      *
-     * @return a list with all the BlackList Items found
+     * @return a BlackListItem list
      */
 
     public List<BlackListItem> findAllBlackListItems() {

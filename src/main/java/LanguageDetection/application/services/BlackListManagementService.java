@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+/**
+ * Represents the BlackListManagementService. The applicational service for BlackList functionalities
+ */
 public class BlackListManagementService {
 
     @Autowired
@@ -24,13 +27,10 @@ public class BlackListManagementService {
     BlackListDomainDTOAssembler blackListDomainDTOAssembler;
 
     /**
-     * Creates a new BlackListItem with a NewBlackListInfoDTO received by parameter.
-     * The method verifies if the Item already exists in the repository before
-     * the creation with the method isBlackListed.
-     * Then it saves it through the Interface IBlackListItemRepository in the Data Base Repository.
+     * This method attempts to create and save a blackListItem with the information provided by the admin.
      *
-     * @param blackListInputUrlDTO the NewBlackListInfoDTO object that contains an Url as a String.
-     * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional.
+     * @param blackListInputUrlDTO the NewBlackListInfoDTO containing the information about the BlackListItem to be created and saved
+     *      * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional if successful or an empty Optional
      */
     public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) {
         try {
@@ -44,10 +44,12 @@ public class BlackListManagementService {
     }
 
     /**
-     * Method that allows an Item (url) of the BlackList to be removed.
+     * This method deletes a persisted BlackListItem if the item is persisted in the database
+     * Returns a boolean that indicates if the deletion operation was successful
      *
-     * @param blackListInfoDTO
-     * @return a deleted blackListItem
+     *
+     * @param blackListInfoDTO the NewBlackListInfoDTO containing the information about the BlackListItem to be deleted
+     * @return true if the BlackListItem has been successfully deleted, false if not
      */
 
     public boolean deleteBlackListItem(NewBlackListInfoDTO blackListInfoDTO) {
@@ -61,9 +63,10 @@ public class BlackListManagementService {
     }
 
     /**
-     * Method that allows the search for all the BlacklList items in the repository.
+     * This method fetches information for all blackListItems persisted in the database and returns a list containing them if there are any
+     * or an empty list if no BlackListItems were persisted in the database
      *
-     * @return list of blackListDTOS
+     * @return a BlackListDTO list
      */
 
     public List<BlackListDTO> getAllBlackListItems() {
