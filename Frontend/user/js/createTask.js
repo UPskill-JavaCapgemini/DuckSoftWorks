@@ -31,33 +31,6 @@ fetch('http://localhost:8080/LanguageDetection', {
 })
 }
 
-// function to create a task
-// function createNewTask(e) {
-//     e.preventDefault();
-//     console.log("hi there");
-//     var categoryInput = document.getElementById("createCategoryInput").value
-
-//   var stringified = JSON.stringify({ category : categoryInput })
-//   console.log(stringified);
-//   fetch('http://localhost:8080/Category', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ category : categoryInput }),
-//       credentials:"include"
-//     }).then(resp => {
-//         var responseContent = document.getElementById("create-task-response");
-//     if (resp.status === 201) {
-//         responseContent.textContent = "The task was successfully created!";
-//         console.log("Task was successfully created!")
-//     } else {
-//         responseContent.textContent = "The task couldn't be created!";
-//         console.log("Task not created")
-//     }
-// })
-// }
-
 
 // method to populate drop down menu of create a task
 function populateCategories(){

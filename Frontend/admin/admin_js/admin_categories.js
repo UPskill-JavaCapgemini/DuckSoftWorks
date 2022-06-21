@@ -30,28 +30,28 @@ function createNewCategory(e) {
 
 function deleteCategory(e) {
   e.preventDefault();
-  console.log("deleteCategory Initiated");
-  var categoryName = document.getElementById("createCategoryInput").value
+  var category = document.getElementById("category-dropdown")
+  var categoryOption = category.options[category.selectedIndex].value
 
-var stringified = JSON.stringify({ category : categoryName})
+var stringified = JSON.stringify({ category : categoryOption})
 console.log(stringified);
 fetch('http://localhost:8080/Category', {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ category : categoryName}),
+    body: JSON.stringify({ category : categoryOption}),
     credentials:"include"
   }).then(resp => {
       var responseContent = document.getElementById("create-category-response");
-  if (resp.status === 201) {
-      responseContent.textContent = "The category " + categoryName + " was successfully created!";
-      console.log("Category was successfully created!")
+  if (resp.status === 200) {
+      responseContent.textContent = "The category " + categoryOption + " was successfully deleted!";
+      console.log("Category was successfully deleted!")
       populateCategories();
 
   } else {
-      responseContent.textContent = "The category couldn't be created! Invalid format.";
-      console.log("Category not created")
+      responseContent.textContent = "The category couldn't be deleted.";
+      console.log("Category not deleted")
   }
 })
 }
