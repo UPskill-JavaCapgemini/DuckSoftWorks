@@ -10,7 +10,7 @@ import java.net.URL;
 @NoArgsConstructor
 @EqualsAndHashCode
 /**
- * Represents a BlackList DTO containing the Url that was inputted by the admin
+ * Represents a BlackListDTO containing the Url that was inputted by the admin
  */
 public class BlackListDTO {
 

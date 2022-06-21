@@ -30,7 +30,7 @@ public class BlackListController {
     /**
      * This method fetches information for all blackListItems persisted in the database and returns a list containing them
      *
-     * @return all BlackListItems already created and persisted in the database
+     * @return a ResponseEntity that holds information of a list with all existent BlackListItem entries or an empty list, if there are none
      */
 
     @GetMapping("")

@@ -19,6 +19,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/Category")
 
+/**
+ * Represents the REST Controller for Category related functionalities
+ */
+
 public class CategoryController {
 
     @Autowired
@@ -29,7 +33,9 @@ public class CategoryController {
     }
 
     /**
-     * @return all categories already created
+     * This method fetches information for all categories persisted in the database and returns a list containing them
+     *
+     * @return a ResponseEntity that holds information of a list with all existent Category entries
      */
     @GetMapping("")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
@@ -40,12 +46,10 @@ public class CategoryController {
     }
 
     /**
-     * This method receives a NewCategoryInfoDTO object, that is automatically created from a
-     * JSON by SpringFrameWork. The information is extracted from it and passed to an instance
-     * of Category Service that returns a CategoryDTO with the info to be passed to the user in
-     * the ResponseEntity object.
+     * This method attempts to create and save a category with the information provided by the admin.
      *
-     * @param category receives a JSON file that is automatically transformed into a NewCategoryInfoDTO object
+     * @param category the NewCategoryInfoDTO containing the information about the Category to be created and saved
+     * @return a ResponseEntity that holds information of a Category either being successfully created or not
      */
     @PostMapping("")
     @PreAuthorize("hasRole('ADMIN')")
@@ -59,8 +63,10 @@ public class CategoryController {
     }
 
     /**
-     * @param category
-     * @return the deletion of a certain category
+     * This method deletes a persisted Category if the item is persisted in the database.
+     *
+     * @param category the NewCategoryInfoDTO containing the information about the Category to be deleted
+     * @return  a ResponseEntity that holds information of a Category either being successfully deleted or not
      */
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("")

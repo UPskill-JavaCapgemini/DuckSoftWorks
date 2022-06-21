@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 /**
- * Represents the category service responsible for creating a category.
- *
- * @author DuckSoftWorks
+ * Represents the CategoryManagementService. The applicational service for Category functionalities
  */
 
 @Service
@@ -26,15 +24,13 @@ public class CategoryManagementService {
 
     @Autowired
     CategoryService categoryService;
-    /**
-     * Creates a new category with a NewCategoryInfoDTO received by parameter.
-     * The method verifies if category already exists in the repository before
-     * the creation with the method findCategoryById.
-     *
-     * @param infoDTO the NewCategoryInfoDTO object that contains a String that will be the CategoryName.
-     * @return CategoryDTO assembled by CategoryDomainDTOAssembler wrapped by an Optional.
-     */
 
+    /**
+     * This method attempts to create and save a Category with the information provided by the admin.
+     *
+     * @param infoDTO the NewCategoryInfoDTO containing the information about the Category to be created and saved
+     * @return CategoryDTO  CategoryDTO assembled through the CategoryDomainDTOAssembler wrapped in an Optional if successful or an empty Optional
+     */
     public Optional<CategoryDTO> createAndSaveCategory(NewCategoryInfoDTO infoDTO) {
         try{
             Category category = new Category(infoDTO.getCategory());
@@ -46,10 +42,10 @@ public class CategoryManagementService {
     }
 
     /**
-     * Method that allows the search for all the categories in the repository
-     * @return CategoryDTO list
+     * This method fetches information for all categories persisted in the database and returns a list containing them
+     *
+     * @return a CategoryDTO list
      */
-
     public List<CategoryDTO> getAllCategory() {
         List<Category> categories = categoryService.findAll();
 
@@ -63,11 +59,13 @@ public class CategoryManagementService {
     }
 
     /**
-     * Method that allows to delete one of the category inside the repository
-     * @param category
-     * @return if the category was successfully eliminated returns true
+     * This method deletes a persisted Category if it is persisted in the database
+     * Returns a boolean that indicates if the deletion operation was successful
+     *
+     *
+     * @param category the NewCategoryInfoDTO containing the information about the Category to be deleted
+     * @return true if the Category has been successfully deleted, false if not
      */
-
     public boolean deleteCategory(NewCategoryInfoDTO category) {
         try {
             CategoryName categoryName = new CategoryName(category.getCategory());

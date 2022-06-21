@@ -6,6 +6,7 @@ import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -81,6 +82,9 @@ public class Task implements AggregateRoot<Long> {
     @ManyToOne
     @JoinColumn(name = "CategoryName")
     Category category;
+
+    @Autowired
+    ITaskRepository iTaskRepository;
 
     Long userId;
 
