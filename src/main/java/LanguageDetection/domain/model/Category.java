@@ -5,6 +5,7 @@ import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;

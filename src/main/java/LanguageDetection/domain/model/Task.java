@@ -79,6 +79,7 @@ public class Task implements AggregateRoot<Long> {
      */
     @Getter
     @ManyToOne
+    @JoinColumn(name = "CategoryName")
     Category category;
 
     Long userId;

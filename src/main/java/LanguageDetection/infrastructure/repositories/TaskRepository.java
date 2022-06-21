@@ -56,8 +56,8 @@ public class TaskRepository implements ITaskRepository {
 	 * @param catName Category instance that wants to be searched in database
 	 * @return List of all tasks present with the category passed
 	 */
-	public List<Task> findByCategoryNameContaining(CategoryName catName) {
-		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserId(catName, Utils.getUserNameId());
+	public List<Task> findByCategoryNameContaining(Category category) {
+		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserId(category, Utils.getUserNameId());
 		return (List<Task>) listTasksByCategory;
 	}
 
