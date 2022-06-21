@@ -136,14 +136,30 @@ public class Task implements AggregateRoot<Long> {
         return this.currentStatus == TaskStatus.Processing;
     }
 
+    public boolean isStatusCanceled() {
+        return this.currentStatus == TaskStatus.Canceled;
+    }
+
     /**
      * Only to be used at asynchronous process, after language analysis
      *
      * @param updatedTaskResult
      */
-    public void updateTaskResultLanguage(TaskResult updatedTaskResult) {
-        this.taskResult = updatedTaskResult;
-        this.updateStatus(TaskStatus.Concluded);
+    public boolean concludeTask(TaskResult updatedTaskResult) {
+        if(!isStatusCanceled()){
+            this.taskResult = updatedTaskResult;
+            this.updateStatus(TaskStatus.Concluded);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean cancelTask(){
+        if(isStatusProcessing()){
+            this.updateStatus(TaskStatus.Canceled);
+            return true;
+        }
+        return false;
     }
 
     /**
