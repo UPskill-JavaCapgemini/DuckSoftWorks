@@ -83,9 +83,6 @@ public class Task implements AggregateRoot<Long> {
     @JoinColumn(name = "CategoryName")
     Category category;
 
-    @Autowired
-    ITaskRepository iTaskRepository;
-
     Long userId;
 
     protected Task() {
