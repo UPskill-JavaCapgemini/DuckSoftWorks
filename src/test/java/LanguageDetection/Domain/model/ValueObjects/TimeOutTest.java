@@ -1,4 +1,4 @@
-package LanguageDetection.Domain.ValueObjects;
+package LanguageDetection.Domain.model.ValueObjects;
 
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import org.junit.Assert;
