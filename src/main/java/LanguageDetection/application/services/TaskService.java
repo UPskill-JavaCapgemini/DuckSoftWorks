@@ -121,8 +121,8 @@ public class TaskService {
      * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance
      */
     public List<TaskDTO> findByCategoryNameContaining(CategoryNameDTO catName) {
-        CategoryName categoryName = new CategoryName(catName.getCategoryName());
-        List<Task> listTasksByCategory = iTaskRepository.findByCategoryNameContaining(categoryName);
+        Category category = new Category(catName.getCategoryName());
+        List<Task> listTasksByCategory = iTaskRepository.findByCategoryNameContaining(category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 

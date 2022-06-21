@@ -8,7 +8,7 @@ import javax.persistence.*;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
-@Embeddable
+@Embeddable()
 public class CategoryName implements ValueObject, Comparable<CategoryName> {
 
     private final String categoryName;

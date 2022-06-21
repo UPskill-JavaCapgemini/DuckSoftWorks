@@ -46,16 +46,10 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
         return this.equals(otherBlackList);
     }
 
-
-    public int compareTo(@NotNull BlackListUrl otherURL) {
-        return blackListUrl.compareTo(otherURL);
-    }
-
     /**
      * method that identify the BlackListUrl
      * @return the url
      */
-    @JsonGetter
     public BlackListUrl identity() {
         return this.blackListUrl;
     }
@@ -64,11 +58,4 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
     public boolean hasIdentity(BlackListUrl id) {
         return AggregateRoot.super.hasIdentity(id);
     }
-
-
-    /*private static boolean urlValidator(String url) {
-        // Get an `UrlValidator` using default schemes
-        UrlValidator defaultValidator = new UrlValidator();
-        return defaultValidator.isValid(url);
-    }*/
 }

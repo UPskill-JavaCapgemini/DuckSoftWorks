@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface TaskJpaRepository extends CrudRepository <Task, Long> {
     Iterable<Task> findByCurrentStatusLikeAndUserId(Task.TaskStatus st, Long userId);
 
-    Iterable<Task> findTaskByCategoryLikeAndUserId(CategoryName catName, Long userId);
+    Iterable<Task> findTaskByCategoryLikeAndUserId(Category category, Long userId);
 
     Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(Category category, Task.TaskStatus status, Long userId);
 
