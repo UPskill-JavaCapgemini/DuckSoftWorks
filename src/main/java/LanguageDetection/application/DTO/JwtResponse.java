@@ -22,8 +22,5 @@ public class JwtResponse extends RepresentationModel<UserDTO> {
     String username;
     @Getter
     @Setter
-    String email;
-    @Getter
-    @Setter
     List<String> roles;
 }
