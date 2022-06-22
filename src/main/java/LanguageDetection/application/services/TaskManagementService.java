@@ -65,7 +65,7 @@ public class TaskManagementService {
      * @return List of TaskDTO with all information
      */
     public List<TaskDTO> getAllTasks() {
-        List<Task> listAllTasks = iTaskRepository.findAllTasks();
+        List<Task> listAllTasks = taskService.findAllTasks();
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
         for (Task task : listAllTasks) {
@@ -84,7 +84,7 @@ public class TaskManagementService {
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
-        List<Task> listTasksByStatus = iTaskRepository.findByStatusContaining(status);
+        List<Task> listTasksByStatus = taskService.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -103,7 +103,7 @@ public class TaskManagementService {
      */
     public List<TaskDTO> findByCategoryNameContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
-        List<Task> listTasksByCategory = iTaskRepository.findByCategoryNameContaining(category);
+        List<Task> listTasksByCategory = taskService.findByCategoryNameContaining(category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -127,7 +127,7 @@ public class TaskManagementService {
         TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
-        List<Task> listTasksByStatusAndByCategory = iTaskRepository.findByStatusAndByCategoryContaining(status, category);
+        List<Task> listTasksByStatusAndByCategory = taskService.findByStatusAndByCategoryContaining(status, category);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
 
@@ -145,13 +145,10 @@ public class TaskManagementService {
      * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
      */
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
-        Optional<Task> optionalTask = iTaskRepository.findByTaskId(id.getId());
-        if (optionalTask.isPresent()) {
-            Task task = optionalTask.get();
-            if (task.cancelTask()) {
-                iTaskRepository.saveTask(task);
-                return Optional.of(taskDomainDTOAssembler.toCompleteDTO(task));
-            }
+
+        Optional<Task> opTask = taskService.cancelTaskAnalysis(id.getId());
+        if (opTask.isPresent()) {
+            return Optional.of(taskDomainDTOAssembler.toCompleteDTO(opTask.get()));
         }
         return Optional.empty();
     }
