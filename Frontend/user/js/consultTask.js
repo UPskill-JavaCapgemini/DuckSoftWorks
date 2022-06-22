@@ -62,32 +62,38 @@ dropdown.selectedIndex = 0;
         if (resp.status === 200) {
             console.log("The filter is working")
             
-            // response.json().then(function(data) {  
-            //   let option;
-          
-            // for (let i = 0; i < data.length; i++) {
-            //     option = document.createElement('option');
-            //     option.text = data[i].category;
-            //     option.value = data[i].category;
-            //     dropdown.add(option);
-            // }    
-            // });
+     resp.json().then(function(data) {  
+          let table = document.getElementById("consult-task-data-table");   
+          table.innerHTML = ""
+
+        for (let i = 0; i < data.length; i++) {
+
+            let row = table.insertRow(i);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(0);
+            let cell3 = row.insertCell(0);
+            let cell4 = row.insertCell(0);
+            let cell5 = row.insertCell(0);
+            let cell6 = row.insertCell(0);
+            let cell7 = row.insertCell(0);
+            cell1.innerHTML = data[i].id;
+            cell2.innerHTML = data[i].date;
+            cell3.innerHTML = data[i].inputUrl;
+            //cell4.innerHTML = data[i].taskResult.language;
+            let dataForLanguage = data[i].taskResult.language
+            if( dataForLanguage === null){
+              cell4.innerHTML = "   ";
+            } else {
+              cell4.innerHTML = dataForLanguage;
+            }
+            cell5.innerHTML = data[i].currentStatus;
+            cell6.innerHTML = data[i].timeOut;
+            cell7.innerHTML = data[i].category;
+        }    
+        });
 
         } else {
             console.log("Nope!")
         }
-    })
+      })
     }
-
-
-/*     {
-        "id": 6,
-        "date": "2022-06-21T19:13:51.578+00:00",
-        "inputUrl": "https://www.w3.org/TR/PNG/iso_8859-1.txt",
-        "taskResult": {
-            "language": "ENGLISH"
-        },
-        "currentStatus": "Concluded",
-        "timeOut": 1,
-        "category": "Philosophy"
-    }, */
