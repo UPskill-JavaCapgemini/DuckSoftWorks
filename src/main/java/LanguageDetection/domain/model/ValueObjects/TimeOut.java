@@ -19,11 +19,6 @@ public class TimeOut implements ValueObject {
     /* For ORM purposes */
     protected TimeOut(){ this.timeOut = 0;}
 
-    @Override
-    public String toString() {
-        return String.valueOf(this.timeOut);
-    }
-
     public int getTimeOut(){
         return this.timeOut;
     }

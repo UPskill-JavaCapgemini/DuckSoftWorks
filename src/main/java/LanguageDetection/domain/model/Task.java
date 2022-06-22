@@ -181,18 +181,4 @@ public class Task implements AggregateRoot<Long> {
         Canceled,
         Processing
     }
-
-    @Override
-    public String toString() {
-        return "Task: " +
-                "id=" + id +
-                ", date=" + date +
-                ", url=" + inputUrl +
-                ", language=" + taskResult +
-                ", currentStatus=" + currentStatus +
-                ", timeOut=" + timeOut +
-                ", category=" + category;
-    }
-
-
 }

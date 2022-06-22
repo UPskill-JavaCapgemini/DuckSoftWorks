@@ -24,9 +24,4 @@ public class TaskResult implements ValueObject {
     public TaskResult(Language language){
         this.language = language;
     }
-
-    @Override
-    public String toString(){
-        return language.toString();
-    }
 }
