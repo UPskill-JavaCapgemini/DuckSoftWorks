@@ -40,6 +40,11 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     }
 
+    @Override
+    public String toString() {
+        return this.url.toString();
+    }
+
     /* For ORM purposes */
     protected InputUrl(){
         this.url=null;

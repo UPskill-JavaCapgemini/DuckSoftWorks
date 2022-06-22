@@ -9,30 +9,22 @@ class UserTest {
 
     @Test
     public void createUserWithCorrectAttributes(){
-        User user = new User("duck1", "duck1@gmail.com", "password");
+        User user = new User("duck1", "password");
 
         assertNotNull(user);
     }
 
     @Test
     public void ensureItsPossibleToGetUsernameFromUser(){
-        User user = new User("duck1", "duck1@gmail.com", "password");
+        User user = new User("duck1", "password");
 
         assertEquals(user.getUsername(), "duck1");
     }
 
     @Test
     public void ensureItsPossibleToGetPasswordFromUser(){
-        User user = new User("duck1", "duck1@gmail.com", "password");
+        User user = new User("duck1",  "password");
 
         assertEquals(user.getPassword(), "password");
     }
-
-    @Test
-    public void ensureItsPossibleToGetEmailFromUser(){
-        User user = new User("duck1", "duck1@gmail.com", "password");
-
-        assertEquals(user.getEmail(), "duck1@gmail.com");
-    }
-
 }

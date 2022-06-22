@@ -49,7 +49,16 @@ dropdown.selectedIndex = 0;
         var categoryOption = category.options[category.selectedIndex].value
         var status = document.getElementById("status-dropdown")
         var statusOption = status.options[status.selectedIndex].value
-        var urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption + "&" + "status=" + statusOption
+        var urlToRequest;
+         if(categoryOption != "" & statusOption != ""){
+          urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption + "&" + "status=" + statusOption;;
+        } else if (categoryOption != "" & statusOption === ""){
+          urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption;
+        } else if(categoryOption === "" & statusOption != ""){
+          urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "status=" + statusOption;
+        }
+        
+
        // http://localhost:8080/LanguageDetection?categoryName=Economics&status=Processing
       fetch(urlToRequest, {
             method: 'GET',

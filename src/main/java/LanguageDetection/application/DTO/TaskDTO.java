@@ -6,17 +6,22 @@ import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode
 public class TaskDTO {
     Long id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss dd-MM-yyyy", timezone = "GMT+1")
     Date date;
     String inputUrl;
     TaskResult taskResult;
