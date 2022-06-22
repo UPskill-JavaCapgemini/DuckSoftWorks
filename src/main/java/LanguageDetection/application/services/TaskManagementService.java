@@ -8,17 +8,14 @@ import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.ILanguageDetector;
-
+import LanguageDetection.domain.DomainService.TaskService;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
-import LanguageDetection.domain.model.ValueObjects.TaskStatus;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.*;
 
@@ -30,7 +27,7 @@ import java.util.*;
  * @author DuckSoftWorks Team
  */
 @Service
-public class TaskService {
+public class TaskManagementService {
 
 
 
@@ -44,7 +41,7 @@ public class TaskService {
     TaskFactory taskFactory;
 
     @Autowired
-    ILanguageDetector iLanguageDetector;
+    TaskService taskService;
 
 
     /**
@@ -61,8 +58,7 @@ public class TaskService {
             if (opCreatedTask.isPresent())
             {
                 Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
-
-                iLanguageDetector.languageAnalysis(savedTask);
+                taskService.initializeLanguageAnalysis(savedTask);
                 return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
             }
         } catch (MalformedURLException e) {
@@ -93,7 +89,7 @@ public class TaskService {
      * @return List of TaskDTO with all information of task that has status the same as String inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
-        TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
+        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = iTaskRepository.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
@@ -132,7 +128,7 @@ public class TaskService {
      * status the same as string inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
-        TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
+        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
         List<Task> listTasksByStatusAndByCategory = iTaskRepository.findByStatusAndByCategoryContaining(status, category);
