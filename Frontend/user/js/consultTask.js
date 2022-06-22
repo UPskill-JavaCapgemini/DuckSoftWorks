@@ -63,6 +63,9 @@ dropdown.selectedIndex = 0;
             console.log("The filter is working")
             
      resp.json().then(function(data) {  
+          let yourTasks = document.getElementById("tasks_consult_table");
+          yourTasks.innerHTML = "Your Tasks"
+
           let table = document.getElementById("consult-task-data-table");   
           table.innerHTML = ""
           let TaskIdHead = document.createElement("th");
