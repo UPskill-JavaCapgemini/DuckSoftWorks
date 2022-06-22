@@ -88,7 +88,6 @@ public class Bootstrap implements InitializingBean {
 
         User admin = new User(
                 "adminduck",
-                "adminduck@ducks.com",
                 passwordEncoder.encode(adminPW));
 
         Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN).get();
@@ -105,8 +104,8 @@ public class Bootstrap implements InitializingBean {
         String user1PW  = "1234";
         String user2PW = "1234";
 
-        User user1  = new User("firstduck","firstduck@ducks.com", passwordEncoder.encode(user1PW));
-        User user2  = new User("secondduck","secondduck@ducks.com", passwordEncoder.encode(user2PW));
+        User user1  = new User("firstduck", passwordEncoder.encode(user1PW));
+        User user2  = new User("secondduck", passwordEncoder.encode(user2PW));
 
         Role userRole = roleRepository.findByName(ERole.ROLE_USER).get();
         Set<Role> roles = new HashSet<>();

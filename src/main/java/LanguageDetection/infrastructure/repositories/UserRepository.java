@@ -70,9 +70,4 @@ public class UserRepository {
         return userJpaRepository.existsByUsername(username);
     }
 
-    public boolean existsByEmail(String email) {
-        return userJpaRepository.existsByEmail(email);
-    }
-
-
 }
