@@ -3,6 +3,8 @@ package LanguageDetection.domain.DomainService;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import java.net.MalformedURLException;
-import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 @Slf4j
 @Component
@@ -31,6 +31,10 @@ public class TaskService {
 
 
     public Optional<Task> createAndSaveTask(String url, int timeout, String category) throws MalformedURLException {
+
+        if (isBeingAnalyzed(url))
+            return Optional.empty();
+
         Optional<Task> opCreatedTask = taskFactory.createTask(url, timeout, category);
         if (opCreatedTask.isPresent()) {
             Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
@@ -78,5 +82,11 @@ public class TaskService {
             }
         };
         return timerTask;
+    }
+
+    private boolean isBeingAnalyzed(String url) throws MalformedURLException {
+        InputUrl inputUrl = new InputUrl(url);
+        return iTaskRepository.existsByUrlAndIsProcessing(inputUrl);
+
     }
 }

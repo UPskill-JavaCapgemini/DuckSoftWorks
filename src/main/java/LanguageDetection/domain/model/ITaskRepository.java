@@ -1,6 +1,6 @@
 package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 
 
@@ -21,5 +21,6 @@ public interface ITaskRepository {
 
     List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category);
 
+    boolean existsByUrlAndIsProcessing(InputUrl url);
 
 }

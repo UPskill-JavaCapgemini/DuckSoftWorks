@@ -2,6 +2,7 @@ package LanguageDetection.infrastructure.repositories.JPARepositories;
 
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 
 import org.springframework.data.repository.CrudRepository;
@@ -19,5 +20,7 @@ public interface TaskJpaRepository extends CrudRepository <Task, Long> {
     Optional<Task> findById(String name);
 
     Iterable<Task> findAllByUserId(Long userId);
+
+    boolean existsTaskByInputUrlAndCurrentStatusAndUserId(InputUrl inputUrl,TaskStatus status,Long userId);
 
 }
