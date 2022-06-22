@@ -12,10 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Represents the category repository responsible for handling all interactions with DB of this Domain object.
- * Implements the ICategoryRepository interface to allow decoupling and easier transition to other DB in the future.
- *
- * @author DuckSoftWorks Team
+ * Represents the CategoryRepository. The implementation of ICategoryRepository.
+ * Handles all interactions with the database of this domain entity
  */
 
 @Repository
@@ -26,10 +24,10 @@ public class CategoryRepository implements ICategoryRepository {
     CategoryJpaRepository categoryJpaRepository;
 
     /**
-     * Method that allows the search of a category by its ID
+     * Method that allows the search of a category by its CategoryName
      *
-     * @param categoryName
-     * @return an Optinal of the found category
+     * @param categoryName the CategoryName of a Category
+     * @return an Optional of a Category if found, an empty Optional if not
      */
     @Override
     public Optional<Category> findCategoryByCategoryName(CategoryName categoryName) {
@@ -37,10 +35,10 @@ public class CategoryRepository implements ICategoryRepository {
     }
 
     /**
-     * Method that allows to save a category to the DB
+     * Method that attempts to save a category
      *
-     * @param category
-     * @return the saved category
+     * @param category the Category to be persisted in the database
+     * @return the saved BlackListItem, if saving was successful
      */
 
     @Override
@@ -49,10 +47,11 @@ public class CategoryRepository implements ICategoryRepository {
     }
 
     /**
-     * Method that allows to delete a category by its name from DB
+     * This method deletes a persisted Category if it has been persisted in the database and is not a base Category
+     * Returns a boolean that indicates if the deletion operation was successful
      *
-     * @param categoryName
-     * @return true if it was sucessfully deleted
+     * @param categoryName the CategoryName containing the information about the Category to be deleted
+     * @return true if it was sucessfully deleted, false if not
      */
     @Override
     @Transactional
@@ -62,20 +61,15 @@ public class CategoryRepository implements ICategoryRepository {
     }
 
     /**
-     * Method that returns all the category found on DB in a list
+     * This method fetches information for all Category items persisted in the database and returns a list containing them
      *
-     * @return a list with all the category found
+     * @return a Category list
      */
-
     @Override
     public List<Category> findAll() {
         return (List<Category>) categoryJpaRepository.findAll();
     }
 
-    /**
-     * Method that checks if the category is part of the group that is protected from delete.
-     * @param category
-     * @return true if the category cannot be deleted.
-     */
+
 }
 

@@ -44,6 +44,7 @@ dropdown.selectedIndex = 0;
     function filterTasksStatusCategory(e) {
         e.preventDefault();
         console.log("hi there");
+
         var category = document.getElementById("category-dropdown")
         var categoryOption = category.options[category.selectedIndex].value
         var status = document.getElementById("status-dropdown")
@@ -61,6 +62,16 @@ dropdown.selectedIndex = 0;
         if (resp.status === 200) {
             console.log("The filter is working")
             
+            // response.json().then(function(data) {  
+            //   let option;
+          
+            // for (let i = 0; i < data.length; i++) {
+            //     option = document.createElement('option');
+            //     option.text = data[i].category;
+            //     option.value = data[i].category;
+            //     dropdown.add(option);
+            // }    
+            // });
 
         } else {
             console.log("Nope!")
@@ -69,3 +80,14 @@ dropdown.selectedIndex = 0;
     }
 
 
+/*     {
+        "id": 6,
+        "date": "2022-06-21T19:13:51.578+00:00",
+        "inputUrl": "https://www.w3.org/TR/PNG/iso_8859-1.txt",
+        "taskResult": {
+            "language": "ENGLISH"
+        },
+        "currentStatus": "Concluded",
+        "timeOut": 1,
+        "category": "Philosophy"
+    }, */

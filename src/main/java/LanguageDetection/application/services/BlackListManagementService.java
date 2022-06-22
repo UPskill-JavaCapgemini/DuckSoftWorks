@@ -30,7 +30,7 @@ public class BlackListManagementService {
      * This method attempts to create and save a blackListItem with the information provided by the admin.
      *
      * @param blackListInputUrlDTO the NewBlackListInfoDTO containing the information about the BlackListItem to be created and saved
-     *      * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional if successful or an empty Optional
+     * @return BlackListDTO assembled through the BlackListDomainDTOAssembler wrapped in an Optional if successful or an empty Optional
      */
     public Optional<BlackListDTO> createAndSaveBlackListItem(NewBlackListInfoDTO blackListInputUrlDTO) {
         try {

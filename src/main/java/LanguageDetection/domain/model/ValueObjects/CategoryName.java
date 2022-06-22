@@ -8,6 +8,11 @@ import javax.persistence.*;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
 
+/**
+ * Represents the CategoryName of a Category. Assumes a default value of "Philosophy".
+ * It validates if the provided value for the name is not made only of special characters, numbers, spaces or blank spaces
+ */
+
 @Embeddable()
 public class CategoryName implements ValueObject, Comparable<CategoryName> {
 
@@ -34,15 +39,33 @@ public class CategoryName implements ValueObject, Comparable<CategoryName> {
         }
     }
 
+    /**
+     * This method returns a String with the Category value
+     *
+     * @return a String with a CategoryName value
+     */
     public String getCategoryName() {
         return categoryName;
     }
 
+    /**
+     * This method represents a CategoryName textually
+     * Returns a String with the CategoryName information
+     *
+     * @return a String with a textual representation of the CategoryName
+     */
     @Override
     public String toString() {
         return this.categoryName;
     }
 
+    /**
+     * This method compares a CategoryName with another CategoryName
+     * Returns
+     *
+     * @param o the other CategoryName used for comparison with this CategoryName
+     * @return an int representing the difference between lexicographical order of the string values based on unicode. Used for sorting purposes.
+     */
     @Override
     public int compareTo(@NotNull CategoryName o) {
         return this.categoryName.compareTo(o.categoryName);

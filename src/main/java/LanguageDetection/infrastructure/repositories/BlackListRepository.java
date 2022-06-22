@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Represents the BlackListRepository. The implementation of IBlackListItemRepository.
+ * Handles all interactions with the database of this domain entity
  */
 
 @Repository
@@ -22,10 +23,10 @@ public class BlackListRepository implements IBlackListItemRepository {
     BlackListJpaRepository blackListJpaRepository;
 
     /**
-     * This method attempts to save a BlackListItem.
+     * This method attempts to save a BlackListItem
      *
      * @param blackListItem the BlackListItem to be persisted in the database
-     * @return the saved BlackListItem if saving was successful
+     * @return the saved BlackListItem, if saving was successful
      */
 
     public BlackListItem saveBlackListItem(BlackListItem blackListItem) {

@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 /**
- * Represents a NewBLackList DTO info parsed from a JSON sent via HTTP request
+ * Represents a NewBLackListDTO info parsed from a JSON sent via HTTP request
  */
 public class NewBlackListInfoDTO {
     @Getter
