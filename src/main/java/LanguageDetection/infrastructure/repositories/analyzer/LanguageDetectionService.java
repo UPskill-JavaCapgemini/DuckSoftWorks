@@ -8,14 +8,10 @@ import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -26,7 +22,7 @@ public class LanguageDetectionService implements ILanguageDetector{
 
 
     @Autowired
-    AsyncClass analyzerService;
+    AnalysisHelper analyzerService;
 
 
 
@@ -49,7 +45,7 @@ public class LanguageDetectionService implements ILanguageDetector{
 
 @Slf4j
 @Component
-class AsyncClass implements Runnable {
+class AnalysisHelper implements Runnable {
     @Setter
     private Task taskToBeAnalyzed;
 

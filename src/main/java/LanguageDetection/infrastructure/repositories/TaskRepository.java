@@ -3,6 +3,7 @@ package LanguageDetection.infrastructure.repositories;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 
 import LanguageDetection.domain.util.Utils;
@@ -83,4 +84,10 @@ public class TaskRepository implements ITaskRepository {
 		return taskJpaRepository.findById(identity);
     }
 
+	@Override
+	public boolean existsByUrlAndIsProcessing(InputUrl url) {
+    	Long userId = Utils.getUserNameId();
+    	TaskStatus processing = TaskStatus.Processing;
+		return taskJpaRepository.existsTaskByInputUrlAndCurrentStatusAndUserId(url,processing,userId);
+	}
 }
