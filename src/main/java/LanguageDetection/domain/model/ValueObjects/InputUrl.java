@@ -40,11 +40,6 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     }
 
-    @Override
-    public String toString() {
-        return this.url.toString();
-    }
-
     /* For ORM purposes */
     protected InputUrl(){
         this.url=null;
@@ -55,19 +50,6 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
     }
 
     public Text getTextOfUrl() { return this.text;}
-
-    @Override
-    public boolean equals(Object otherURL) {
-        InputUrl url = (InputUrl) otherURL;
-        if (url.getUrlObject().getHost() == this.getUrlObject().getHost()) {
-            return true;
-        } else return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return url != null ? url.hashCode() : 0;
-    }
 
     @Override
     public int compareTo(@NotNull InputUrl o) {
