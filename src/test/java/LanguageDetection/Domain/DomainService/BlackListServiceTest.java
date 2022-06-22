@@ -3,6 +3,7 @@ package LanguageDetection.Domain.DomainService;
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.model.BlackListItem;
 import LanguageDetection.domain.model.IBlackListItemRepository;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -70,14 +71,30 @@ class BlackListServiceTest {
     }
 
     @Test
-    void deleteByBlackListUrl() {
+    void ensureIsBlackListedMethodReturnsTrueWhenUrlIsListedOnDatabase() throws MalformedURLException {
+        //Arrange
+        String inURL = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
+        String blackListedURL = "https://www.w3.org/";
+        BlackListItem blackListItem = new BlackListItem(blackListedURL);
+        InputUrl inputUrl = new InputUrl(inURL);
+
+        //Act
+        when(blackListService.findAllBlackListItems()).thenReturn(List.of(blackListItem));
+
+        //Assert
+        assertTrue(blackListService.isBlackListed(inputUrl));
     }
 
     @Test
-    void isBlackListed() {
-    }
+    void ensureIsBlackListedMethodReturnsFalseWhenUrlIsNotListedOnDatabase() throws MalformedURLException {
+        //Arrange
+        String inURL = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
+        InputUrl inputUrl = new InputUrl(inURL);
 
-    @Test
-    void findAllBlackListItems() {
+        //Act
+        when(blackListService.findAllBlackListItems()).thenReturn(List.of());
+
+        //Assert
+        assertFalse(blackListService.isBlackListed(inputUrl));
     }
 }
