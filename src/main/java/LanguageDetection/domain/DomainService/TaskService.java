@@ -1,8 +1,11 @@
 package LanguageDetection.domain.DomainService;
 
+
+import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import java.net.MalformedURLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -78,5 +82,39 @@ public class TaskService {
             }
         };
         return timerTask;
+    }
+
+    public List<Task> findAllTasks() {
+       return iTaskRepository.findAllTasks();
+    }
+
+    public List<Task> findByStatusContaining(TaskStatus status) {
+        return iTaskRepository.findByStatusContaining(status);
+    }
+
+    public List<Task> findByCategoryNameContaining(Category category) {
+        return iTaskRepository.findByCategoryNameContaining(category);
+    }
+
+    public List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category) {
+        return iTaskRepository.findByStatusAndByCategoryContaining(status, category);
+    }
+
+    /**
+     * Handles the cancellation process of a language analysis from user input
+     *
+     * @param id if of a task that user wants to cancel
+     * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
+     */
+    public Optional<Task> cancelTaskAnalysis(Long id) {
+        Optional<Task> optionalTask = iTaskRepository.findByTaskId(id);
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            if (task.cancelTask()) {
+                iTaskRepository.saveTask(task);
+                return Optional.of(task);
+            }
+        }
+        return Optional.empty();
     }
 }
