@@ -7,12 +7,13 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.DomainService.TaskService;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -82,7 +83,7 @@ public class TaskManagementService {
      * @return List of TaskDTO with all information of task that has status the same as String inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
-        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
+        TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = iTaskRepository.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
@@ -123,7 +124,7 @@ public class TaskManagementService {
      * status the same as string inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
-        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
+        TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
         List<Task> listTasksByStatusAndByCategory = iTaskRepository.findByStatusAndByCategoryContaining(status, category);

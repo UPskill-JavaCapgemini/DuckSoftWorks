@@ -1,12 +1,12 @@
 package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -172,13 +172,4 @@ public class Task implements AggregateRoot<Long> {
         this.currentStatus = status;
     }
 
-    /**
-     * Possibilities of what can be the Task status
-     */
-    @Getter
-    public enum TaskStatus {
-        Concluded,
-        Canceled,
-        Processing
-    }
 }
