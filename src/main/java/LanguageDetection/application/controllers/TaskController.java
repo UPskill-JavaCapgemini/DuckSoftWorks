@@ -1,7 +1,7 @@
 package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.*;
-import LanguageDetection.application.services.TaskService;
+import LanguageDetection.application.services.TaskManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,10 +25,10 @@ import java.util.Optional;
 public class TaskController {
 
     @Autowired
-    private TaskService taskService;
+    private TaskManagementService taskManagementService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
+    public TaskController(TaskManagementService taskManagementService) {
+        this.taskManagementService = taskManagementService;
     }
 
     /**
@@ -41,7 +41,7 @@ public class TaskController {
     @PostMapping("")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Object> createAndSaveTask(@RequestBody NewTaskInfoDTO info) {
-        Optional<TaskStatusDTO> taskCreated = taskService.createAndSaveTask(info);
+        Optional<TaskStatusDTO> taskCreated = taskManagementService.createAndSaveTask(info);
         if (taskCreated.isPresent()) {
             return new ResponseEntity<>(taskCreated.get(), HttpStatus.CREATED);
         } else {
@@ -68,13 +68,13 @@ public class TaskController {
         List<TaskDTO> tasks;
 
         if (status == null && categoryName == null)
-            tasks = taskService.getAllTasks();
+            tasks = taskManagementService.getAllTasks();
         else if (status != null && categoryName == null){
-            tasks = taskService.findByStatusContaining(status);}
+            tasks = taskManagementService.findByStatusContaining(status);}
         else if(status == null) {
-            tasks = taskService.findByCategoryNameContaining(categoryName); }
+            tasks = taskManagementService.findByCategoryNameContaining(categoryName); }
         else {
-            tasks = taskService.findByStatusContainingAndCategoryContaining(status, categoryName);
+            tasks = taskManagementService.findByStatusContainingAndCategoryContaining(status, categoryName);
         }
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
@@ -89,7 +89,7 @@ public class TaskController {
     @PostMapping(value = "/cancel", consumes = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) {
-        Optional<TaskDTO> cancelTask = taskService.cancelTaskAnalysis(id);
+        Optional<TaskDTO> cancelTask = taskManagementService.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){
             return new ResponseEntity<>(cancelTask.get(), HttpStatus.ACCEPTED);
         } else {
