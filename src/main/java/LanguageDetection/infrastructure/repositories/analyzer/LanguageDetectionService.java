@@ -23,11 +23,7 @@ import java.util.concurrent.Executors;
 @Component
 public class LanguageDetectionService implements ILanguageDetector{
 
-    private static final long CONSTANT_TO_MINUTES = 60000L;
 
-
-    @Autowired
-    TaskRepository taskRepo;
 
     @Autowired
     AsyncClass analyzerService;
@@ -46,45 +42,8 @@ public class LanguageDetectionService implements ILanguageDetector{
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(analyzerService);
 
-        initializeTimer(task);
-
         executorService.shutdown();
     }
-
-    /**
-     * Initializes a new timer to handle timeout for language analysis which was sent from user input.
-     *
-     * @param taskrepo Task instance which was already created and has timeout limit.
-     * @return timer
-     */
-    protected Timer initializeTimer(Task taskrepo) {
-        Timer timer = new Timer(Thread.currentThread().getName(), true);
-        TimerTask interruptReturnedValues = timeOutAnalysis(taskrepo);
-        timer.schedule(interruptReturnedValues, (taskrepo.getTimeOut().getTimeOut() * CONSTANT_TO_MINUTES));
-        return timer;
-    }
-
-    /**
-     * Handles the canceling method after timelimit reaches.
-     *
-     * @param task task instance of what needs to be canceled.
-     * @return Timer task
-     */
-    protected TimerTask timeOutAnalysis(Task task) {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    task.cancelTask();
-                    taskRepo.saveTask(task);
-                } catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e) {
-                    log.warn("Unsuccessful save: " + e.getMessage());
-                }
-            }
-        };
-        return timerTask;
-    }
-
 
 }
 
