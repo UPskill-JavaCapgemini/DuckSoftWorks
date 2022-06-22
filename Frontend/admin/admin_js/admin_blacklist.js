@@ -45,7 +45,6 @@ function findAllBlackListItems(e) {
         console.log("The blackList returned")
         
         resp.json().then(function(data) {  
-          let blackListEntry;   
           blackListTable.innerHTML = ""
       
         for (let i = 0; i < data.length; i++) {
