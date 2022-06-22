@@ -5,6 +5,7 @@ import LanguageDetection.domain.model.ValueObjects.TaskResult;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,11 @@ public class TaskDTO {
     Date date;
     String inputUrl;
     TaskResult taskResult;
-    Task.TaskStatus currentStatus;
+    TaskStatus currentStatus;
     int timeOut;
     String category;
 
-    public TaskDTO(Long id, Date date, InputUrl inputUrl, TaskResult taskResult, Task.TaskStatus currentStatus, TimeOut timeOut, Category category) {
+    public TaskDTO(Long id, Date date, InputUrl inputUrl, TaskResult taskResult, TaskStatus currentStatus, TimeOut timeOut, Category category) {
         this.id = id;
         this.date = date;
         this.inputUrl = inputUrl.toString();

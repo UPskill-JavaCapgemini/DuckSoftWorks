@@ -9,6 +9,7 @@ import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.Language;
 import LanguageDetection.domain.model.ValueObjects.TaskResult;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import LanguageDetection.domain.util.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -67,7 +68,7 @@ class TaskFactoryTest {
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
 
-            assertEquals(opTask.get().getCurrentStatus(), Task.TaskStatus.Processing);
+            assertEquals(opTask.get().getCurrentStatus(), TaskStatus.Processing);
         }
     }
 
@@ -89,7 +90,7 @@ class TaskFactoryTest {
             opTask.get().cancelTask();
 
             //Assert
-            assertEquals(opTask.get().getCurrentStatus(), Task.TaskStatus.Canceled);
+            assertEquals(opTask.get().getCurrentStatus(), TaskStatus.Canceled);
         }
     }
 
@@ -113,7 +114,7 @@ class TaskFactoryTest {
             opTask.get().cancelTask();
 
             //Assert
-            assertEquals(opTask.get().getCurrentStatus(), Task.TaskStatus.Concluded);
+            assertEquals(opTask.get().getCurrentStatus(), TaskStatus.Concluded);
         }
     }
 
@@ -137,7 +138,7 @@ class TaskFactoryTest {
             opTask.get().concludeTask(taskResult);
 
             //Assert
-            assertEquals(opTask.get().getCurrentStatus(), Task.TaskStatus.Canceled);
+            assertEquals(opTask.get().getCurrentStatus(), TaskStatus.Canceled);
         }
     }
 
@@ -160,7 +161,7 @@ class TaskFactoryTest {
             opTask.get().concludeTask(taskResult);
 
             //Assert
-            assertEquals(opTask.get().getCurrentStatus(), Task.TaskStatus.Concluded);
+            assertEquals(opTask.get().getCurrentStatus(), TaskStatus.Concluded);
         }
     }
 
