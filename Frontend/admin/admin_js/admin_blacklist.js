@@ -64,3 +64,32 @@ function findAllBlackListItems(e) {
 })
 }
 
+function deleteBlackListInitiated(e) {
+    e.preventDefault();
+    var blackListDeleteInput = document.getElementById("deleteBlackListInputEntry").value
+    console.log("deleteBlackListInitiated")
+  
+  var stringified = JSON.stringify({ url : blackListDeleteInput })
+  console.log(stringified);
+  fetch('http://localhost:8080/BlackList', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url : blackListDeleteInput}),
+      credentials:"include"
+    }).then(resp => {
+        var responseContent = document.getElementById("delete-blacklist-response");
+    if (resp.status === 200) {
+        responseContent.textContent = "The BlackList item " + blackListDeleteInput + " was successfully deleted!";
+        console.log("BlackList item was successfully deleted!")
+        findAllBlackListItems(e)
+
+    } else {
+        responseContent.textContent = "The BlackList item couldn't be deleted! Invalid format or url not blacklisted.";
+        console.log("BlackList not deleted")
+    }
+})
+}
+
+

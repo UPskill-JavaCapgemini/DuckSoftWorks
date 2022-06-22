@@ -84,12 +84,13 @@
       </div>
   </form>
 
-
-    <!-- SEE BLACKLIST -->
-
   <br/>
-    <p class="text-center" id="create-blacklist-response"></p>
-  <br/>
+  <p class="text-center" id="create-blacklist-response"></p>
+<br/>
+    
+
+
+<!-- SEE BLACKLIST -->
 
   <div class="container-fluid center">
     <div class="row justify-content-around">
@@ -155,15 +156,20 @@
           <label class="visually-hidden" for="link">Insert URL to delete </label>
           <div class="input-group">
             <div class="input-group-text">URL</div>
-            <input type="text" class="form-control" id="BlackListItemInput" placeholder="Insert URL to delete">
+            <input type="text" class="form-control" id="deleteBlackListInputEntry" placeholder="Insert URL to delete">
           </div>
         </div>
     
         <div class="col-12">
-            <button onclick="createNewBlackListItem(event)" type="submit" class="btn btn-dark">Delete</button>
+            <button onclick="deleteBlackListInitiated(event)" type="submit" 
+            class="btn btn-dark">Delete</button>
           </div>
         </form>
 
+
+    <br/>
+    <p class="text-center" id="delete-blacklist-response"></p>
+      <br/>
 
 </main>
 </body>
