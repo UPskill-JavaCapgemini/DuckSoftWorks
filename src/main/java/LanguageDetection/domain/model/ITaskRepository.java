@@ -1,6 +1,8 @@
 package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.model.ValueObjects.CategoryName;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -13,11 +15,11 @@ public interface ITaskRepository {
 
     List<Task> findAllTasks();
 
-    List<Task> findByStatusContaining(Task.TaskStatus st);
+    List<Task> findByStatusContaining(TaskStatus st);
 
     List<Task> findByCategoryNameContaining(Category category);
 
-    List<Task> findByStatusAndByCategoryContaining(Task.TaskStatus status, Category category);
+    List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category);
 
 
 }

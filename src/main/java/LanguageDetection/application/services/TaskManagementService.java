@@ -7,18 +7,18 @@ import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
 
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
-import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.DomainService.TaskService;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.util.*;
-
 
 
 /**
@@ -30,15 +30,11 @@ import java.util.*;
 public class TaskManagementService {
 
 
-
     @Autowired
     TaskDomainDTOAssembler taskDomainDTOAssembler;
 
     @Autowired
     ITaskRepository iTaskRepository;
-
-    @Autowired
-    TaskFactory taskFactory;
 
     @Autowired
     TaskService taskService;
@@ -52,23 +48,20 @@ public class TaskManagementService {
      * @return TaskStatusDTO assembled by taskDomainDTOAssembler, with information of Status when created(Processing) or empty if url is on blacklist and unable to crate
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
-
         try {
-            Optional<Task> opCreatedTask = taskFactory.createTask(userInput.getUrl(),userInput.getTimeOut(), userInput.getCategory());
-            if (opCreatedTask.isPresent())
-            {
-                Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
-                taskService.initializeLanguageAnalysis(savedTask);
-                return Optional.of(taskDomainDTOAssembler.toDTO(savedTask));
+            Optional<Task> opTask = taskService.createAndSaveTask(userInput.getUrl(), userInput.getTimeOut(), userInput.getCategory());
+            if (opTask.isPresent()) {
+                return Optional.of(taskDomainDTOAssembler.toDTO(opTask.get()));
             }
+            return Optional.empty();
         } catch (MalformedURLException e) {
             return Optional.empty();
         }
-        return Optional.empty();
     }
 
     /**
      * Fetch all tasks found in database
+     *
      * @return List of TaskDTO with all information
      */
     public List<TaskDTO> getAllTasks() {
@@ -85,11 +78,12 @@ public class TaskManagementService {
 
     /**
      * Fetch all tasks found in database with the status passed in StatusDTO instance
+     *
      * @param inputStatus StatusDTO object with string of status that want to be searched
      * @return List of TaskDTO with all information of task that has status the same as String inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
-        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
+        TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
         List<Task> listTasksByStatus = iTaskRepository.findByStatusContaining(status);
 
         List<TaskDTO> taskDTOList = new ArrayList<>();
@@ -103,6 +97,7 @@ public class TaskManagementService {
 
     /**
      * Fetch all tasks found in database with the category passed in CategoryNameDTO instance
+     *
      * @param catName CategoryNameDTO object with string of category name that want to be searched
      * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance
      */
@@ -122,13 +117,14 @@ public class TaskManagementService {
 
     /**
      * Fetch all tasks found in database with the category and status passed in CategoryNameDTO instance and StatusDTO instance
-     * @param inputStatus StatusDTO object with string of status that want to be searched
+     *
+     * @param inputStatus   StatusDTO object with string of status that want to be searched
      * @param inputCategory CategoryNameDTO object with string of category name that want to be searched
      * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance and
      * status the same as string inside StatusDTO instance
      */
     public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
-        Task.TaskStatus status = Task.TaskStatus.valueOf(inputStatus.getStatus());
+        TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
         Category category = new Category(inputCategory.getCategoryName());
 
         List<Task> listTasksByStatusAndByCategory = iTaskRepository.findByStatusAndByCategoryContaining(status, category);
@@ -144,6 +140,7 @@ public class TaskManagementService {
 
     /**
      * Handles the cancellation process of a language analysis from user input
+     *
      * @param id if of a task that user wants to cancel
      * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
      */
@@ -151,7 +148,7 @@ public class TaskManagementService {
         Optional<Task> optionalTask = iTaskRepository.findByTaskId(id.getId());
         if (optionalTask.isPresent()) {
             Task task = optionalTask.get();
-            if(task.cancelTask()){
+            if (task.cancelTask()) {
                 iTaskRepository.saveTask(task);
                 return Optional.of(taskDomainDTOAssembler.toCompleteDTO(task));
             }

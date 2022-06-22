@@ -2,12 +2,15 @@ package LanguageDetection.domain.DomainService;
 
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.TaskFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
+import java.net.MalformedURLException;
+import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,9 +26,21 @@ public class TaskService {
     @Autowired
     ILanguageDetector iLanguageDetector;
 
+    @Autowired
+    TaskFactory taskFactory;
 
 
-    public void initializeLanguageAnalysis(Task savedTask){
+    public Optional<Task> createAndSaveTask(String url, int timeout, String category) throws MalformedURLException {
+        Optional<Task> opCreatedTask = taskFactory.createTask(url, timeout, category);
+        if (opCreatedTask.isPresent()) {
+            Task savedTask = this.iTaskRepository.saveTask(opCreatedTask.get());
+            initializeLanguageAnalysis(savedTask);
+            return Optional.of(savedTask);
+        }
+        return Optional.empty();
+    }
+
+    public void initializeLanguageAnalysis(Task savedTask) {
         iLanguageDetector.languageAnalysis(savedTask);
         initializeTimer(savedTask);
     }
@@ -54,7 +69,7 @@ public class TaskService {
             @Override
             public void run() {
                 try {
-                    if(task.cancelTask()){
+                    if (task.cancelTask()) {
                         iTaskRepository.saveTask(task);
                     }
                 } catch (ObjectOptimisticLockingFailureException | StaleObjectStateException e) {
