@@ -86,7 +86,7 @@ public class TaskService {
     }
 
 
-    public void initializeLanguageAnalysis(Task savedTask) {
+    private void initializeLanguageAnalysis(Task savedTask) {
         iLanguageDetector.languageAnalysis(savedTask);
         initializeTimer(savedTask);
     }
