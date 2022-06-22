@@ -40,7 +40,7 @@ public class BlackListService {
             String blackListUrlPath = blackListItemRepo.getBlackListUrl().toString();
             if (inputUrlPath.contains(blackListUrlPath)) {
 
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("BlackList already blocks this URL");
             }
         }
         return blackListItemRepository.saveBlackListItem(blackListItem);

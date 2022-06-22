@@ -46,6 +46,11 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
         return this.equals(otherBlackList);
     }
 
+    @Override
+    public String toString() {
+        return blackListUrl.toString();
+    }
+
     /**
      * method that identify the BlackListUrl
      * @return the url
