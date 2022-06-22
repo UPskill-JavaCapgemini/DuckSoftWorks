@@ -33,16 +33,4 @@ public class TaskDTO {
         this.category = category.getCategoryName().getCategoryName();
     }
 
-    @Override
-    public String toString() {
-        return "Task :" +
-                " id=" + id +
-                ", date=" + date +
-                ", inputUrl=" + inputUrl +
-                ", language=" + taskResult +
-                ", currentStatus=" + currentStatus +
-                ", timeOut=" + timeOut +
-                ", category=" + category +
-                '\n';
-    }
 }
