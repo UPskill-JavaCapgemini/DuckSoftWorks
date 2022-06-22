@@ -2,16 +2,12 @@
 package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.*;
-
 import LanguageDetection.application.DTO.NewTaskInfoDTO;
 import LanguageDetection.application.DTO.TaskStatusDTO;
-
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.TaskService;
 import LanguageDetection.domain.model.Category;
-import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
-import LanguageDetection.domain.model.TaskFactory;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +28,6 @@ public class TaskManagementService {
 
     @Autowired
     TaskDomainDTOAssembler taskDomainDTOAssembler;
-
-    @Autowired
-    ITaskRepository iTaskRepository;
 
     @Autowired
     TaskService taskService;

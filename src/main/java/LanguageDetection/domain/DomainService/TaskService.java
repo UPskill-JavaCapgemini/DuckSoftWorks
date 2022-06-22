@@ -1,7 +1,6 @@
 package LanguageDetection.domain.DomainService;
 
-import LanguageDetection.application.DTO.NewCancelThreadDTO;
-import LanguageDetection.application.DTO.TaskDTO;
+
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
