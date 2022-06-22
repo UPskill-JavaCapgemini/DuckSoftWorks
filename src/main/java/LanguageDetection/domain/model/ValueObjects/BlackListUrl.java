@@ -29,25 +29,8 @@ public class BlackListUrl implements ValueObject, Comparable<BlackListUrl> {
         this.blackListUrl = new URL(blackListUrl);
     }
 
-    @Override
-    public String toString() {
-        return blackListUrl.toString();
-    }
-
-
     public URL getBlackListUrlObject() {
         return this.blackListUrl;
-    }
-
-    @Override
-    public boolean equals(Object otherBlackListUrl) {
-
-        return this.blackListUrl.toString().equals(otherBlackListUrl.toString());
-    }
-
-    @Override
-    public int hashCode() {
-        return blackListUrl != null ? blackListUrl.hashCode() : 0;
     }
 
     @Override
