@@ -13,14 +13,14 @@ public interface ITaskRepository {
 
     Optional<Task> findByTaskId(Long identity);
 
-    List<Task> findAllTasks();
+    List<Task> findAllTasks(long userId);
 
-    List<Task> findByStatusContaining(TaskStatus st);
+    List<Task> findByStatusContaining(TaskStatus st, long userId);
 
-    List<Task> findByCategoryNameContaining(Category category);
+    List<Task> findByCategoryNameContaining(Category category, long userId);
 
-    List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category);
+    List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category, long userId);
 
-    boolean existsByUrlAndIsProcessing(InputUrl url);
+    boolean existsByUrlAndIsProcessing(InputUrl url, long userId);
 
 }

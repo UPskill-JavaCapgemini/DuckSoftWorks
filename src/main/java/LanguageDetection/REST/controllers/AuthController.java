@@ -4,7 +4,7 @@ package LanguageDetection.REST.controllers;
 import LanguageDetection.application.DTO.JwtResponse;
 import LanguageDetection.application.DTO.LoginRequest;
 import LanguageDetection.application.security.jwt.JwtUtils;
-import LanguageDetection.application.security.services.UserDetailsImpl;
+import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,7 +38,7 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsDomainService userDetails = (UserDetailsDomainService) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());

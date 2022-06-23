@@ -23,8 +23,8 @@
 hs_err_pid*
 
 # indexed files
-src/main/java/LanguageDetection/infrastructure/indexedFiles/*
-!src/main/java/LanguageDetection/infrastructure/indexedFiles/nothing.txt
+src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/*
+!src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
 
 
 

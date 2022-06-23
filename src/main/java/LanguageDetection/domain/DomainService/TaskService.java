@@ -19,6 +19,8 @@ import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static LanguageDetection.domain.DomainService.UserDetailsDomainService.getUserNameId;
+
 
 @Slf4j
 @Component
@@ -52,19 +54,19 @@ public class TaskService {
 
 
     public List<Task> findAllTasks() {
-        return iTaskRepository.findAllTasks();
+        return iTaskRepository.findAllTasks(getUserNameId());
     }
 
     public List<Task> findByStatusContaining(TaskStatus status) {
-        return iTaskRepository.findByStatusContaining(status);
+        return iTaskRepository.findByStatusContaining(status, getUserNameId());
     }
 
     public List<Task> findByCategoryNameContaining(Category category) {
-        return iTaskRepository.findByCategoryNameContaining(category);
+        return iTaskRepository.findByCategoryNameContaining(category, getUserNameId());
     }
 
     public List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category) {
-        return iTaskRepository.findByStatusAndByCategoryContaining(status, category);
+        return iTaskRepository.findByStatusAndByCategoryContaining(status, category, getUserNameId());
     }
 
     /**
@@ -129,6 +131,6 @@ public class TaskService {
 
     private boolean isBeingAnalyzed(String url) throws MalformedURLException {
         InputUrl inputUrl = new InputUrl(url);
-        return iTaskRepository.existsByUrlAndIsProcessing(inputUrl);
+        return iTaskRepository.existsByUrlAndIsProcessing(inputUrl, getUserNameId());
     }
 }
