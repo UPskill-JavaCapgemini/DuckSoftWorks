@@ -2,7 +2,6 @@
 window.onload = filterTasksByProcessing;
 setInterval(filterTasksByProcessing, 3000);
 
-
 function cancelTask(e) {
     e.preventDefault();
     var cancelOption = document.getElementById("cancel_task_input").value
@@ -18,8 +17,9 @@ function cancelTask(e) {
       credentials:"include"
     }).then(resp => {
         var responseContent = document.getElementById("cancel-tasks-response");
+
     if (resp.status === 202) {
-        responseContent.textContent = "The task with ID" + cancelOption + " was successfully canceled!";
+        responseContent.textContent = "The task with ID " + cancelOption + " was successfully canceled!";
         console.log("task " + cancelOption + " was successfully canceled!") 
         filterTasksByProcessing();
   
@@ -29,7 +29,6 @@ function cancelTask(e) {
     }
   })
   }
-
 
 function filterTasksByProcessing(e) {
     console.log("started filterTasksByProcessing");
