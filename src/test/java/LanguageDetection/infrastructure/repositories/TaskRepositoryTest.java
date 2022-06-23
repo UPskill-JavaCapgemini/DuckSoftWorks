@@ -1,8 +1,9 @@
-/*
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.entities.Category;
-import LanguageDetection.domain.entities.Task;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import LanguageDetection.infrastructure.repositories.JPARepositories.TaskJpaRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,10 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,56 +31,108 @@ class TaskRepositoryTest {
     @Mock
     TaskJpaRepository jpaRepository;
 
-    Task task1;
-    Task task2;
-    Category category1;
-    Category category2;
-
     @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
     }
 
-    @BeforeEach
-    public void beforeEach() throws MalformedURLException {
-        category1 = new Category("Sports");
-        category2 = new Category("Economics");
-        task1 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category1);
-        task2 = new Task("https://www.w3.org/TR/PNG/iso_8859-1.txt", 1, category2);
-    }
-
     @Test
-    void findAllTasksShouldReturnListOf2Tasks() throws MalformedURLException {
-        when(jpaRepository.findAll()).thenReturn(List.of(task1,task2));
+    void findAllTasksShouldReturnListOf2Task() throws MalformedURLException {
+        //Arrange
+        Task task = mock(Task.class);
+        when(jpaRepository.findAllByUserId(any(Long.class))).thenReturn(List.of(task, task));
 
-        //Assert
-        Assertions.assertEquals(repository.findAllTasks(), List.of(task1, task2));
+        //Act / Assert
+        Assertions.assertEquals(repository.findAllTasks(any(Long.class)), List.of(task, task));
     }
 
     @Test
     void findByStatusContainingShouldReturnListWithTasksThatMatchStatus() throws MalformedURLException {
-        Task.TaskStatus status = Task.TaskStatus.Processing;
-        when(jpaRepository.findByCurrentStatusLike(status)).thenReturn(List.of(task1, task2));
+        TaskStatus status = TaskStatus.Processing;
+        Task task = mock(Task.class);
+        when(jpaRepository.findByCurrentStatusLikeAndUserId(status, 1L)).thenReturn(List.of(task));
 
-        //Assert
-        Assertions.assertEquals(repository.findByStatusContaining(status), List.of(task1, task2));
+        //Act / Assert
+        Assertions.assertEquals(repository.findByStatusContaining(status, 1L), List.of(task));
     }
 
 
     @Test
     void findByCategoryContainingShouldReturnListWithTaskThatHaveCategory2() {
-        when(repository.findByCategoryNameContaining(category2.getCategoryName())).thenReturn(List.of(task2));
+        //Arrange
+        Category category = new Category("Sports");
+        Task task = mock(Task.class);
+        when(jpaRepository.findTaskByCategoryLikeAndUserId(category, 1L)).thenReturn(List.of(task));
 
-        Assertions.assertEquals(repository.findByCategoryNameContaining(category2.getCategoryName()), List.of(task2));
+        //Act / Assert
+        Assertions.assertEquals(repository.findByCategoryNameContaining(category, 1L), List.of(task));
+    }
+
+
+    @Test
+    void findByStatusAndByCategoryContainingShouldReturnListOfTaskWithCategoryAndStatusThatMatch() {
+        //Arrange
+        TaskStatus status = TaskStatus.Processing;
+        Category category = new Category("Sports");
+        Task task = mock(Task.class);
+        when(jpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(category, status, 1L)).thenReturn(List.of(task));
+
+        //Act / Assert
+        Assertions.assertEquals(repository.findByStatusAndByCategoryContaining(status, category, 1L), List.of(task));
+    }
+
+    @Test
+    void existsByUrlAndIsProcessingShouldReturnFalseWhenUrlInArgumentDoesNotExistOrIsNotProcessing() throws MalformedURLException {
+        //Arrange
+        InputUrl inputUrl = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TaskStatus processing = TaskStatus.Processing;
+
+        when(jpaRepository.existsTaskByInputUrlAndCurrentStatusAndUserId(inputUrl, processing, 1L)).thenReturn(false);
+
+        //Act / Assert
+        Assertions.assertFalse(repository.existsByUrlAndIsProcessing(inputUrl, 1L));
+
+    }
+
+    @Test
+    void existsByUrlAndIsProcessingShouldReturnTrueWhenUrlInArgumentExistsAndIsProcessing() throws MalformedURLException {
+        //Arrange
+        InputUrl inputUrl = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+        TaskStatus processing = TaskStatus.Processing;
+
+        when(jpaRepository.existsTaskByInputUrlAndCurrentStatusAndUserId(inputUrl, processing, 1L)).thenReturn(true);
+
+        //Act / Assert
+        Assertions.assertTrue(repository.existsByUrlAndIsProcessing(inputUrl, 1L));
+
+    }
+
+    @Test
+    void saveTaskShouldReturnSameObjectWhenSaved(){
+        //Arrange
+        Task task = mock(Task.class);
+        when(jpaRepository.save(task)).thenReturn(task);
+
+        //Act / Assert
+        Assertions.assertEquals(repository.saveTask(task), task);
+    }
+
+    @Test
+    void findTaskByIdShouldReturnOptionalEmptyWhenIdNotFound(){
+        //Arrange
+        when(jpaRepository.findById(1L)).thenReturn(Optional.empty());
+
+        //Act / Assert
+        Assertions.assertEquals(repository.findByTaskId(1L), Optional.empty());
+    }
+
+    @Test
+    void findTaskByIdShouldReturnOptionalWithTaskWhenTaskWithCertainIdIsFound(){
+        //Arrange
+        Task task = mock(Task.class);
+        when(jpaRepository.findById(1L)).thenReturn(Optional.of(task));
+
+        //Act / Assert
+        Assertions.assertEquals(repository.findByTaskId(1L), Optional.of(task));
     }
 }
-
-
-    */
-/*@Test
-    void findByStatusAndByCategoryContainingShouldReturnListOfTaskWithCategoryAndStatusThatMatch() {
-        when(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1)).thenReturn(List.of(task1));
-
-        Assertions.assertEquals(repository.findByStatusAndByCategoryContaining(Task.TaskStatus.Processing, category1), List.of(task1));
-    }
-}*/
