@@ -6,7 +6,6 @@ import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 
-import LanguageDetection.domain.util.Utils;
 import LanguageDetection.infrastructure.repositories.JPARepositories.TaskJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
