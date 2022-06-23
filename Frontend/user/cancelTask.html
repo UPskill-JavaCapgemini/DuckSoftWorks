@@ -31,6 +31,7 @@
       </style>
 </head>
 <body>
+
     <nav class="navbar navbar-dark bg-dark" id="nav">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Cancel Task</a>
@@ -42,7 +43,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href=consultTasks.html>Consult Tasks</a>
+                <a class="nav-link active" aria-current="page" href=consultTasks.html>Check Tasks</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href=createTask.html>Check Language</a>
@@ -51,6 +52,8 @@
           </div>
         </div>
       </nav>
+
+
 </body>
 <link href="form-validation.css" rel="stylesheet">
 </head>
@@ -100,11 +103,45 @@
   
         <div id="data-table">
           <table class="table table-bordered table-hover" id="cancel-task-data-table">
+<<<<<<< HEAD
+=======
+          <thead>
+            <tr>
+              hbo
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              hdi
+            </tr>
+          </tbody>
+>>>>>>> 2fce15302c1cd9b5751feb902c73a8394697243f
         </table>
       </div>
       </form>
     </div>
   </div>
+  
+<br/>
+<br/>
+
+  <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label class="visually-hidden" for="link">Insert ID of task to be canceled</label>
+      <div class="input-group">
+        <div class="input-group-text">ID</div>
+        <input type="text" class="form-control" id="cancel_task_input" placeholder="Insert ID of task to be canceled">
+      </div>
+    </div>
+        <br>
+        <br>
+        <p class="text-center" id="cancel-tasks-response"></p>
+        <br>
+    <div class="col-12">
+        <button onclick="cancelTask(event)" type="submit" class="btn btn-dark">Cancel</button>
+      </div>
+  </form>
+
 </main>
 
 <footer class="my-5 pt-5 text-muted text-center text-small">
