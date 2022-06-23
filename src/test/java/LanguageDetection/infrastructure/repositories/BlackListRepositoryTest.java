@@ -41,13 +41,25 @@ class BlackListRepositoryTest {
     }
 
     @Test
-    void deleteBlackListItemShouldReturnFalseWhenItWasNotDeleted(){
-        //TODO
+    void deleteBlackListItemShouldReturnFalseWhenItWasNotDeleted() throws MalformedURLException {
+        //Arrange
+        BlackListUrl blackListUrl = new BlackListUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+
+        when(blackListJpaRepository.deleteByBlackListUrl(blackListUrl)).thenReturn(0);
+
+        //Act / Assert
+        Assertions.assertFalse(blackListRepository.deleteByBlackListUrl(blackListUrl));
     }
 
     @Test
-    void deleteBlackListItemShouldReturnTrueWhenDeleteIsSuccessful(){
-        //TODO
+    void deleteBlackListItemShouldReturnTrueWhenDeleteIsSuccessful() throws MalformedURLException {
+        //Arrange
+        BlackListUrl blackListUrl = new BlackListUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+
+        when(blackListJpaRepository.deleteByBlackListUrl(blackListUrl)).thenReturn(1);
+
+        //Act / Assert
+        Assertions.assertTrue(blackListRepository.deleteByBlackListUrl(blackListUrl));
     }
 
     @Test
