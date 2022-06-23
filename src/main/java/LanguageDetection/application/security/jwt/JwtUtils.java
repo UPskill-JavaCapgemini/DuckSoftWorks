@@ -3,7 +3,7 @@ package LanguageDetection.application.security.jwt;
 //import java.security.SignatureException;
 import java.util.Date;
 
-import LanguageDetection.application.security.services.UserDetailsImpl;
+import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +30,7 @@ public class JwtUtils {
 
     public String generateJwtToken(Authentication authentication) {
 
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsDomainService userPrincipal = (UserDetailsDomainService) authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))

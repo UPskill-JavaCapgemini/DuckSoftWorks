@@ -2,18 +2,18 @@ package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.DomainService.CategoryService;
-import LanguageDetection.domain.model.Category;
-import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
-import LanguageDetection.domain.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.MalformedURLException;
 
 import java.util.Optional;
+
+import static LanguageDetection.domain.DomainService.UserDetailsDomainService.getUserNameId;
 
 @Component
 public class TaskFactory {
@@ -33,7 +33,7 @@ public class TaskFactory {
             Optional<Category> categoryRepository = categoryService.findCategoryByName(categoryName);
 
             if (!blackListService.isBlackListed(inputUrl) && categoryRepository.isPresent()) {
-                Task task = new Task(inputUrl, timeOut, categoryRepository.get(), Utils.getUserNameId());
+                Task task = new Task(inputUrl, timeOut, categoryRepository.get(), getUserNameId());
 
                 return Optional.of(task);
             }

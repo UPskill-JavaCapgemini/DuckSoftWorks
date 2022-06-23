@@ -1,4 +1,4 @@
-package LanguageDetection.application.security.services;
+package LanguageDetection.domain.DomainService;
 
 
 import java.util.Collection;
@@ -9,13 +9,16 @@ import java.util.stream.Collectors;
 import LanguageDetection.domain.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
 
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
-public class UserDetailsImpl implements UserDetails {
+public class UserDetailsDomainService implements UserDetails {
+
     private static final long serialVersionUID = 1L;
 
     private long id;
@@ -27,7 +30,8 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities = null;
 
-    public UserDetailsImpl(long id, String username, String password
+
+    public UserDetailsDomainService(long id, String username, String password
             , Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
@@ -35,12 +39,12 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
 
-    public static UserDetailsImpl build(User user) {
+    public static UserDetailsDomainService build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
 
-        return new UserDetailsImpl(user.getId(), user.getUsername(), user.getPassword(), authorities );
+        return new UserDetailsDomainService(user.getId(), user.getUsername(), user.getPassword(), authorities );
     }
 
     @Override
@@ -88,7 +92,12 @@ public class UserDetailsImpl implements UserDetails {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        UserDetailsImpl user = (UserDetailsImpl) o;
+        UserDetailsDomainService user = (UserDetailsDomainService) o;
         return Objects.equals(id, user.id);
+    }
+
+    public static Long getUserNameId() {
+        UserDetailsDomainService principal = (UserDetailsDomainService) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return principal.getId();
     }
 }

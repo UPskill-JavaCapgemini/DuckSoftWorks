@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TextTest {
 
-
+//TODO: Its needed to do tests to confirm verifyTextSize method
 
     @Test
     protected void ensureTextCleanUpAStringWithSpecialCharacters() {

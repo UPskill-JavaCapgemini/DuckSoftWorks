@@ -1,5 +1,6 @@
 package LanguageDetection.application.security.services;
 
+import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import LanguageDetection.domain.model.User;
 
 import LanguageDetection.infrastructure.repositories.UserRepository;
@@ -13,9 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
-
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsManagementService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
-        return UserDetailsImpl.build(user);
+        return UserDetailsDomainService.build(user);
     }
 
 }

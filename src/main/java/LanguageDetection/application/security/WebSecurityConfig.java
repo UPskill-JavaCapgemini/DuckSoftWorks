@@ -2,7 +2,7 @@ package LanguageDetection.application.security;
 
 import LanguageDetection.application.security.jwt.AuthEntryPointJwt;
 import LanguageDetection.application.security.jwt.AuthTokenFilter;
-import LanguageDetection.application.security.services.UserDetailsServiceImpl;
+import LanguageDetection.application.security.services.UserDetailsManagementService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    UserDetailsManagementService userDetailsService;
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
     @Bean

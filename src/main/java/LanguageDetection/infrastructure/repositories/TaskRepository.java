@@ -36,8 +36,8 @@ public class TaskRepository implements ITaskRepository {
 	 * Fetches all tasks that are stored in database
 	 * @return List of all tasks present in database
 	 */
-    public List<Task> findAllTasks() {
-		Iterable<Task> listAllTasks= taskJpaRepository.findAllByUserId(Utils.getUserNameId());
+    public List<Task> findAllTasks(long userId) {
+		Iterable<Task> listAllTasks= taskJpaRepository.findAllByUserId(userId);
 
 		return (List<Task>) listAllTasks;
     }
@@ -47,8 +47,8 @@ public class TaskRepository implements ITaskRepository {
 	 * @param st Task current status ENUM that wants to be searched in database
 	 * @return List of all tasks present with the status passed
 	 */
-	public List<Task> findByStatusContaining(TaskStatus st) {
-		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLikeAndUserId(st, Utils.getUserNameId());
+	public List<Task> findByStatusContaining(TaskStatus st, long userId) {
+		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLikeAndUserId(st, userId);
 
 		return (List<Task>) listTasksByStatus;
 	}
@@ -58,8 +58,8 @@ public class TaskRepository implements ITaskRepository {
 	 * @param category Category instance that wants to be searched in database
 	 * @return List of all tasks present with the category passed
 	 */
-	public List<Task> findByCategoryNameContaining(Category category) {
-		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserId(category, Utils.getUserNameId());
+	public List<Task> findByCategoryNameContaining(Category category, long userId) {
+		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserId(category, userId);
 		return (List<Task>) listTasksByCategory;
 	}
 
@@ -69,8 +69,8 @@ public class TaskRepository implements ITaskRepository {
 	 * @param category Category instance that wants to be searched in database
 	 * @return List of all tasks present with the category and status passed
 	 */
-	public List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category) {
-		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(category, status, Utils.getUserNameId());
+	public List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category, long userId) {
+		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(category, status, userId);
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
 	}
@@ -85,8 +85,7 @@ public class TaskRepository implements ITaskRepository {
     }
 
 	@Override
-	public boolean existsByUrlAndIsProcessing(InputUrl url) {
-    	Long userId = Utils.getUserNameId();
+	public boolean existsByUrlAndIsProcessing(InputUrl url, long userId) {
     	TaskStatus processing = TaskStatus.Processing;
 		return taskJpaRepository.existsTaskByInputUrlAndCurrentStatusAndUserId(url,processing,userId);
 	}
