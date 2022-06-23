@@ -51,11 +51,13 @@ dropdown.selectedIndex = 0;
         var statusOption = status.options[status.selectedIndex].value
         var urlToRequest;
          if(categoryOption != "" & statusOption != ""){
-          urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption + "&" + "status=" + statusOption;;
+          urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption + "&" + "status=" + statusOption;
         } else if (categoryOption != "" & statusOption === ""){
           urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "categoryName=" + categoryOption;
         } else if(categoryOption === "" & statusOption != ""){
           urlToRequest = "http://localhost:8080/LanguageDetection" + "?" + "status=" + statusOption;
+        }else{
+          urlToRequest = "http://localhost:8080/LanguageDetection";
         }
         
 
