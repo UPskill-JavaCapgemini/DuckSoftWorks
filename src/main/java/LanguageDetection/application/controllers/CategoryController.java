@@ -28,10 +28,6 @@ public class CategoryController {
     @Autowired
     CategoryManagementService categoryManagementService;
 
-    public CategoryController(CategoryManagementService categoryManagementService) {
-        this.categoryManagementService = categoryManagementService;
-    }
-
     /**
      * This method fetches information for all categories persisted in the database and returns a list containing them
      *
