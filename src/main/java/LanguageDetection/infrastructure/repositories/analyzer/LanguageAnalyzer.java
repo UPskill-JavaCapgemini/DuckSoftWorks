@@ -16,7 +16,7 @@ import java.io.IOException;
 @Service
 public class LanguageAnalyzer {
 
-    private static final int MAX_TOKENS = Integer.MAX_VALUE;
+    private static final int MAX_TOKENS = 1200000;
     static org.apache.lucene.analysis.Analyzer analyzer;
     static IndexReader reader;
     static IndexSearcher searcher;
@@ -54,7 +54,7 @@ public class LanguageAnalyzer {
      */
 
     public Language analyze(Task task) throws IOException, ParseException {
-        IndexSearcher.setMaxClauseCount(Integer.MAX_VALUE);
+        IndexSearcher.setMaxClauseCount(MAX_TOKENS);
 
             Query q = new QueryParser("dictionary", analyzer).parse(task.getInputUrl().getTextOfUrl().getTextContent());
             TopDocs docs = searcher.search(q, HITS_PER_PAGE);
