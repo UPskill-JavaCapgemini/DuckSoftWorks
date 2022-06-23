@@ -1,79 +1,34 @@
-<<<<<<< HEAD
+
 window.onload = filterTasksByProcessing;
 setInterval(filterTasksByProcessing, 3000);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function cancelTask(e) {
+    e.preventDefault();
+    var cancelOption = document.getElementById("cancel_task_input").value
+   
+  var stringified = JSON.stringify({ id : cancelOption})
+  console.log(stringified);
+  fetch('http://localhost:8080/LanguageDetection/cancel', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id : cancelOption}),
+      credentials:"include"
+    }).then(resp => {
+        var responseContent = document.getElementById("cancel-tasks-response");
+    if (resp.status === 202) {
+        responseContent.textContent = "The task with ID" + cancelOption + " was successfully canceled!";
+        console.log("task " + cancelOption + " was successfully canceled!") 
+        filterTasksByProcessing();
+  
+    } else {
+        responseContent.textContent = "The task couldn't be canceled.";
+        console.log("task not canceled")
+    }
+  })
+  }
 
 
 function filterTasksByProcessing(e) {
@@ -153,32 +108,3 @@ function filterTasksByProcessing(e) {
     }
   })
 }
-=======
-
-function cancelTask(e) {
-    e.preventDefault();
-    var cancelOption = document.getElementById("cancel_task_input").value
-   
-  var stringified = JSON.stringify({ id : cancelOption})
-  console.log(stringified);
-  fetch('http://localhost:8080/LanguageDetection/cancel', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id : cancelOption}),
-      credentials:"include"
-    }).then(resp => {
-        var responseContent = document.getElementById("cancel-tasks-response");
-    if (resp.status === 200) {
-        responseContent.textContent = "The task " + cancelOption + " was successfully canceled!";
-        console.log("task " + cancelOption + " was successfully canceled!") 
-        populateCategories();
-  
-    } else {
-        responseContent.textContent = "The task couldn't be canceled.";
-        console.log("task not canceled")
-    }
-  })
-  }
->>>>>>> 2fce15302c1cd9b5751feb902c73a8394697243f
