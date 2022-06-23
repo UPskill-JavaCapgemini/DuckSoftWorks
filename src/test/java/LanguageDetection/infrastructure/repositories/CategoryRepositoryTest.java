@@ -1,7 +1,7 @@
-/*
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.entities.Category;
+import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -46,41 +46,50 @@ public class CategoryRepositoryTest {
         Category category3 = new Category("Arts");
         Category category4 = new Category("Economy");
 
-        //Act
         when(jpaRepository.findAll()).thenReturn(List.of(category1, category2, category3, category4));
 
-        //Assert
+        //Assert / Act
         Assertions.assertEquals(categoryRepository.findAll(), List.of(category1, category2, category3, category4));
     }
 
     @Test
-    public void shouldAvoidCreationOfCategoryThatIsBaseCategory() {
-       //Arrange
-        Optional<Category> cat = Optional.of(category1);
+    public void shouldFindCategoryByCategoryNameWhenCategoryNameIsPresent() {
 
-        //Assert
-        Assert.assertTrue(categoryRepository.isBaseCategory(cat));
-    }
+        CategoryName categoryName = new CategoryName("Sports");
 
-    @Test
-    public void shouldNotAvoidCreationOfCategoryThatIsNotBaseCategory() {
         //Arrange
-        Category categoryBase = new Category("Ducks)");
-        Optional<Category> cat = Optional.of(categoryBase);
+        when(jpaRepository.findByCategoryName(categoryName)).thenReturn(Optional.of(category1));
 
-        //Assert
-        Assert.assertFalse(categoryRepository.isBaseCategory(cat));
+        //Assert / Act
+        Assertions.assertEquals(categoryRepository.findCategoryByCategoryName(categoryName), Optional.of(category1));
     }
 
     @Test
-    public void shouldFindByIdCategory() {
+    public void saveCategoryShouldCallJPARepositoryToSaveATask(){
+        //Arrange
+        when(jpaRepository.save(category1)).thenReturn(category1);
 
-        //Arrange / Act
-        when(jpaRepository.findByCategoryName(category1.getCategoryName())).thenReturn(Optional.of(category1));
+        //Act / Assert
+        Assertions.assertEquals(categoryRepository.saveCategory(category1), category1);
+    }
 
-        //Assert
-        Assert.assertEquals(categoryRepository.findCategoryById(category1), Optional.of(category1));
+    @Test
+    public void deleteByNameShouldReturnFalseIfCategoryIsNotDeleted(){
+        //Arrange
+        CategoryName categoryName = new CategoryName("Sports");
+        when(jpaRepository.deleteByCategoryNameAndIsBaseCategoryFalse(categoryName)).thenReturn(0);
 
+        //Act / Assert
+        Assertions.assertFalse(categoryRepository.deleteByName(categoryName));
+    }
+
+    @Test
+    public void deleteByNameShouldReturnTrueIfCategoryIsDeleted(){
+        //Arrange
+        CategoryName categoryName = new CategoryName("Sports");
+        when(jpaRepository.deleteByCategoryNameAndIsBaseCategoryFalse(categoryName)).thenReturn(1);
+
+        //Act / Assert
+        Assertions.assertTrue(categoryRepository.deleteByName(categoryName));
     }
 }
-*/
