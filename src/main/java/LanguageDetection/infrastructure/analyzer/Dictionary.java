@@ -1,4 +1,4 @@
-package LanguageDetection.infrastructure.repositories.analyzer;
+package LanguageDetection.infrastructure.analyzer;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -33,7 +33,7 @@ private static Dictionary singleton = null;
      */
 
     public Dictionary() throws IOException {
-        this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles"));
+        this.directory = FSDirectory.open(Paths.get("src/main/java/LanguageDetection/infrastructure/indexedFiles"));
         this.config = new IndexWriterConfig();
         this.writer = new IndexWriter(directory, config);
         config.setSimilarity(new ClassicSimilarity());
@@ -46,11 +46,11 @@ private static Dictionary singleton = null;
      * @throws IOException if some sort of I/O problem occurred.
      */
     protected void dictionaries() throws IOException {
-        addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl"));
+        addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/en-common.wl"));
 
-        addDoc(writer, "PORTUGUESE", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl"));
+        addDoc(writer, "PORTUGUESE", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/es.wl"));
 
-        addDoc(writer, "SPANISH", Paths.get("src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl"));
+        addDoc(writer, "SPANISH", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/pt_PT.wl"));
         writer.close();
     }
 

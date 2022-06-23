@@ -1,6 +1,5 @@
-package LanguageDetection.infrastructure.repositories.analyzer;
+package LanguageDetection.infrastructure.analyzer;
 
-import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.model.ValueObjects.Language;
 import LanguageDetection.domain.model.Task;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;

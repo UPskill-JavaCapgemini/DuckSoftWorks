@@ -1,4 +1,4 @@
-package LanguageDetection.application.controllers;
+package LanguageDetection.REST.controllers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;

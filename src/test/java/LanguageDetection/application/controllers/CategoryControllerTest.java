@@ -4,6 +4,7 @@ import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.application.services.CategoryManagementService;
 import LanguageDetection.domain.model.Category;
+import LanguageDetection.REST.controllers.CategoryController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

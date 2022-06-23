@@ -1,11 +1,10 @@
 package LanguageDetection.application.controllers;
 
 import LanguageDetection.application.DTO.BlackListDTO;
-import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.services.BlackListManagementService;
 import LanguageDetection.domain.model.BlackListItem;
-import LanguageDetection.domain.model.Category;
+import LanguageDetection.REST.controllers.BlackListController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -1,7 +1,7 @@
 //package LanguageDetection.application.services;
 //
 //import LanguageDetection.domain.model.Task;
-//import LanguageDetection.infrastructure.repositories.analyzer.LanguageAnalyzer;
+//import LanguageDetection.infrastructure.analyzer.LanguageAnalyzer;
 //import org.apache.lucene.queryparser.classic.ParseException;
 //import org.testng.Assert;
 //import org.testng.annotations.Test;

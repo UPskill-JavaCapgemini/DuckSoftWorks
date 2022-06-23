@@ -1,4 +1,4 @@
-package LanguageDetection.infrastructure.repositories.analyzer;
+package LanguageDetection.infrastructure.analyzer;
 
 import LanguageDetection.domain.DomainService.ILanguageDetector;
 import LanguageDetection.domain.model.ValueObjects.Language;

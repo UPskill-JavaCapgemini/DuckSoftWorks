@@ -1,5 +1,6 @@
 package LanguageDetection.application.controllers;
 
+import LanguageDetection.REST.controllers.TaskController;
 import LanguageDetection.application.DTO.*;
 import LanguageDetection.application.services.TaskManagementService;;
 import LanguageDetection.domain.model.Category;
