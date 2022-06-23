@@ -1,8 +1,8 @@
-/*
 package LanguageDetection.Domain.model;
 
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.DomainService.CategoryService;
+import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
@@ -11,7 +11,6 @@ import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.Language;
 import LanguageDetection.domain.model.ValueObjects.TaskResult;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
-import LanguageDetection.domain.util.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -19,6 +18,7 @@ import org.mockito.*;
 import java.net.MalformedURLException;
 import java.util.Optional;
 
+import static LanguageDetection.domain.DomainService.UserDetailsDomainService.getUserNameId;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -46,9 +46,8 @@ class TaskFactoryTest {
         Optional<Category> opCategory = Optional.of(category);
         Mockito.when(categoryService.findCategoryByName(any(CategoryName.class))).thenReturn(opCategory);
         Mockito.when(blackListService.isBlackListed(any(InputUrl.class))).thenReturn(false);
-        try(MockedStatic<Utils> utils = Mockito.mockStatic(Utils.class)){
-            utils.when(()-> Utils.getUserNameId()).thenReturn(1L);
-            assertEquals(Utils.getUserNameId(), 1L);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> getUserNameId()).thenReturn(1L);
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
 
@@ -63,9 +62,8 @@ class TaskFactoryTest {
         Optional<Category> opCategory = Optional.of(category);
         Mockito.when(categoryService.findCategoryByName(any(CategoryName.class))).thenReturn(opCategory);
         Mockito.when(blackListService.isBlackListed(any(InputUrl.class))).thenReturn(false);
-        try(MockedStatic<Utils> utils = Mockito.mockStatic(Utils.class)){
-            utils.when(()-> Utils.getUserNameId()).thenReturn(1L);
-            assertEquals(Utils.getUserNameId(), 1L);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> getUserNameId()).thenReturn(1L);
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
 
@@ -82,9 +80,8 @@ class TaskFactoryTest {
         Optional<Category> opCategory = Optional.of(category);
         Mockito.when(categoryService.findCategoryByName(any(CategoryName.class))).thenReturn(opCategory);
         Mockito.when(blackListService.isBlackListed(any(InputUrl.class))).thenReturn(false);
-        try(MockedStatic<Utils> utils = Mockito.mockStatic(Utils.class)){
-            utils.when(()-> Utils.getUserNameId()).thenReturn(1L);
-            assertEquals(Utils.getUserNameId(), 1L);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> getUserNameId()).thenReturn(1L);
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
             //Act
@@ -103,9 +100,8 @@ class TaskFactoryTest {
         Optional<Category> opCategory = Optional.of(category);
         Mockito.when(categoryService.findCategoryByName(any(CategoryName.class))).thenReturn(opCategory);
         Mockito.when(blackListService.isBlackListed(any(InputUrl.class))).thenReturn(false);
-        try(MockedStatic<Utils> utils = Mockito.mockStatic(Utils.class)){
-            utils.when(()-> Utils.getUserNameId()).thenReturn(1L);
-            assertEquals(Utils.getUserNameId(), 1L);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> getUserNameId()).thenReturn(1L);
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
             TaskResult taskResult = new TaskResult(Language.PORTUGUESE);
@@ -127,9 +123,8 @@ class TaskFactoryTest {
         Optional<Category> opCategory = Optional.of(category);
         Mockito.when(categoryService.findCategoryByName(any(CategoryName.class))).thenReturn(opCategory);
         Mockito.when(blackListService.isBlackListed(any(InputUrl.class))).thenReturn(false);
-        try(MockedStatic<Utils> utils = Mockito.mockStatic(Utils.class)){
-            utils.when(()-> Utils.getUserNameId()).thenReturn(1L);
-            assertEquals(Utils.getUserNameId(), 1L);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> getUserNameId()).thenReturn(1L);
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
             opTask.get().cancelTask();
@@ -151,9 +146,9 @@ class TaskFactoryTest {
         Optional<Category> opCategory = Optional.of(category);
         Mockito.when(categoryService.findCategoryByName(any(CategoryName.class))).thenReturn(opCategory);
         Mockito.when(blackListService.isBlackListed(any(InputUrl.class))).thenReturn(false);
-        try(MockedStatic<Utils> utils = Mockito.mockStatic(Utils.class)){
-            utils.when(()-> Utils.getUserNameId()).thenReturn(1L);
-            assertEquals(Utils.getUserNameId(), 1L);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> getUserNameId()).thenReturn(1L);
+            assertEquals(getUserNameId(), 1L);
 
             Optional<Task> opTask = taskFactory.createTask(url, 2, "Sports");
 
@@ -167,4 +162,4 @@ class TaskFactoryTest {
     }
 
 
-}*/
+}
