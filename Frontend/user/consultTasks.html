@@ -73,6 +73,33 @@
   </div>
 
 <h4>Check your Tasks</h4>
+
+<div class="container text-center">
+<div class=" row justify-content-md-center mb-3">
+  <label class="input-group-text col col-sm-1" for="inputGroupSelect01">Categories</label>
+    <select class="col col-sm-3" id="category-dropdown">
+  </select>
+
+  <label class="input-group-text col col-sm-1 ms-3" for="inputGroupSelect01">Status</label>
+    <select class="col col-sm-3" id="status-dropdown">
+      <option value="">All</option>
+      <option value="Processing">Processing</option>
+      <option value="Concluded">Concluded</option>
+      <option value="Canceled">Canceled</option>
+    </select>
+    <div class="col-1">
+      <button onclick="filterTasksStatusCategory(event)" class="w-100 btn btn-dark btn-md" 
+      type="submit">Check</button>
+    </div>
+    <div  class ="col-1"></div>
+    <div  class ="col-1"></div>
+</div>
+</div>
+
+
+<!-- 
+
+
       <form class="row gy-2 gx-3 align-items-center">
       
         <div class="col-auto">
@@ -97,7 +124,7 @@
       <div class="col-6">
       </div>
     </form>
-</div>
+</div> -->
 
 
   
