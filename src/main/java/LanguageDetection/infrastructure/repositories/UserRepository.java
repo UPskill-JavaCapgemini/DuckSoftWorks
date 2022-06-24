@@ -17,11 +17,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepository {
 
-        @Autowired
-        UserJpaRepository userJpaRepository;
+    @Autowired
+    UserJpaRepository userJpaRepository;
 
 
-        public User save(User user) {
+    public User save(User user) {
         User savedUserJpa = this.userJpaRepository.save(user);
 
         return savedUserJpa;
@@ -31,12 +31,11 @@ public class UserRepository {
     public Optional<User> findByUsername(String username) {
         Optional<User> opPersonJpa = userJpaRepository.findByUsername(username);
 
-        if(opPersonJpa.isPresent()) {
+        if (opPersonJpa.isPresent()) {
             User userJpa = opPersonJpa.get();
 
             return Optional.of(userJpa);
-        }
-        else
+        } else
             return Optional.empty();
     }
 
