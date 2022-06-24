@@ -8,11 +8,13 @@ import LanguageDetection.domain.model.ITaskRepository;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.TaskFactory;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
+import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 
 import java.net.MalformedURLException;
+import java.util.List;
 import java.util.Optional;
 
 import static LanguageDetection.domain.DomainService.UserDetailsDomainService.getUserNameId;
@@ -80,5 +82,51 @@ class TaskServiceTest {
             assertEquals(opTask, Optional.of(any(Task.class)));
         }
     }*/
+
+    @Test
+    void ensureFindAllTaskReturnListOfTasksOfCorrespondingUser(){
+        Task task = Mockito.mock(Task.class);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> iTaskRepository.findAllTasks(any(Long.class))).thenReturn(List.of(task));
+
+
+            assertEquals(taskService.findAllTasks(), List.of(task));
+        }
+    }
+
+    @Test
+    void ensureFindTaskByStatusReturnListOfTasksOfCorrespondingUser(){
+        Task task = Mockito.mock(Task.class);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> iTaskRepository.findByStatusContaining(any(TaskStatus.class),any(Long.class))).thenReturn(List.of(task));
+
+
+            assertEquals(taskService.findByStatusContaining(TaskStatus.Concluded), List.of(task));
+        }
+    }
+
+    @Test
+    void ensureFindTaskByCategoryNameReturnListOfTasksOfCorrespondingUser(){
+        Category category = new Category("Sports");
+        Task task = Mockito.mock(Task.class);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> iTaskRepository.findByCategoryNameContaining(any(Category.class), any(Long.class))).thenReturn(List.of(task));
+
+
+            assertEquals(taskService.findByCategoryNameContaining(category), List.of(task));
+        }
+    }
+
+    @Test
+    void ensureFindTaskByCategoryNameAndStatusReturnListOfTasksOfCorrespondingUser(){
+        Category category = new Category("Sports");
+        Task task = Mockito.mock(Task.class);
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> iTaskRepository.findByStatusAndByCategoryContaining(any(TaskStatus.class), any(Category.class), any(Long.class))).thenReturn(List.of(task));
+
+
+            assertEquals(taskService.findByStatusAndByCategoryContaining(TaskStatus.Concluded, category), List.of(task));
+        }
+    }
 
 }
