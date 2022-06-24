@@ -1,12 +1,13 @@
 package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.model.ValueObjects.ERole;
+import LanguageDetection.domain.shared.ValueObject;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements ValueObject {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
