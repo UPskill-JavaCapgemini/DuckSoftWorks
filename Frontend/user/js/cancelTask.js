@@ -107,3 +107,9 @@ function filterTasksByProcessing(e) {
     }
   })
 }
+
+function createAlert(alelertToGive, kindOfAlert){
+  let elementToapend = document.getElementById("alert-area");
+  let alert = document.createRange().createContextualFragment("<div class='alert alert-" + kindOfAlert + " alert-dismissible fade show' role='alert'>" + alelertToGive + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>");
+  elementToapend.prepend(alert);
+}

@@ -20,16 +20,17 @@ fetch('http://localhost:8080/LanguageDetection', {
     body: JSON.stringify({ url : link, category : categoryOption, timeOut: timeLimitOption }),
     credentials:"include"
   }).then(resp => {
-      var responseContent = document.getElementById("create-task-response");
   if (resp.status === 201) {
     resp.json().then(function(data) {  
       let taskId = data.id;
-      responseContent.textContent = "The task with URL " + link + " was successfully created with ID number " + taskId;
+      let messageToAlert = "The task with URL " + link + " was successfully created with ID number " + taskId;
+      createAlert(messageToAlert, "success");
       console.log("Task was successfully created!")
     });    
   } else {
-      responseContent.textContent = "The task with URL " + link + " couldn't be created! The URL is blacklisted or has a invalid format!";
-      console.log("Task not created")
+    let messageToAlert = "The task with URL " + link + " couldn't be created! The URL is blacklisted or has a invalid format!";
+    createAlert(messageToAlert, "danger");
+    console.log("Task not created")
   }
 })
 }
@@ -68,4 +69,12 @@ fetch(categoriesURL,{credentials:"include"})
   .catch(function(err) {  
     console.error('Fetch Error -', err);  
   });
+}
+
+
+function createAlert(alelertToGive, kindOfAlert){
+  let elementToapend = document.getElementById("alert-area");
+  let alert = document.createRange().createContextualFragment("<div class='alert alert-" + kindOfAlert + " alert-dismissible fade show' role='alert'>" + alelertToGive + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>");
+  elementToapend.prepend(alert);
+
 }
