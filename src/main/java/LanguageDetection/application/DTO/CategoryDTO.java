@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@EqualsAndHashCode
 /**
  * Represents a CategoryDTO containing the Category that was inputted by the admin
  */

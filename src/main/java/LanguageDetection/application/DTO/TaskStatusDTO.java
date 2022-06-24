@@ -7,8 +7,6 @@ import org.springframework.hateoas.RepresentationModel;
 
 
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
 
     @Getter

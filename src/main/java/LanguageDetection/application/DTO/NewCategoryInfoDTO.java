@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 /**
  * Represents a NewCategoryInfoDTO info parsed from a JSON sent via HTTP request
  */

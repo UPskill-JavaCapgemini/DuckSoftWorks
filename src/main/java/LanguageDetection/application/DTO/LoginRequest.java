@@ -9,8 +9,6 @@ import org.springframework.hateoas.RepresentationModel;
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class LoginRequest extends RepresentationModel<UserDTO> {
     @Getter
     String username;

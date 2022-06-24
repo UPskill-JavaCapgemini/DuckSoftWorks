@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.net.URL;
 
 @NoArgsConstructor
-@EqualsAndHashCode
 /**
  * Represents a BlackListDTO containing the Url that was inputted by the admin
  */
