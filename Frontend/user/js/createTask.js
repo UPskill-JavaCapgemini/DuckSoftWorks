@@ -22,10 +22,13 @@ fetch('http://localhost:8080/LanguageDetection', {
   }).then(resp => {
       var responseContent = document.getElementById("create-task-response");
   if (resp.status === 201) {
-      responseContent.textContent = "The task with URL " + link +" was successfully created!";
+    resp.json().then(function(data) {  
+      let taskId = data.id;
+      responseContent.textContent = "The task with URL " + link + " was successfully created with ID number " + taskId;
       console.log("Task was successfully created!")
+    });    
   } else {
-      responseContent.textContent = "The Task couldn't be created!";
+      responseContent.textContent = "The task with URL " + link + " couldn't be created! The URL is blacklisted or has a invalid format!";
       console.log("Task not created")
   }
 })
