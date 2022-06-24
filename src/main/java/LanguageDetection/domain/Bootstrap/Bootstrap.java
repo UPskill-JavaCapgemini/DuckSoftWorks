@@ -29,7 +29,7 @@ public class Bootstrap implements InitializingBean {
     RoleRepository roleRepository;
 
     @Autowired
-    UserRepository userRepository;
+    IUserRepository userRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -77,8 +77,8 @@ public class Bootstrap implements InitializingBean {
         Role admin = new Role(ERole.ROLE_ADMIN);
         Role user = new Role(ERole.ROLE_USER);
 
-        roleRepository.save(admin);
-        roleRepository.save(user);
+        roleRepository.saveRole(admin);
+        roleRepository.saveRole(user);
     }
 
     private void createAdmin(){
@@ -90,12 +90,12 @@ public class Bootstrap implements InitializingBean {
                 "adminduck",
                 passwordEncoder.encode(adminPW));
 
-        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN).get();
+        Role adminRole = roleRepository.findRoleByName(ERole.ROLE_ADMIN).get();
         Set<Role> roles = new HashSet<>();
         roles.add(adminRole);
         admin.setRoles(roles);
 
-        userRepository.save(admin);
+        userRepository.saveUser(admin);
 
     }
 
@@ -107,14 +107,14 @@ public class Bootstrap implements InitializingBean {
         User user1  = new User("firstduck", passwordEncoder.encode(user1PW));
         User user2  = new User("secondduck", passwordEncoder.encode(user2PW));
 
-        Role userRole = roleRepository.findByName(ERole.ROLE_USER).get();
+        Role userRole = roleRepository.findRoleByName(ERole.ROLE_USER).get();
         Set<Role> roles = new HashSet<>();
         roles.add(userRole);
 
         user1.setRoles(roles);
         user2.setRoles(roles);
 
-        userRepository.save(user1);
-        userRepository.save(user2);
+        userRepository.saveUser(user1);
+        userRepository.saveUser(user2);
     }
 }
