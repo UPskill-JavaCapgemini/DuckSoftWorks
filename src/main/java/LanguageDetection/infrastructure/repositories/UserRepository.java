@@ -28,19 +28,6 @@ public class UserRepository {
     }
 
     @Transactional
-    public Optional<User> findById(long id) {
-        Optional<User> opPersonJpa = userJpaRepository.findById(id);
-
-        if(opPersonJpa.isPresent()) {
-            User userJpa = opPersonJpa.get();
-
-            return Optional.of(userJpa);
-        }
-        else
-            return Optional.empty();
-    }
-
-    @Transactional
     public Optional<User> findByUsername(String username) {
         Optional<User> opPersonJpa = userJpaRepository.findByUsername(username);
 
@@ -51,23 +38,6 @@ public class UserRepository {
         }
         else
             return Optional.empty();
-    }
-
-
-    @Transactional
-    public List<User> findAll() {
-        List<User> setUserJpa = (List<User>) userJpaRepository.findAll();
-
-        List<User> setUsers = new ArrayList<User>();
-        for( User userJpa : setUserJpa) {
-            setUsers.add(userJpa);
-        }
-
-        return setUsers;
-    }
-
-    public boolean existsByUsername(String username) {
-        return userJpaRepository.existsByUsername(username);
     }
 
 }
