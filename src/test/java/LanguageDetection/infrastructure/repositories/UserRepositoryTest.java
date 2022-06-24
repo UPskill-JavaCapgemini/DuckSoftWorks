@@ -35,7 +35,7 @@ class UserRepositoryTest {
         Mockito.when(userJpaRepository.save(user)).thenReturn(user);
 
         //Act / Assert
-        Assertions.assertEquals(userRepository.save(user), user);
+        Assertions.assertEquals(userRepository.saveUser(user), user);
     }
 
     @Test
@@ -46,7 +46,7 @@ class UserRepositoryTest {
         Mockito.when(userJpaRepository.findByUsername("duck")).thenReturn(Optional.of(user));
 
         //Act / Assert
-        Assertions.assertEquals(userRepository.findByUsername("duck"), Optional.of(user));
+        Assertions.assertEquals(userRepository.findUserByUserName("duck"), Optional.of(user));
     }
 
     @Test
@@ -57,7 +57,7 @@ class UserRepositoryTest {
         Mockito.when(userJpaRepository.findByUsername("duck")).thenReturn(Optional.empty());
 
         //Act / Assert
-        Assertions.assertEquals(userRepository.findByUsername("duck"), Optional.empty());
+        Assertions.assertEquals(userRepository.findUserByUserName("duck"), Optional.empty());
     }
 
 }
