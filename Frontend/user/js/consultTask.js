@@ -6,7 +6,7 @@ function populateCategories(){
     dropdown.length = 0;
 
     let defaultOption = document.createElement('option');
-    defaultOption.text = 'No Category chosen';
+    defaultOption.text = 'All';
     defaultOption.value = '';
 
 dropdown.add(defaultOption);
