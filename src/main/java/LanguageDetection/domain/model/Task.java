@@ -128,11 +128,6 @@ public class Task implements AggregateRoot<Long> {
         return this.id;
     }
 
-    @Override
-    public boolean hasIdentity(Long id) {
-        return AggregateRoot.super.hasIdentity(id);
-    }
-
     private boolean isStatusProcessing() {
         return this.currentStatus == TaskStatus.Processing;
     }
