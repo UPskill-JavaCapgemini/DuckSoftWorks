@@ -3,6 +3,7 @@ package LanguageDetection.Domain.DomainService;
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.model.BlackListItem;
 import LanguageDetection.domain.model.IBlackListItemRepository;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,10 +79,9 @@ class BlackListServiceTest {
         BlackListItem blackListItem = new BlackListItem(blackListedURL);
         InputUrl inputUrl = new InputUrl(inURL);
 
-        //Act
         when(blackListService.findAllBlackListItems()).thenReturn(List.of(blackListItem));
 
-        //Assert
+        //Act / Assert
         assertTrue(blackListService.isBlackListed(inputUrl));
     }
 
@@ -91,10 +91,32 @@ class BlackListServiceTest {
         String inURL = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
         InputUrl inputUrl = new InputUrl(inURL);
 
-        //Act
+
         when(blackListService.findAllBlackListItems()).thenReturn(List.of());
 
-        //Assert
+        //Act / Assert
         assertFalse(blackListService.isBlackListed(inputUrl));
+    }
+
+    @Test
+    void ensureDeleteByBlackListUrlReturnTrueWhenBlackListURLIsDeleted() throws MalformedURLException {
+        //Arrange
+        BlackListUrl blackListUrl = new BlackListUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+
+        when(blackListService.deleteByBlackListUrl(blackListUrl)).thenReturn(true);
+
+        //Act / Assert
+        Assertions.assertTrue(blackListService.deleteByBlackListUrl(blackListUrl));
+    }
+
+    @Test
+    void ensureDeleteByBlackListUrlReturnFalseWhenBlackListURLIsNotDeleted() throws MalformedURLException {
+        //Arrange
+        BlackListUrl blackListUrl = new BlackListUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+
+        when(blackListService.deleteByBlackListUrl(blackListUrl)).thenReturn(false);
+
+        //Act / Assert
+        Assertions.assertFalse(blackListService.deleteByBlackListUrl(blackListUrl));
     }
 }
