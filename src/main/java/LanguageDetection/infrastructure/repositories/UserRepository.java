@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 
+import LanguageDetection.domain.model.IUserRepository;
 import LanguageDetection.domain.model.User;
 import LanguageDetection.infrastructure.repositories.JPARepositories.UserJpaRepository;
 
@@ -15,21 +16,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepository {
+public class UserRepository implements IUserRepository {
 
     @Autowired
     UserJpaRepository userJpaRepository;
 
 
-    public User save(User user) {
+    public User saveUser(User user) {
         User savedUserJpa = this.userJpaRepository.save(user);
 
         return savedUserJpa;
     }
 
+    @Override
     @Transactional
-    public Optional<User> findByUsername(String username) {
-        Optional<User> opPersonJpa = userJpaRepository.findByUsername(username);
+    public Optional<User> findUserByUserName(String userName) {
+        Optional<User> opPersonJpa = userJpaRepository.findByUsername(userName);
 
         if (opPersonJpa.isPresent()) {
             User userJpa = opPersonJpa.get();
@@ -38,5 +40,4 @@ public class UserRepository {
         } else
             return Optional.empty();
     }
-
 }
