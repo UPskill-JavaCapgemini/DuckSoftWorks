@@ -77,7 +77,7 @@
       <label class="visually-hidden" for="link">Insert new URL</label>
       <div class="input-group">
         <div class="input-group-text">URL</div>
-        <input type="text" class="form-control" id="BlackListItemInput" placeholder="Insert new URL">
+        <input type="text" class="form-control" id="BlackListItemInput" placeholder="Insert here URL to add it to Blacklist">
       </div>
     </div>
 
@@ -89,6 +89,28 @@
   <br/>
   <p class="text-center" id="create-blacklist-response"></p>
 <br/>
+
+    <!-- DELETE BLACKLIST ITEM -->
+
+    <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        <label class="visually-hidden" for="link">Insert URL to delete </label>
+        <div class="input-group">
+          <div class="input-group-text">URL</div>
+          <input type="text" class="form-control" id="deleteBlackListInputEntry" placeholder="Insert here URL to delete it from Blacklist">
+        </div>
+      </div>
+  
+      <div class="col-12">
+          <button onclick="deleteBlackListInitiated(event)" type="submit" 
+          class="btn btn-dark">Delete</button>
+        </div>
+      </form>
+
+
+  <br/>
+  <p class="text-center" id="delete-blacklist-response"></p>
+    <br/>
     
 
 
@@ -132,10 +154,10 @@
       <br/>
   
       <h2 id="Blacklist Table">Blacklisted URLs</h2>
-  
+  <br>
       <div id="data-table">
 
-          <table id="html-blacklist-table">
+          <table class="table table-bordered table-hover" id="html-blacklist-table">
               <!-- <tr>
                   <td>http//:somethingaboutsports.com.txt</td>
                   <td><a class="w-50 btn btn-md btn-dark" href="" role="button">Delete</a></td>
@@ -149,28 +171,6 @@
     </form>
 
       <br/>
-      <br/>
-
-    <!-- DELETE BLACKLIST ITEM -->
-
-      <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
-        <div class="col-sm-8 col-md-8 col-lg-8">
-          <label class="visually-hidden" for="link">Insert URL to delete </label>
-          <div class="input-group">
-            <div class="input-group-text">URL</div>
-            <input type="text" class="form-control" id="deleteBlackListInputEntry" placeholder="Insert URL to delete">
-          </div>
-        </div>
-    
-        <div class="col-12">
-            <button onclick="deleteBlackListInitiated(event)" type="submit" 
-            class="btn btn-dark">Delete</button>
-          </div>
-        </form>
-
-
-    <br/>
-    <p class="text-center" id="delete-blacklist-response"></p>
       <br/>
 
 </main>
