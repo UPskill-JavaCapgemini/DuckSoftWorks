@@ -35,7 +35,7 @@ class RoleRepositoryTest {
         Mockito.when(roleJpaRepository.save(role)).thenReturn(role);
 
         //Act / Assert
-        Assertions.assertEquals(roleRepository.save(role), role);
+        Assertions.assertEquals(roleRepository.saveRole(role), role);
     }
 
     @Test
@@ -46,7 +46,7 @@ class RoleRepositoryTest {
         Mockito.when(roleJpaRepository.findByName(ERole.ROLE_ADMIN)).thenReturn(Optional.of(role));
 
         //Act / Assert
-        Assertions.assertEquals(roleRepository.findByName(ERole.ROLE_ADMIN), Optional.of(role));
+        Assertions.assertEquals(roleRepository.findRoleByName(ERole.ROLE_ADMIN), Optional.of(role));
     }
 
     @Test
@@ -57,7 +57,7 @@ class RoleRepositoryTest {
         Mockito.when(roleJpaRepository.findByName(ERole.ROLE_ADMIN)).thenReturn(Optional.empty());
 
         //Act / Assert
-        Assertions.assertEquals(roleRepository.findByName(ERole.ROLE_ADMIN), Optional.empty());
+        Assertions.assertEquals(roleRepository.findRoleByName(ERole.ROLE_ADMIN), Optional.empty());
     }
 
 }
