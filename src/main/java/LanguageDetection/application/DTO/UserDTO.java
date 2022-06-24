@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class UserDTO extends RepresentationModel<UserDTO> {
     @Getter
     long id;

@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
 
 public class StatusDTO {
     @Getter

@@ -18,7 +18,6 @@ import java.util.TimeZone;
 
 @Getter
 @NoArgsConstructor
-@EqualsAndHashCode
 public class TaskDTO {
     Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss dd-MM-yyyy", timezone = "GMT+1")

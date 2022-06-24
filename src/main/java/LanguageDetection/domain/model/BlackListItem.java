@@ -58,9 +58,4 @@ public class BlackListItem implements AggregateRoot<BlackListUrl> {
     public BlackListUrl identity() {
         return this.blackListUrl;
     }
-
-    @Override
-    public boolean hasIdentity(BlackListUrl id) {
-        return AggregateRoot.super.hasIdentity(id);
-    }
 }

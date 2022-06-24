@@ -4,7 +4,6 @@ import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 public class NewCancelThreadDTO {
     @Setter
     @Getter

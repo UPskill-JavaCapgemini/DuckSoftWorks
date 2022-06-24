@@ -13,7 +13,7 @@ public class CategoryTest {
         Category category = new Category("Arts");
 
         //Assert
-        assertEquals(category.getCategoryName().toString(), "Arts");
+        assertEquals(category.identity().getCategoryName(), "Arts");
     }
 
     @Test
@@ -22,7 +22,7 @@ public class CategoryTest {
         Category category = new Category("Performing Arts");
 
         //Assert
-        assertEquals(category.getCategoryName().toString(), "Performing Arts");
+        assertEquals(category.toString(), "Performing Arts");
     }
 
     @Test

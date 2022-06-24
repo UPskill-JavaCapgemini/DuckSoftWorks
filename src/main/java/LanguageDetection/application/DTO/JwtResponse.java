@@ -8,8 +8,6 @@ import java.util.List;
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class JwtResponse extends RepresentationModel<UserDTO> {
     @Getter
     @Setter

@@ -83,15 +83,4 @@ public class Category implements AggregateRoot<CategoryName> {
     public CategoryName identity() {
         return this.categoryName;
     }
-
-    /**
-     * This method verifies if a Category has a provided CategoryName as its id
-     * Returns a boolean to indicate this
-     *
-     * @return true if the provided CategoryName is the identity of Category, false if not
-     */
-    @Override
-    public boolean hasIdentity(CategoryName id) {
-        return AggregateRoot.super.hasIdentity(id);
-    }
 }
