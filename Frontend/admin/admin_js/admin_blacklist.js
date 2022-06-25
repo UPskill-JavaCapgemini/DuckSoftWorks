@@ -45,6 +45,11 @@ function findAllBlackListItems(e) {
         
         resp.json().then(function(data) {  
           blackListTable.innerHTML = ""
+
+          if(data.length === 0){
+            let row = blackListTable.insertRow(0);
+            row.innerHTML = "The Blacklist is empty!"
+          }
       
         for (let i = 0; i < data.length; i++) {
 
