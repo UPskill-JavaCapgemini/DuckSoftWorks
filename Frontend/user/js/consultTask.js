@@ -74,9 +74,9 @@ dropdown.selectedIndex = 0;
             console.log("The filter is working")
             
      resp.json().then(function(data) {  
+ 
           let yourTasks = document.getElementById("tasks_consult_table");
           yourTasks.innerHTML = "Your Tasks"
-
           let table = document.getElementById("consult-task-data-table");   
           table.innerHTML = ""
           let TaskIdHead = document.createElement("th");
@@ -101,6 +101,11 @@ dropdown.selectedIndex = 0;
         table.appendChild(TextLanguageHead);
         table.appendChild(TaskStatusHead);
         table.appendChild(TimeHead); 
+
+        if(data.length === 0){
+          let row = table.insertRow(0);
+          row.innerHTML = "                                        No tasks were found in this search!"
+        }
 
         for (let i = 0; i < data.length; i++) {
 
