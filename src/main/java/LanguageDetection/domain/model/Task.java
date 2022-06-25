@@ -97,7 +97,7 @@ public class Task implements AggregateRoot<Long> {
      * @throws MalformedURLException thrown if an url from input is invalid
      */
 
-    protected Task(InputUrl inputUrl, TimeOut timeOut, Category category, Long userId) throws MalformedURLException {
+     protected Task(InputUrl inputUrl, TimeOut timeOut, Category category, Long userId) throws MalformedURLException {
         this.id = null;
         this.date = null;
         this.inputUrl = inputUrl;
