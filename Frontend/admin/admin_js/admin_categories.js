@@ -18,15 +18,14 @@ function createNewCategory(e) {
       body: JSON.stringify({ category : categoryName}),
       credentials:"include"
     }).then(resp => {
-        var responseContent = document.getElementById("create-category-response");
     if (resp.status === 201) {
-        responseContent.textContent = "The category " + categoryName + " was successfully created!";
-        console.log("Category was successfully created!")
+      let messageToAlert = "The category " + categoryName + " was successfully created!";
+      createAlert(messageToAlert, "success");
         populateCategories();
 
     } else {
-        responseContent.textContent = "The category couldn't be created! Invalid format.";
-        console.log("Category not created")
+      let messageToAlert = "The category " + categoryName + " couldn't be created! Invalid format.";
+        createAlert(messageToAlert, "danger");
     }
 })
 }
@@ -50,13 +49,13 @@ fetch('http://localhost:8080/Category', {
   }).then(resp => {
       var responseContent = document.getElementById("create-category-response");
   if (resp.status === 200) {
-      responseContent.textContent = "The category " + categoryOption + " was successfully deleted!";
-      console.log("Category " + categoryOption + " was successfully deleted!") 
+     let messageToAlert = "The category " + categoryOption + " was successfully deleted!";
+     createAlert(messageToAlert, "success");
       populateCategories();
 
   } else {
-      responseContent.textContent = "The category couldn't be deleted.";
-      console.log("Category not deleted")
+    let messageToAlert = "The category " + categoryOption + " couldn't be deleted.";
+    createAlert(messageToAlert, "danger");
   }
 })
 }
@@ -94,4 +93,11 @@ function populateCategories(){
       .catch(function(err) {  
         console.error('Fetch Error -', err);  
       });
+    }
+
+    function createAlert(alelertToGive, kindOfAlert){
+      let elementToapend = document.getElementById("alert-area");
+      elementToapend.innerHTML = ""
+      let alert = document.createRange().createContextualFragment("<div class='alert alert-" + kindOfAlert + " alert-dismissible fade show' role='alert'>" + alelertToGive + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>");
+      elementToapend.prepend(alert);
     }

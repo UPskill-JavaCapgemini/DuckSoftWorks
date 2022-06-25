@@ -15,15 +15,14 @@ function createNewBlackListItem(e) {
       body: JSON.stringify({ url : blackListInput}),
       credentials:"include"
     }).then(resp => {
-        var responseContent = document.getElementById("create-blacklist-response");
     if (resp.status === 201) {
-        responseContent.textContent = "The BlackList item " + blackListInput + " was successfully created!";
-        console.log("BlackList item was successfully created!")
+        let messageToAlert = "The BlackList item " + blackListInput + " was successfully created!";
+        createAlert(messageToAlert, "success");
         findAllBlackListItems(e)
 
     } else {
-        responseContent.textContent = "The BlackList item couldn't be created! Invalid format or already blacklisted.";
-        console.log("BlackList not created")
+        let messageToAlert = "The BlackList item " + blackListInput + " couldn't be created! Invalid format or already blacklisted.";
+        createAlert(messageToAlert, "danger");
     }
 })
 }
@@ -52,8 +51,6 @@ function findAllBlackListItems(e) {
             let row = blackListTable.insertRow(i);
             let cell1 = row.insertCell(0);
             cell1.innerHTML = data[i].url;
-
-
         }    
         });
 
@@ -78,17 +75,22 @@ function deleteBlackListInitiated(e) {
       body: JSON.stringify({ url : blackListDeleteInput}),
       credentials:"include"
     }).then(resp => {
-        var responseContent = document.getElementById("delete-blacklist-response");
     if (resp.status === 200) {
-        responseContent.textContent = "The BlackList item " + blackListDeleteInput + " was successfully deleted!";
-        console.log("BlackList item was successfully deleted!")
+        let messageToAlert = "The BlackList item " + blackListDeleteInput + " was successfully deleted!";
+        createAlert(messageToAlert, "success");
         findAllBlackListItems(e)
 
     } else {
-        responseContent.textContent = "The BlackList item couldn't be deleted! Invalid format or url not blacklisted.";
-        console.log("BlackList not deleted")
+        let messageToAlert = "The URL "  + blackListDeleteInput + " couldn't be deleted! Invalid format or url not blacklisted.";
+        createAlert(messageToAlert, "danger");
     }
 })
 }
 
+function createAlert(alelertToGive, kindOfAlert){
+    let elementToapend = document.getElementById("alert-area");
+    elementToapend.innerHTML = ""
+    let alert = document.createRange().createContextualFragment("<div class='alert alert-" + kindOfAlert + " alert-dismissible fade show' role='alert'>" + alelertToGive + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>");
+    elementToapend.prepend(alert);
+  }
 

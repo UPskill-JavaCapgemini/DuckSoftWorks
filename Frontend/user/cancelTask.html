@@ -74,10 +74,9 @@
 
   <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
     <div class="col-sm-2 col-md-2 col-lg-2">
-      <label class="visually-hidden" for="link">Insert ID of task to be canceled</label>
       <div class="input-group">
         <div class="input-group-text">ID</div>
-        <input type="text" class="form-control" id="cancel_task_input" placeholder="Insert ID of task to be canceled">
+        <input type="number" class="form-control" min="1" id="cancel_task_input" placeholder="Insert ID of task" required>
       </div>
     </div>
     <div class="col-12">
@@ -85,10 +84,12 @@
       </div>
       <br>
       <br>
-      <div id="alert-area"></div>
       <br>
   </form>
-
+  <br>
+  <div class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+  <div id="alert-area"></div>
+</div>
   <div class="container-fluid center">
     <div class="row justify-content-around">
     <div class="col-sm-5 col-md-8 col-lg-12">

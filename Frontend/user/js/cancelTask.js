@@ -16,16 +16,15 @@ function cancelTask(e) {
       body: JSON.stringify({ id : cancelOption}),
       credentials:"include"
     }).then(resp => {
-        var responseContent = document.getElementById("cancel-tasks-response");
-
     if (resp.status === 202) {
-        responseContent.textContent = "The task with ID " + cancelOption + " was successfully canceled!";
-        console.log("task " + cancelOption + " was successfully canceled!") 
-        filterTasksByProcessing();
+      let messageToAlert = "The task with ID " + cancelOption + " was successfully canceled!";
+      createAlert(messageToAlert, "success");
+      filterTasksByProcessing();
   
     } else {
-        responseContent.textContent = "The task couldn't be canceled.";
-        console.log("task not canceled")
+      let messageToAlert = "The task with ID " + cancelOption + " couldn't be canceled.";
+      createAlert(messageToAlert, "danger");
+      filterTasksByProcessing();
     }
   })
   }
@@ -110,6 +109,7 @@ function filterTasksByProcessing(e) {
 
 function createAlert(alelertToGive, kindOfAlert){
   let elementToapend = document.getElementById("alert-area");
+  elementToapend.innerHTML = ""
   let alert = document.createRange().createContextualFragment("<div class='alert alert-" + kindOfAlert + " alert-dismissible fade show' role='alert'>" + alelertToGive + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>");
   elementToapend.prepend(alert);
 }
