@@ -18,6 +18,9 @@ import java.util.TimeZone;
 
 @Getter
 @NoArgsConstructor
+/**
+ * Represents a TaskDTO containing the task id, Date in which it was persisted , InputUrl , TaskResult, TaskStatus ,TimeOut and Category
+ */
 public class TaskDTO {
     Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss dd-MM-yyyy", timezone = "GMT+1")

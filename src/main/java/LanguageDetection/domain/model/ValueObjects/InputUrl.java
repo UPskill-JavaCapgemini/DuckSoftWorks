@@ -16,6 +16,10 @@ import java.nio.charset.StandardCharsets;
 
 @Embeddable
 @Component
+/**
+ * Represents an InputUrl . The url that was inputted by the user for text language analysis
+ * It validates if the inputted url string ends with a TXT extension and if the text contain within it is compliant with UTF_8 charset
+ */
 public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
 
@@ -40,20 +44,37 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
 
     }
 
+    /**
+     * This method represents an InputUrl textually
+     * Returns a String with the InputUrl information
+     *
+     * @return a String with a textual representation of the InputUrl
+     */
     @Override
     public String toString() {
         return this.url.toString();
     }
 
-    /* For ORM purposes */
+    /**
+     * The empty Constructor for creating an InputUrl. Used for ORM purposes
+     */
     protected InputUrl(){
         this.url=null;
     }
 
+    /**
+     * This method returns the Url
+     *
+     * @return the Url
+     */
     public URL getUrlObject(){
         return this.url;
     }
-
+    /**
+     * This method returns the text of InputUrl
+     *
+     * @return the Text of InputUrl
+     */
     public Text getTextOfUrl() { return this.text;}
 
     @Override
@@ -61,7 +82,12 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
         assert url != null;
         return url.toString().compareTo(o.getUrlObject().toString());
     }
-
+    /**
+     * This method parses the content of the Url to String. It is used for Text content validation in agreement with UTF_8 charset
+     *
+     * @throws IOException if the parsed content of the Text is not compliant with UTF_8
+     * @return the parsed String with the Text content
+     */
     protected String parseContentOfUrlToString(URL url) throws IOException {
         try (InputStream inputStream = url.openStream()) {
             return IOUtils.toString(inputStream, StandardCharsets.UTF_8);

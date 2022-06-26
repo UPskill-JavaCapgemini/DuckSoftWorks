@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Class responsible for communication with HTTP request with respective mappings
- *
- * @authors DuckSoftWorks Team
+ * Represents the REST Controller for Task related functionalities
  */
 @Controller
 @CrossOrigin(origins = "http://localhost:5500/", maxAge = 3600, allowCredentials = "true")
@@ -32,11 +30,10 @@ public class TaskController {
     }
 
     /**
-     * This method receives a NewTaskInfoDTO object, that is automatically created from a JSON by SpringFrameWork, the information is extracted
-     * from it and passed to an instance of TaskService that returns a TaskDTO with the info to be passed to the user in the ResponseEntity object.
+     *  This method attempts to create and save a Task with the information provided by the user
      *
-     * @param info receives a JSON file that is automatically transformed into a NewTaskInfoDTO object
-     * @return information of Processing status with HTTPStatus 201(Created) or String with error information of HTTPStatus 400(Bad Request) if some error occurred
+     * @param info the NewTaskInfoDTO containing information about the task to be created and saved
+     * @return a ResponseEntity that holds information about wether creating and saving the task was successfully, or not
      */
     @PostMapping("")
     @PreAuthorize("hasRole('USER')")
@@ -50,13 +47,13 @@ public class TaskController {
     }
 
     /**
-     * This method returns a list of Tasks that was already persisted. It returns a list of all tasks if no arguments are passed to a
-     * GET request. If status is sent and category name is not, returns a list of tasks with that status.
-     * If category name is sent and status is not, returns a list of tasks with that category name.
-     * If a category name and a status is sent, returns a list of tasks with the respective category and status.
-     * @param categoryName - object of CategoryNameDTO which is created with Spring Boot automatically if passed in GET request query
-     * @param status - object of StatusDTO which is created with Spring Boot automatically if passed in GET request query
-     * @return String with a list of tasks and with HTTP Status 200 (OK)
+     * This method fetches information for all tasks created  by a given user and persisted in the database.Returns a list containing them
+     * Tasks can be fetched using no filters, Category only, Status only, or both
+     *
+     * @param categoryName the CategoryNameDTO containing the information about the Category to be used for searching tasks
+     * @param status the StatusDTO containing the information about the status to be used for searching for tasks
+     * @return a ResponseEntity that holds information of a list with all tasks searched by parameter(s) if there are any,
+     * an empty list if there are no tasks searched by the given parameter(s)
      */
     @GetMapping("")
     @ResponseBody
@@ -80,10 +77,10 @@ public class TaskController {
     }
 
     /**
-     * If user wants to cancel the task language analysis, this method puts the Task in "Canceled" status and no language will be associated
-     * with that task.
-     * @param id object of NewCancelThreadDTO which is created automatically by Spring Boot if a Long id of a task is sent by JSON body.
-     * @return String with information of the canceled task and with HTTPStatus Accepted(202) if an id valid is sent, or HTTPStatus NotFound(404) if an invalid id is sent.
+     * This method attempts to cancel an ongoing language analysis process for a user specific Task, if this task is processing
+     *
+     * @param id the NewCancelThreadDTO containing the information about the task to be cancelled
+     * @return a ResponseEntity that holds information about if cancelling the task language analysis was successful , or not
      */
 
     @PostMapping(value = "/cancel", consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -7,6 +7,9 @@ import org.springframework.hateoas.RepresentationModel;
 
 
 @NoArgsConstructor
+/**
+ * Represents a TaskStatusDTO containing the id and status for a Task
+ */
 public class TaskStatusDTO extends RepresentationModel<TaskStatusDTO> {
 
     @Getter

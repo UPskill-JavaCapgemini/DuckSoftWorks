@@ -11,6 +11,9 @@ import javax.persistence.Enumerated;
 @Getter
 @Component
 @Embeddable
+/**
+ * Represents a TaskResult. The TaskResult contains a Language after a Task has been processed for language analysis
+ */
 public class TaskResult implements ValueObject {
 
     @Enumerated(EnumType.STRING)

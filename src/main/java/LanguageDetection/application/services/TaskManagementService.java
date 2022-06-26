@@ -18,9 +18,7 @@ import java.util.*;
 
 
 /**
- * Represents the task service responsible for handling all methods which interacts with a task.
- *
- * @author DuckSoftWorks Team
+ * Represents the TaskManagementService. The applicational service for Task functionalities
  */
 @Service
 public class TaskManagementService {
@@ -34,11 +32,10 @@ public class TaskManagementService {
 
 
     /**
-     * Creates a new task with a NewTaskInfoDTO received by parameter.
-     * Before task creation it is checked if URL from input is on BlackList or not.
+     * This method attempts to create and save a Task with the information provided by the user
      *
-     * @param userInput the string containing the text within NewTaskInfoDTO.
-     * @return TaskStatusDTO assembled by taskDomainDTOAssembler, with information of Status when created(Processing) or empty if url is on blacklist and unable to crate
+     * @param userInput the NewTaskInfoDTO containing the information about the Task to be created and saved
+     * @return TaskDTO assembled through the TaskDomainDTOAssembler wrapped in an Optional if successful or an empty Optional if not
      */
     public Optional<TaskStatusDTO> createAndSaveTask(NewTaskInfoDTO userInput) {
         try {
@@ -53,9 +50,10 @@ public class TaskManagementService {
     }
 
     /**
-     * Fetch all tasks found in database
+     * This method fetches information for all tasks persisted in the database and returns a list of TaskDTO
+     * containing them if there are any, or an empty list if no tasks were persisted in the database
      *
-     * @return List of TaskDTO with all information
+     * @return a list of TaskDTO if tasks were found, an empty list if no tasks were found
      */
     public List<TaskDTO> getAllTasks() {
         List<Task> listAllTasks = taskService.findAllTasks();
@@ -70,10 +68,11 @@ public class TaskManagementService {
     }
 
     /**
-     * Fetch all tasks found in database with the status passed in StatusDTO instance
+     * This method fetches information for all tasks persisted in the database by status and returns a list of TaskDTO
+     * containing them if there are any, or an empty list if no tasks were persisted in the database
      *
-     * @param inputStatus StatusDTO object with string of status that want to be searched
-     * @return List of TaskDTO with all information of task that has status the same as String inside StatusDTO instance
+     * @param inputStatus the StatusDTO containing information about the TaskStatus to be used for task search
+     * @return a list of TaskDTO if tasks were found, an empty list if no tasks were found
      */
     public List<TaskDTO> findByStatusContaining(StatusDTO inputStatus) {
         TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
@@ -89,10 +88,11 @@ public class TaskManagementService {
     }
 
     /**
-     * Fetch all tasks found in database with the category passed in CategoryNameDTO instance
+     * This method fetches information for all tasks persisted in the database by CategoryName and returns a list of TaskDTO
+     * containing them if there are any, or an empty list if no tasks were persisted in the database
      *
-     * @param catName CategoryNameDTO object with string of category name that want to be searched
-     * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance
+     * @param catName the CategoryNameDTO containing information about the CategoryName to be used for task search
+     * @return a list of TaskDTO if tasks were found, an empty list if no tasks were found
      */
     public List<TaskDTO> findByCategoryNameContaining(CategoryNameDTO catName) {
         Category category = new Category(catName.getCategoryName());
@@ -109,12 +109,12 @@ public class TaskManagementService {
     }
 
     /**
-     * Fetch all tasks found in database with the category and status passed in CategoryNameDTO instance and StatusDTO instance
+     * This method fetches information for all tasks persisted in the database by TaskStatus and CategoryName and returns a list of TaskDTO
+     * containing them if there are any, or an empty list if no tasks were persisted in the database
      *
-     * @param inputStatus   StatusDTO object with string of status that want to be searched
-     * @param inputCategory CategoryNameDTO object with string of category name that want to be searched
-     * @return List of TaskDTO with all information of task that has category name the same as String inside CategoryNameDTO instance and
-     * status the same as string inside StatusDTO instance
+     * @param inputStatus the StatusDTO containing information about the TaskStatus to be used for task search
+     * @param inputCategory the CategoryNameDTO containing information about the CategoryName to be used for task search
+     * @return a list of TaskDTO if tasks were found, an empty list if no tasks were found
      */
     public List<TaskDTO> findByStatusContainingAndCategoryContaining(StatusDTO inputStatus, CategoryNameDTO inputCategory) {
         TaskStatus status = TaskStatus.valueOf(inputStatus.getStatus());
@@ -132,11 +132,13 @@ public class TaskManagementService {
     }
 
     /**
-     * Handles the cancellation process of a language analysis from user input
+     * This method attempts to cancel an ongoing language analysis process for a user specific Task, if this task is processing
      *
-     * @param id if of a task that user wants to cancel
-     * @return TaskDTO instance with all information if a task is canceled or empty if that id does not correspond to one task
+     * @param id the NewCancelThreadDTO containing the information about the task to be cancelled
+     * @return  TaskDTO assembled through the TaskDomainDTOAssembler wrapped in an Optional if cancelling the Task was successful
+     * An empty Optional if not
      */
+
     public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
 
         Optional<Task> opTask = taskService.cancelTaskAnalysis(id.getId());

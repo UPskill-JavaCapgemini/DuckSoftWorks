@@ -15,9 +15,8 @@ import java.net.MalformedURLException;
 import java.util.Date;
 
 /**
- * This Class represents the tasks created to detect predominant language of text present in the given URL
- *
- * @author DuckSoftWorks
+ * Representes a task created to detect predominant language of text present in the given URL
+
  */
 
 @EqualsAndHashCode
@@ -56,7 +55,7 @@ public class Task implements AggregateRoot<Long> {
     @Embedded
     InputUrl inputUrl;
     /**
-     * The language detected on the text
+     * The language analysis result of a task
      */
     @Getter
     @Embedded
@@ -85,11 +84,14 @@ public class Task implements AggregateRoot<Long> {
 
     Long userId;
 
+    /**
+     * The empty Constructor for creating a task. Used for ORM purposes
+     */
     protected Task() {
     }
 
     /**
-     * Constructor that receives all the information necessary to create a Task from user input
+     * The Constructor that receives all the information necessary to create a Task from user input
      *
      * @param inputUrl URL of the text to be analyzed
      * @param timeOut  time limit to conclude the task
@@ -119,27 +121,40 @@ public class Task implements AggregateRoot<Long> {
     }
 
     /**
-     * method that identify the task
+     * This method returns the Task identity
      *
-     * @return the date of the task
+     * @return  a Long as the identity of Task
      */
     @Override
     public Long identity() {
         return this.id;
     }
 
+    /**
+     * This method verifies if the TaskStatus is Processing
+     *
+     * @return true if TaskStatus is Processing, false if not
+     */
+
     private boolean isStatusProcessing() {
         return this.currentStatus == TaskStatus.Processing;
     }
 
+    /**
+     * This method verifies if the TaskStatus is Canceled
+     *
+     * @return true if TaskStatus is Canceled, false if not
+     */
     private boolean isStatusCanceled() {
         return this.currentStatus == TaskStatus.Canceled;
     }
 
     /**
-     * Only to be used at asynchronous process, after language analysis
+     * This method is meant to be used asynchronously to update the Task TaskStatus and TaskResult upon language analysis conclusion
+     * It updates the Task Language result and TaskStatus
      *
-     * @param updatedTaskResult
+     * @param updatedTaskResult The TaskResult with the analyzed Language
+     * @return true if the Task language analysis has been concluded successfully, false if not
      */
     public boolean concludeTask(TaskResult updatedTaskResult) {
         if(!isStatusCanceled()){
@@ -150,6 +165,12 @@ public class Task implements AggregateRoot<Long> {
         return false;
     }
 
+    /**
+     * This method attempts to update the Task TaskStatus to Canceled
+     * If successful , updates the task with a Canceled TaskStatus
+     *
+     * @return true if the Task TaskStatus is updated to Canceled, false if not
+     */
     public boolean cancelTask(){
         if(isStatusProcessing()){
             this.updateStatus(TaskStatus.Canceled);
@@ -159,9 +180,9 @@ public class Task implements AggregateRoot<Long> {
     }
 
     /**
-     * Used to update Task status
+     * This method updates that Task TaskStatus
      *
-     * @param status new task status
+     * @param status The TaskStatus containing the information meant to update the Task
      */
     private void updateStatus(TaskStatus status) {
         this.currentStatus = status;
