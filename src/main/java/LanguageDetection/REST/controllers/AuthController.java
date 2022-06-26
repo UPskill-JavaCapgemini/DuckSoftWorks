@@ -1,8 +1,8 @@
 package LanguageDetection.REST.controllers;
 
 
-import LanguageDetection.application.DTO.JwtResponse;
-import LanguageDetection.application.DTO.LoginRequest;
+import LanguageDetection.application.DTO.JwtResponseDTO;
+import LanguageDetection.application.DTO.LoginRequestDTO;
 import LanguageDetection.application.security.jwt.JwtUtils;
 import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class AuthController {
     JwtUtils jwtUtils;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDTO loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -43,7 +43,7 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
+        return ResponseEntity.ok(new JwtResponseDTO(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 roles));

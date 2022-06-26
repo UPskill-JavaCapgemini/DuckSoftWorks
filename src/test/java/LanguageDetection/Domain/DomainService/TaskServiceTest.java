@@ -136,42 +136,36 @@ class TaskServiceTest {
     }
 
 
-//    @Test
-//    void ensureCreateAndSaveTaskReturnsCreatedTask() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, MalformedURLException, InstantiationException {
-//        //arrange
-//        String url = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
-//        int inputTimeOut = 1;
-//        String inputCategory = "Sports";
-//        Category category = new Category(inputCategory);
-//        TimeOut timeOut = new TimeOut(inputTimeOut);
-//        InputUrl inputUrl = new InputUrl(url);
-//
-//
-//
-//        Method isBeingAnalyzed = TaskService.class.getDeclaredMethod("isBeingAnalyzed", String.class);
-//        isBeingAnalyzed.setAccessible(true);
-//
-//        Method initializeLanguageAnalysis = TaskService.class.getDeclaredMethod("initializeLanguageAnalysis", Task.class);
-//        initializeLanguageAnalysis.setAccessible(true);
-//
-//        Constructor<Task> taskConstructor = Task.class.getDeclaredConstructor(InputUrl.class,TimeOut.class,Category.class,Long.class);
-//        taskConstructor.setAccessible(true);
-//        Task task = taskConstructor.newInstance(inputUrl,timeOut,category,1L);
-//
-//
-//        Optional<Task> createdTaskOp = Optional.of(task);
-//
-//
-//        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
-//            utils.when(()-> iTaskRepository.existsByUrlAndIsProcessing(any(InputUrl.class), any(Long.class))).thenReturn(false);
-//                Mockito.when(taskFactory.createTask(url, inputTimeOut, inputCategory)).thenReturn(createdTaskOp);
-//                Mockito.doNothing().when(initializeLanguageAnalysis.invoke(taskService,task));
-//
-//                //act
-//                Optional<Task> savedTask = taskService.createAndSaveTask(url, inputTimeOut, inputCategory);
-//
-//                //assert
-//                assertNotNull(savedTask);
-//            }
-//        }
+
+    @Test
+    void ensureCreateAndSaveTaskReturnsCreatedTask() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, MalformedURLException, InstantiationException {
+        //arrange
+        String url = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
+        int inputTimeOut = 1;
+        String inputCategory = "Sports";
+        Category category = new Category(inputCategory);
+        TimeOut timeOut = new TimeOut(inputTimeOut);
+        InputUrl inputUrl = new InputUrl(url);
+
+        Method isBeingAnalyzed = TaskService.class.getDeclaredMethod("isBeingAnalyzed", String.class);
+        isBeingAnalyzed.setAccessible(true);
+
+        Constructor<Task> taskConstructor = Task.class.getDeclaredConstructor(InputUrl.class,TimeOut.class,Category.class,Long.class);
+        taskConstructor.setAccessible(true);
+        Task task = taskConstructor.newInstance(inputUrl,timeOut,category,1L);
+        Optional<Task> createdTaskOp = Optional.of(task);
+
+
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(()-> iTaskRepository.existsByUrlAndIsProcessing(any(InputUrl.class), any(Long.class))).thenReturn(false);
+            Mockito.when(taskFactory.createTask(url, inputTimeOut, inputCategory)).thenReturn(createdTaskOp);
+            Mockito.when(iTaskRepository.saveTask(createdTaskOp.get())).thenReturn(task);
+
+            //act
+            Optional<Task> savedTask = taskService.createAndSaveTask(url, inputTimeOut, inputCategory);
+
+            //assert
+            assertEquals(task,savedTask.get());
+        }
+    }
 }

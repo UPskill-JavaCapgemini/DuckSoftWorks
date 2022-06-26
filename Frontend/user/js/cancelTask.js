@@ -74,6 +74,11 @@ function filterTasksByProcessing(e) {
     table.appendChild(TaskStatusHead);
     table.appendChild(TimeHead); 
 
+    if(data.length === 0){
+      let row = table.insertRow(0);
+      row.innerHTML = "No tasks being processed at the moment!"
+    }
+
     for (let i = 0; i < data.length; i++) {
 
         let row = table.insertRow(i);

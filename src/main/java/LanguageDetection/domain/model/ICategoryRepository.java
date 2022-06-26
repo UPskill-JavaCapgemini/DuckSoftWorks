@@ -5,7 +5,9 @@ import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Represents the ICategoryRepository
+ */
 public interface ICategoryRepository {
 
     Category saveCategory(Category category);

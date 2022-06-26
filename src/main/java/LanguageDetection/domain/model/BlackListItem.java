@@ -2,10 +2,7 @@ package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
-
-import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EmbeddedId;

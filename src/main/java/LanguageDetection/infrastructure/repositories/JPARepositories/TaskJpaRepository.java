@@ -9,7 +9,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-
+/**
+ * Represents the CategoryJpaRepository. Extends the CrudRepository Interface
+ */
 public interface TaskJpaRepository extends CrudRepository <Task, Long> {
     Iterable<Task> findByCurrentStatusLikeAndUserId(TaskStatus st, Long userId);
 

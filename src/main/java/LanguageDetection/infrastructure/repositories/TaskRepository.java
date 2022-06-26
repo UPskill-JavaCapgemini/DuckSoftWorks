@@ -15,6 +15,10 @@ import java.util.Optional;
 
 
 @Repository
+/**
+ * Represents the TaskRepository. The implementation of ITaskRepository.
+ * Handles all interactions with the database of this domain entity
+ */
 public class TaskRepository implements ITaskRepository {
 
 

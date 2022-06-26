@@ -7,6 +7,9 @@ import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Represents the ITaskRepository
+ */
 public interface ITaskRepository {
 
     Task saveTask(Task task);

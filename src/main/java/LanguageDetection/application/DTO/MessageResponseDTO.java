@@ -6,13 +6,10 @@ import lombok.Getter;
 import lombok.ToString;
 import org.springframework.hateoas.RepresentationModel;
 
+// fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
 @AllArgsConstructor
-public class SignupRequest extends RepresentationModel<UserDTO> {
+public class MessageResponseDTO extends RepresentationModel<UserDTO> {
     @Getter
-    String username;
-    @Getter
-    String email;
-    @Getter
-    String password;
+    String message;
 }

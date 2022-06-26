@@ -63,8 +63,8 @@ public class BlackListManagementService {
     }
 
     /**
-     * This method fetches information for all blackListItems persisted in the database and returns a list containing them if there are any
-     * or an empty list if no BlackListItems were persisted in the database
+     * This method fetches information for all blackListItems persisted in the database and returns a list of BlackListDTO
+     * containing them if there are any, or an empty list if no BlackListItems were persisted in the database
      *
      * @return a BlackListDTO list
      */

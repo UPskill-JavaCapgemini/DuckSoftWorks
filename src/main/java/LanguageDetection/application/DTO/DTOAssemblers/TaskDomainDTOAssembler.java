@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 
 @Service
+/**
+ * Represents the TaskDomainDTOAssembler. The assembler of either a TaskStatusDTO or a TaskDTO by input of a Task
+ */
 public class TaskDomainDTOAssembler {
 
     private TaskDomainDTOAssembler() {
