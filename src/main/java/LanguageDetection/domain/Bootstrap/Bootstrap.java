@@ -1,11 +1,8 @@
 package LanguageDetection.domain.Bootstrap;
 
 
-import LanguageDetection.domain.model.ValueObjects.ERole;
-import LanguageDetection.domain.model.Role;
 import LanguageDetection.domain.model.*;
-import LanguageDetection.infrastructure.repositories.UserRepository;
-import LanguageDetection.infrastructure.repositories.RoleRepository;
+import LanguageDetection.domain.model.ValueObjects.ERole;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +23,7 @@ public class Bootstrap implements InitializingBean {
     ICategoryRepository iCategoryRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    IRoleRepository roleRepository;
 
     @Autowired
     IUserRepository userRepository;
