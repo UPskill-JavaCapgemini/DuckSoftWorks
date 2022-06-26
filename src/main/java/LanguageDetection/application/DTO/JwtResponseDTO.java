@@ -8,7 +8,7 @@ import java.util.List;
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
 @AllArgsConstructor
-public class JwtResponse extends RepresentationModel<UserDTO> {
+public class JwtResponseDTO extends RepresentationModel<UserDTO> {
     @Getter
     @Setter
     String token;

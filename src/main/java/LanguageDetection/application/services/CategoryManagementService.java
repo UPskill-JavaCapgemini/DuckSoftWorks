@@ -42,7 +42,7 @@ public class CategoryManagementService {
     }
 
     /**
-     * This method fetches information for all categories persisted in the database and returns a list containing them
+     * This method fetches information for all categories persisted in the database and returns a list of CategoryDTO containing them
      *
      * @return a CategoryDTO list
      */

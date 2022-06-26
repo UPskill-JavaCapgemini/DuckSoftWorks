@@ -9,7 +9,7 @@ import org.springframework.hateoas.RepresentationModel;
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 
 @AllArgsConstructor
-public class MessageResponse extends RepresentationModel<UserDTO> {
+public class MessageResponseDTO extends RepresentationModel<UserDTO> {
     @Getter
     String message;
 }

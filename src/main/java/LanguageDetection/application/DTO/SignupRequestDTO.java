@@ -8,7 +8,7 @@ import org.springframework.hateoas.RepresentationModel;
 
 
 @AllArgsConstructor
-public class SignupRequest extends RepresentationModel<UserDTO> {
+public class SignupRequestDTO extends RepresentationModel<UserDTO> {
     @Getter
     String username;
     @Getter

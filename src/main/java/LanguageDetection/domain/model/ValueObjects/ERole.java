@@ -1,6 +1,8 @@
 package LanguageDetection.domain.model.ValueObjects;
 
-public enum ERole {
+import LanguageDetection.domain.shared.ValueObject;
+
+public enum ERole implements ValueObject {
     ROLE_USER,
     ROLE_ADMIN
 }
