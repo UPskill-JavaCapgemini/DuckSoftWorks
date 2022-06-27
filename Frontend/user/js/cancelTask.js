@@ -1,7 +1,10 @@
 
+// allow execution of the refresh for the tasks in process on window loading 
 window.onload = filterTasksByProcessing;
 setInterval(filterTasksByProcessing, 3000);
 
+
+// method that allow the request for the cancel of the task and depending on the request result show message
 function cancelTask(e) {
     e.preventDefault();
     var cancelOption = document.getElementById("cancel_task_input").value
@@ -29,6 +32,8 @@ function cancelTask(e) {
   })
   }
 
+
+  // method that alter the DOM to show the requested canceled tasks in the respective table
 function filterTasksByProcessing(e) {
     console.log("started filterTasksByProcessing");
 
@@ -76,7 +81,7 @@ function filterTasksByProcessing(e) {
 
     if(data.length === 0){
       let row = table.insertRow(0);
-      row.innerHTML = "No tasks being processed at the moment!"
+      row.innerHTML = "No tasks are being processed at the moment!"
     }
 
     for (let i = 0; i < data.length; i++) {
@@ -112,6 +117,7 @@ function filterTasksByProcessing(e) {
   })
 }
 
+// method to show alert on DOM depending on the kind
 function createAlert(alelertToGive, kindOfAlert){
   let elementToapend = document.getElementById("alert-area");
   elementToapend.innerHTML = ""
