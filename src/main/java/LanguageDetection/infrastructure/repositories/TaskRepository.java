@@ -83,8 +83,8 @@ public class TaskRepository implements ITaskRepository {
 	 * @param identity the id of a task
 	 * @return task object if id is found in database
 	 */
-    public Optional<Task> findByTaskId(Long identity) {
-		return taskJpaRepository.findById(identity);
+    public Optional<Task> findByTaskIdAndUserId(Long identity, Long userId) {
+		return taskJpaRepository.findByIdAndUserId(identity, userId);
     }
 
 	@Override

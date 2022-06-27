@@ -14,7 +14,7 @@ public interface ITaskRepository {
 
     Task saveTask(Task task);
 
-    Optional<Task> findByTaskId(Long identity);
+    Optional<Task> findByTaskIdAndUserId(Long identity, Long userId);
 
     List<Task> findAllTasks(long userId);
 

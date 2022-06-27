@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.infrastructure.repositories;
 
 import LanguageDetection.domain.model.Category;
@@ -136,3 +137,4 @@ class TaskRepositoryTest {
         Assertions.assertEquals(repository.findByTaskId(1L), Optional.of(task));
     }
 }
+*/

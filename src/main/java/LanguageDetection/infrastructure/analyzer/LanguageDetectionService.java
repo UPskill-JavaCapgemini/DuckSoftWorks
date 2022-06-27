@@ -7,7 +7,6 @@ import LanguageDetection.domain.model.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -62,7 +61,7 @@ class AnalysisHelper implements Runnable {
     public void run() {
         //retirar isto
         Language analyzedLanguage = lang.analyze(taskToBeAnalyzed);
-        Optional<Task> currentTask = taskRepository.findByTaskId(taskToBeAnalyzed.getId());
+        Optional<Task> currentTask = taskRepository.findByTaskIdAndUserId(taskToBeAnalyzed.getId(), taskToBeAnalyzed.getUserId());
 
         if (currentTask.isPresent()) {
             TaskResult updatedTaskResult = new TaskResult(analyzedLanguage);

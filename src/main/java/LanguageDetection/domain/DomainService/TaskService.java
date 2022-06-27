@@ -118,7 +118,7 @@ public class TaskService {
      * An empty Optional if not
      */
     public Optional<Task> cancelTaskAnalysis(Long id) {
-        Optional<Task> optionalTask = iTaskRepository.findByTaskId(id);
+        Optional<Task> optionalTask = iTaskRepository.findByTaskIdAndUserId(id, getUserNameId());
         if (optionalTask.isPresent()) {
             Task task = optionalTask.get();
             if (task.cancelTask()) {

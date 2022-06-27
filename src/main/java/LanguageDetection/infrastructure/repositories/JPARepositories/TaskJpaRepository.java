@@ -23,6 +23,8 @@ public interface TaskJpaRepository extends CrudRepository <Task, Long> {
 
     Iterable<Task> findAllByUserId(Long userId);
 
+    Optional<Task> findByIdAndUserId(Long id, Long userId);
+
     boolean existsTaskByInputUrlAndCurrentStatusAndUserId(InputUrl inputUrl,TaskStatus status,Long userId);
 
 }

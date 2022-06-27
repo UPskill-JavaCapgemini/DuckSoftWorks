@@ -82,6 +82,7 @@ public class Task implements AggregateRoot<Long> {
     @JoinColumn(name = "CategoryName")
     Category category;
 
+    @Getter
     Long userId;
 
     /**
