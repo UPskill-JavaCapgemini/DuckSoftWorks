@@ -37,6 +37,9 @@ class TaskServiceTest {
     @Mock
     TaskFactory taskFactory;
 
+    @Mock
+    ILanguageDetector iLanguageDetector;
+
     @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
