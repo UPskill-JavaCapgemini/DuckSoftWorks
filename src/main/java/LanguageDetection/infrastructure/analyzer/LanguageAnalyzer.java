@@ -55,16 +55,12 @@ public class LanguageAnalyzer {
     public Language analyze(Task task) throws IOException, ParseException {
         IndexSearcher.setMaxClauseCount(MAX_TOKENS);
 
-            Query q = new QueryParser("dictionary", analyzer).parse(task.getInputUrl().getTextOfUrl().getTextContent());
-            TopDocs docs = searcher.search(q, HITS_PER_PAGE);
-            ScoreDoc[] hits = docs.scoreDocs;
-            return Language.valueOf(searcher.doc(hits[0].doc).get("language"));
+        Query q = new QueryParser("dictionary", analyzer).parse(task.getInputUrl().getTextOfUrl().getTextContent());
+        TopDocs docs = searcher.search(q, HITS_PER_PAGE);
+        ScoreDoc[] hits = docs.scoreDocs;
+        return Language.valueOf(searcher.doc(hits[0].doc).get("language"));
 
     }
-
-
-
-
 
 
 }
