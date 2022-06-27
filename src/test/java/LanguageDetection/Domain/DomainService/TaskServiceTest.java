@@ -10,12 +10,10 @@ import LanguageDetection.domain.model.TaskFactory;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
-import org.hamcrest.Matchers;
-import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +24,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 class TaskServiceTest {
 
@@ -38,9 +36,6 @@ class TaskServiceTest {
 
     @Mock
     TaskFactory taskFactory;
-
-    @Mock
-    ILanguageDetector iLanguageDetector;
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -62,32 +57,6 @@ class TaskServiceTest {
             assertTrue(opTask.isEmpty());
         }
     }
-
-    /*@Test
-    void ensureTaskIsCreatedWhenUrlIsNotProcessing() throws MalformedURLException {
-        //Arrange
-        String url = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
-        int timeOut = 2;
-        String categoryName = "Sports";
-        Category category = new Category(categoryName);
-
-        Task task = mock(Task.class);
-
-        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
-            utils.when(()-> iTaskRepository.existsByUrlAndIsProcessing(any(InputUrl.class), any(Long.class))).thenReturn(false);
-            when(taskFactory.createTask(url, timeOut, categoryName)).thenReturn(Optional.of(task));
-            //Error. I cannot pass a mock on method argument and then return a mock. How to solve this?
-            when(iTaskRepository.saveTask(task)).thenReturn(any(Task.class));
-
-            doNothing().when(iLanguageDetector).languageAnalysis(task);
-
-            //Act
-            Optional<Task> opTask = taskService.createAndSaveTask(url, timeOut, categoryName);
-
-            //Assert
-            assertEquals(opTask, Optional.of(any(Task.class)));
-        }
-    }*/
 
     @Test
     void ensureFindAllTaskReturnListOfTasksOfCorrespondingUser(){
@@ -138,7 +107,7 @@ class TaskServiceTest {
 
 
     @Test
-    void ensureCreateAndSaveTaskReturnsCreatedTask() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, MalformedURLException, InstantiationException {
+    void ensureCreateAndSaveTaskReturnsCreatedTaskWhenUrlIsNotProcessing() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, MalformedURLException, InstantiationException {
         //arrange
         String url = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
         int inputTimeOut = 1;
@@ -166,6 +135,30 @@ class TaskServiceTest {
 
             //assert
             assertEquals(task,savedTask.get());
+        }
+    }
+
+    @Test
+    void ensureCancelTaskAnalysisIsCanceledWhenTaskExistsAndTaskStatusIsProcessing() throws MalformedURLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        //arrange
+        String url = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
+        int inputTimeOut = 1;
+        String inputCategory = "Sports";
+        Category category = new Category(inputCategory);
+        TimeOut timeOut = new TimeOut(inputTimeOut);
+        InputUrl inputUrl = new InputUrl(url);
+
+        Constructor<Task> taskConstructor = Task.class.getDeclaredConstructor(InputUrl.class,TimeOut.class,Category.class,Long.class);
+        taskConstructor.setAccessible(true);
+        Task task = taskConstructor.newInstance(inputUrl,timeOut,category,1L);
+        Optional<Task> opSavedTask = Optional.of(task);
+
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)){
+            utils.when(() -> iTaskRepository.findByTaskIdAndUserId(any(), any())).thenReturn(opSavedTask);
+            when(iTaskRepository.saveTask(opSavedTask.get())).thenReturn(opSavedTask.get());
+
+            //Act / Assert
+            Assertions.assertEquals(taskService.cancelTaskAnalysis(1L), opSavedTask);
         }
     }
 }
