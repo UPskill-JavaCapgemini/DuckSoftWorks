@@ -85,8 +85,8 @@ public class TaskController {
 
     @PostMapping(value = "/cancel", consumes = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<Object> cancelAnalysisThread(@RequestBody NewCancelThreadDTO id) {
-        Optional<TaskDTO> cancelTask = taskManagementService.cancelTaskAnalysis(id);
+    public ResponseEntity<Object> cancelTaskAnalysis(@RequestBody NewCancelThreadDTO id) {
+        Optional<TaskStatusDTO> cancelTask = taskManagementService.cancelTaskAnalysis(id);
         if(cancelTask.isPresent()){
             return new ResponseEntity<>(cancelTask.get(), HttpStatus.ACCEPTED);
         } else {

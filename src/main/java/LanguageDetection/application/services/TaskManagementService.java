@@ -139,11 +139,11 @@ public class TaskManagementService {
      * An empty Optional if not
      */
 
-    public Optional<TaskDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
+    public Optional<TaskStatusDTO> cancelTaskAnalysis(NewCancelThreadDTO id) {
 
         Optional<Task> opTask = taskService.cancelTaskAnalysis(id.getId());
         if (opTask.isPresent()) {
-            return Optional.of(taskDomainDTOAssembler.toCompleteDTO(opTask.get()));
+            return Optional.of(taskDomainDTOAssembler.toDTO(opTask.get()));
         }
         return Optional.empty();
     }
