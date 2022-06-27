@@ -1,7 +1,7 @@
 window.onload = populateCategories;
 
 
-//CREATE CATEGORY
+//method that allow the creation of a new category 
 
 function createNewCategory(e) {
     e.preventDefault();
@@ -30,7 +30,7 @@ function createNewCategory(e) {
 })
 }
 
-//DELETE CATEGORY
+//method that allow the delete of a new category 
 
 function deleteCategory(e) {
   e.preventDefault();
@@ -60,7 +60,7 @@ fetch('http://localhost:8080/Category', {
 })
 }
 
-
+// populate categories of the dropdown by finding in the database
 function populateCategories(){
 
     let dropdown = document.getElementById('category-dropdown');
@@ -95,6 +95,7 @@ function populateCategories(){
       });
     }
 
+    // method to show alert on DOM depending on the kind
     function createAlert(alelertToGive, kindOfAlert){
       let elementToapend = document.getElementById("alert-area");
       elementToapend.innerHTML = ""

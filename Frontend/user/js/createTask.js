@@ -28,7 +28,7 @@ fetch('http://localhost:8080/LanguageDetection', {
       console.log("Task was successfully created!")
     });    
   } else {
-    let messageToAlert = "The task with URL " + link + " couldn't be created! The URL is blacklisted or has a invalid format!";
+    let messageToAlert = "The task with URL " + link + " couldn't be created! The URL is blacklisted, has a invalid format or is already being processed!";
     createAlert(messageToAlert, "danger");
     console.log("Task not created")
   }
