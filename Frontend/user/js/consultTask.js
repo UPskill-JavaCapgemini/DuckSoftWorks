@@ -1,5 +1,8 @@
+// allow onload of the categories
 window.onload = populateCategories;
 
+
+// method that populate the dropdown of categories with the ones that are in the database
 function populateCategories(){
 
     let dropdown = document.getElementById('category-dropdown');
@@ -41,6 +44,7 @@ dropdown.selectedIndex = 0;
       });
     }
 
+    //method that request the backend tasks with specific category, status or none
     function filterTasksStatusCategory(e) {
         e.preventDefault();
         console.log("hi there");
@@ -104,7 +108,7 @@ dropdown.selectedIndex = 0;
 
         if(data.length === 0){
           let row = table.insertRow(0);
-          row.innerHTML = "                                        No tasks were found in this search!"
+          row.innerHTML = "No tasks were found in this search!"
         }
 
         for (let i = 0; i < data.length; i++) {
