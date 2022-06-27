@@ -7,9 +7,9 @@
     <title>insertURL</title>
     <script src="js/createTask.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+   
+    <!-- CSS nav styling -->
     <style>
-    
-       
         .nav-scroller {
           position: relative;
           z-index: 2;
@@ -30,7 +30,10 @@
 
       </style>
 </head>
+
+
 <body>
+  <!-- NAV -->
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Check Language</a>
@@ -68,10 +71,12 @@
   </div>
 
   
-
+<!-- CREATE A TASK -->
   <div class="container flex center">
     <div class="row justify-content-around">
     <div class="col-md-8 col-lg-8">
+    
+      <!-- INSERT URL -->
       <h4 class="mb-3">Please insert your text</h4>
       <form class="needs-validation" novalidate>
         <div class="row g-3">
@@ -84,6 +89,7 @@
           </div>
         </div>
           <br>
+        <!-- SELECT A CATEGORY -->
         <div class="col-md-3">
         <label for="category" class="form-label">Text Category</label>
         <select aria-label="Time Limit" class="form-select" id="category-dropdown" name="category" required>
@@ -94,6 +100,7 @@
         </div>
 
 <br>
+          <!-- CHOOSE A TIME OUT -->
           <div class="col-md-3">
             <label for="time limit" class="form-label">Time limit (in minutes)</label>
             <select aria-label="Category" class="form-select" id="timeLimit" required>
@@ -118,13 +125,14 @@
   </div>
 </main>
 
+<!-- FOOTER -->
 <footer class="my-5 pt-5 text-muted text-center text-small">
   <p class="mb-1">&copy; 2022 Duck Soft Works & Co.</p>
 </footer>
 </div>
 
 
-
+<!-- dependencies -->
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="form-validation.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>

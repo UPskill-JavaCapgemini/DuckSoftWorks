@@ -7,9 +7,9 @@
     <title>consultTasks</title>
     <script src="js/consultTask.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-    <style>
     
-       
+    <!-- CSS nav styling -->
+    <style>
         .nav-scroller {
           position: relative;
           z-index: 2;
@@ -59,7 +59,7 @@
 
 
 
-<!-- Body -->
+<!-- HEADER -->
 <body class="bg-light">
   
 <div class="container">
@@ -74,14 +74,18 @@
     <h2>Ducked Language Detection</h2>
   </div>
 
+  <!-- CONSULT TASKS -->
 <h4>Check your Tasks</h4>
 <br>
+
+<!-- BY CATEGORY-->
 <div class="container text-center">
 <div class=" row justify-content-md-center mb-3">
   <label class="input-group-text col col-sm-1" for="inputGroupSelect01">Categories</label>
     <select class="col col-sm-3" id="category-dropdown">
   </select>
 
+<!-- BY TSTATUS -->
   <label class="input-group-text col col-sm-1 ms-3" for="inputGroupSelect01">Status</label>
     <select class="col col-sm-3" id="status-dropdown">
       <option value="">All</option>
@@ -103,19 +107,8 @@
   <div class="col-sm-5 col-md-8 col-lg-12">
       
 
+<!-- CSS nav styling -->
       <style>
-        /* table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td {
-            border: 1px solid #000000;
-            background-color:rgb(240, 240, 240);
-            text-align: left;
-            padding: 8px;
-        }*/
-
         th {
             border: 1px solid #000000;
             background-color: darkgrey;
@@ -126,7 +119,6 @@
         h2 {
           text-align: center;
         }
-        
     </style>
 
 
@@ -137,6 +129,7 @@
     
     <br/>
 
+    <!-- TABLE VIEW -->
     <div id="data-table">
       <table class="table table-bordered table-hover" id="consult-task-data-table">
     </table>
@@ -147,16 +140,15 @@
 </div>
        
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="my-5 pt-5 text-muted text-center text-small">
   <p class="mb-1">&copy; 2022 Duck Soft Works & Co.</p>
 </footer>
 
 
 
+<!-- dependencies -->
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-
     <script src="form-validation.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
