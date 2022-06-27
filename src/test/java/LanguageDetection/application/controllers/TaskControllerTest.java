@@ -77,11 +77,11 @@ class TaskControllerTest {
         NewCancelThreadDTO newCancelThreadDTO = new NewCancelThreadDTO();
         newCancelThreadDTO.setId(1L);
 
-        Optional<TaskDTO> optional = Optional.empty();
+        Optional<TaskStatusDTO> optional = Optional.empty();
         when(taskManagementService.cancelTaskAnalysis(newCancelThreadDTO)).thenReturn(optional);
 
         // Act
-        ResponseEntity<Object> responseEntity = controller.cancelAnalysisThread(newCancelThreadDTO);
+        ResponseEntity<Object> responseEntity = controller.cancelTaskAnalysis(newCancelThreadDTO);
 
         // Assert
         assertEquals(responseEntity.getStatusCodeValue(), 404);
@@ -94,12 +94,12 @@ class TaskControllerTest {
         NewCancelThreadDTO newCancelThreadDTO = new NewCancelThreadDTO();
         newCancelThreadDTO.setId(1L);
 
-        TaskDTO task = mock(TaskDTO.class);
-        Optional<TaskDTO> optional = Optional.of(task);
+        TaskStatusDTO task = mock(TaskStatusDTO.class);
+        Optional<TaskStatusDTO> optional = Optional.of(task);
         when(taskManagementService.cancelTaskAnalysis(newCancelThreadDTO)).thenReturn(optional);
 
         // Act
-        ResponseEntity<Object> responseEntity = controller.cancelAnalysisThread(newCancelThreadDTO);
+        ResponseEntity<Object> responseEntity = controller.cancelTaskAnalysis(newCancelThreadDTO);
 
         // Assert
         assertEquals(responseEntity.getStatusCodeValue(), 202);

@@ -48,9 +48,9 @@ private static Dictionary singleton = null;
     protected void dictionaries() throws IOException {
         addDoc(writer, "ENGLISH", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/en-common.wl"));
 
-        addDoc(writer, "PORTUGUESE", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/es.wl"));
+        addDoc(writer, "PORTUGUESE", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/pt_PT.wl"));
 
-        addDoc(writer, "SPANISH", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/pt_PT.wl"));
+        addDoc(writer, "SPANISH", Paths.get("src/main/java/LanguageDetection/infrastructure/inputFiles/es.wl"));
         writer.close();
     }
 

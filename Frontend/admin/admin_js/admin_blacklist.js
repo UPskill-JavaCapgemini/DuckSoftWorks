@@ -1,5 +1,7 @@
+// allow onload list of blacklistItems to the respective table
 window.onload = findAllBlackListItems;
 
+// method that allow the post of a new blacklistItem
 function createNewBlackListItem(e) {
     e.preventDefault();
     console.log("createBlackListInitiated");
@@ -27,7 +29,7 @@ function createNewBlackListItem(e) {
 })
 }
 
-
+//method that return all blacklistItems
 function findAllBlackListItems(e) {
     e.preventDefault();
     console.log("hi there");
@@ -65,6 +67,7 @@ function findAllBlackListItems(e) {
 })
 }
 
+//method that delete all blacklistItems
 function deleteBlackListInitiated(e) {
     e.preventDefault();
     var blackListDeleteInput = document.getElementById("deleteBlackListInputEntry").value
@@ -92,6 +95,7 @@ function deleteBlackListInitiated(e) {
 })
 }
 
+// method to show alert on DOM depending on the kind
 function createAlert(alelertToGive, kindOfAlert){
     let elementToapend = document.getElementById("alert-area");
     elementToapend.innerHTML = ""

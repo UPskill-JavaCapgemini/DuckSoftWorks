@@ -10,15 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 public class JwtResponseDTO extends RepresentationModel<UserDTO> {
     @Getter
-    @Setter
     String token;
     @Getter
-    @Setter
     long id;
     @Getter
-    @Setter
     String username;
     @Getter
-    @Setter
     List<String> roles;
 }

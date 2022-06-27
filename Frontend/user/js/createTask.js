@@ -1,6 +1,8 @@
 //populate categories list everytime load of the screen occurs 
 window.onload = populateCategories;
 
+
+//method that post the creation of a new task to the backend
 function createNewTask(e) {
   e.preventDefault();
   console.log("hi there");
@@ -28,7 +30,7 @@ fetch('http://localhost:8080/LanguageDetection', {
       console.log("Task was successfully created!")
     });    
   } else {
-    let messageToAlert = "The task with URL " + link + " couldn't be created! The URL is blacklisted or has a invalid format!";
+    let messageToAlert = "The task with URL " + link + " couldn't be created! The URL is blacklisted, has a invalid format or is already being processed!";
     createAlert(messageToAlert, "danger");
     console.log("Task not created")
   }
@@ -72,6 +74,7 @@ fetch(categoriesURL,{credentials:"include"})
 }
 
 
+// method to show alert on DOM depending on the kind
 function createAlert(alelertToGive, kindOfAlert){
   let elementToapend = document.getElementById("alert-area");
   let alert = document.createRange().createContextualFragment("<div class='alert alert-" + kindOfAlert + " alert-dismissible fade show' role='alert'>" + alelertToGive + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>");

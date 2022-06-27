@@ -157,21 +157,16 @@ class TaskManagementServiceTest {
     }
 
     @Test
-    void cancelTaskAnalysisShouldTaskDTOCorrespondingToWhichWasCanceled() throws MalformedURLException {
+    void cancelTaskAnalysisShouldReturnTaskStatusDTOCorrespondingToWhichWasCanceled() throws MalformedURLException {
         Task task = Mockito.mock(Task.class);
         NewCancelThreadDTO cancelThreadDTO = new NewCancelThreadDTO(10L);
 
-        Date date = new Date(1L);
-        InputUrl inputUrl = new InputUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
-        TaskResult taskResult = new TaskResult(Language.ENGLISH);
         TaskStatus taskStatus = TaskStatus.Concluded;
-        TimeOut timeOut = new TimeOut(2);
-        Category category = new Category("Sports");
 
-        TaskDTO taskDTO = new TaskDTO(10L, date,  inputUrl, taskResult, taskStatus, timeOut, category);
+        TaskStatusDTO taskDTO = new TaskStatusDTO(10L,taskStatus);
 
         when(taskService.cancelTaskAnalysis(10L)).thenReturn(Optional.of(task));
-        when(domainDTOAssembler.toCompleteDTO(task)).thenReturn(taskDTO);
+        when(domainDTOAssembler.toDTO(task)).thenReturn(taskDTO);
 
         Assertions.assertEquals(taskManagementService.cancelTaskAnalysis(cancelThreadDTO), Optional.of(taskDTO));
     }

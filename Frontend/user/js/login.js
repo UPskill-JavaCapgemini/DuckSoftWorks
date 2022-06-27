@@ -1,4 +1,5 @@
 
+// method to allow the request of credentials to the backend
 function logIn(e) {
     e.preventDefault();
     console.log("hi there login");

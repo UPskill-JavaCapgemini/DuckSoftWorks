@@ -136,7 +136,7 @@ public class TaskService {
      * @param savedTask The Task previously created and persisted that is to be analysed and attributed with a TaskResult
      */
 
-    private void initializeLanguageAnalysis(Task savedTask) {
+    private void    initializeLanguageAnalysis(Task savedTask) {
         iLanguageDetector.languageAnalysis(savedTask);
         initializeTimer(savedTask);
     }
