@@ -1,6 +1,6 @@
-/*
 package LanguageDetection.infrastructure.repositories;
 
+import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.net.MalformedURLException;
@@ -123,8 +121,13 @@ class TaskRepositoryTest {
         //Arrange
         when(jpaRepository.findById(1L)).thenReturn(Optional.empty());
 
-        //Act / Assert
-        Assertions.assertEquals(repository.findByTaskId(1L), Optional.empty());
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)) {
+            utils.when(() -> repository.findByTaskIdAndUserId(any(), any(Long.class))).thenReturn(Optional.empty());
+
+            //Act / Assert
+            Assertions.assertEquals(repository.findByTaskIdAndUserId(1L, 2L), Optional.empty());
+        }
+
     }
 
     @Test
@@ -133,8 +136,10 @@ class TaskRepositoryTest {
         Task task = mock(Task.class);
         when(jpaRepository.findById(1L)).thenReturn(Optional.of(task));
 
+        try(MockedStatic<UserDetailsDomainService> utils = Mockito.mockStatic(UserDetailsDomainService.class)) {
+            utils.when(() -> repository.findByTaskIdAndUserId(any(), any(Long.class))).thenReturn(Optional.of(task));
+        }
         //Act / Assert
-        Assertions.assertEquals(repository.findByTaskId(1L), Optional.of(task));
+        Assertions.assertEquals(repository.findByTaskIdAndUserId(1L, 2L), Optional.of(task));
     }
 }
-*/
