@@ -11,4 +11,5 @@ public enum Language implements ValueObject {
     ENGLISH,
     PORTUGUESE,
     SPANISH,
+    UNRECOGNIZED
 }
