@@ -82,4 +82,5 @@ public class Category implements AggregateRoot<CategoryName> {
     public CategoryName identity() {
         return this.categoryName;
     }
+
 }

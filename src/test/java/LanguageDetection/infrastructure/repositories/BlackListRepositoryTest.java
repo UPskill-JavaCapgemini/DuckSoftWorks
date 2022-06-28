@@ -81,4 +81,13 @@ class BlackListRepositoryTest {
         //Act / Assert
         Assertions.assertEquals(blackListJpaRepository.count(), 1L);
     }
+
+    @Test
+    void shouldCountPersistedBlackListItemsWithResult2(){
+        //Arrange
+        Mockito.when(blackListJpaRepository.count()).thenReturn(2L);
+
+        //Act / Assert
+        Assertions.assertEquals(blackListRepository.countPersistedBlackListItems(), 2L);
+    }
 }

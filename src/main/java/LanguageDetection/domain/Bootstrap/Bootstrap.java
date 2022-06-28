@@ -12,7 +12,10 @@ import javax.transaction.Transactional;
 import java.net.MalformedURLException;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Represents the Bootstrap. The class inserts values for users, roles and categories in the database. The existence
+ * of this values are fundamental to the business logic of the app.
+ */
 @Component
 public class Bootstrap implements InitializingBean {
 
@@ -36,6 +39,11 @@ public class Bootstrap implements InitializingBean {
     private static final Long MAX_ROLE_COUNT = 2L;
     private static final Long MAX_BLACKLISTITEM_COUNT = 1L;
 
+
+    /**
+     * This method ensure the introduction of each blacklistItem, category, roles, admin and users that are necessary at
+     * the  first start of the app
+     */
     @Override
     @Transactional
     public void afterPropertiesSet() throws Exception {
@@ -46,6 +54,10 @@ public class Bootstrap implements InitializingBean {
         createUsers();
     }
 
+    /**
+     * This method ensure the introduction of necessary blacklistitem at the start of the database
+     */
+
     private void createAndSaveBlackListItem() throws MalformedURLException {
         Long persistedBlackListItems = iBlackListItemRepository.countPersistedBlackListItems();
         if (persistedBlackListItems < MAX_BLACKLISTITEM_COUNT){
@@ -54,6 +66,10 @@ public class Bootstrap implements InitializingBean {
         }
     }
 
+
+    /**
+     * This method ensure the introduction of necessary Base Categories to the database.
+     */
     private void createBaseCategories() {
         Long categoryCount = iCategoryRepository.countPersistedCategories();
         if (categoryCount == NO_CATEGORY_COUNT) {
@@ -78,6 +94,10 @@ public class Bootstrap implements InitializingBean {
         }
     }
 
+
+    /**
+     * This method ensure the introduction of necessary roles to the database.
+     */
     private void createRoles() {
         Long roleCount = roleRepository.countPersistedRoles();
 
@@ -92,6 +112,10 @@ public class Bootstrap implements InitializingBean {
         }
     }
 
+
+    /**
+     * This method ensure the introduction of necessary admin to the database.
+     */
     private void createAdmin() {
 
         Long userCount = userRepository.countPersistedUsers();
@@ -110,6 +134,10 @@ public class Bootstrap implements InitializingBean {
         }
     }
 
+
+    /**
+     * This method ensure the introduction of necessary users to the database.
+     */
     private void createUsers() {
 
         Long userCount = userRepository.countPersistedUsers();
