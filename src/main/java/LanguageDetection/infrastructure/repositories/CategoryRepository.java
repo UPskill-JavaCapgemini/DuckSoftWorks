@@ -70,6 +70,8 @@ public class CategoryRepository implements ICategoryRepository {
         return (List<Category>) categoryJpaRepository.findAll();
     }
 
-
+    public boolean existsByCategoryName(CategoryName categoryName){
+        return categoryJpaRepository.existsByCategoryName(categoryName);
+    }
 }
 

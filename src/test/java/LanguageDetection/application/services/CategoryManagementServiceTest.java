@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.CategoryDTO;
@@ -91,4 +92,4 @@ class CategoryManagementServiceTest {
         //Act / Assert
         Assertions.assertFalse(categoryManagementService.deleteCategory(categoryInfoDTO));
     }
-}
+}*/

@@ -18,5 +18,7 @@ public interface ICategoryRepository {
 
     Optional<Category> findCategoryByCategoryName(CategoryName CategoryName);
 
+    boolean existsByCategoryName(CategoryName categoryName);
+
 }
 

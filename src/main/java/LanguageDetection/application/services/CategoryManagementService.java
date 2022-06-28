@@ -34,8 +34,11 @@ public class CategoryManagementService {
     public Optional<CategoryDTO> createAndSaveCategory(NewCategoryInfoDTO infoDTO) {
         try{
             Category category = new Category(infoDTO.getCategory());
-            Category categoryRepo = categoryService.saveCategory(category);
-            return Optional.of(dtoAssembler.toDTO(categoryRepo));
+            Optional<Category> categoryRepo = categoryService.saveCategory(category);
+            if(categoryRepo.isPresent()){
+                return Optional.of(dtoAssembler.toDTO(categoryRepo.get()));
+            }
+            return Optional.empty();
         } catch (NullPointerException | IllegalArgumentException e){
             return Optional.empty();
         }
