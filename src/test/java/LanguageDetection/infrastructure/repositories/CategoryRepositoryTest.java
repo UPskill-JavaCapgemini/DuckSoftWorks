@@ -99,7 +99,7 @@ public class CategoryRepositoryTest {
 
         when(jpaRepository.existsByCategoryName(categoryName)).thenReturn(true);
 
-        Assertions.assertTrue(jpaRepository.existsByCategoryName(categoryName));
+        Assertions.assertTrue(categoryRepository.existsByCategoryName(categoryName));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class CategoryRepositoryTest {
 
         when(jpaRepository.existsByCategoryName(categoryName)).thenReturn(false);
 
-        Assertions.assertFalse(jpaRepository.existsByCategoryName(categoryName));
+        Assertions.assertFalse(categoryRepository.existsByCategoryName(categoryName));
     }
 
     @Test
