@@ -8,4 +8,6 @@ public interface IUserRepository {
 
     public Optional<User> findUserByUserName(String userName);
 
+    Long countPersistedUsers();
+
 }

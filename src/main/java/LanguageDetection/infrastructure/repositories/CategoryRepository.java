@@ -70,6 +70,10 @@ public class CategoryRepository implements ICategoryRepository {
         return (List<Category>) categoryJpaRepository.findAll();
     }
 
+    public Long countPersistedCategories(){
+        Long persistedCategoryCount = categoryJpaRepository.count();
+        return persistedCategoryCount;
+    };
 
 }
 

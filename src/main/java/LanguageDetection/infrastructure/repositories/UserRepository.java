@@ -40,4 +40,10 @@ public class UserRepository implements IUserRepository {
         } else
             return Optional.empty();
     }
+
+    @Override
+    public Long countPersistedUsers() {
+        Long persistedUserCount = userJpaRepository.count();
+        return persistedUserCount;
+    }
 }

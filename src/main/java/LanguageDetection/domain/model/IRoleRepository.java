@@ -8,4 +8,6 @@ public interface IRoleRepository {
     public Role saveRole(Role role);
 
     public Optional<Role> findRoleByName(ERole role);
+
+    Long countPersistedRoles();
 }

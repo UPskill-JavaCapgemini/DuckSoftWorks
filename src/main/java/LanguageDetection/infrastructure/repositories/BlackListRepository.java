@@ -62,4 +62,10 @@ public class BlackListRepository implements IBlackListItemRepository {
         List<BlackListItem> blackListItems = (List<BlackListItem>) blackListJpaRepository.findAll();
         return blackListItems;
     }
+
+    @Override
+    public Long countPersistedBlackListItems() {
+        Long persistedBlackListItemCount = blackListJpaRepository.count();
+        return persistedBlackListItemCount;
+    }
 }

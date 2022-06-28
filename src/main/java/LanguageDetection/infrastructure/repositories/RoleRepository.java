@@ -32,5 +32,11 @@ public class RoleRepository implements IRoleRepository {
         } else
             return Optional.empty();
     }
+
+    @Override
+    public Long countPersistedRoles() {
+        Long persistedRoleCount = roleJpaRepository.count();
+        return persistedRoleCount;
+    }
 }
 

@@ -16,4 +16,6 @@ public interface IBlackListItemRepository {
 
     List<BlackListItem> findAllBlackListItems();
 
+    Long countPersistedBlackListItems();
+
 }
