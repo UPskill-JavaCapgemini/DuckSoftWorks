@@ -1,7 +1,7 @@
 package LanguageDetection.domain.model;
 
-import LanguageDetection.domain.shared.Entity;
 import LanguageDetection.domain.model.ValueObjects.ERole;
+import LanguageDetection.domain.shared.Entity;
 
 import javax.persistence.*;
 

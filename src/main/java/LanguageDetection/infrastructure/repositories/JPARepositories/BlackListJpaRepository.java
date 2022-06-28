@@ -1,8 +1,8 @@
 package LanguageDetection.infrastructure.repositories.JPARepositories;
 
 
-import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.model.BlackListItem;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -1,14 +1,13 @@
 package LanguageDetection.domain.DomainService;
 
-import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
-import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.BlackListItem;
 import LanguageDetection.domain.model.IBlackListItemRepository;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Represents the BlackListService.The domain service containing the validation logic for BlackList related functionalities

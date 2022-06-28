@@ -4,8 +4,8 @@ import LanguageDetection.application.DTO.CategoryDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.CategoryDomainDTOAssembler;
 import LanguageDetection.application.DTO.NewCategoryInfoDTO;
 import LanguageDetection.domain.DomainService.CategoryService;
-import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.Category;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

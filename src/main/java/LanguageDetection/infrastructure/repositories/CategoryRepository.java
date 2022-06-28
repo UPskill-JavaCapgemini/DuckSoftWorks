@@ -1,8 +1,8 @@
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.ICategoryRepository;
+import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.infrastructure.repositories.JPARepositories.CategoryJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

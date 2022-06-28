@@ -1,14 +1,14 @@
 package LanguageDetection.domain.model;
 
+import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskResult;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
-import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.shared.AggregateRoot;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
-
 
 import javax.persistence.*;
 import java.net.MalformedURLException;

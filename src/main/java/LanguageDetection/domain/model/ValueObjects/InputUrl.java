@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -91,6 +92,8 @@ public class InputUrl implements ValueObject, Comparable<InputUrl> {
     protected String parseContentOfUrlToString(URL url) throws IOException {
         try (InputStream inputStream = url.openStream()) {
             return IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+        } catch (FileNotFoundException e){
+            throw new IllegalArgumentException("The URL doesn't contain a txt file or it´s not valid");
         }
     }
 }

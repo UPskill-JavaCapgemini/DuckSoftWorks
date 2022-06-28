@@ -4,7 +4,6 @@ import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
-
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

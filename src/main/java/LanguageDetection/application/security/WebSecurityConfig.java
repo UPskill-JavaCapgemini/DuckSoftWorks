@@ -3,7 +3,6 @@ package LanguageDetection.application.security;
 import LanguageDetection.application.security.jwt.AuthEntryPointJwt;
 import LanguageDetection.application.security.jwt.AuthTokenFilter;
 import LanguageDetection.application.security.services.UserDetailsManagementService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

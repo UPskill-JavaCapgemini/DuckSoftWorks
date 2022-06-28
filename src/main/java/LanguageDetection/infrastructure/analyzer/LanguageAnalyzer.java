@@ -1,13 +1,16 @@
 package LanguageDetection.infrastructure.analyzer;
 
-import LanguageDetection.domain.model.ValueObjects.Language;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.Language;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.*;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,6 +19,7 @@ import java.io.IOException;
 public class LanguageAnalyzer {
 
     private static final int MAX_TOKENS = 1200000;
+    private static final int MINIMUM_HITS = 2;
     static org.apache.lucene.analysis.Analyzer analyzer;
     static IndexReader reader;
     static IndexSearcher searcher;
@@ -58,6 +62,9 @@ public class LanguageAnalyzer {
         Query q = new QueryParser("dictionary", analyzer).parse(task.getInputUrl().getTextOfUrl().getTextContent());
         TopDocs docs = searcher.search(q, HITS_PER_PAGE);
         ScoreDoc[] hits = docs.scoreDocs;
+        if(hits.length < MINIMUM_HITS){
+            return Language.UNRECOGNIZED;
+        }
         return Language.valueOf(searcher.doc(hits[0].doc).get("language"));
 
     }

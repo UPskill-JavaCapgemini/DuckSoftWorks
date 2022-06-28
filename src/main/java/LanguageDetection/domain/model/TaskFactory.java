@@ -2,7 +2,6 @@ package LanguageDetection.domain.model;
 
 import LanguageDetection.domain.DomainService.BlackListService;
 import LanguageDetection.domain.DomainService.CategoryService;
-import LanguageDetection.domain.DomainService.UserDetailsDomainService;
 import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TimeOut;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.MalformedURLException;
-
 import java.util.Optional;
 
 import static LanguageDetection.domain.DomainService.UserDetailsDomainService.getUserNameId;
