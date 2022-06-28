@@ -1,6 +1,5 @@
 package LanguageDetection.Domain.model.ValueObjects;
 
-import LanguageDetection.domain.model.ValueObjects.CategoryName;
 import LanguageDetection.domain.model.ValueObjects.Text;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -9,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TextTest {
-
-//TODO: Its needed to do tests to confirm verifyTextSize method
 
     @Test
     protected void ensureTextCleanUpAStringWithSpecialCharacters() {

@@ -57,7 +57,6 @@ class AnalysisHelper implements Runnable {
 
     @SneakyThrows
     @Override
-    //TODO check if passing a TaskResult is appropriated ??
     public void run() {
         //retirar isto
         Language analyzedLanguage = lang.analyze(taskToBeAnalyzed);

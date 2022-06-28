@@ -35,7 +35,6 @@ public class BlackListService {
         List<BlackListItem> blackListItemList = findAllBlackListItems();
         String inputUrlPath = blackListItem.getBlackListUrl().toString();
 
-        //TODO: Verify how we can improve efficiency of this.
         for (BlackListItem blackListItemRepo : blackListItemList) {
             String blackListUrlPath = blackListItemRepo.getBlackListUrl().toString();
             if (inputUrlPath.contains(blackListUrlPath)) {
@@ -66,7 +65,7 @@ public class BlackListService {
     public boolean isBlackListed(InputUrl inputUrl) {
         List<BlackListItem> blackListItemList = findAllBlackListItems();
         String inputUrlPath = inputUrl.toString();
-        //TODO: Verify how we can improve efficiency of this.
+
         for (BlackListItem blackListItem : blackListItemList) {
             String blackListUrlPath = blackListItem.getBlackListUrl().toString();
             if (inputUrlPath.contains(blackListUrlPath)) {

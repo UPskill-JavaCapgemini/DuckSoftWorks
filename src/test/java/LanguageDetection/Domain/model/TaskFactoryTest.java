@@ -71,7 +71,6 @@ class TaskFactoryTest {
         }
     }
 
-    //TODO: Does this tests are supposed to be here?
     @Test
     void ensureThatCancelTaskChangeStatusToCanceledWhenTaskIsProcessing() throws MalformedURLException {
         //Arrange
