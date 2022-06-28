@@ -40,7 +40,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present in database
 	 */
     public List<Task> findAllTasks(long userId) {
-		Iterable<Task> listAllTasks= taskJpaRepository.findAllByUserId(userId);
+		Iterable<Task> listAllTasks= taskJpaRepository.findAllByUserIdOrderByIdDesc(userId);
 
 		return (List<Task>) listAllTasks;
     }
@@ -51,7 +51,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present with the status passed
 	 */
 	public List<Task> findByStatusContaining(TaskStatus st, long userId) {
-		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLikeAndUserId(st, userId);
+		Iterable<Task> listTasksByStatus = taskJpaRepository.findByCurrentStatusLikeAndUserIdOrderByIdDesc(st, userId);
 
 		return (List<Task>) listTasksByStatus;
 	}
@@ -62,7 +62,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present with the category passed
 	 */
 	public List<Task> findByCategoryNameContaining(Category category, long userId) {
-		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserId(category, userId);
+		Iterable<Task> listTasksByCategory = taskJpaRepository.findTaskByCategoryLikeAndUserIdOrderByIdDesc(category, userId);
 		return (List<Task>) listTasksByCategory;
 	}
 
@@ -73,7 +73,7 @@ public class TaskRepository implements ITaskRepository {
 	 * @return List of all tasks present with the category and status passed
 	 */
 	public List<Task> findByStatusAndByCategoryContaining(TaskStatus status, Category category, long userId) {
-		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(category, status, userId);
+		Iterable<Task> listTasksByStatusAndByCategoryContaining = taskJpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserIdOrderByIdDesc(category, status, userId);
 
 		return (List<Task>) listTasksByStatusAndByCategoryContaining;
 	}

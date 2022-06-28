@@ -13,15 +13,15 @@ import java.util.Optional;
  * Represents the CategoryJpaRepository. Extends the CrudRepository Interface
  */
 public interface TaskJpaRepository extends CrudRepository <Task, Long> {
-    Iterable<Task> findByCurrentStatusLikeAndUserId(TaskStatus st, Long userId);
+    Iterable<Task> findByCurrentStatusLikeAndUserIdOrderByIdDesc(TaskStatus st, Long userId);
 
-    Iterable<Task> findTaskByCategoryLikeAndUserId(Category category, Long userId);
+    Iterable<Task> findTaskByCategoryLikeAndUserIdOrderByIdDesc(Category category, Long userId);
 
-    Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(Category category, TaskStatus status, Long userId);
+    Iterable<Task> findTaskByCategoryLikeAndCurrentStatusLikeAndUserIdOrderByIdDesc(Category category, TaskStatus status, Long userId);
 
     Optional<Task> findById(String name);
 
-    Iterable<Task> findAllByUserId(Long userId);
+    Iterable<Task> findAllByUserIdOrderByIdDesc(Long userId);
 
     Optional<Task> findByIdAndUserId(Long id, Long userId);
 

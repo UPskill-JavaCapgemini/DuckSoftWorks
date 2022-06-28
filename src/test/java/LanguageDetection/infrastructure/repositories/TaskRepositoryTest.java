@@ -39,7 +39,7 @@ class TaskRepositoryTest {
     void findAllTasksShouldReturnListOf2Task() throws MalformedURLException {
         //Arrange
         Task task = mock(Task.class);
-        when(jpaRepository.findAllByUserId(any(Long.class))).thenReturn(List.of(task, task));
+        when(jpaRepository.findAllByUserIdOrderByIdDesc(any(Long.class))).thenReturn(List.of(task, task));
 
         //Act / Assert
         Assertions.assertEquals(repository.findAllTasks(any(Long.class)), List.of(task, task));
@@ -49,7 +49,7 @@ class TaskRepositoryTest {
     void findByStatusContainingShouldReturnListWithTasksThatMatchStatus() throws MalformedURLException {
         TaskStatus status = TaskStatus.Processing;
         Task task = mock(Task.class);
-        when(jpaRepository.findByCurrentStatusLikeAndUserId(status, 1L)).thenReturn(List.of(task));
+        when(jpaRepository.findByCurrentStatusLikeAndUserIdOrderByIdDesc(status, 1L)).thenReturn(List.of(task));
 
         //Act / Assert
         Assertions.assertEquals(repository.findByStatusContaining(status, 1L), List.of(task));
@@ -61,7 +61,7 @@ class TaskRepositoryTest {
         //Arrange
         Category category = new Category("Sports");
         Task task = mock(Task.class);
-        when(jpaRepository.findTaskByCategoryLikeAndUserId(category, 1L)).thenReturn(List.of(task));
+        when(jpaRepository.findTaskByCategoryLikeAndUserIdOrderByIdDesc(category, 1L)).thenReturn(List.of(task));
 
         //Act / Assert
         Assertions.assertEquals(repository.findByCategoryNameContaining(category, 1L), List.of(task));
@@ -74,7 +74,7 @@ class TaskRepositoryTest {
         TaskStatus status = TaskStatus.Processing;
         Category category = new Category("Sports");
         Task task = mock(Task.class);
-        when(jpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserId(category, status, 1L)).thenReturn(List.of(task));
+        when(jpaRepository.findTaskByCategoryLikeAndCurrentStatusLikeAndUserIdOrderByIdDesc(category, status, 1L)).thenReturn(List.of(task));
 
         //Act / Assert
         Assertions.assertEquals(repository.findByStatusAndByCategoryContaining(status, category, 1L), List.of(task));
