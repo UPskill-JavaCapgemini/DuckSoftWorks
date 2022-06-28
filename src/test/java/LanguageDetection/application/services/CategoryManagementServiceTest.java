@@ -1,4 +1,3 @@
-/*
 package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.CategoryDTO;
@@ -46,7 +45,7 @@ class CategoryManagementServiceTest {
 
         Category category = new Category("Sports Science");
         CategoryDTO categoryDTO = new CategoryDTO(category);
-        Mockito.when(categoryService.saveCategory(any(Category.class))).thenReturn(category);
+        Mockito.when(categoryService.saveCategory(any(Category.class))).thenReturn(Optional.of(category));
         Mockito.when(dtoAssembler.toDTO(any(Category.class))).thenReturn(categoryDTO);
 
         //Act
@@ -92,4 +91,4 @@ class CategoryManagementServiceTest {
         //Act / Assert
         Assertions.assertFalse(categoryManagementService.deleteCategory(categoryInfoDTO));
     }
-}*/
+}
