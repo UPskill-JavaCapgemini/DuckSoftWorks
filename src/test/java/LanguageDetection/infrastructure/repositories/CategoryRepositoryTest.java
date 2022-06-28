@@ -111,12 +111,11 @@ public class CategoryRepositoryTest {
         Assertions.assertFalse(jpaRepository.existsByCategoryName(categoryName));
     }
 
-    /*@Test
+    @Test
     void shouldCountPersistedCategoriesWithResult2(){
 
-        CategoryName categoryName1 = new CategoryName("Sports");
-        CategoryName categoryName2 = new CategoryName("Science");
+        when(jpaRepository.count()).thenReturn(2L);
 
-        when(jpaRepository.count())
-    }*/
+        Assertions.assertEquals(categoryRepository.countPersistedCategories(), 2L);
+    }
 }
