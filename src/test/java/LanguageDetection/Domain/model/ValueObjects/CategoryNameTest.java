@@ -83,4 +83,13 @@ class CategoryNameTest {
         assertEquals(categoryName.getCategoryName(), "L€€T");
     }
 
+    @Test
+    public void ensureThatCategoriesWithSameNameAreEqual(){
+        CategoryName categoryName1 = new CategoryName("Sports2");
+        CategoryName categoryName2 = new CategoryName("Sports2");
+
+        assertEquals(categoryName1.compareTo(categoryName2), 0);
+
+    }
+
 }

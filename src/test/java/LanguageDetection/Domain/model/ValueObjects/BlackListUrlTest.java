@@ -54,4 +54,6 @@ class BlackListUrlTest {
         Assert.assertEquals(malformedURLException.getMessage(), "no protocol:              ");
     }
 
+
+
 }
