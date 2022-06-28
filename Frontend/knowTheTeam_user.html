@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know the Team</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    
+    <!-- CSS styling -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      h2 {
+  text-align: center;
+}
+
+      </style>
+</head>
+<body>
+
+<!-- header (NAV) -->
+    <nav class="navbar navbar-dark bg-dark" id="nav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Know the Team</a>
+          <a href=../login.html class="btn btn-outline-light"> Logout </a>
+        </div>
+      </nav>
+
+<link href="form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  
+<div class="container">
+<main>
+  
+  <br/>
+  <br/>
+  <br/>
+
+
+  <!-- BODY -->
+
+  <h2>Get to know the Team</h2>
+  <br/>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="images/machadoDuck.png" alt="Paris" style="width:200px;height:200px">
+            </div>
+            <div class="flip-box-back">
+              <h2>Daniel Machado</h2>
+              <p>Repository Pilot Racer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="images/limaDuck.png" alt="Paris" style="width:200px;height:200px">
+            </div>
+            <div class="flip-box-back">
+              <h2>Daniel Lima</h2>
+              <p>Chill Security Vibes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="images/inesDuck.jpg" alt="Paris" style="width:200px;height:200px">
+            </div>
+            <div class="flip-box-back">
+              <h2>Inês Clavel</h2>
+              <p>Scrum and Design Queen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="images/thalesDuck.jpg" alt="Paris" style="width:200px;height:200px">
+            </div>
+            <div class="flip-box-back">
+              <h2>Thales Lemos</h2>
+              <p>SpaceScript Expert</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .flip-box {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  transform: rotateY(180deg);
+}
+  </style>
+
+ 
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <a href="user/home_user.html">
+    <img alt="Qries" src="images/black duck.jpg"
+    width="70" height="70">
+  </a>
+  <br>
+  <br>
+  <p class="mb-1"> &copy; 2022 Duck Soft Works & Co. </p>
+</footer>
+  
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script src="form-validation.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+</body>
+</html>

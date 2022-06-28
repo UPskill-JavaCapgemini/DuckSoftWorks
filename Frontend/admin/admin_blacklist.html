@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklist Management</title>
+    <script src="admin_js/admin_blacklist.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <!-- CSS nav styling -->
+    <style>
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+  
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+
+      </style>
+</head>
+
+<!-- NAV -->
+
+  <nav class="navbar navbar-dark bg-dark" id="nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Blacklist Management</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href=../login.html class="btn btn-outline-light"> Logout </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href=admin_categories.html>Categories Management</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<link href="form-validation.css" rel="stylesheet">
+</head>
+
+
+<!-- BODY -->
+<body class="bg-light">
+  
+<div class="container">
+<main>
+  <div class="py-5 text-center">
+    <a href="home_admin.html">
+      <img alt="Qries" class="rounded-3" src="../images/black duck.jpg"
+      width="150" height="150">
+    </a>
+    <br>
+    <br>
+    <h2>Ducked Language Detection</h2>
+  </div>
+
+  <!-- ADD BLACKLIST ITEM -->
+
+  <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <label class="visually-hidden" for="link">Insert new URL</label>
+      <div class="input-group">
+        <div class="input-group-text">URL</div>
+        <input type="text" class="form-control" id="BlackListItemInput" placeholder="Insert here URL to add it to Blacklist">
+      </div>
+    </div>
+
+    <div class="col-12">
+        <button onclick="createNewBlackListItem(event)" type="submit" class="btn btn-success">Add</button>
+      </div>
+  </form>
+
+  <br/>
+<br/>
+
+    <!-- DELETE BLACKLIST ITEM -->
+
+    <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        <label class="visually-hidden" for="link">Insert URL to delete </label>
+        <div class="input-group">
+          <div class="input-group-text">URL</div>
+          <input type="text" class="form-control" id="deleteBlackListInputEntry" placeholder="Insert here URL to delete it from Blacklist">
+        </div>
+      </div>
+  
+      <div class="col-12">
+          <button onclick="deleteBlackListInitiated(event)" type="submit" 
+          class="btn btn-dark">Delete</button>
+        </div>
+      </form>
+
+
+  <br/>
+  <div id="alert-area"></div>
+    <br/>
+    
+
+
+<!-- SEE BLACKLIST -->
+
+  <div class="container-fluid center">
+    <div class="row justify-content-around">
+    <div class="col-sm-5 col-md-8 col-lg-12">
+      <form class="needs-validation" novalidate>
+        
+<!-- CSS styling -->
+        <style>
+          table {
+              border-collapse: collapse;
+              width: 100%;            
+          }
+
+          td {
+              background-color:rgb(155, 153, 153);
+              text-align: left;
+              padding: 4px;              
+          }
+
+          tr{
+            border-bottom:1pt solid rgb(30, 30, 30);
+          }
+
+          td:nth-child(1){
+            background-color: rgb(240, 240, 240);
+            padding-left: 9px;
+          }
+
+          td:nth-child(2){
+            background-color: rgb(240, 240, 240);
+            text-align: right;
+          }
+
+      </style>
+
+      <br/>
+      <br/>
+  
+      <h2 id="Blacklist Table">Blacklisted URLs</h2>
+  <br>
+      <div id="data-table">
+
+          <table class="table table-bordered table-hover" id="html-blacklist-table">
+          </table>    
+      </div>
+    </form>
+
+      <br/>
+      <br/>
+
+</main>
+</body>
+
+
+<!-- FOOTER -->
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; 2022 Duck Soft Works & Co.</p>
+</footer>
+</div>
+
+
+<!-- dependencies -->
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script src="form-validation.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cancelTask</title>
+    <script src="js/cancelTask.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <!-- CSS nav styling -->
+    <style>
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+  
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+
+      </style>
+</head>
+<body>
+
+  <!-- NAV -->
+    <nav class="navbar navbar-dark bg-dark" id="nav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Cancel Task</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a href=../login.html class="btn btn-outline-light"> Logout </a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href=consultTasks.html>Check Tasks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href=createTask.html>Check Language</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+</body>
+<link href="form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  
+<div class="container">
+<main>
+  <div class="py-5 text-center">
+    <a href="home_user.html">
+      <img alt="Qries" class="rounded-3" src="../images/black duck.jpg"
+      width="150" height="150">
+    </a>    
+    <br>
+    <br>
+    
+    <h2>Ducked Language Detection</h2>
+  </div>
+
+  <!-- CANCEL TASK -->
+  <form class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <div class="input-group">
+        <div class="input-group-text">ID</div>
+        <input type="number" class="form-control" min="1" id="cancel_task_input" placeholder="Insert ID of task" required>
+      </div>
+    </div>
+    <div class="col-12">
+        <button onclick="cancelTask(event)" type="submit" class="btn btn-dark">Cancel</button>
+      </div>
+      <br>
+      <br>
+      <br>
+  </form>
+  <br>
+
+  <!-- TABLE VIEW -->
+  <div class="row row-cols-lg-auto g-3 align-items-center text-align-center">
+  <div id="alert-area"></div>
+</div>
+  <div class="container-fluid center">
+    <div class="row justify-content-around">
+    <div class="col-sm-5 col-md-8 col-lg-12">
+      <form class="needs-validation" novalidate>
+        
+<!-- CSS styling -->
+        <style>
+          table {
+              border-collapse: collapse;
+              width: 100%;
+          }
+
+          td {
+              border: 1px solid #000000;
+              background-color:rgb(240, 240, 240);
+              text-align: left;
+              padding: 8px;
+          }
+
+          th {
+              border: 1px solid #000000;
+              background-color: darkgrey;
+              text-align: left;
+              padding: 4px;
+          }
+      </style>
+  
+  
+<br>
+<br>
+<br>
+      <h2 id="tasks-processing-h2"></h2>
+  
+        <div id="data-table">
+          <table class="table table-bordered table-hover" id="cancel-task-data-table">
+        </table>
+      </div>
+      </form>
+    </div>
+  </div>
+  
+<br/>
+<br/>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; 2022 Duck Soft Works & Co.</p>
+</footer>
+
+
+<!-- dependencies -->
+<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script src="form-validation.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
