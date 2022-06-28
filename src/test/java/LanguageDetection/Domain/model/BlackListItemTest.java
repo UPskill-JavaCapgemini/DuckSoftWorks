@@ -44,5 +44,12 @@ class BlackListItemTest {
         assertFalse(blackListItem1.sameAs(blackListItem2));
     }
 
+    @Test
+    public void ensureThatTextOfBlackListItemIsCorrect() throws MalformedURLException {
+        String url = "https://www.w3.org/TR/PNG/iso_8859-1.txt";
+        BlackListItem blackListItem = new BlackListItem(url);
+
+        assertEquals(blackListItem.toString(), "https://www.w3.org/TR/PNG/iso_8859-1.txt");
+    }
 
 }
