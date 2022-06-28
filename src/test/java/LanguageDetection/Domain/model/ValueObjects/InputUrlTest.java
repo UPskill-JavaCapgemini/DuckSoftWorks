@@ -92,5 +92,8 @@ class InputUrlTest {
         //Assert
         Assert.assertEquals(malformedURLException.getMessage(), "no protocol: www.noprotocol.com.txt");
     }
+    
+
+
 }
 
