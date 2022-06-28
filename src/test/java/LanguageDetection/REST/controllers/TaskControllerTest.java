@@ -1,4 +1,4 @@
-package LanguageDetection.application.controllers;
+package LanguageDetection.REST.controllers;
 
 import LanguageDetection.REST.controllers.TaskController;
 import LanguageDetection.application.DTO.*;
