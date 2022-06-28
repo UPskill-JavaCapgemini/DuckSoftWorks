@@ -36,9 +36,5 @@ public class Role implements Entity<Integer> {
     return this.id;
   }
 
-  @Override
-  public boolean hasIdentity(Integer id) {
-    return Entity.super.hasIdentity(id);
-  }
 
 }

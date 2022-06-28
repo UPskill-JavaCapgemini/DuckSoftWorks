@@ -32,7 +32,7 @@ public class TaskManagementService {
 
 
     /**
-     * This method attempts to create and save a Task with the information provided by the user
+     * This method attempts to create and save a Task with the information provided by the user with user privileges
      *
      * @param userInput the NewTaskInfoDTO containing the information about the Task to be created and saved
      * @return TaskDTO assembled through the TaskDomainDTOAssembler wrapped in an Optional if successful or an empty Optional if not
