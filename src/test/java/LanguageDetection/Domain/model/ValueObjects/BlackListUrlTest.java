@@ -54,6 +54,14 @@ class BlackListUrlTest {
         Assert.assertEquals(malformedURLException.getMessage(), "no protocol:              ");
     }
 
+    @Test
+    public void ensureThatBlackListWithSameUrlAreEqual() throws MalformedURLException {
+        BlackListUrl url1 = new BlackListUrl("https://stackoverflow.com/first");
+        BlackListUrl url2 = new BlackListUrl("https://stackoverflow.com/first");
+
+        assertEquals(url1.compareTo(url2), 0);
+
+    }
 
 
 }
