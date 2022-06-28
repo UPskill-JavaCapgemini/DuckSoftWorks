@@ -1,3 +1,4 @@
+/*
 package LanguageDetection.domain.Bootstrap;
 
 
@@ -115,3 +116,4 @@ public class Bootstrap implements InitializingBean {
         userRepository.saveUser(user2);
     }
 }
+*/
