@@ -92,4 +92,22 @@ public class CategoryRepositoryTest {
         //Act / Assert
         Assertions.assertTrue(categoryRepository.deleteByName(categoryName));
     }
+
+    @Test
+    void ensureExistsByCategoryNameReturnTrueWhenCategoryNameExists(){
+        CategoryName categoryName = new CategoryName("Sports Science");
+
+        when(jpaRepository.existsByCategoryName(categoryName)).thenReturn(true);
+
+        Assertions.assertTrue(jpaRepository.existsByCategoryName(categoryName));
+    }
+
+    @Test
+    void ensureExistsByCategoryNameReturnFalseWhenCategoryNameDoesNotExist(){
+        CategoryName categoryName = new CategoryName("Sports Science");
+
+        when(jpaRepository.existsByCategoryName(categoryName)).thenReturn(false);
+
+        Assertions.assertFalse(jpaRepository.existsByCategoryName(categoryName));
+    }
 }
