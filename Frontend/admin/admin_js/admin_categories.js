@@ -24,7 +24,7 @@ function createNewCategory(e) {
         populateCategories();
 
     } else {
-      let messageToAlert = "The category " + categoryName + " couldn't be created! Invalid format.";
+      let messageToAlert = "The category " + categoryName + " couldn't be created! Invalid format or already exists";
         createAlert(messageToAlert, "danger");
     }
 })
