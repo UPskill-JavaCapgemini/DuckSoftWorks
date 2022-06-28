@@ -60,4 +60,13 @@ class RoleRepositoryTest {
         Assertions.assertEquals(roleRepository.findRoleByName(ERole.ROLE_ADMIN), Optional.empty());
     }
 
+    @Test
+    void ensureCountPersistedRolesReturn2RolesWhenExists2RolesOnDatabase(){
+        //Arrange
+        Mockito.when(roleJpaRepository.count()).thenReturn(2L);
+
+        //Act / Assert
+        Assertions.assertEquals(roleRepository.countPersistedRoles(), 2L);
+    }
+
 }

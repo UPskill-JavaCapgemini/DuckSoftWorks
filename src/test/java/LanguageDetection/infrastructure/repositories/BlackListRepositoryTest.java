@@ -72,4 +72,13 @@ class BlackListRepositoryTest {
         Assertions.assertEquals(blackListRepository.findAllBlackListItems(), List.of(blackListItem));
 
     }
+
+    @Test
+    void ensureCountPersistedBlackListItemsReturn1When1BlackListItemIsPresentInDatabase(){
+        //Arrange
+        when(blackListJpaRepository.count()).thenReturn(1L);
+
+        //Act / Assert
+        Assertions.assertEquals(blackListJpaRepository.count(), 1L);
+    }
 }
