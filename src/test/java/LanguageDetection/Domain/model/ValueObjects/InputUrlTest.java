@@ -24,19 +24,6 @@ class InputUrlTest {
         Assert.assertNotNull(inputUrl);
     }
 
-    //TODO: Verify better approach. With local file it generates one error
-    /*@Test
-    public void shouldCreateInputUrlWithValidLocalUrl() throws MalformedURLException {
-        //Arrange
-        String validLocalInputUrl = "file:///C:/Users/danil/Documents/UPskill/LABP/example.txt";
-
-        //Act
-        InputUrl inputUrl = new InputUrl(validLocalInputUrl);
-
-        //Assert
-        Assert.assertNotNull(inputUrl);
-    }*/
-
     @Test
     public void shouldThrowExceptionWithSpacesOnlyUrl() {
         //Arrange
