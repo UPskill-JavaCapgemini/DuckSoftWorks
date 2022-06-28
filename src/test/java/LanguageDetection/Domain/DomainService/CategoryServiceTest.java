@@ -37,7 +37,7 @@ class CategoryServiceTest {
         when(iCategoryRepository.saveCategory(category)).thenReturn(category);
 
         //Act / Assert
-        Assertions.assertEquals(categoryService.saveCategory(category), category);
+        Assertions.assertEquals(categoryService.saveCategory(category), Optional.of(category));
     }
 
     @Test
