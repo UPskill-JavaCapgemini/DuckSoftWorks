@@ -14,4 +14,6 @@ public interface CategoryJpaRepository extends CrudRepository<Category, Category
     Optional<Category> findByCategoryName(CategoryName categoryName);
 
     int deleteByCategoryNameAndIsBaseCategoryFalse(CategoryName category_Name);
+
+    boolean existsByCategoryName(CategoryName categoryName);
 }

@@ -25,8 +25,11 @@ public class CategoryService {
      * @param category the Category to be persisted in the database
      * @return the saved Category if saving was successful
      */
-    public Category saveCategory(Category category) {
-        return iCategoryRepository.saveCategory(category);
+    public Optional<Category> saveCategory(Category category) {
+        if (!iCategoryRepository.existsByCategoryName(category.getCategoryName())) {
+            return Optional.of(iCategoryRepository.saveCategory(category));
+        }
+        return Optional.empty();
     }
 
     /**
@@ -42,7 +45,6 @@ public class CategoryService {
      * This method deletes a persisted Category by CategoryName if it is persisted in the database
      * Returns a boolean that indicates if the deletion operation was successful
      *
-     *
      * @param categoryName the CategoryName containing the information about the Category to be deleted
      * @return true if the Category has been successfully deleted, false if not
      */
@@ -53,7 +55,6 @@ public class CategoryService {
     /**
      * This method fetches a single entry of a persisted Category by CategoryName if it is persisted in the database
      * Returns an Optional wrapping the found category if successful or an empty Optional if not
-     *
      *
      * @param categoryName the CategoryName containing the information about the Category to be retrieved from the database
      * @return an Optional of Category if found or an empty Optional if no Category is found

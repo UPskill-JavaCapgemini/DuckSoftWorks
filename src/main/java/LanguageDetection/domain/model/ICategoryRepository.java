@@ -20,5 +20,8 @@ public interface ICategoryRepository {
 
     Long countPersistedCategories();
 
+    boolean existsByCategoryName(CategoryName categoryName);
+
+
 }
 
