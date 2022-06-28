@@ -1,13 +1,16 @@
 package LanguageDetection.infrastructure.analyzer;
 
-import LanguageDetection.domain.model.ValueObjects.Language;
 import LanguageDetection.domain.model.Task;
+import LanguageDetection.domain.model.ValueObjects.Language;
 import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.*;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

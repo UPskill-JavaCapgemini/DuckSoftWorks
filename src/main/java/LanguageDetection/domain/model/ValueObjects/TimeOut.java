@@ -4,7 +4,6 @@ import LanguageDetection.domain.shared.ValueObject;
 import LanguageDetection.domain.util.BusinessValidation;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
 
 
 @Embeddable

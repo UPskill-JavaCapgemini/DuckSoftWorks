@@ -2,19 +2,18 @@
 package LanguageDetection.application.services;
 
 import LanguageDetection.application.DTO.*;
-import LanguageDetection.application.DTO.NewTaskInfoDTO;
-import LanguageDetection.application.DTO.TaskStatusDTO;
 import LanguageDetection.application.DTO.DTOAssemblers.TaskDomainDTOAssembler;
 import LanguageDetection.domain.DomainService.TaskService;
 import LanguageDetection.domain.model.Category;
 import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 /**

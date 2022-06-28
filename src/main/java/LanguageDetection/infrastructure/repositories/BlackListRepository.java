@@ -1,9 +1,9 @@
 
 package LanguageDetection.infrastructure.repositories;
 
-import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.domain.model.BlackListItem;
 import LanguageDetection.domain.model.IBlackListItemRepository;
+import LanguageDetection.domain.model.ValueObjects.BlackListUrl;
 import LanguageDetection.infrastructure.repositories.JPARepositories.BlackListJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

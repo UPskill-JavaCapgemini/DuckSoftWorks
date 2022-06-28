@@ -1,20 +1,16 @@
 package LanguageDetection.application.security.jwt;
 
 //import java.security.SignatureException;
-import java.util.Date;
 
 import LanguageDetection.domain.DomainService.UserDetailsDomainService;
+import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
+import java.util.Date;
 
 // fonte: https://bezkoder.com/spring-boot-jwt-authentication/
 

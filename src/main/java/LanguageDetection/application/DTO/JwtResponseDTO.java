@@ -1,6 +1,7 @@
 package LanguageDetection.application.DTO;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.util.List;

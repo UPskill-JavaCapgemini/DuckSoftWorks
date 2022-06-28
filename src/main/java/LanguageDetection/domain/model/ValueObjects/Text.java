@@ -4,9 +4,6 @@ import LanguageDetection.domain.shared.ValueObject;
 
 import java.util.Locale;
 
-import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
-import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;
-
 /**
  * Represents a Text of an Input Url. The text used for language analysis
  */

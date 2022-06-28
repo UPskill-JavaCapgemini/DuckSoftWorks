@@ -1,12 +1,9 @@
 package LanguageDetection.application.DTO;
 
 
-import org.springframework.hateoas.RepresentationModel;
-
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
+import org.springframework.hateoas.RepresentationModel;
 
 /**
  * Represents a UserDTO and it's used by Spring Security

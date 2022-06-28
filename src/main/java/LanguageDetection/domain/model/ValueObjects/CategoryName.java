@@ -3,7 +3,7 @@ package LanguageDetection.domain.model.ValueObjects;
 import LanguageDetection.domain.shared.ValueObject;
 import org.jetbrains.annotations.NotNull;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
 
 import static LanguageDetection.domain.util.BusinessValidation.isOnlyNumbers;
 import static LanguageDetection.domain.util.BusinessValidation.isOnlySpecialCharacters;

@@ -1,7 +1,6 @@
 package LanguageDetection.application.DTO;
 
 import LanguageDetection.domain.model.Category;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -3,7 +3,6 @@ package LanguageDetection.REST.controllers;
 import LanguageDetection.application.DTO.BlackListDTO;
 import LanguageDetection.application.DTO.NewBlackListInfoDTO;
 import LanguageDetection.application.services.BlackListManagementService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

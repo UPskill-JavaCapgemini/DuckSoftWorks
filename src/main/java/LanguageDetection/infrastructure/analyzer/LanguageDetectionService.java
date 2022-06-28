@@ -1,9 +1,9 @@
 package LanguageDetection.infrastructure.analyzer;
 
 import LanguageDetection.domain.DomainService.ILanguageDetector;
+import LanguageDetection.domain.model.Task;
 import LanguageDetection.domain.model.ValueObjects.Language;
 import LanguageDetection.domain.model.ValueObjects.TaskResult;
-import LanguageDetection.domain.model.Task;
 import LanguageDetection.infrastructure.repositories.TaskRepository;
 import lombok.Setter;
 import lombok.SneakyThrows;

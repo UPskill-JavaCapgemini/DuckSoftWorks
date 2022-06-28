@@ -3,7 +3,6 @@ package LanguageDetection.domain.model;
 import LanguageDetection.domain.model.ValueObjects.InputUrl;
 import LanguageDetection.domain.model.ValueObjects.TaskStatus;
 
-
 import java.util.List;
 import java.util.Optional;
 
