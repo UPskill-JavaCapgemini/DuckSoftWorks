@@ -1,0 +1,522 @@
+commit 0901a8e95e757a9f9a6fcc2d7a157e061d52f74c
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 28 15:42:38 2022 +0100
+
+    added javadoc to BootStrap class
+
+M	Documents/US Documentation/US 4.docx
+M	Documents/US Documentation/US 5.docx
+M	src/main/java/LanguageDetection/REST/controllers/TaskController.java
+M	src/main/java/LanguageDetection/application/DTO/RoleDTO.java
+M	src/main/java/LanguageDetection/application/DTO/UserDTO.java
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/model/Category.java
+M	src/main/java/LanguageDetection/domain/model/Role.java
+M	src/test/java/LanguageDetection/Domain/model/CategoryTest.java
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/InputUrlTest.java
+
+commit f9432f5998bbc62864669c5beae2296ced3d273d
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 28 12:29:16 2022 +0100
+
+    added test toString BlackListItem
+
+M	src/test/java/LanguageDetection/Domain/model/BlackListItemTest.java
+M	src/test/java/LanguageDetection/Domain/model/UserTest.java
+
+commit 12bd7be5b715bc66275191eaf6a0189f7a342ac4
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 28 12:03:47 2022 +0100
+
+    added method to test compareTo of BlackListUrl
+
+M	src/test/java/LanguageDetection/Domain/model/BlackListItemTest.java
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/BlackListUrlTest.java
+
+commit a08f238c66015209428357aece42125469dc5748
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 28 11:51:09 2022 +0100
+
+    frontend - corrected messages frotend admin categories and createTask
+
+M	Frontend/admin/admin_js/admin_categories.js
+M	Frontend/user/createTask.html
+
+commit d66cdd5edd00124c033756b8f63eda2c2916c7cc
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 28 09:34:07 2022 +0100
+
+    added test to categoryName to compareTo
+
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/BlackListUrlTest.java
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/CategoryNameTest.java
+
+commit f4287139fbcf9d4dfcd7997791902ef408884dbc
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 27 22:16:01 2022 +0100
+
+    frotend - fix conflict in knowTheTeam html
+
+M	Frontend/knowTheTeam__admin.html
+M	Frontend/knowTheTeam_user.html
+
+commit a60e8b782e9bfceccfa8910a50faa82d05ab0eea
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 27 22:00:02 2022 +0100
+
+    updated comments in frontend code, added docs update to US 5
+
+M	Documents/US Documentation/US 5.docx
+A	Frontend/.vscode/ltex.hiddenFalsePositives.en-US.txt
+M	Frontend/admin/admin_js/admin_blacklist.js
+M	Frontend/user/js/cancelTask.js
+M	Frontend/user/js/consultTask.js
+M	Frontend/user/js/createTask.js
+M	Frontend/user/js/login.js
+
+commit e6bee4cddecf7ec8b361f2c47f3bd98a9874be50
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 27 17:32:44 2022 +0100
+
+    added comments to frontend javascript
+
+M	Frontend/admin/admin_js/admin_categories.js
+M	Frontend/user/js/createTask.js
+
+commit 739023eb64b6927d2810099934f552eba870e72a
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 27 16:27:11 2022 +0100
+
+    added doc Generic FindAll
+
+M	Documents/SDs/Generic FindAll.svg
+M	Documents/US Documentation/US 5.docx
+
+commit fea52a70b58d834832e49c6689329476dab389ba
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 27 09:33:59 2022 +0100
+
+    glossary - added categoryName and review
+
+M	Documents/Glossary.xlsx
+
+commit 1ecc88730eefe9040df4f1d0a2f08046b0a9e8d6
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 26 22:06:58 2022 +0100
+
+    added update to glossary and svg for category domain and classes
+
+A	Documents/Class Diagrams/US 5 - Category.svg
+A	Documents/Domain Models/US 5 - Category Domain Model.svg
+M	Documents/Glossary.xlsx
+
+commit 2f6e7050420d0148d540e70cb84581f7efcb72da
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 25 17:18:35 2022 +0100
+
+    frontend - added info for lists when no task is return
+
+M	Frontend/admin/admin_js/admin_blacklist.js
+M	Frontend/admin/home_admin.html
+M	Frontend/user/createTask.html
+M	Frontend/user/js/cancelTask.js
+M	Frontend/user/js/consultTask.js
+
+commit cd8efb5d65cbad316b5abfc58fcba4db896ca4aa
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 25 01:34:11 2022 +0100
+
+    frontend - added method createAlert to admin js in blacklist and categories
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/admin_js/admin_blacklist.js
+M	Frontend/admin/admin_js/admin_categories.js
+M	Frontend/user/cancelTask.html
+M	Frontend/user/js/cancelTask.js
+
+commit 7621b9edff53416d720a92f11d813db7cccd0e6a
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 24 23:55:52 2022 +0100
+
+    frontend - created method to alert and added to createTask and cancelTask js
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/home_admin.html
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+M	Frontend/user/js/cancelTask.js
+M	Frontend/user/js/createTask.js
+
+commit f954d396adbeaafee0ba50c4daa3800d55c9efd6
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 24 22:52:51 2022 +0100
+
+    frontend - removed unnecessary comments from html files
+
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+
+commit fd18d65abb495dea0027aa41e1a0f8d883187f31
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 24 22:49:15 2022 +0100
+
+    frontend - modified position of delete blacklist item and added br tags to some pages
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/user/createTask.html
+
+commit 45ceace5847096b6ec91b0f51753bbbce89f1471
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 24 22:27:55 2022 +0100
+
+    frontend - modified logo images format
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/home_admin.html
+M	Frontend/login.html
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+M	Frontend/user/home_user.html
+M	Frontend/user/js/consultTask.js
+
+commit 457880ad7d0bb55c372ffe6be690936c6ef0dfe9
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 24 22:04:06 2022 +0100
+
+    frontend - added logout bottom to all pages
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/home_admin.html
+M	Frontend/knowTheTeam__admin.html
+M	Frontend/knowTheTeam_user.html
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+M	Frontend/user/home_user.html
+
+commit 3a4de5c647c35779bc5ed1c2ffd0914409666c9a
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 24 21:38:12 2022 +0100
+
+    frontend added function to create a task to show ID of task after creation
+
+M	Frontend/user/js/createTask.js
+
+commit 8a7d7cf1bb5f021566eeaa563ab628a97053f44c
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 23 11:13:04 2022 +0100
+
+    frontend - corrected method to cancel tasks
+
+M	Frontend/user/cancelTask.html
+M	Frontend/user/js/cancelTask.js
+
+commit ae1f47945c06ca9d915347bcff52ce82cf881e40
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 23 10:35:32 2022 +0100
+
+    frontend - created method to show tasks in processing
+
+M	Frontend/user/cancelTask.html
+M	Frontend/user/js/cancelTask.js
+
+commit c799a3bb6c1b5b79e2de3b2d80ac9778e060ea99
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 23 09:26:12 2022 +0100
+
+    frontend - added method to consult all tasks without categories or status
+
+M	Frontend/user/js/consultTask.js
+
+commit 043448223ffbab643050f8835b1d028f47a83ba1
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 22 17:14:17 2022 +0100
+
+    frontend - modified corrected method to show tasks correctly in search
+
+M	Frontend/user/js/consultTask.js
+
+commit eee3c7c73738cae92d052d0dff6e8a6ae79fdff0
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 22 16:18:38 2022 +0100
+
+    frontend - updated method to show tasks in consultTasks
+
+M	Frontend/user/js/consultTask.js
+
+commit 2a436a42e39804503957602ca868581fedb6c8f7
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Wed Jun 22 15:04:43 2022 +0100
+
+    frontend - added method filterTaskCategory to be finished
+
+M	Frontend/admin/admin_js/admin_blacklist.js
+M	Frontend/user/consultTasks.html
+M	Frontend/user/js/consultTask.js
+M	src/main/resources/application.properties
+M	target/classes/application.properties
+
+commit 1041580ef0842eadd416c78495232d178fe72542
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 23:18:52 2022 +0100
+
+    frontend - added method to allow blacklist add and blacklist to be shown in table when returned
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+A	Frontend/admin/admin_js/admin_blacklist.js
+M	Frontend/user/js/consultTask.js
+M	Frontend/user/js/createTask.js
+
+commit b91e2b260d274392a535f27d3990232d2b1dd21f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 17:15:29 2022 +0100
+
+    frontend - created method exlude categories in admin
+
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/admin_js/admin_categories.js
+
+commit 1ccbecffcd2cd80057782474a841f93a31bdfb43
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 16:56:21 2022 +0100
+
+    frontend - created method deleteCategory for admin in js
+
+M	Frontend/admin/admin_js/admin_categories.js
+M	Frontend/user/js/createTask.js
+
+commit 38119cff3a41a6f642e637f62ca80126bb498019
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 16:18:12 2022 +0100
+
+    frontEnd - corrected method createTask in js
+
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/admin_js/admin_categories.js
+M	Frontend/user/js/createTask.js
+
+commit 0ee62ca11521464af160981b8015f771b8050c84
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 15:37:19 2022 +0100
+
+    frontend - add category method created in admin area
+
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/admin_js/admin_categories.js
+
+commit dc21e469312b90e91d2bcfb8eea3eb72571e39a3
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 14:44:05 2022 +0100
+
+    frontend - refactor status completed to concluded
+
+M	Frontend/user/consultTasks.html
+M	Frontend/user/js/consultTask.js
+
+commit fa6afd7216d80b313f895e1869ef657ad569ee9f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 10:40:17 2022 +0100
+
+    frontend - added method to open in same window for login
+
+M	Frontend/user/js/login.js
+
+commit 188ca07656c4d01e7c25fb11006221c11de86b8a
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 10:26:42 2022 +0100
+
+    frondend - added method to verify if it's user of admin and redirect to correct html
+
+M	Frontend/login.html
+M	Frontend/user/js/login.js
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit 22eb122cc68a668bb0cf6166e905baae622cad50
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Tue Jun 21 09:52:34 2022 +0100
+
+    frondend - added credentions to fetch methods
+
+M	Frontend/user/js/consultTask.js
+M	Frontend/user/js/createTask.js
+M	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+
+commit 5c2c60266279704a9d55b0342e45f4fb383d93c5
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 20 18:38:08 2022 +0100
+
+    Frontend - added method logIn() to allow sessions
+
+M	Frontend/login.html
+M	Frontend/user/js/login.js
+
+commit 11650399c5a91fc18b8bcfd525a3314b6087bf49
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 20 16:16:43 2022 +0100
+
+    FrontEnd - created method to post login
+
+A	Frontend/user/js/login.js
+
+commit 05224dbe876f268ad91372bdc8d4f77a8001f52f
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 20 15:57:14 2022 +0100
+
+    FrondEnd - added filterTasksStatusCategory to frontend
+
+M	Frontend/user/consultTasks.html
+M	Frontend/user/js/consultTask.js
+
+commit 75d0a6bec9a820bc3c843f1f3cef3287d50d574c
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Mon Jun 20 13:53:19 2022 +0100
+
+    FrontEnd -  added class consultTask.js
+
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+A	Frontend/user/js/consultTask.js
+R097	Frontend/createTask.js	Frontend/user/js/createTask.js
+D	Frontend/user/node_modules/bootstrap/dist/css/bootstrap.css
+
+commit ec4541e73a7915e501e0533b68b10ee9ed5432cd
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 19 23:26:47 2022 +0100
+
+    changed order of creation for Philosophy category in backend, it's now the first one to be created
+
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit ca3b20784444c658c49b5868bcd5e3a69fd36261
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 19 23:22:34 2022 +0100
+
+    created method to add categories from DB to dropDown menu in create a category frontEnd
+
+M	Frontend/createTask.js
+M	Frontend/user/createTask.html
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+
+commit ed6bd61dcfe3fa93e8b428594c7a200965d8f54e
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 19 19:36:14 2022 +0100
+
+    fixed method to send json to backend
+
+M	Frontend/createTask.js
+M	Frontend/user/createTask.html
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+
+commit b2405bd78bc881eabe3247c07fd52818f20aa76e
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 19 19:18:37 2022 +0100
+
+    fix conflicts
+
+M	Frontend/createTask.js
+M	Frontend/user/createTask.html
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+
+commit f71c920413dd7e285a546006c9261aaba33f3dd1
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sun Jun 19 16:47:23 2022 +0100
+
+    added method to createTask in frontEnd
+
+M	Frontend/createTask.html
+A	Frontend/createTask.js
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+
+commit 70d23e12b2278136ed6398e1d6b44896eab89fac
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 18 16:12:47 2022 +0100
+
+    removed comments from methods that were moved to class Text
+
+M	src/main/java/LanguageDetection/domain/ValueObjects/Text.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java
+
+commit 4e09d61dd71e6b9e13495575eb377942f9018645
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 18 15:42:00 2022 +0100
+
+    modified method findCategoryById to findCategoryByCategoryName
+
+M	src/main/java/LanguageDetection/domain/DomainService/CategoryService.java
+M	src/main/java/LanguageDetection/domain/entities/ICategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit 0039a6bfa45f98c9633b50e562d1eb71d11c6c48
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 18 13:20:23 2022 +0100
+
+    added validations to Text VO and removed from LanguageDetectionService
+
+M	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/Text.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+
+commit 50710bef1acd992651d703354304cf6aa138988d
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Sat Jun 18 11:41:03 2022 +0100
+
+    fix conflict
+
+M	src/main/java/LanguageDetection/domain/DomainService/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/domain/entities/Task.java
+
+commit ea11e2e9b4bd1f68f13606f71e869c23c8896e1d
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 17 16:13:02 2022 +0100
+
+    changed instances of TaskRepository in LanguageDetectionService to ITaskRepository
+
+M	src/main/java/LanguageDetection/domain/DomainService/LanguageDetectionService.java
+
+commit 7e28ff5f1127da221f033a02a05c8ff06e688c85
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 17 11:44:57 2022 +0100
+
+    removed method getUrl from InputUrl as it's identical to toString method
+
+M	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+
+commit ca4604a6e982ac82a1ce205df696443b3999543c
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Fri Jun 17 11:39:35 2022 +0100
+
+    modified TaskFactory return statement
+
+M	src/main/java/LanguageDetection/domain/entities/Task.java
+M	src/main/java/LanguageDetection/domain/factory/TaskFactory.java
+
+commit e3c73a15c161a6af449a8b80e04a130c5111d737
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 16 21:13:25 2022 +0100
+
+    modified TaskFactory to create VO of Task inside the Factory.
+
+M	src/main/java/LanguageDetection/application/services/CategoryService.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/entities/ICategoryRepository.java
+M	src/main/java/LanguageDetection/domain/factory/TaskFactory.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+
+commit d37d7d5618f5844d5a3ec2a4522ce55b8955ae8d
+Author: Thales Lemos <thalesflemos@gmail.com>
+Date:   Thu Jun 16 17:28:20 2022 +0100
+
+    added NullPointerException to try catch in createAndSaveTask to avoid error 500 if method receives a null to create an InputUrl
+
+M	src/main/java/LanguageDetection/application/services/TaskService.java

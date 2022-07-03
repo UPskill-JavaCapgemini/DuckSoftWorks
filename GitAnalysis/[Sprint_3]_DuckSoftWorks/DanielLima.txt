@@ -1,0 +1,516 @@
+commit 91887b20072187d9d302d8b8b81329a6efcdb885
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 28 16:03:01 2022 +0100
+
+    Updated US3 DOC in US Documentation
+
+A	Documents/US Documentation/US 3.docx
+
+commit 52aeda8f783abe65ec1caf9d34fd4423552a35ee
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 28 15:28:15 2022 +0100
+
+    Removed RoleDTO and SignupRequestDTO
+
+D	src/main/java/LanguageDetection/application/DTO/RoleDTO.java
+D	src/main/java/LanguageDetection/application/DTO/SignupRequestDTO.java
+
+commit 06caf94ee1eb4d7a1d21f9945b51025dbe6ed002
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 28 15:01:14 2022 +0100
+
+    Modified US3 Domain Model in Doamin Models
+
+M	Documents/Domain Models/US 3 - Find All Tasks Domain Model.svg
+
+commit 296bae93376173a4a2fd04858ae8a660c8a102da
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 28 14:38:01 2022 +0100
+
+    Updated US 1 DOC in US Documentation
+
+M	Documents/US Documentation/US 1.docx
+
+commit c41c9a8afea884698be939d899906b302b384f89
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 28 12:42:38 2022 +0100
+
+    Refactored Bootstrap to validate data creation on setup
+    
+    Included methods to count persisted Users,BlackListItems,Roles and Categories so that no issues would arise after setting up the application
+
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/model/IBlackListItemRepository.java
+M	src/main/java/LanguageDetection/domain/model/ICategoryRepository.java
+M	src/main/java/LanguageDetection/domain/model/IRoleRepository.java
+M	src/main/java/LanguageDetection/domain/model/IUserRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/RoleRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+M	src/main/resources/application.properties
+M	target/classes/application.properties
+
+commit 22392022cf5e8319060124a1244c208d87a07589
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Mon Jun 27 22:31:37 2022 +0100
+
+    Updated US 1 doc in US documentation
+
+M	Documents/US Documentation/US 1.docx
+
+commit ae08a9c8e81c25ee00fc51f496058605423d2123
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Mon Jun 27 16:54:05 2022 +0100
+
+    Modified Generic Create Blacklist-Category in SD's
+
+M	Documents/SDs/Generic Create Blacklist-Category.svg
+
+commit f745c7924d2e56255a68c5904bad045ff319eb73
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Mon Jun 27 15:51:26 2022 +0100
+
+    Added Generic Delete Sequence Diagram to SDs
+
+M	Documents/SDs/Generic - Delete.svg
+
+commit 0b20a2e556a2c686ed1b02cd87fb6afc5ca9c550
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 21:53:52 2022 +0100
+
+    Added US3 - Find All Tasks Domain Modelto Domain Models
+
+A	Documents/Domain Models/US 3 - Find All Tasks Domain Model.svg
+
+commit 3ba03171269f157c2774f303b028920e66017ade
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 20:50:38 2022 +0100
+
+    Added US3 - Find all Tasks Class Diagrama to Class Diagrams
+
+A	Documents/Class Diagrams/ US 3 - Find All Tasks.svg
+
+commit b5a175227c7254718d876d8440606699519457a9
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 19:30:12 2022 +0100
+
+    Modified BlackList Domain Model in Domain Models
+
+M	Documents/Domain Models/US 1 - BlackList Domain Model.svg
+
+commit d94299aaa9c6df9e8f729cac78b2c4e6cb5f95e7
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 19:29:46 2022 +0100
+
+    Modified BlackList CD in ClassDiagrams
+
+M	Documents/Class Diagrams/US 1 - BlackList.svg
+
+commit 84057ea89151b593b04e0a04cd2ea37caf0af11d
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 18:23:56 2022 +0100
+
+    Renamed authentication and authorization related DTO's
+
+M	src/main/java/LanguageDetection/REST/controllers/AuthController.java
+M	src/main/java/LanguageDetection/application/DTO/JwtResponseDTO.java
+M	src/main/java/LanguageDetection/application/DTO/LoginRequestDTO.java
+M	src/main/java/LanguageDetection/application/DTO/MessageResponseDTO.java
+M	src/main/java/LanguageDetection/application/DTO/SignupRequestDTO.java
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/application/services/CategoryManagementService.java
+M	src/main/java/LanguageDetection/domain/model/BlackListItem.java
+M	src/main/java/LanguageDetection/domain/model/Role.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/ERole.java
+
+commit 9179a304d13951da101c7f10592c77a9ac371303
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 18:03:39 2022 +0100
+
+    Refactored RoleRepository in Bootstrap
+
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit a874e9cc630ebeb3201566578e1fb57e1f3f997e
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 26 17:57:41 2022 +0100
+
+    Added Task Related Javadoc
+
+M	src/main/java/LanguageDetection/REST/controllers/TaskController.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+R100	src/main/java/LanguageDetection/application/DTO/JwtResponse.java	src/main/java/LanguageDetection/application/DTO/JwtResponseDTO.java
+R100	src/main/java/LanguageDetection/application/DTO/LoginRequest.java	src/main/java/LanguageDetection/application/DTO/LoginRequestDTO.java
+R100	src/main/java/LanguageDetection/application/DTO/MessageResponse.java	src/main/java/LanguageDetection/application/DTO/MessageResponseDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+R100	src/main/java/LanguageDetection/application/DTO/SignupRequest.java	src/main/java/LanguageDetection/application/DTO/SignupRequestDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+M	src/main/java/LanguageDetection/domain/model/Category.java
+M	src/main/java/LanguageDetection/domain/model/ICategoryRepository.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/domain/model/TaskFactory.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/InputUrl.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/TaskResult.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/Text.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/TimeOut.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit dca2085f35afa83a6f41b610cd3f490c6cd26e9e
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sat Jun 25 18:00:39 2022 +0100
+
+    Refactored ensureCreateAndSaveTaskReturnesCreatedTask() in TaskServiceTest
+
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+
+commit 7c5be8bb377c8a1f02e1362449a2280bb5e9046d
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sat Jun 25 15:15:04 2022 +0100
+
+    Added test method for Task creation and save to TaskServiceTest
+
+M	pom.xml
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+
+commit cc91f06e6c6c09475d58fe9a5a656ad814b8aa30
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 24 19:23:41 2022 +0100
+
+    Refactored Bootstrap to reflect changes to User and Role Repositories
+
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit 92ba99ae5acaf5cf29830f55a00c33a5bc6ef905
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 24 18:56:12 2022 +0100
+
+    Added IRoleRepository and refactored methods for RoleRepository
+    
+    Included domain Interface for repository and refactored all dedependencies
+
+A	src/main/java/LanguageDetection/domain/model/IRoleRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/RoleRepository.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/RoleRepositoryTest.java
+
+commit 85bc2399014472df8b193cb78dd4adcf23768739
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 24 18:47:59 2022 +0100
+
+    Added IUserRepository and refactored methods for UserRepository
+    
+    Included domain Interface for repository and refactored all dedependencies
+
+M	src/main/java/LanguageDetection/application/security/services/UserDetailsManagementService.java
+A	src/main/java/LanguageDetection/domain/model/IUserRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/UserRepositoryTest.java
+
+commit 1598af16c0a18233ca592a8fe71f77a01c8d9da8
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Fri Jun 24 18:28:52 2022 +0100
+
+    Refactored User Aggregate and Role VO
+
+M	src/main/java/LanguageDetection/domain/model/Role.java
+M	src/main/java/LanguageDetection/domain/model/User.java
+
+commit cf92f1bd36b5bef3664a32a33f4959203114392a
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 22 16:29:53 2022 +0100
+
+    Removed email property from User
+    
+    Removed email property from User seen as registry no longer requires it. Refactored methods and classes accordingly
+
+M	src/main/java/LanguageDetection/application/DTO/JwtResponse.java
+M	src/main/java/LanguageDetection/application/controllers/AuthController.java
+M	src/main/java/LanguageDetection/application/security/services/UserDetailsImpl.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/model/User.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/UserJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+M	src/test/java/LanguageDetection/Domain/model/UserTest.java
+
+commit 18ba87e2767b6bb5d7306c894a4e1bcd02708e45
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 22 16:17:32 2022 +0100
+
+    Removed user registry functionality from the System
+    
+    Removed registry as it was an extra to the system. New users or admins are now only to be bootstrapped
+
+M	src/main/java/LanguageDetection/application/controllers/AuthController.java
+D	src/main/java/LanguageDetection/application/services/RoleService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit 0a8df2500c9a7e0dda1e3312ec6c271b8d8aa723
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 22 16:02:18 2022 +0100
+
+    Renamed AsyncClass to AnalysisHelper
+
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+
+commit 3b7db4c3e3ffbdfc38c724f0da65d00a59467ba9
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 22 15:46:38 2022 +0100
+
+    Added isBeingAnalyzed() to TaskService
+    
+    Added isBeingAnalyzed() to TaskService in order to prevent multiple analysis requests with the same url while it is still processing analysis. This should prevent overburdening the system with multiple of the same requests and improve overall performance
+
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit f064a4bec96312cd1a9323a6e07c12bee5f5d944
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 22 12:19:26 2022 +0100
+
+    Refactored TaskManagementService to include TaskStatus V.O.
+
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+
+commit bf953eda5c82309e409eb251e9e338f496157a30
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Wed Jun 22 12:16:47 2022 +0100
+
+    Removed TaskStatus from task and Created a TaskStatus V.O.
+
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+A	src/main/java/LanguageDetection/domain/model/ValueObjects/TaskStatus.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+M	src/test/java/LanguageDetection/Domain/model/TaskFactoryTest.java
+
+commit 1783e3f277608f9f3a20432b4c709cf02ca79924
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 21 21:05:27 2022 +0100
+
+    Added setter for User roles
+
+M	src/main/java/LanguageDetection/domain/model/User.java
+M	template_rest_application_ddd.iml
+
+commit 3cabb622d2f1e99ba09267a595e524a715586b95
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 21 20:48:13 2022 +0100
+
+    Added Category related Javadoc
+
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java
+M	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/application/services/CategoryManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/CategoryService.java
+M	src/main/java/LanguageDetection/domain/model/Category.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit 4efd0025aabfa9470afdc976a1ab024dea21eaa5
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 21 15:01:33 2022 +0100
+
+    Fixed findAllByCategoryNameContaining
+
+M	pom.xml
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/model/Category.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+M	template_rest_application_ddd.iml
+
+commit c4df19d7b65a59fdac2989d47453d276aa2f2b8c
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Tue Jun 21 12:06:12 2022 +0100
+
+    Added BlackList related Javadoc
+
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+M	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/model/IBlackListItemRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+
+commit 8e8f0745ff94662a5b02f1c985c8609d23ae0475
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Mon Jun 20 17:23:46 2022 +0100
+
+    Added validation for creating a child BlackListItem
+    
+    Added validation for creating a child BlackListItem if parent has already been BlackListed. This was done because of the requirements interpretation of US1
+
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+
+commit e973e2fe2da198535d6a36c191dbeb751bd9cc41
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Mon Jun 20 16:08:02 2022 +0100
+
+    Added base users to bootstrap.
+
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit dab03252f727adc16ba48fada3cf1feb75a031b5
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Mon Jun 20 14:30:01 2022 +0100
+
+    Refactored Login Related Entities and dependencies
+
+M	README.md
+M	src/main/java/LanguageDetection/Application.java
+D	src/main/java/LanguageDetection/application/DTO/AddressDTO.java
+D	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/GroupDomainDTOAssembler.java
+D	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/PersonDomainDTOAssembler.java
+A	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/UserDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/JwtResponse.java
+M	src/main/java/LanguageDetection/application/DTO/LoginRequest.java
+M	src/main/java/LanguageDetection/application/DTO/MessageResponse.java
+D	src/main/java/LanguageDetection/application/DTO/PersonDTO.java
+M	src/main/java/LanguageDetection/application/DTO/RoleDTO.java
+M	src/main/java/LanguageDetection/application/DTO/SignupRequest.java
+R063	src/main/java/LanguageDetection/application/DTO/GroupDTO.java	src/main/java/LanguageDetection/application/DTO/UserDTO.java
+M	src/main/java/LanguageDetection/application/controllers/AuthController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+M	src/main/java/LanguageDetection/application/security/services/UserDetailsImpl.java
+M	src/main/java/LanguageDetection/application/security/services/UserDetailsServiceImpl.java
+M	src/main/java/LanguageDetection/application/services/RoleService.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+D	src/main/java/LanguageDetection/domain/model/Address.java
+D	src/main/java/LanguageDetection/domain/model/Group.java
+D	src/main/java/LanguageDetection/domain/model/Person.java
+M	src/main/java/LanguageDetection/domain/model/Role.java
+D	src/main/java/LanguageDetection/domain/model/SystemUser.java
+A	src/main/java/LanguageDetection/domain/model/User.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/ERole.java
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/GroupId.java
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/LedgerId.java
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/PersonId.java
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/RoleId.java
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/SystemUser/Password.java
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/SystemUser/UserName.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/GroupRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/AddressJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/AddressRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/AdminJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/GroupJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/PersonJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/RoleJpaRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/UserJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/assemblers/GroupDomainDataAssembler.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/assemblers/PersonDomainDataAssembler.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/assemblers/RoleDomainDataAssembler.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/AddressConverter.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/AddressJpa.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/AdminJpa.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/GroupJpa.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/PersonJpa.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/RoleJpa.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/PersonRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/RoleRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl
+
+commit ebafb1fe11d24f5d4972ec0a54f0d93071e2b4ad
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sun Jun 19 19:55:32 2022 +0100
+
+    Added Authorization per roles
+
+M	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+
+commit 9b7b3ae4b6eb332dd749b00865c4320752c57613
+Author: DanielLimaUpskill <daniel.lima-t15@upskill.pt>
+Date:   Sat Jun 18 18:07:36 2022 +0100
+
+    Added registry and login functionalities
+
+A	src/main/java/LanguageDetection/application/DTO/AddressDTO.java
+A	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/GroupDomainDTOAssembler.java
+A	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/PersonDomainDTOAssembler.java
+A	src/main/java/LanguageDetection/application/DTO/GroupDTO.java
+A	src/main/java/LanguageDetection/application/DTO/JwtResponse.java
+A	src/main/java/LanguageDetection/application/DTO/LoginRequest.java
+A	src/main/java/LanguageDetection/application/DTO/MessageResponse.java
+A	src/main/java/LanguageDetection/application/DTO/PersonDTO.java
+A	src/main/java/LanguageDetection/application/DTO/RoleDTO.java
+A	src/main/java/LanguageDetection/application/DTO/SignupRequest.java
+A	src/main/java/LanguageDetection/application/controllers/AuthController.java
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+A	src/main/java/LanguageDetection/application/security/jwt/AuthEntryPointJwt.java
+A	src/main/java/LanguageDetection/application/security/jwt/AuthTokenFilter.java
+A	src/main/java/LanguageDetection/application/security/jwt/JwtUtils.java
+A	src/main/java/LanguageDetection/application/security/services/UserDetailsImpl.java
+A	src/main/java/LanguageDetection/application/security/services/UserDetailsServiceImpl.java
+A	src/main/java/LanguageDetection/application/services/RoleService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/ERole.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/EntityId.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/GroupId.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/LedgerId.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/PersonId.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/RoleId.java
+A	src/main/java/LanguageDetection/domain/entities/Address.java
+A	src/main/java/LanguageDetection/domain/entities/Group.java
+A	src/main/java/LanguageDetection/domain/entities/Person.java
+A	src/main/java/LanguageDetection/domain/entities/Role.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/GroupRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/AddressJpaRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/AddressRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/AdminJpaRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/GroupJpaRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/PersonJpaRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/RoleJpaRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/assemblers/GroupDomainDataAssembler.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/assemblers/PersonDomainDataAssembler.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/assemblers/RoleDomainDataAssembler.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/AddressConverter.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/AddressJpa.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/AdminJpa.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/GroupJpa.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/PersonJpa.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/jpa/RoleJpa.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/PersonRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/RoleRepository.java
+M	src/main/resources/application.properties
+M	target/classes/application.properties

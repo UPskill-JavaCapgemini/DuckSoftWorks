@@ -1,0 +1,1083 @@
+commit 04b6a768df4ad3a9c566013c132f548f8e8031e4
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 29 17:37:17 2022 +0100
+
+    Tickets Chart update with the last days
+
+M	Documents/Tickets Chart - Duck Squad.xlsx
+
+commit 5da9f7924e735ea7135d1b6b52ab221bbd86d4e7
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 22:00:44 2022 +0100
+
+    Change documents files from .docx to .pdf
+
+D	Documents/Project Report Analysis Sprint 3.docx
+A	Documents/Project Report Analysis Sprint 3.pdf
+D	Documents/US Documentation/US 1.docx
+A	Documents/US Documentation/US 1.pdf
+D	Documents/US Documentation/US 2.docx
+A	Documents/US Documentation/US 2.pdf
+D	Documents/US Documentation/US 3.docx
+A	Documents/US Documentation/US 3.pdf
+D	Documents/US Documentation/US 4.docx
+A	Documents/US Documentation/US 4.pdf
+D	Documents/US Documentation/US 5.docx
+A	Documents/US Documentation/US 5.pdf
+
+commit c2894fb55056c5ad4c1f2bf44c52c921a689b834
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 17:37:48 2022 +0100
+
+    US 3 update with frontend view
+
+M	Documents/US Documentation/US 3.docx
+
+commit 1ac8624b569fe4019fda7e9855e4e0906144295c
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 17:37:15 2022 +0100
+
+    Report update
+
+M	Documents/Project Report Analysis Sprint 3.docx
+
+commit aaa46e4d26f860a5001a6e76a33a4b325c4e7c17
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 16:59:44 2022 +0100
+
+    Frontend - open glossary in different web page
+
+M	Frontend/admin/home_admin.html
+M	Frontend/user/home_user.html
+
+commit a3f342e214d66d337be528fd79943668ac94dbae
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 15:53:32 2022 +0100
+
+    countPersistedCategories() test in CategoryRepository
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit eb6189150ce746462872ae675f80be499ed87b01
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 15:52:51 2022 +0100
+
+    countPersistedBlackListItems() test in BlackListRepository
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/BlackListRepositoryTest.java
+
+commit 0eedc010e33bf2eda5b7e38346b615d7b0e87ba9
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 15:39:13 2022 +0100
+
+    commit beggining of a task execution to be able to pull commits
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 73d2c08b884e0a013b23aa5229634ddc7cc06d36
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 15:25:52 2022 +0100
+
+    DomainModel updated in svg and in the report
+
+M	Documents/Domain Models/DomainModel.svg
+M	Documents/Project Report Analysis Sprint 3.docx
+
+commit 1953fde516d2238d932e6cd82457f18d82420cb6
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 15:25:26 2022 +0100
+
+    Tickets Chart update
+
+A	Documents/Tickets Chart - Duck Squad.xlsx
+
+commit 4760db25d7b0346aea9988cd76a78980ef6e5811
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 14:09:10 2022 +0100
+
+    SSDs update
+
+A	Documents/SSDs/US 1 - SSD Blacklist.svg
+A	Documents/SSDs/US 4 - SSD cancelTaskAnalysis (1).svg
+A	Documents/SSDs/US 5 - SSD Category Creation.svg
+A	Documents/SSDs/Us 3 - SSD findAll.svg
+
+commit 31dfeda37b3bbd474e9a98850698bedb6d07901f
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 11:45:04 2022 +0100
+
+    Frontend - small change in user and admin home page - companny
+
+M	Frontend/admin/home_admin.html
+M	Frontend/user/home_user.html
+
+commit e1041eae6647cd41fac5c3103d06928a2169a0ce
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 28 11:01:14 2022 +0100
+
+    US 1, 2, 4 and 5 docs updated with frontend prints
+
+M	Documents/US Documentation/US 1.docx
+M	Documents/US Documentation/US 2.docx
+M	Documents/US Documentation/US 4.docx
+M	Documents/US Documentation/US 5.docx
+
+commit 7f333e14adaa2b485e4e7c166f535d9143629156
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 27 22:25:37 2022 +0100
+
+    US 4 - Documentation update (US doc, SD and parcial CD and DM)
+
+A	Documents/Class Diagrams/US 4 - CancelTask.svg
+A	Documents/Domain Models/US 4 - Cancel Task Analysis.svg
+A	Documents/SDs/CancelTask SD.svg
+M	Documents/US Documentation/US 4.docx
+
+commit 3632d5c5017e8ad805a3875fe1f236ef1c89a5e3
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 27 21:25:26 2022 +0100
+
+    Refactor of toCompleteDTO call in cancelTask() to toDTO()
+
+M	src/main/java/LanguageDetection/REST/controllers/TaskController.java
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+M	src/main/java/LanguageDetection/infrastructure/analyzer/Dictionary.java
+M	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+
+commit cf53661f25ac20aafa8a430847ab03f8fe5c3325
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 27 17:23:13 2022 +0100
+
+    Frontend HTML comments updated
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/home_admin.html
+M	Frontend/knowTheTeam__admin.html
+M	Frontend/knowTheTeam_user.html
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+M	Frontend/user/home_user.html
+
+commit b7fd703d15c1e2c5a14cbf83c1190932f3072eea
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 27 17:22:48 2022 +0100
+
+    Report update
+
+M	Documents/Project Report Analysis Sprint 3.docx
+
+commit 50d6696a030aeb662d12a90b200a3e0679086d2c
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 27 17:21:10 2022 +0100
+
+    LayerdModel, DomainModel and ClassDiagram updated
+
+M	Documents/Arquitecture and Status Diagrams/LayerdModell.svg
+M	Documents/Class Diagrams/ClassDiagram.svg
+M	Documents/Domain Models/DomainModel.svg
+
+commit ba4cc237fef650cd5184903c0cbadb8e8248266b
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 27 11:40:44 2022 +0100
+
+    Design Architecture and Domain Model diagrams and Report updated
+
+M	Documents/Arquitecture and Status Diagrams/Design Architecture.svg
+M	Documents/Domain Models/DomainModel.svg
+M	Documents/Project Report Analysis Sprint 3.docx
+
+commit a637433104ece1539eeedd431f1882ac40de4ce5
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 26 19:33:08 2022 +0100
+
+    Report update to sprint 3
+
+D	Documents/Project Report Analysis Sprint 2.docx
+A	Documents/Project Report Analysis Sprint 3.docx
+
+commit 89fb8d3246f2bcafb1352a7b7ee36ec3dc2de7fa
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 26 19:09:37 2022 +0100
+
+    Outdated Class Diagrams and Domain Models deleted
+
+D	Documents/Class Diagrams/Complete Class Diagram.svg
+D	Documents/Class Diagrams/US 1 - BlackList.svg
+D	Documents/Class Diagrams/US 3 - FindTask Class Diagram.svg
+D	Documents/Class Diagrams/US 4 -  CancelTask Class Diagram.svg
+D	Documents/Class Diagrams/US 5 - Category Exerpt Class Diagram.svg
+D	Documents/Domain Models/Complete Domain Model Diagram.svg
+D	Documents/Domain Models/US 1 - BlackList Domain Model.svg
+D	Documents/Domain Models/US 3 - FindTask Partial Domain Model.svg
+D	Documents/Domain Models/US 4 - Domain Model Cancel Task.svg
+D	Documents/Domain Models/US 5 - Category Domain Model.svg
+
+commit 01ee108e4176f590701b93c3d55f235840e406cd
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 26 19:07:59 2022 +0100
+
+    ClassDiagram, DomainModel and LayerdModel updated
+
+A	Documents/Arquitecture and Status Diagrams/LayerdModell.svg
+A	Documents/Class Diagrams/ClassDiagram.svg
+A	Documents/Domain Models/DomainModel.svg
+
+commit e07f863d804300204ce55b8f49a9b2b1d0db09be
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 25 15:33:36 2022 +0100
+
+    Frontend - added glossary
+
+A	Frontend/Docs/Frontend Glossary.xlsx
+A	Frontend/Docs/GlossaryFrontend.PNG
+M	Frontend/admin/home_admin.html
+M	Frontend/user/home_user.html
+
+commit 652706b15c25e4f57a4d6d3e8a545c69d23abfb5
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 17:38:38 2022 +0100
+
+    Frontend - rearrangement of the drpdown selects
+
+M	Frontend/user/consultTasks.html
+
+commit fc1e2aeb8597d8f76c9e3cea454d694ee7a314ce
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 15:29:22 2022 +0100
+
+    Frontend - refactor homePage
+
+M	Frontend/admin/home_admin.html
+M	Frontend/user/home_user.html
+
+commit d290024d5a39bc66b6703606a76b516d2ca1eb00
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 15:28:58 2022 +0100
+
+    updated git ignore - path changed
+
+M	.gitignore
+A	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/write.lock
+
+commit 6c687160b27a3b94015e20ced20f10c91ada0e6c
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 15:25:42 2022 +0100
+
+    Packages Refactor - Controllers changed to Infrastructure
+
+R097	src/main/java/LanguageDetection/application/controllers/AuthController.java	src/main/java/LanguageDetection/REST/controllers/AuthController.java
+R098	src/main/java/LanguageDetection/application/controllers/BlackListController.java	src/main/java/LanguageDetection/REST/controllers/BlackListController.java
+R098	src/main/java/LanguageDetection/application/controllers/CategoryController.java	src/main/java/LanguageDetection/REST/controllers/CategoryController.java
+R098	src/main/java/LanguageDetection/application/controllers/TaskController.java	src/main/java/LanguageDetection/REST/controllers/TaskController.java
+M	src/main/java/LanguageDetection/application/security/services/UserDetailsServiceImpl.java
+R091	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/Dictionary.java	src/main/java/LanguageDetection/infrastructure/analyzer/Dictionary.java
+R095	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageAnalyzer.java
+R096	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageDetectionService.java
+A	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1a.cfs
+A	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.cfe
+A	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.cfs
+A	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.si
+R100	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt	src/main/java/LanguageDetection/infrastructure/indexedFiles/nothing.txt
+A	src/main/java/LanguageDetection/infrastructure/indexedFiles/segments_1c
+A	src/main/java/LanguageDetection/infrastructure/indexedFiles/write.lock
+R100	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl	src/main/java/LanguageDetection/infrastructure/inputFiles/en-common.wl
+R100	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl	src/main/java/LanguageDetection/infrastructure/inputFiles/es.wl
+R100	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl	src/main/java/LanguageDetection/infrastructure/inputFiles/pt_PT.wl
+M	src/test/java/LanguageDetection/application/controllers/BlackListControllerTest.java
+M	src/test/java/LanguageDetection/application/controllers/CategoryControllerTest.java
+M	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+M	src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+
+commit 9a29a70257cadbbdf6136f1f28691747a0b6f07e
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 11:11:35 2022 +0100
+
+    Frontend - refactor of disposition in canceltask
+
+M	Frontend/user/cancelTask.html
+
+commit cf43863b9a9bd8fb0fe87077d1d8384b7e877256
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 10:47:00 2022 +0100
+
+    conflicts management
+
+M	Frontend/user/cancelTask.html
+
+commit 7f103cd3b5a424859384941a42a8bb116e2a79f6
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 10:44:57 2022 +0100
+
+    conflict management
+
+M	Frontend/user/js/cancelTask.js
+
+commit 0de015ea677309c34d10736a6759153fbfe7a729
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 10:28:50 2022 +0100
+
+    refactor
+
+M	Frontend/user/home_user.html
+
+commit 5affefea88c1d601b272e8a2fe35cb71a7d148f2
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Thu Jun 23 10:28:21 2022 +0100
+
+    Frntend - canceltask method in js and refactors in html
+
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/js/cancelTask.js
+
+commit b31320ca4eeeed3e5cf85b6abad8fabd8cd82be6
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 20:19:29 2022 +0100
+
+    Frontend - add table formate in cancelTask
+
+M	Frontend/user/cancelTask.html
+
+commit dcd1e99150c38454503597e104ba8e55685cb294
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 17:34:00 2022 +0100
+
+    Frontend - table updated with hover in consultTasks
+
+M	Frontend/user/consultTasks.html
+
+commit 3c2c448ea81f114aefd54e86165c0611798b8e27
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 16:28:20 2022 +0100
+
+    Frontend - Table in consult task updated
+
+M	Frontend/user/consultTasks.html
+M	Frontend/user/js/consultTask.js
+
+commit 8b4cd7fc17d3b2300c0ffb3bda10317cc0fbba6a
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 15:06:54 2022 +0100
+
+    Frontend - added logout option in the home pages
+
+M	Frontend/admin/home_admin.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/home_user.html
+
+commit b881f5a40f39fa6c5aeeea305e6cf9e72235a519
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 12:33:18 2022 +0100
+
+    Frontend - table created in consultTasks & elimination of tasksTable page
+
+M	Frontend/user/consultTasks.html
+D	Frontend/user/tasksTable.html
+
+commit 4d79f34787e0f88c1880eb4a64dd182da3b351b1
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 12:14:49 2022 +0100
+
+    Frontend - creation of delete a blacklist item function with JavaScript
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_js/admin_blacklist.js
+
+commit 15b1a74a7e450c5ce6a09c7890ae822a92ffd266
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 22 09:58:13 2022 +0100
+
+    Frontend - admin_blacklist (delete html layout)
+
+M	Frontend/admin/admin_blacklist.html
+
+commit af07ec92965defab2578dc2ff095d17059908f3f
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 17:16:48 2022 +0100
+
+    Frontend - small changes
+
+M	Frontend/admin/admin_js/admin_categories.js
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+
+commit 112146573f63aa5dcff955a0cc11741622596eb5
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 16:19:45 2022 +0100
+
+    Frontend - design updates
+
+M	Frontend/admin/admin_blacklist.html
+M	Frontend/admin/admin_categories.html
+M	Frontend/admin/home_admin.html
+M	Frontend/user/cancelTask.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+M	Frontend/user/home_user.html
+M	Frontend/user/tasksTable.html
+
+commit 454e2292f150cd29350955be7711af8d4b8960cc
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 15:41:59 2022 +0100
+
+    Frontend - Design updates
+
+M	Frontend/admin/home_admin.html
+A	Frontend/knowTheTeam__admin.html
+R094	Frontend/knowTheTeam.html	Frontend/knowTheTeam_user.html
+
+commit c79e33c346c7f558f149296aa96db768507bb863
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 14:42:37 2022 +0100
+
+    Frontend - Design changes
+
+M	Frontend/admin/admin_categories.html
+A	Frontend/admin/admin_js/admin_categories.js
+A	Frontend/user/js/cancelTask.js
+M	Frontend/user/js/createTask.js
+
+commit 38c423e2a4568ab6dcdbee4c86b549209b74e7d3
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 11:41:22 2022 +0100
+
+    admin username and password alteration
+
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+
+commit d8ea12bd6d6bda7dd67e1f79b34af142f6179e78
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 11:37:44 2022 +0100
+
+    Frontend - home_admin class created
+
+A	Frontend/admin/home_admin.html
+M	Frontend/user/js/login.js
+
+commit 765fc22a50e711fcfcb0a4521751f383e84d7ed1
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Tue Jun 21 10:54:46 2022 +0100
+
+    Frontend - updates in home_user, consultTask and knowTheTeam
+
+M	Frontend/knowTheTeam.html
+M	Frontend/user/consultTasks.html
+M	Frontend/user/home_user.html
+
+commit 78bd5bd565cda14a245422b3b2c58f4629bd0346
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 20 19:44:08 2022 +0100
+
+    Authorization updates in backend to enable browser coockies
+
+M	Frontend/user/cancelTask.html
+M	Frontend/user/js/login.js
+M	src/main/java/LanguageDetection/application/controllers/AuthController.java
+M	src/main/resources/application.properties
+M	target/classes/application.properties
+
+commit 424441d4b587ca76c5a4fe82d061b99c9ebbb004
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 20 17:26:12 2022 +0100
+
+    Frontend - update on knowTheTeam class
+
+A	Frontend/images/inesDuck.jpg
+A	Frontend/images/limaDuck.png
+A	Frontend/images/machadoDuck.png
+A	Frontend/images/thalesDuck.jpg
+M	Frontend/knowTheTeam.html
+
+commit 6218c027d6c39ea1d18887b9b9be7f7b4384256f
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 20 14:52:52 2022 +0100
+
+    Frontend and Backend - Conflict Management
+
+M	Frontend/knowTheTeam.html
+A	src/test/java/LanguageDetection/Domain/DomainService/BlackListServiceTest.java
+A	src/test/java/LanguageDetection/Domain/model/ValueObjects/TextTest.java
+
+commit 85e522a328f2e53e831df4b91fda23c45419ab20
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 20 14:08:46 2022 +0100
+
+    Frontend - Home_User and knowTheTeam classes created
+
+A	Frontend/knowTheTeam.html
+M	Frontend/user/consultTasks.html
+A	Frontend/user/home_user.html
+
+commit cef411c06df60bc5032a4ae00b9aa72f4661e6fa
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Mon Jun 20 10:39:19 2022 +0100
+
+    Frontend - changing select button in consultTask
+
+M	Frontend/user/consultTasks.html
+M	Frontend/user/createTask.html
+
+commit fe44a5a7d3daac68075348747394685d6eb6fe9b
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 19 19:14:36 2022 +0100
+
+    Added Frontend authorization
+
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+
+commit 53245af92721d85c2aa59822785bbbc98bffa647
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 19 16:58:30 2022 +0100
+
+    Frontend - conflict management
+
+M	Frontend/user/createTask.html
+A	Frontend/user/node_modules/bootstrap/dist/css/bootstrap.css
+
+commit f4f14c22a662796cccd6ffef391197027c006715
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sun Jun 19 16:35:14 2022 +0100
+
+    Frontend - creation of Admin content
+
+A	Frontend/admin/admin_blacklist.html
+A	Frontend/admin/admin_categories.html
+M	Frontend/login.html
+R085	Frontend/cancelTask.html	Frontend/user/cancelTask.html
+R090	Frontend/consultTasks.html	Frontend/user/consultTasks.html
+R091	Frontend/createTask.html	Frontend/user/createTask.html
+R092	Frontend/tasksTable.html	Frontend/user/tasksTable.html
+
+commit b9ced64bd2fe569edd6be8ab45e20c5322c83f35
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 18 23:27:11 2022 +0100
+
+    Frontend - visual changes
+
+M	Frontend/cancelTask.html
+M	Frontend/consultTasks.html
+M	Frontend/createTask.html
+R100	Frontend/tasksByStatus.html	Frontend/tasksTable.html
+
+commit 4a962b19030897e082b3882c5ed6335805d700ea
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 18 23:06:14 2022 +0100
+
+    Frontend - Table Consult Tasks layout possibility
+
+M	Frontend/consultTasks.html
+A	Frontend/tasksByStatus.html
+
+commit 00e35885d06b20c1076d909c9541186fbdb225f4
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 18 18:55:15 2022 +0100
+
+    Frontend - First draft of some of the API's layouts - user interface
+
+A	Frontend/cancelTask.html
+A	Frontend/consultTasks.html
+A	Frontend/createTask.html
+A	Frontend/images/black duck.jpg
+A	Frontend/login.html
+A	Frontend/package-lock.json
+A	Frontend/package.json
+A	Frontend/signin.css
+
+commit e7768348db1504eacc08cec94f2d772e8fef3680
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Sat Jun 18 18:53:29 2022 +0100
+
+    Frontend Creation - upload of Node, popper and bootstrap dependencies
+
+A	Frontend/node_modules/.package-lock.json
+A	Frontend/node_modules/@popperjs/core/LICENSE.md
+A	Frontend/node_modules/@popperjs/core/README.md
+A	Frontend/node_modules/@popperjs/core/dist/cjs/enums.js
+A	Frontend/node_modules/@popperjs/core/dist/cjs/enums.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/cjs/enums.js.map
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper-base.js
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper-base.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper-base.js.map
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper-lite.js
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper-lite.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper-lite.js.map
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper.js
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/cjs/popper.js.map
+A	Frontend/node_modules/@popperjs/core/dist/esm/createPopper.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/contains.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getBoundingClientRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getClippingRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getCompositeRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getComputedStyle.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getDocumentElement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getDocumentRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getHTMLElementScroll.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getLayoutRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getNodeName.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getNodeScroll.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getOffsetParent.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getParentNode.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getScrollParent.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getViewportRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getWindow.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getWindowScroll.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/getWindowScrollBarX.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/instanceOf.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/isScrollParent.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/isTableElement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/dom-utils/listScrollParents.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/enums.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/index.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/applyStyles.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/arrow.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/computeStyles.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/eventListeners.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/flip.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/hide.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/index.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/offset.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/popperOffsets.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/modifiers/preventOverflow.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/popper-base.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/popper-lite.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/popper.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/types.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/computeAutoPlacement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/computeOffsets.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/debounce.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/detectOverflow.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/expandToHashMap.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/format.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getAltAxis.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getAltLen.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getBasePlacement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getFreshSideObject.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getMainAxisFromPlacement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getOppositePlacement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getOppositeVariationPlacement.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/getVariation.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/math.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/mergeByName.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/mergePaddingObject.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/orderModifiers.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/rectToClientRect.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/uniqueBy.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/validateModifiers.js
+A	Frontend/node_modules/@popperjs/core/dist/esm/utils/within.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/enums.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/enums.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/enums.min.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/enums.min.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/umd/enums.min.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-base.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-base.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-base.min.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-base.min.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-base.min.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-lite.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-lite.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-lite.min.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-lite.min.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper-lite.min.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper.js.map
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper.min.js
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper.min.js.flow
+A	Frontend/node_modules/@popperjs/core/dist/umd/popper.min.js.map
+A	Frontend/node_modules/@popperjs/core/index.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/createPopper.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/createPopper.js
+A	Frontend/node_modules/@popperjs/core/lib/createPopper.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/contains.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/contains.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/contains.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getClippingRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getNodeName.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getNodeName.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getParentNode.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getParentNode.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getScrollParent.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getViewportRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindow.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindow.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindow.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/instanceOf.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/instanceOf.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/isScrollParent.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/isTableElement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/isTableElement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/listScrollParents.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
+A	Frontend/node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/enums.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/enums.js
+A	Frontend/node_modules/@popperjs/core/lib/enums.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/index.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/index.js
+A	Frontend/node_modules/@popperjs/core/lib/index.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/applyStyles.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/applyStyles.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/applyStyles.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/arrow.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/arrow.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/arrow.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/computeStyles.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/computeStyles.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/computeStyles.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/eventListeners.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/eventListeners.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/eventListeners.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/flip.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/flip.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/flip.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/hide.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/hide.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/hide.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/index.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/index.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/index.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/offset.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/offset.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/offset.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/popperOffsets.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/popperOffsets.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/popperOffsets.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/preventOverflow.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
+A	Frontend/node_modules/@popperjs/core/lib/modifiers/preventOverflow.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/popper-base.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/popper-base.js
+A	Frontend/node_modules/@popperjs/core/lib/popper-base.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/popper-lite.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/popper-lite.js
+A	Frontend/node_modules/@popperjs/core/lib/popper-lite.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/popper.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/popper.js
+A	Frontend/node_modules/@popperjs/core/lib/popper.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/types.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/types.js
+A	Frontend/node_modules/@popperjs/core/lib/types.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/computeAutoPlacement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/computeOffsets.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/computeOffsets.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/computeOffsets.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/debounce.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/debounce.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/debounce.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/detectOverflow.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/detectOverflow.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/detectOverflow.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/expandToHashMap.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/expandToHashMap.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/expandToHashMap.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/format.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/format.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/format.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getAltAxis.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getAltAxis.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getAltAxis.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getAltLen.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getAltLen.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getAltLen.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getBasePlacement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getBasePlacement.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getBasePlacement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getFreshSideObject.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getFreshSideObject.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getFreshSideObject.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getOppositePlacement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getOppositePlacement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/getVariation.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/getVariation.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/getVariation.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/math.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/math.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/math.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/mergeByName.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/mergeByName.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/mergeByName.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/mergePaddingObject.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/mergePaddingObject.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/mergePaddingObject.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/orderModifiers.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/orderModifiers.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/orderModifiers.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/rectToClientRect.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/rectToClientRect.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/rectToClientRect.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/uniqueBy.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/uniqueBy.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/uniqueBy.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/validateModifiers.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/validateModifiers.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/validateModifiers.js.flow
+A	Frontend/node_modules/@popperjs/core/lib/utils/within.d.ts
+A	Frontend/node_modules/@popperjs/core/lib/utils/within.js
+A	Frontend/node_modules/@popperjs/core/lib/utils/within.js.flow
+A	Frontend/node_modules/@popperjs/core/package.json
+A	Frontend/node_modules/bootstrap/LICENSE
+A	Frontend/node_modules/bootstrap/README.md
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.rtl.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.rtl.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.rtl.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.min.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.rtl.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.rtl.css.map
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.rtl.min.css
+A	Frontend/node_modules/bootstrap/dist/css/bootstrap.rtl.min.css.map
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.js
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.js.map
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.esm.js
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.esm.js.map
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.esm.min.js
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.esm.min.js.map
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.js
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.js.map
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.min.js
+A	Frontend/node_modules/bootstrap/dist/js/bootstrap.min.js.map
+A	Frontend/node_modules/bootstrap/js/dist/alert.js
+A	Frontend/node_modules/bootstrap/js/dist/alert.js.map
+A	Frontend/node_modules/bootstrap/js/dist/base-component.js
+A	Frontend/node_modules/bootstrap/js/dist/base-component.js.map
+A	Frontend/node_modules/bootstrap/js/dist/button.js
+A	Frontend/node_modules/bootstrap/js/dist/button.js.map
+A	Frontend/node_modules/bootstrap/js/dist/carousel.js
+A	Frontend/node_modules/bootstrap/js/dist/carousel.js.map
+A	Frontend/node_modules/bootstrap/js/dist/collapse.js
+A	Frontend/node_modules/bootstrap/js/dist/collapse.js.map
+A	Frontend/node_modules/bootstrap/js/dist/dom/data.js
+A	Frontend/node_modules/bootstrap/js/dist/dom/data.js.map
+A	Frontend/node_modules/bootstrap/js/dist/dom/event-handler.js
+A	Frontend/node_modules/bootstrap/js/dist/dom/event-handler.js.map
+A	Frontend/node_modules/bootstrap/js/dist/dom/manipulator.js
+A	Frontend/node_modules/bootstrap/js/dist/dom/manipulator.js.map
+A	Frontend/node_modules/bootstrap/js/dist/dom/selector-engine.js
+A	Frontend/node_modules/bootstrap/js/dist/dom/selector-engine.js.map
+A	Frontend/node_modules/bootstrap/js/dist/dropdown.js
+A	Frontend/node_modules/bootstrap/js/dist/dropdown.js.map
+A	Frontend/node_modules/bootstrap/js/dist/modal.js
+A	Frontend/node_modules/bootstrap/js/dist/modal.js.map
+A	Frontend/node_modules/bootstrap/js/dist/offcanvas.js
+A	Frontend/node_modules/bootstrap/js/dist/offcanvas.js.map
+A	Frontend/node_modules/bootstrap/js/dist/popover.js
+A	Frontend/node_modules/bootstrap/js/dist/popover.js.map
+A	Frontend/node_modules/bootstrap/js/dist/scrollspy.js
+A	Frontend/node_modules/bootstrap/js/dist/scrollspy.js.map
+A	Frontend/node_modules/bootstrap/js/dist/tab.js
+A	Frontend/node_modules/bootstrap/js/dist/tab.js.map
+A	Frontend/node_modules/bootstrap/js/dist/toast.js
+A	Frontend/node_modules/bootstrap/js/dist/toast.js.map
+A	Frontend/node_modules/bootstrap/js/dist/tooltip.js
+A	Frontend/node_modules/bootstrap/js/dist/tooltip.js.map
+A	Frontend/node_modules/bootstrap/js/src/alert.js
+A	Frontend/node_modules/bootstrap/js/src/base-component.js
+A	Frontend/node_modules/bootstrap/js/src/button.js
+A	Frontend/node_modules/bootstrap/js/src/carousel.js
+A	Frontend/node_modules/bootstrap/js/src/collapse.js
+A	Frontend/node_modules/bootstrap/js/src/dom/data.js
+A	Frontend/node_modules/bootstrap/js/src/dom/event-handler.js
+A	Frontend/node_modules/bootstrap/js/src/dom/manipulator.js
+A	Frontend/node_modules/bootstrap/js/src/dom/selector-engine.js
+A	Frontend/node_modules/bootstrap/js/src/dropdown.js
+A	Frontend/node_modules/bootstrap/js/src/modal.js
+A	Frontend/node_modules/bootstrap/js/src/offcanvas.js
+A	Frontend/node_modules/bootstrap/js/src/popover.js
+A	Frontend/node_modules/bootstrap/js/src/scrollspy.js
+A	Frontend/node_modules/bootstrap/js/src/tab.js
+A	Frontend/node_modules/bootstrap/js/src/toast.js
+A	Frontend/node_modules/bootstrap/js/src/tooltip.js
+A	Frontend/node_modules/bootstrap/js/src/util/backdrop.js
+A	Frontend/node_modules/bootstrap/js/src/util/component-functions.js
+A	Frontend/node_modules/bootstrap/js/src/util/focustrap.js
+A	Frontend/node_modules/bootstrap/js/src/util/index.js
+A	Frontend/node_modules/bootstrap/js/src/util/sanitizer.js
+A	Frontend/node_modules/bootstrap/js/src/util/scrollbar.js
+A	Frontend/node_modules/bootstrap/package.json
+A	Frontend/node_modules/bootstrap/scss/_accordion.scss
+A	Frontend/node_modules/bootstrap/scss/_alert.scss
+A	Frontend/node_modules/bootstrap/scss/_badge.scss
+A	Frontend/node_modules/bootstrap/scss/_breadcrumb.scss
+A	Frontend/node_modules/bootstrap/scss/_button-group.scss
+A	Frontend/node_modules/bootstrap/scss/_buttons.scss
+A	Frontend/node_modules/bootstrap/scss/_card.scss
+A	Frontend/node_modules/bootstrap/scss/_carousel.scss
+A	Frontend/node_modules/bootstrap/scss/_close.scss
+A	Frontend/node_modules/bootstrap/scss/_containers.scss
+A	Frontend/node_modules/bootstrap/scss/_dropdown.scss
+A	Frontend/node_modules/bootstrap/scss/_forms.scss
+A	Frontend/node_modules/bootstrap/scss/_functions.scss
+A	Frontend/node_modules/bootstrap/scss/_grid.scss
+A	Frontend/node_modules/bootstrap/scss/_helpers.scss
+A	Frontend/node_modules/bootstrap/scss/_images.scss
+A	Frontend/node_modules/bootstrap/scss/_list-group.scss
+A	Frontend/node_modules/bootstrap/scss/_mixins.scss
+A	Frontend/node_modules/bootstrap/scss/_modal.scss
+A	Frontend/node_modules/bootstrap/scss/_nav.scss
+A	Frontend/node_modules/bootstrap/scss/_navbar.scss
+A	Frontend/node_modules/bootstrap/scss/_offcanvas.scss
+A	Frontend/node_modules/bootstrap/scss/_pagination.scss
+A	Frontend/node_modules/bootstrap/scss/_placeholders.scss
+A	Frontend/node_modules/bootstrap/scss/_popover.scss
+A	Frontend/node_modules/bootstrap/scss/_progress.scss
+A	Frontend/node_modules/bootstrap/scss/_reboot.scss
+A	Frontend/node_modules/bootstrap/scss/_root.scss
+A	Frontend/node_modules/bootstrap/scss/_spinners.scss
+A	Frontend/node_modules/bootstrap/scss/_tables.scss
+A	Frontend/node_modules/bootstrap/scss/_toasts.scss
+A	Frontend/node_modules/bootstrap/scss/_tooltip.scss
+A	Frontend/node_modules/bootstrap/scss/_transitions.scss
+A	Frontend/node_modules/bootstrap/scss/_type.scss
+A	Frontend/node_modules/bootstrap/scss/_utilities.scss
+A	Frontend/node_modules/bootstrap/scss/_variables.scss
+A	Frontend/node_modules/bootstrap/scss/bootstrap-grid.scss
+A	Frontend/node_modules/bootstrap/scss/bootstrap-reboot.scss
+A	Frontend/node_modules/bootstrap/scss/bootstrap-utilities.scss
+A	Frontend/node_modules/bootstrap/scss/bootstrap.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_floating-labels.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_form-check.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_form-control.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_form-range.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_form-select.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_form-text.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_input-group.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_labels.scss
+A	Frontend/node_modules/bootstrap/scss/forms/_validation.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_clearfix.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_colored-links.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_position.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_ratio.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_stacks.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_stretched-link.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_text-truncation.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_visually-hidden.scss
+A	Frontend/node_modules/bootstrap/scss/helpers/_vr.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_alert.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_backdrop.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_border-radius.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_box-shadow.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_breakpoints.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_buttons.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_caret.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_clearfix.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_color-scheme.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_container.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_deprecate.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_forms.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_gradients.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_grid.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_image.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_list-group.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_lists.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_pagination.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_reset-text.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_resize.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_table-variants.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_text-truncate.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_transition.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_utilities.scss
+A	Frontend/node_modules/bootstrap/scss/mixins/_visually-hidden.scss
+A	Frontend/node_modules/bootstrap/scss/utilities/_api.scss
+A	Frontend/node_modules/bootstrap/scss/vendor/_rfs.scss
+
+commit cb4754af51fb827a51e39af491c1e580efbc40b3
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 15 18:04:04 2022 +0100
+
+    Refactor of bootstrap createAndSaveBlackListItem()
+
+R081	src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/Language.java
+
+commit a788cf999880cd33c48deee4f787d556380e327e
+Author: Inês Clavel <inesclavel@gmail.com>
+Date:   Wed Jun 15 11:05:21 2022 +0100
+
+    refactor of baseCategory setter
+
+M	src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/domain/entities/Category.java

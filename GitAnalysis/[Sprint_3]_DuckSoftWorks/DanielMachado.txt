@@ -1,0 +1,1325 @@
+commit 54429bd56a470fcc1e8840c5b72e8f1fe4631a3e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 21:58:59 2022 +0100
+
+    Optimize imports of all classes
+
+M	src/main/java/LanguageDetection/Application.java
+M	src/main/java/LanguageDetection/REST/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+M	src/main/java/LanguageDetection/application/DTO/JwtResponseDTO.java
+M	src/main/java/LanguageDetection/application/DTO/LoginRequestDTO.java
+M	src/main/java/LanguageDetection/application/DTO/MessageResponseDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/StatusDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/DTO/UserDTO.java
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+M	src/main/java/LanguageDetection/application/security/jwt/AuthEntryPointJwt.java
+M	src/main/java/LanguageDetection/application/security/jwt/AuthTokenFilter.java
+M	src/main/java/LanguageDetection/application/security/jwt/JwtUtils.java
+M	src/main/java/LanguageDetection/application/security/services/UserDetailsManagementService.java
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/application/services/CategoryManagementService.java
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/DomainService/CategoryService.java
+M	src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+M	src/main/java/LanguageDetection/domain/DomainService/UserDetailsDomainService.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/Role.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/domain/model/TaskFactory.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/Text.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/TimeOut.java
+M	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageAnalyzer.java
+M	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/UserJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+
+commit 9afee9e8df14d6671b221ab149ab0f74d72822d0
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 21:42:34 2022 +0100
+
+    Fixed input of invalid txt file
+
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/InputUrl.java
+
+commit b351756284400671dcf7448c29efcc94115a0ba7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 20:38:21 2022 +0100
+
+    Added Unrecognized to Language Enum and fixed LanguageAnalyzer
+
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/Language.java
+M	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageAnalyzer.java
+
+commit 2798dde5d2928adfa40f00866c7d85b8182e5b24
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 17:08:21 2022 +0100
+
+    Fix CategoryRepository tests
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 3836b8cf55822e6c0765b485fa9192cfa1a48e17
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 17:00:33 2022 +0100
+
+    Modified findTasks to order them by ID in descending order
+
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit 89a1081f63f780815b8f70eae10fd48f5b9be104
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 15:57:30 2022 +0100
+
+    Added Task tests
+
+A	src/test/java/LanguageDetection/Domain/model/TaskTest.java
+
+commit e60cf552313fe53838f949262edebf62699a557b
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 15:28:18 2022 +0100
+
+    Added test to RoleRepository
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/RoleRepositoryTest.java
+
+commit fdd2eb97bb2f6447d57f574c4fdae2496b7917b1
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 15:23:43 2022 +0100
+
+    Added test to BlackListRepository
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/BlackListRepositoryTest.java
+
+commit 3cc06573e18bf2089b3159283d96e74809ce1751
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 15:00:08 2022 +0100
+
+    Removed TODOs
+
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/InputUrlTest.java
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/TextTest.java
+
+commit d0f915d63fc875dc4c17b5f8ef30d1a59998f92e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 14:55:54 2022 +0100
+
+    Removed TODOs
+
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageDetectionService.java
+M	src/test/java/LanguageDetection/Domain/model/TaskFactoryTest.java
+
+commit 2cbbbbb6936acbc902933e4db425c2ef20469df2
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 14:38:56 2022 +0100
+
+    Refactor controllers tests packages
+
+R098	src/test/java/LanguageDetection/application/controllers/BlackListControllerTest.java	src/test/java/LanguageDetection/REST/controllers/BlackListControllerTest.java
+R098	src/test/java/LanguageDetection/application/controllers/CategoryControllerTest.java	src/test/java/LanguageDetection/REST/controllers/CategoryControllerTest.java
+R098	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java	src/test/java/LanguageDetection/REST/controllers/TaskControllerTest.java
+
+commit 64ead7f8313db7333b1d9677857a25bc9acb503c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 14:30:54 2022 +0100
+
+    Modified US 2 documentation
+
+M	Documents/US Documentation/US 2.docx
+
+commit 391de3571b1b8be3839d6d53c280bed3f02d79f4
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 12:10:34 2022 +0100
+
+    Removed isEmail method from BusinessValidation as it was unnecessary
+
+M	src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+
+commit f779f8282369971857f40b8f664b263a0bc43d41
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 12:05:34 2022 +0100
+
+    Added CategoryRepository tests
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit da25da52998b6ed82a1ecbaff5093b5406fe4b34
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 12:02:22 2022 +0100
+
+    Fixed error on CategoryService test
+
+M	src/test/java/LanguageDetection/Domain/DomainService/CategoryServiceTest.java
+
+commit 911eb3b512ce24d5ae6f83935951303699ccab93
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 11:53:19 2022 +0100
+
+    Fixed CategoryManagementService test
+
+M	src/test/java/LanguageDetection/application/services/CategoryManagementServiceTest.java
+
+commit 979b81c9e08e16855ab6976a249edaef2e0e966b
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 11:48:53 2022 +0100
+
+    Fixed bug with createAndSaveCategory method
+
+M	src/main/java/LanguageDetection/application/services/CategoryManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/CategoryService.java
+M	src/main/java/LanguageDetection/domain/model/ICategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+M	src/test/java/LanguageDetection/application/services/CategoryManagementServiceTest.java
+
+commit 7d9b98320c8663c73acfec6fe787e65d4dc54de0
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 10:41:54 2022 +0100
+
+    Added shared interfaces that were deleted by mistake
+
+A	src/main/java/LanguageDetection/domain/shared/AggregateRoot.java
+A	src/main/java/LanguageDetection/domain/shared/Entity.java
+A	src/main/java/LanguageDetection/domain/shared/Identifiable.java
+A	src/main/java/LanguageDetection/domain/shared/Immutable.java
+A	src/main/java/LanguageDetection/domain/shared/ValueObject.java
+
+commit 5f5319730ca63b7232287a143e1aba1611568135
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 10:12:57 2022 +0100
+
+    Deletion of main folders - Preparation of merge
+    
+    As main branch was obsolete, we decided to completly discard this branch content. We left only Readme file, gitignore and GitAnalysis folder.
+
+D	Documents/Arquitecture and Status Diagrams/Design Architecture.svg
+D	Documents/Arquitecture and Status Diagrams/Task Status Diagram.svg
+D	Documents/Class Diagrams/Complete Class Diagram.svg
+D	Documents/Class Diagrams/US 1 - BlackList.svg
+D	Documents/Class Diagrams/US 3 - FindTask Class Diagram.svg
+D	Documents/Class Diagrams/US 4 -  CancelTask Class Diagram.svg
+D	Documents/Class Diagrams/US 5 - Category Exerpt Class Diagram.svg
+D	Documents/Domain Models/Complete Domain Model Diagram.svg
+D	Documents/Domain Models/US 1 - BlackList Domain Model.svg
+D	Documents/Domain Models/US 3 - FindTask Partial Domain Model.svg
+D	Documents/Domain Models/US 4 - Domain Model Cancel Task.svg
+D	Documents/Domain Models/US 5 - Category Domain Model.svg
+D	Documents/Glossary.xlsx
+D	Documents/Project Report Analysis Sprint 2.docx
+D	Documents/SDs/Asyncronous Task Analysis SD.svg
+D	Documents/SDs/CancelTask Sequence Diagram.svg
+D	Documents/SDs/Generic - Delete.svg
+D	Documents/SDs/Generic Create Blacklist-Category.svg
+D	Documents/SDs/Generic FindAll.svg
+D	Documents/SDs/Task Without Asynchronous Process.svg
+D	Documents/SSDs/US 1 - SSD Blacklist.svg
+D	Documents/SSDs/US 2 - SSD Create Task.svg
+D	Documents/SSDs/US 4 - SSD cancelTaskAnalysis (1).svg
+D	Documents/SSDs/US 5 - SSD Category Creation.svg
+D	Documents/SSDs/Us 3 - SSD findAll.svg
+D	Documents/Tickets Chart - Duck Squad.xlsx
+D	Documents/US Documentation/US 1.docx
+D	Documents/US Documentation/US 2.docx
+D	Documents/US Documentation/US 3.docx
+D	Documents/US Documentation/US 4.docx
+D	Documents/US Documentation/US 5.docx
+D	LICENSE
+D	pom.xml
+D	src/main/java/LanguageDetection/Application.java
+D	src/main/java/LanguageDetection/application/Bootstrap/Bootstrap.java
+D	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+D	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+D	src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+D	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java
+D	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+D	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+D	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+D	src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+D	src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java
+D	src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+D	src/main/java/LanguageDetection/application/DTO/StatusDTO.java
+D	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+D	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+D	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+D	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+D	src/main/java/LanguageDetection/application/controllers/TaskController.java
+D	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+D	src/main/java/LanguageDetection/application/services/BlackListService.java
+D	src/main/java/LanguageDetection/application/services/CategoryService.java
+D	src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+D	src/main/java/LanguageDetection/application/services/TaskService.java
+D	src/main/java/LanguageDetection/domain/DomainService/Dictionary.java
+D	src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+D	src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+D	src/main/java/LanguageDetection/domain/DomainService/MockLanguageAnalyzer.java
+D	src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+D	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+D	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+D	src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/Password.java
+D	src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/UserName.java
+D	src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java
+D	src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+D	src/main/java/LanguageDetection/domain/entities/Category.java
+D	src/main/java/LanguageDetection/domain/entities/IBlackListItem.java
+D	src/main/java/LanguageDetection/domain/entities/ICategory.java
+D	src/main/java/LanguageDetection/domain/entities/ITask.java
+D	src/main/java/LanguageDetection/domain/entities/SystemUser.java
+D	src/main/java/LanguageDetection/domain/entities/Task.java
+D	src/main/java/LanguageDetection/domain/shared/AggregateRoot.java
+D	src/main/java/LanguageDetection/domain/shared/Entity.java
+D	src/main/java/LanguageDetection/domain/shared/Identifiable.java
+D	src/main/java/LanguageDetection/domain/shared/Immutable.java
+D	src/main/java/LanguageDetection/domain/shared/ValueObject.java
+D	src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+D	src/main/java/LanguageDetection/domain/util/HashCoder.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+D	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+D	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/en-common.wl
+D	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/es.wl
+D	src/main/java/LanguageDetection/infrastructure/repositories/inputFiles/pt_PT.wl
+D	src/main/resources/application.properties
+D	src/test/java/LanguageDetection/Domain/CategoryTest.java
+D	src/test/java/LanguageDetection/Domain/DomainService/LanguageAnalyzerTest.java
+D	src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java
+D	src/test/java/LanguageDetection/Domain/TaskTest.java
+D	src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java
+D	src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+D	src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java
+D	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+D	src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+D	src/test/java/LanguageDetection/application/services/BlackListServiceTest.java
+D	src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+D	src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+D	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+D	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+D	target/classes/application.properties
+D	template_rest_application_ddd.iml
+
+commit af195c2825072046a76018015eb035ff3f83e643
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 28 09:47:47 2022 +0100
+
+    Modified bootstrap to not iniciate anymore - preparation to release
+
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/resources/application.properties
+M	target/classes/application.properties
+
+commit 1a2b53b1306771c25d404989d4ec3c0e2447a264
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 22:57:29 2022 +0100
+
+    Fixed error in TaskServiceTest
+
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+
+commit 3480c895ee0334a8a6e4fbaf54453877d5df53ab
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 22:55:34 2022 +0100
+
+    Added TaskService test for cancelTaskAnalysis method
+
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+
+commit cf3533b6745f63a85d098a6bbb9748398c271e87
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 22:44:22 2022 +0100
+
+    Fixed 2 TaskRepository tests
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit e56fb63d258d1a292fde1e1e0cc86b066fe9c864
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 22:37:50 2022 +0100
+
+    Fix error when cancel task with different user
+
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit 14a7d0d9d8fe21e241f343fddb9040110be8aa57
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 22:03:33 2022 +0100
+
+    Removed setters from JwtResponseDTO
+
+M	src/main/java/LanguageDetection/application/DTO/JwtResponseDTO.java
+
+commit 9f6af65f1aeec6fc84599e3e6c8b6af4ba9f34b7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 21:45:41 2022 +0100
+
+    Added LanguageAnalyzer tests and Fixed TaskManagement test
+
+M	src/main/java/LanguageDetection/infrastructure/analyzer/LanguageAnalyzer.java
+D	src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+M	src/test/java/LanguageDetection/application/services/TaskManagementServiceTest.java
+A	src/test/java/LanguageDetection/infrastructure/analyzer/LanguageAnalyzerTest.java
+
+commit 426ae6068a8166aa10f9c5fb05374040fe0262d4
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 16:52:29 2022 +0100
+
+    Update US 2 documents
+
+A	Documents/Domain Models/US 2 - Create Task.svg
+D	Documents/Domain Models/US 2 - Task Domain Model.svg
+M	Documents/SDs/Task Without Asynchronous Process.svg
+
+commit 1052b6b21cc0958f758a63f691dafbe80b5874bd
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 16:30:55 2022 +0100
+
+    Updated US2 Documents
+
+M	Documents/Domain Models/US 2 - Task Domain Model.svg
+M	Documents/SDs/Asyncronous Task Analysis SD.svg
+M	Documents/US Documentation/US 2.docx
+D	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/UserDomainDTOAssembler.java
+
+commit 8261d8bdfe1970c51a09587397629c6c5fd26ae5
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 27 09:32:54 2022 +0100
+
+    Fixed US-2 Document Errors
+
+M	Documents/Domain Models/US 2 - Task Domain Model.svg
+M	Documents/US Documentation/US 2.docx
+
+commit e2ef568fc89d33de1d08ccbce0d2a0eff03fb3a5
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 26 21:48:28 2022 +0100
+
+    Fixed US2 document errors
+
+M	Documents/Domain Models/US 2 - Task Domain Model.svg
+M	Documents/US Documentation/US 2.docx
+D	Documents/US Documentation/~$US 2.docx
+
+commit cb222bf3e28e281b600ecc9be316c22215a60231
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sun Jun 26 20:25:29 2022 +0100
+
+    Updated US2 documents
+
+A	Documents/Domain Models/US 2 - Task Domain Model.svg
+M	Documents/SDs/Asyncronous Task Analysis SD.svg
+M	Documents/SDs/Task Without Asynchronous Process.svg
+M	Documents/SSDs/US 2 - SSD Create Task.svg
+M	Documents/US Documentation/US 2.docx
+A	Documents/US Documentation/~$US 2.docx
+
+commit 4cfce45dc4bfc99211195a95e0b20f5734488d0a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 17:35:53 2022 +0100
+
+    Modified 2 Category tests
+
+M	src/test/java/LanguageDetection/Domain/model/CategoryTest.java
+
+commit 5464bd021817ce24d61cdf8df359f079bd448788
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 17:20:33 2022 +0100
+
+    Deleted hasIdentitu methods from AgreggateRoots
+    
+    Unnecessary methods
+
+M	src/main/java/LanguageDetection/domain/model/BlackListItem.java
+M	src/main/java/LanguageDetection/domain/model/Category.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+
+commit 1fea0b9cca52d46d8f3cc658746961402285e46e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 16:54:49 2022 +0100
+
+    Removed toString and Equals methods from DTOs
+    
+    Unnecessary methods
+
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+M	src/main/java/LanguageDetection/application/DTO/JwtResponse.java
+M	src/main/java/LanguageDetection/application/DTO/LoginRequest.java
+M	src/main/java/LanguageDetection/application/DTO/MessageResponse.java
+M	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewCancelThreadDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewCategoryInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/NewTaskInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/RoleDTO.java
+M	src/main/java/LanguageDetection/application/DTO/SignupRequest.java
+M	src/main/java/LanguageDetection/application/DTO/StatusDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/DTO/UserDTO.java
+
+commit 7e878065dc635f7c19d8da45817fb624dc134de4
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 16:46:47 2022 +0100
+
+    Added TaskDomainDTOAssembler test
+
+A	src/test/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssemblerTest.java
+
+commit b2db9cbe01d736bba46e15a3b41097846a8943bf
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 16:26:18 2022 +0100
+
+    Added more tests to TaskService
+
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+
+commit 1d249e8193e0fd1268fa945dc73064b4a06e6f3c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 16:13:15 2022 +0100
+
+    Deleted test class as it isn't necessary
+
+D	src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 81601540391d8277fa05c588f67724c3f9c1da0c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 15:53:36 2022 +0100
+
+    Added CategoryService tests
+
+A	src/test/java/LanguageDetection/Domain/DomainService/CategoryServiceTest.java
+
+commit 9c341f11ef417dcfa98c5aaca355b425110994c3
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 15:40:09 2022 +0100
+
+    Added two more tests to BlackListService
+
+M	src/test/java/LanguageDetection/Domain/DomainService/BlackListServiceTest.java
+
+commit 403d635d44f3824bfcf3c5390520222c41647c12
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 15:28:17 2022 +0100
+
+    Added TaskManagementService tests
+
+A	src/test/java/LanguageDetection/application/services/TaskManagementServiceTest.java
+
+commit 0b6e1a5d59b0c48340495428dd2f96be41664200
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 02:24:30 2022 +0100
+
+    Added RoleRepository tests
+
+A	src/test/java/LanguageDetection/infrastructure/repositories/RoleRepositoryTest.java
+
+commit 7f2871a9b2debe17f6527939197688c3ec4e35f7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 02:19:39 2022 +0100
+
+    Added UserRepository tests
+
+M	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+A	src/test/java/LanguageDetection/infrastructure/repositories/UserRepositoryTest.java
+
+commit d3711dc37d33130cf1a2c469774e09f452055d63
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 02:07:52 2022 +0100
+
+    Removed unnecessary methods from UserRepository class
+
+M	src/main/java/LanguageDetection/infrastructure/repositories/UserRepository.java
+
+commit 95c5e662c1594cf174c94ffc800651d3ebd92827
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 02:02:49 2022 +0100
+
+    Fixed exception thrown in InputUrlTest class
+
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/InputUrlTest.java
+
+commit e6e748a29bf7a3d4a45500ac2e35a5a7a40b198f
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 01:51:52 2022 +0100
+
+    Added CategoryManagementService tests
+
+A	src/test/java/LanguageDetection/application/services/CategoryManagementServiceTest.java
+
+commit 7aa7c126a47b98b18a037b3306348e9d878e8ee2
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 01:16:01 2022 +0100
+
+    Added BlackListManagementService tests
+
+M	src/test/java/LanguageDetection/application/services/BlackListManagementServiceTest.java
+
+commit 0f5abb9a6d148b2f84b6f43f1b7f244120e11e39
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 00:24:40 2022 +0100
+
+    Added BlackListRepository delete method tests
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/BlackListRepositoryTest.java
+
+commit 4ed81fb933edba1e1c375aa42c8f6032a09f840e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 24 00:09:54 2022 +0100
+
+    Added BlackListRepository tests
+    
+    Delete BlackListItems tests were not done as this method need some work before test
+
+A	src/test/java/LanguageDetection/infrastructure/repositories/BlackListRepositoryTest.java
+
+commit 297b3a734b477077e9417b1dd9f5c695719dd618
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 23:51:06 2022 +0100
+
+    Added TaskRepository tests
+
+M	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit deeaf9f7b795f964064b0ff6f62ca7cfa9a3753e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 21:43:04 2022 +0100
+
+    Added CategoryRepository tests
+
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 4aa137b6b79acb68b9d749797dfb577d8cd25a4e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 21:05:48 2022 +0100
+
+    Deleted unnecessary Util class
+
+D	src/main/java/LanguageDetection/domain/util/Utils.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 35803c2cd317f5e9645b0d3cb336fdea6394c19e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 21:05:24 2022 +0100
+
+    Fixed TaskFactory tests
+
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+M	src/test/java/LanguageDetection/Domain/model/TaskFactoryTest.java
+
+commit 628b91277871e966dca4ce2afe3e131aae101d70
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 18:08:41 2022 +0100
+
+    Revert commit to 57ce184
+
+M	.gitignore
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1a.cfs
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.cfe
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.cfs
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.si
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/segments_1c
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/write.lock
+D	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+D	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/write.lock
+
+commit 57ce1844c622efc5e3b28d3d6dc0d6a2df8be940
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 17:51:30 2022 +0100
+
+    Changed paths of indexedFiles folder
+
+M	.gitignore
+R100	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt	src/main/java/LanguageDetection/infrastructure/indexedFiles/nothing.txt
+R100	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/write.lock	src/main/java/LanguageDetection/infrastructure/indexedFiles/write.lock
+
+commit a6522fe01d329feb36592d89b947202496788b0d
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 17:48:16 2022 +0100
+
+    Moved UserDetailsImpl to DomainService
+    
+    Changed name to UserDetaisDomainService
+
+M	.gitignore
+M	src/main/java/LanguageDetection/REST/controllers/AuthController.java
+M	src/main/java/LanguageDetection/application/security/WebSecurityConfig.java
+M	src/main/java/LanguageDetection/application/security/jwt/AuthTokenFilter.java
+M	src/main/java/LanguageDetection/application/security/jwt/JwtUtils.java
+R083	src/main/java/LanguageDetection/application/security/services/UserDetailsServiceImpl.java	src/main/java/LanguageDetection/application/security/services/UserDetailsManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+R071	src/main/java/LanguageDetection/application/security/services/UserDetailsImpl.java	src/main/java/LanguageDetection/domain/DomainService/UserDetailsDomainService.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/TaskFactory.java
+M	src/main/java/LanguageDetection/domain/util/Utils.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+A	src/main/java/LanguageDetection/infrastructure/repositories/indexedFiles/nothing.txt
+M	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+M	src/test/java/LanguageDetection/Domain/model/TaskFactoryTest.java
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/TextTest.java
+
+commit 5b789f3b0708132a9b6117523f69fd8934dedd68
+Author: Daniel Machado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 17:36:09 2022 +0100
+
+    Deleted unnecessary indexedFiles
+
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1a.cfs
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.cfe
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.cfs
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/_1b.si
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/nothing.txt
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/segments_1c
+D	src/main/java/LanguageDetection/infrastructure/indexedFiles/write.lock
+
+commit a0cca64a1dc7164701f666ddc8270c11c0ee6ac0
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 12:42:21 2022 +0100
+
+    Fixed Text size limit
+    
+    Text now has a vallidation that checks if text is bigger than length we have set, and if so, it is trimmed into max limit. Otherwise it is returned the same
+
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/Text.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+
+commit 4eedca00eac0129161d982ead6e8ec0cdd50140c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 10:37:25 2022 +0100
+
+    Added BlackListController tests
+
+A	src/test/java/LanguageDetection/application/controllers/BlackListControllerTest.java
+
+commit 425d87484c24f5712b495f714a685da7e41bbd6a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 23 10:09:33 2022 +0100
+
+    Added CategoryController tests
+
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+A	src/test/java/LanguageDetection/application/controllers/CategoryControllerTest.java
+
+commit 9a50abcefbb6cf80991bef92e3659c1b0a03ffc5
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 23:27:07 2022 +0100
+
+    Added getAllTaskFilter test method from TaskController class
+
+M	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+
+commit e8a519762c279efbad417aa9b0f5c272b08d048a
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 23:17:39 2022 +0100
+
+    Fixed tests of TaskController
+
+M	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+
+commit 5a1c03d5c0ecc5a8920983f3e1feea3253746ee0
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 23:11:53 2022 +0100
+
+    TaskService test that was not concluded
+
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+A	src/test/java/LanguageDetection/Domain/DomainService/TaskServiceTest.java
+
+commit c595f832c64f8e1036527903218a99a85b7a3f61
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 22:03:24 2022 +0100
+
+    Add tests to isBlackListed method from BlackListService class
+
+M	src/test/java/LanguageDetection/Domain/DomainService/BlackListServiceTest.java
+
+commit 545dc3f50b307dd1f155b6990eb9591bd821de96
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 21:51:44 2022 +0100
+
+    Added tests to BlackListService
+
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/model/BlackListItem.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/BlackListUrl.java
+A	src/test/java/LanguageDetection/Domain/DomainService/BlackListServiceTest.java
+
+commit b2b6ecdb546cd28326a6d6fa5d02b63938006298
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 17:10:27 2022 +0100
+
+    Changed Date format in TaskDTO
+
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/InputUrl.java
+D	src/test/java/LanguageDetection/Domain/TaskTest.java
+
+commit 189c735bcebe61a501c92e7b65634c37081d5699
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 15:50:07 2022 +0100
+
+    Removed unnecessary BlackListUrl methods
+
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/BlackListUrl.java
+
+commit f29023f3dbe2b2da9948b1cdd3b6b79db0124b52
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 15:45:36 2022 +0100
+
+    Removed unnecessary methods from InputUrl class
+
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/InputUrl.java
+
+commit fd729316eb3f61af0978c24c193bb68e361bd9a8
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 15:34:37 2022 +0100
+
+    Added UserTest class
+
+M	src/main/resources/application.properties
+A	src/test/java/LanguageDetection/Domain/model/UserTest.java
+
+commit 3f5ab5b5b3064e120a059a04c27f1841d53b6de2
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 12:36:52 2022 +0100
+
+    Removed unnecessary Autowired notations and imports
+
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+
+commit f78c7f2dc5e73655b2675b6636519c4b94e3245f
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 12:35:50 2022 +0100
+
+    Moved methods from TaskManagementService to TaskService
+
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+
+commit f4f0d28fb7da73677b9cd1564fba0ef6245c228d
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 12:21:19 2022 +0100
+
+    Moved createAndSaveTask method to TaskService
+
+M	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+
+commit 79ae9f4d2d82f608572b20eac360ba8cbc5baf4e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 12:04:29 2022 +0100
+
+    Added Domain Service for Task
+    
+    It was needed to refactor name of TaskService to TaskManagementService
+
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+R092	src/main/java/LanguageDetection/application/services/TaskService.java	src/main/java/LanguageDetection/application/services/TaskManagementService.java
+A	src/main/java/LanguageDetection/domain/DomainService/TaskService.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+
+commit 3a3ca145441a0ad14c844117224556a55e81eb80
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 09:43:59 2022 +0100
+
+    Deleted unnecessary toString methods
+
+M	src/main/java/LanguageDetection/application/DTO/CategoryNameDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/TaskResult.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/TimeOut.java
+
+commit eb398c2c933a7e4dab4b177d46c7bea18dc5ea74
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 22 09:43:00 2022 +0100
+
+    Deleted unnecessary toString methods
+
+D	src/test/java/LanguageDetection/Domain/DomainService/BlackListServiceTest.java
+D	src/test/java/LanguageDetection/Domain/DomainService/LanguageAnalyzerTest.java
+D	src/test/java/LanguageDetection/application/services/TaskServiceTest.java
+
+commit c9143befe0871f6eac24184bcc6f52f56922cbd9
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 21:44:22 2022 +0100
+
+    Delete notation autowired inside Task class
+    
+    Fixed runtime error
+
+M	src/main/java/LanguageDetection/domain/model/Task.java
+
+commit 3ae308244526f397ad59ecb8e395f42906a0a8ae
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 19:18:19 2022 +0100
+
+    Deleted some unnecessary methods from BusinessValidation class
+
+M	src/main/java/LanguageDetection/domain/util/BusinessValidation.java
+
+commit e3e792ca2e603e29d895a27416074dd381520ae7
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 19:15:01 2022 +0100
+
+    Deleted unnecessary set methods from User class
+    
+    ORM constructor changed to protected, this way is not acessible outside domain
+
+M	src/main/java/LanguageDetection/domain/model/User.java
+
+commit 0f58684ff044f04d5b07e1abd34ad1130797b564
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 19:08:31 2022 +0100
+
+    Add Task and TaskFactory tests
+    
+    Also fixed some methods that needed to be private instead of public inside Task Class as it needs only to be used inside class
+
+M	pom.xml
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+A	src/test/java/LanguageDetection/Domain/model/TaskFactoryTest.java
+
+commit 4ed9235797a86fca2474004a5bcada81495ae864
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 16:07:48 2022 +0100
+
+    Fix cancelTask and concludeTask logic
+
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+
+commit 8311de7113188d5cd4bdd39c3d5245ea5647afbe
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 15:20:08 2022 +0100
+
+    Add Role tests
+
+M	src/main/java/LanguageDetection/domain/model/Role.java
+A	src/test/java/LanguageDetection/Domain/model/RoleTest.java
+
+commit 3a538559ca6f3ddd56152fab0ad3a135f24d7665
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 15:07:44 2022 +0100
+
+    Added BlackListItem tests
+
+M	pom.xml
+M	src/main/java/LanguageDetection/domain/model/BlackListItem.java
+M	src/main/resources/application.properties
+A	src/test/java/LanguageDetection/Domain/model/BlackListItemTest.java
+M	src/test/java/LanguageDetection/Domain/model/CategoryTest.java
+M	src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+M	target/classes/application.properties
+
+commit bc630cd1adf632428f94b29a4bb7cfd81f684a38
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 15:05:51 2022 +0100
+
+    Added BlackListItem tests
+
+R100	src/test/java/LanguageDetection/Domain/CategoryTest.java	src/test/java/LanguageDetection/Domain/model/CategoryTest.java
+
+commit ac6b81e53aeabcac885c3d75c2d154fd004bcc81
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 11:58:13 2022 +0100
+
+    Fix one TimeOut test
+
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/TimeOutTest.java
+
+commit 5e29a7895d97ba904a9db967ca494aa5d4381a13
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 11:50:55 2022 +0100
+
+    Add TaskResult tests
+
+M	src/test/java/LanguageDetection/Domain/CategoryTest.java
+A	src/test/java/LanguageDetection/Domain/model/ValueObjects/TaskResultTest.java
+
+commit 5a7661cfa01af423252a80825da58dcc05357075
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 11:35:05 2022 +0100
+
+    Add Text Tests
+
+D	src/main/java/LanguageDetection/domain/model/ValueObjects/EntityId.java
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/Text.java
+M	src/test/java/LanguageDetection/Domain/model/ValueObjects/TextTest.java
+
+commit b7dd8c5a06f31a784f165826742865c99bc463cb
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Tue Jun 21 10:35:00 2022 +0100
+
+    Add CategoryName class tests
+
+M	src/main/java/LanguageDetection/domain/model/ValueObjects/CategoryName.java
+D	src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java
+R097	src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java	src/test/java/LanguageDetection/Domain/model/ValueObjects/BlackListUrlTest.java
+A	src/test/java/LanguageDetection/Domain/model/ValueObjects/CategoryNameTest.java
+R098	src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java	src/test/java/LanguageDetection/Domain/model/ValueObjects/InputUrlTest.java
+R096	src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java	src/test/java/LanguageDetection/Domain/model/ValueObjects/TimeOutTest.java
+
+commit e6339d5373cf25a7f66de0676c954b7fde5de5e9
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Mon Jun 20 16:17:10 2022 +0100
+
+    Add association Tasks with Users
+
+M	src/main/java/LanguageDetection/domain/model/Task.java
+M	src/main/java/LanguageDetection/domain/model/TaskFactory.java
+D	src/main/java/LanguageDetection/domain/util/HashCoder.java
+A	src/main/java/LanguageDetection/domain/util/Utils.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+
+commit 7796f4ff5eae030ed24a8ca160516bf1dac0f7ee
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 18 18:11:37 2022 +0100
+
+    Modified method name to be more descriptive
+
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+
+commit 71d4be2539c3fe3b79576a448caab17d6483f228
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 18 18:05:37 2022 +0100
+
+    Refactor of packages and some clean up
+
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/BlackListDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/CategoryDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/NewBlackListInfoDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/application/services/CategoryManagementService.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/DomainService/CategoryService.java
+M	src/main/java/LanguageDetection/domain/DomainService/ILanguageDetector.java
+D	src/main/java/LanguageDetection/domain/DomainService/MockLanguageAnalyzer.java
+R094	src/main/java/LanguageDetection/domain/entities/BlackListItem.java	src/main/java/LanguageDetection/domain/model/BlackListItem.java
+R093	src/main/java/LanguageDetection/domain/entities/Category.java	src/main/java/LanguageDetection/domain/model/Category.java
+R053	src/main/java/LanguageDetection/domain/entities/IBlackListItemRepository.java	src/main/java/LanguageDetection/domain/model/IBlackListItemRepository.java
+R074	src/main/java/LanguageDetection/domain/entities/ICategoryRepository.java	src/main/java/LanguageDetection/domain/model/ICategoryRepository.java
+R073	src/main/java/LanguageDetection/domain/entities/ITaskRepository.java	src/main/java/LanguageDetection/domain/model/ITaskRepository.java
+R100	src/main/java/LanguageDetection/domain/entities/SystemUser.java	src/main/java/LanguageDetection/domain/model/SystemUser.java
+R091	src/main/java/LanguageDetection/domain/entities/Task.java	src/main/java/LanguageDetection/domain/model/Task.java
+R077	src/main/java/LanguageDetection/domain/factory/TaskFactory.java	src/main/java/LanguageDetection/domain/model/TaskFactory.java
+R094	src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java	src/main/java/LanguageDetection/domain/model/ValueObjects/BlackListUrl.java
+R090	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java	src/main/java/LanguageDetection/domain/model/ValueObjects/CategoryName.java
+R097	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java	src/main/java/LanguageDetection/domain/model/ValueObjects/InputUrl.java
+R078	src/main/java/LanguageDetection/domain/ValueObjects/Language.java	src/main/java/LanguageDetection/domain/model/ValueObjects/Language.java
+R100	src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/Password.java	src/main/java/LanguageDetection/domain/model/ValueObjects/SystemUser/Password.java
+R100	src/main/java/LanguageDetection/domain/ValueObjects/SystemUser/UserName.java	src/main/java/LanguageDetection/domain/model/ValueObjects/SystemUser/UserName.java
+R092	src/main/java/LanguageDetection/domain/ValueObjects/TaskResult.java	src/main/java/LanguageDetection/domain/model/ValueObjects/TaskResult.java
+R086	src/main/java/LanguageDetection/domain/ValueObjects/Text.java	src/main/java/LanguageDetection/domain/model/ValueObjects/Text.java
+R092	src/main/java/LanguageDetection/domain/ValueObjects/TimeOut.java	src/main/java/LanguageDetection/domain/model/ValueObjects/TimeOut.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/TaskJpaRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/TaskRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+M	src/test/java/LanguageDetection/Domain/CategoryTest.java
+M	src/test/java/LanguageDetection/Domain/ValueObjects/BlackListUrlTest.java
+M	src/test/java/LanguageDetection/Domain/ValueObjects/InputUrlTest.java
+M	src/test/java/LanguageDetection/Domain/ValueObjects/TimeOutTest.java
+
+commit d645876a6368401b0ec79a0405cbe3e3e3a6f2f6
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Sat Jun 18 15:18:30 2022 +0100
+
+    Modified method parseContentOfUrlToString to be faster
+    
+    Also changed TaskFactory to send ValueObjects instead of primitive variables
+
+M	pom.xml
+M	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/Language.java
+M	src/main/java/LanguageDetection/domain/entities/Task.java
+M	src/main/java/LanguageDetection/domain/factory/TaskFactory.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/TaskRepositoryTest.java
+
+commit 5cabccdd4d923cbfff806e9a12042cfa007fb08c
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 17 19:49:15 2022 +0100
+
+    Add Text class
+    
+    New value object to do validation of text to be analyzed
+
+M	src/main/java/LanguageDetection/domain/ValueObjects/InputUrl.java
+A	src/main/java/LanguageDetection/domain/ValueObjects/Text.java
+
+commit 28b599a205dbec6a67a05d74e8232e99fea99c04
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 17 19:19:30 2022 +0100
+
+    Moved LanguageDetectionService class to Infrastructure
+    
+    Renamed class that uses have a thread associated
+
+M	src/main/java/LanguageDetection/Application.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+R091	src/main/java/LanguageDetection/domain/DomainService/LanguageDetectionService.java	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageDetectionService.java
+
+commit 8435fbcfb26dfbcac676b4af90935add12ac3f70
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 17 15:46:37 2022 +0100
+
+    Modified isBlackListed method to block child paths
+    
+    We should take a look on this method again, as it seems is not very eficient
+
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/entities/IBlackListItemRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit 30232599cb38487195235eca0c6fa08d5ab67e8e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Fri Jun 17 13:09:37 2022 +0100
+
+    Changed Language Detection to Domain
+    
+    Still needs some work to be ok. I also did some fix to methods where getUrl is already not available.
+
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+D	src/main/java/LanguageDetection/application/services/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+A	src/main/java/LanguageDetection/domain/DomainService/LanguageDetectionService.java
+M	src/main/java/LanguageDetection/domain/factory/TaskFactory.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+R098	src/main/java/LanguageDetection/domain/DomainService/Dictionary.java	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/Dictionary.java
+R095	src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java	src/main/java/LanguageDetection/infrastructure/repositories/analyzer/LanguageAnalyzer.java
+M	src/test/java/LanguageDetection/Domain/DomainService/LanguageAnalyzerTest.java
+M	src/test/java/LanguageDetection/Domain/TaskTest.java
+M	src/test/java/LanguageDetection/application/services/AnalyzerServiceTest.java
+
+commit d4011eeece493c2381beb6a07bf3a7fd72442a9d
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 22:36:05 2022 +0100
+
+    Added CategoryService class
+    
+    Now we have a domain service responsible for getting the category and deliver to TaskFactory. This way we now can do this communication through our application core
+
+M	Documents/Class Diagrams/Complete Class Diagram.svg
+M	Documents/Class Diagrams/US 1 - BlackList.svg
+M	Documents/Class Diagrams/US 3 - FindTask Class Diagram.svg
+M	Documents/Class Diagrams/US 4 -  CancelTask Class Diagram.svg
+M	Documents/Class Diagrams/US 5 - Category Exerpt Class Diagram.svg
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+R086	src/main/java/LanguageDetection/application/services/CategoryService.java	src/main/java/LanguageDetection/application/services/CategoryManagementService.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+A	src/main/java/LanguageDetection/domain/DomainService/CategoryService.java
+M	src/main/java/LanguageDetection/domain/factory/TaskFactory.java
+
+commit d4699dbd1d6942212633bb6201922bd4312ffd4b
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 21:06:07 2022 +0100
+
+    Modify deleteCategory method to send CategoryName instead of String
+
+M	src/main/java/LanguageDetection/application/services/CategoryService.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/domain/entities/Category.java
+M	src/main/java/LanguageDetection/domain/entities/ICategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+
+commit a117be60a7fe9cd487f958671376e89da03ce1d6
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 16:56:36 2022 +0100
+
+    Deleted unnecessary method from TaskService class
+
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit f28fc2ba617929476cec0a0f441bd46c3dfa692e
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 16:54:33 2022 +0100
+
+    Update createAndSaveCategory to be more specific
+    
+    Code is cleaner and easier to read
+
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/application/services/CategoryService.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+
+commit b797724bdf39025aa50a2e663e5e53258d48ad61
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 16:16:19 2022 +0100
+
+    Cleaned unnecessary lines on createAndSaveBlackListItem
+    
+    It was also needed to update classes and interfaces that have dependency in this class
+
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/entities/IBlackListItemRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+
+commit bffcccce7a6f400dd320568b7b8e602a697c7e91
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 15:58:25 2022 +0100
+
+    Fix exception handling in Controllers
+    
+    Added catch MalformedURLException to TaskService
+
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 73cc1812814c1d8eadff64b55d173fe053e35f92
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 15:11:05 2022 +0100
+
+    Fix method to delete Category
+    
+    Now it is done by String that is passed through JSON instead of firstly search for category
+
+M	src/main/java/LanguageDetection/application/services/CategoryService.java
+M	src/main/java/LanguageDetection/domain/Bootstrap/Bootstrap.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/domain/entities/Category.java
+M	src/main/java/LanguageDetection/domain/entities/ICategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/CategoryRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/CategoryJpaRepository.java
+M	src/test/java/LanguageDetection/infrastructure/repositories/CategoryRepositoryTest.java
+
+commit 3b426738c1041ef69de7702547d509eb0dbf7775
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 14:15:53 2022 +0100
+
+    Fix exception handling on timeOut execution
+
+M	src/main/java/LanguageDetection/application/services/TaskService.java
+
+commit 10ad20b5a327badc65af2edeee480757a6488d23
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 01:35:23 2022 +0100
+
+    Fix delete BlackListUrl with information to user
+
+M	src/main/java/LanguageDetection/application/services/BlackListManagementService.java
+M	src/main/java/LanguageDetection/domain/DomainService/BlackListService.java
+M	src/main/java/LanguageDetection/domain/entities/IBlackListItemRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/BlackListRepository.java
+M	src/main/java/LanguageDetection/infrastructure/repositories/JPARepositories/BlackListJpaRepository.java
+
+commit ac6071494e252358c26c440688a9d1f5b4a0d048
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Thu Jun 16 00:27:47 2022 +0100
+
+    Added validation of LanguageAnalyzer
+    
+    Also fixed some javadoc of Task class
+
+M	src/main/java/LanguageDetection/domain/DomainService/LanguageAnalyzer.java
+M	src/main/java/LanguageDetection/domain/DomainService/MockLanguageAnalyzer.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/Language.java
+M	src/main/java/LanguageDetection/domain/entities/Task.java
+M	src/test/java/LanguageDetection/Domain/DomainService/MockLanguageAnalyzerTest.java
+
+commit 462ca856bc8c4acbdfa893579670eb454e6df9e3
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 15 23:32:51 2022 +0100
+
+    Refactor of Controllers to send JSON instead of Strings
+    
+    It was also needed to modify DTOs, this way it is easier to read JSON on WebClient. Also fixed concurrent access to database
+
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	src/main/java/LanguageDetection/domain/entities/Category.java
+M	src/main/java/LanguageDetection/domain/entities/Task.java
+M	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+M	src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit ff372e8371468c6e96191c6b8c6c9c7216fd4bcc
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 15 23:32:51 2022 +0100
+
+    Refactor of Controllers to send JSON instead of Strings
+    
+    It was also needed to modify DTOs, this way it is easier to read JSON on WebClient
+
+M	src/main/java/LanguageDetection/application/DTO/BlackListDTO.java
+M	src/main/java/LanguageDetection/application/DTO/CategoryDTO.java
+M	src/main/java/LanguageDetection/application/DTO/DTOAssemblers/TaskDomainDTOAssembler.java
+M	src/main/java/LanguageDetection/application/DTO/TaskDTO.java
+M	src/main/java/LanguageDetection/application/DTO/TaskStatusDTO.java
+M	src/main/java/LanguageDetection/application/controllers/BlackListController.java
+M	src/main/java/LanguageDetection/application/controllers/CategoryController.java
+M	src/main/java/LanguageDetection/application/controllers/TaskController.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/BlackListUrl.java
+M	src/main/java/LanguageDetection/domain/ValueObjects/CategoryName.java
+M	src/main/java/LanguageDetection/domain/entities/BlackListItem.java
+M	src/main/java/LanguageDetection/domain/entities/Category.java
+M	src/main/java/LanguageDetection/domain/entities/Task.java
+M	src/test/java/LanguageDetection/application/controllers/TaskControllerTest.java
+M	src/test/java/LanguageDetection/application/services/CategoryServiceTest.java
+
+commit 701538e3d1a4212866a21677db75a3e8bb0f7005
+Author: DanielVMachado <danielmachado96@hotmail.com>
+Date:   Wed Jun 15 22:30:43 2022 +0100
+
+    Fix method to cancel language task analysis
+
+M	src/main/java/LanguageDetection/application/services/TaskService.java

@@ -1,0 +1,256 @@
+04b6a76,2022-06-29 17:37:17 +0100,Inês Clavel,inesclavel@gmail.com,Tickets Chart update with the last days
+5da9f79,2022-06-28 22:00:44 +0100,Inês Clavel,inesclavel@gmail.com,Change documents files from .docx to .pdf
+54429bd,2022-06-28 21:58:59 +0100,DanielVMachado,danielmachado96@hotmail.com,Optimize imports of all classes
+9afee9e,2022-06-28 21:42:34 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed input of invalid txt file
+b351756,2022-06-28 20:38:21 +0100,DanielVMachado,danielmachado96@hotmail.com,Added Unrecognized to Language Enum and fixed LanguageAnalyzer
+c2894fb,2022-06-28 17:37:48 +0100,Inês Clavel,inesclavel@gmail.com,US 3 update with frontend view
+1ac8624,2022-06-28 17:37:15 +0100,Inês Clavel,inesclavel@gmail.com,Report update
+2798dde,2022-06-28 17:08:21 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix CategoryRepository tests
+3836b8c,2022-06-28 17:00:33 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified findTasks to order them by ID in descending order
+aaa46e4,2022-06-28 16:59:44 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - open glossary in different web page
+91887b2,2022-06-28 16:03:01 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Updated US3 DOC in US Documentation
+89a1081,2022-06-28 15:57:30 +0100,DanielVMachado,danielmachado96@hotmail.com,Added Task tests
+a3f342e,2022-06-28 15:53:32 +0100,Inês Clavel,inesclavel@gmail.com,countPersistedCategories() test in CategoryRepository
+eb61891,2022-06-28 15:52:51 +0100,Inês Clavel,inesclavel@gmail.com,countPersistedBlackListItems() test in BlackListRepository
+0901a8e,2022-06-28 15:42:38 +0100,Thales Lemos,thalesflemos@gmail.com,added javadoc to BootStrap class
+0eedc01,2022-06-28 15:39:13 +0100,Inês Clavel,inesclavel@gmail.com,commit beggining of a task execution to be able to pull commits
+e60cf55,2022-06-28 15:28:18 +0100,DanielVMachado,danielmachado96@hotmail.com,Added test to RoleRepository
+52aeda8,2022-06-28 15:28:15 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Removed RoleDTO and SignupRequestDTO
+73d2c08,2022-06-28 15:25:52 +0100,Inês Clavel,inesclavel@gmail.com,DomainModel updated in svg and in the report
+1953fde,2022-06-28 15:25:26 +0100,Inês Clavel,inesclavel@gmail.com,Tickets Chart update
+fdd2eb9,2022-06-28 15:23:43 +0100,DanielVMachado,danielmachado96@hotmail.com,Added test to BlackListRepository
+06caf94,2022-06-28 15:01:14 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Modified US3 Domain Model in Doamin Models
+3cc0657,2022-06-28 15:00:08 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed TODOs
+d0f915d,2022-06-28 14:55:54 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed TODOs
+2cbbbbb,2022-06-28 14:38:56 +0100,DanielVMachado,danielmachado96@hotmail.com,Refactor controllers tests packages
+296bae9,2022-06-28 14:38:01 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Updated US 1 DOC in US Documentation
+64ead7f,2022-06-28 14:30:54 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified US 2 documentation
+4760db2,2022-06-28 14:09:10 +0100,Inês Clavel,inesclavel@gmail.com,SSDs update
+c41c9a8,2022-06-28 12:42:38 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored Bootstrap to validate data creation on setup
+f9432f5,2022-06-28 12:29:16 +0100,Thales Lemos,thalesflemos@gmail.com,added test toString BlackListItem
+391de35,2022-06-28 12:10:34 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed isEmail method from BusinessValidation as it was unnecessary
+f779f82,2022-06-28 12:05:34 +0100,DanielVMachado,danielmachado96@hotmail.com,Added CategoryRepository tests
+12bd7be,2022-06-28 12:03:47 +0100,Thales Lemos,thalesflemos@gmail.com,added method to test compareTo of BlackListUrl
+da25da5,2022-06-28 12:02:22 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed error on CategoryService test
+911eb3b,2022-06-28 11:53:19 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed CategoryManagementService test
+a08f238,2022-06-28 11:51:09 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - corrected messages frotend admin categories and createTask
+979b81c,2022-06-28 11:48:53 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed bug with createAndSaveCategory method
+31dfeda,2022-06-28 11:45:04 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - small change in user and admin home page - companny
+e1041ea,2022-06-28 11:01:14 +0100,Inês Clavel,inesclavel@gmail.com,US 1, 2, 4 and 5 docs updated with frontend prints
+7d9b983,2022-06-28 10:41:54 +0100,DanielVMachado,danielmachado96@hotmail.com,Added shared interfaces that were deleted by mistake
+5f53197,2022-06-28 10:12:57 +0100,DanielVMachado,danielmachado96@hotmail.com,Deletion of main folders - Preparation of merge
+af195c2,2022-06-28 09:47:47 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified bootstrap to not iniciate anymore - preparation to release
+d66cdd5,2022-06-28 09:34:07 +0100,Thales Lemos,thalesflemos@gmail.com,added test to categoryName to compareTo
+1a2b53b,2022-06-27 22:57:29 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed error in TaskServiceTest
+3480c89,2022-06-27 22:55:34 +0100,DanielVMachado,danielmachado96@hotmail.com,Added TaskService test for cancelTaskAnalysis method
+cf3533b,2022-06-27 22:44:22 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed 2 TaskRepository tests
+e56fb63,2022-06-27 22:37:50 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix error when cancel task with different user
+2239202,2022-06-27 22:31:37 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Updated US 1 doc in US documentation
+7f333e1,2022-06-27 22:25:37 +0100,Inês Clavel,inesclavel@gmail.com,US 4 - Documentation update (US doc, SD and parcial CD and DM)
+f428713,2022-06-27 22:16:01 +0100,Thales Lemos,thalesflemos@gmail.com,frotend - fix conflict in knowTheTeam html
+14a7d0d,2022-06-27 22:03:33 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed setters from JwtResponseDTO
+a60e8b7,2022-06-27 22:00:02 +0100,Thales Lemos,thalesflemos@gmail.com,updated comments in frontend code, added docs update to US 5
+9f6af65,2022-06-27 21:45:41 +0100,DanielVMachado,danielmachado96@hotmail.com,Added LanguageAnalyzer tests and Fixed TaskManagement test
+3632d5c,2022-06-27 21:25:26 +0100,Inês Clavel,inesclavel@gmail.com,Refactor of toCompleteDTO call in cancelTask() to toDTO()
+e6bee4c,2022-06-27 17:32:44 +0100,Thales Lemos,thalesflemos@gmail.com,added comments to frontend javascript
+cf53661,2022-06-27 17:23:13 +0100,Inês Clavel,inesclavel@gmail.com,Frontend HTML comments updated
+b7fd703,2022-06-27 17:22:48 +0100,Inês Clavel,inesclavel@gmail.com,Report update
+50d6696,2022-06-27 17:21:10 +0100,Inês Clavel,inesclavel@gmail.com,LayerdModel, DomainModel and ClassDiagram updated
+ae08a9c,2022-06-27 16:54:05 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Modified Generic Create Blacklist-Category in SD's
+426ae60,2022-06-27 16:52:29 +0100,DanielVMachado,danielmachado96@hotmail.com,Update US 2 documents
+1052b6b,2022-06-27 16:30:55 +0100,DanielVMachado,danielmachado96@hotmail.com,Updated US2 Documents
+739023e,2022-06-27 16:27:11 +0100,Thales Lemos,thalesflemos@gmail.com,added doc Generic FindAll
+f745c79,2022-06-27 15:51:26 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added Generic Delete Sequence Diagram to SDs
+ba4cc23,2022-06-27 11:40:44 +0100,Inês Clavel,inesclavel@gmail.com,Design Architecture and Domain Model diagrams and Report updated
+fea52a7,2022-06-27 09:33:59 +0100,Thales Lemos,thalesflemos@gmail.com,glossary - added categoryName and review
+8261d8b,2022-06-27 09:32:54 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed US-2 Document Errors
+1ecc887,2022-06-26 22:06:58 +0100,Thales Lemos,thalesflemos@gmail.com,added update to glossary and svg for category domain and classes
+0b20a2e,2022-06-26 21:53:52 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added US3 - Find All Tasks Domain Modelto Domain Models
+e2ef568,2022-06-26 21:48:28 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed US2 document errors
+3ba0317,2022-06-26 20:50:38 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added US3 - Find all Tasks Class Diagrama to Class Diagrams
+cb222bf,2022-06-26 20:25:29 +0100,DanielVMachado,danielmachado96@hotmail.com,Updated US2 documents
+a637433,2022-06-26 19:33:08 +0100,Inês Clavel,inesclavel@gmail.com,Report update to sprint 3
+b5a1752,2022-06-26 19:30:12 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Modified BlackList Domain Model in Domain Models
+d94299a,2022-06-26 19:29:46 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Modified BlackList CD in ClassDiagrams
+89fb8d3,2022-06-26 19:09:37 +0100,Inês Clavel,inesclavel@gmail.com,Outdated Class Diagrams and Domain Models deleted
+01ee108,2022-06-26 19:07:59 +0100,Inês Clavel,inesclavel@gmail.com,ClassDiagram, DomainModel and LayerdModel updated
+84057ea,2022-06-26 18:23:56 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Renamed authentication and authorization related DTO's
+9179a30,2022-06-26 18:03:39 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored RoleRepository in Bootstrap
+a874e9c,2022-06-26 17:57:41 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added Task Related Javadoc
+dca2085,2022-06-25 18:05:24 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored ensureCreateAndSaveTaskReturnesCreatedTask() in TaskServiceTest
+2f6e705,2022-06-25 17:18:35 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added info for lists when no task is return
+e07f863,2022-06-25 15:33:36 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - added glossary
+7c5be8b,2022-06-25 15:15:04 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added test method for Task creation and save to TaskServiceTest
+cd8efb5,2022-06-25 01:34:11 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added method createAlert to admin js in blacklist and categories
+7621b9e,2022-06-24 23:55:52 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - created method to alert and added to createTask and cancelTask js
+f954d39,2022-06-24 22:52:51 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - removed unnecessary comments from html files
+fd18d65,2022-06-24 22:49:15 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - modified position of delete blacklist item and added br tags to some pages
+45ceace,2022-06-24 22:27:55 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - modified logo images format
+457880a,2022-06-24 22:04:06 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added logout bottom to all pages
+3a4de5c,2022-06-24 21:38:12 +0100,Thales Lemos,thalesflemos@gmail.com,frontend added function to create a task to show ID of task after creation
+cc91f06,2022-06-24 19:23:41 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored Bootstrap to reflect changes to User and Role Repositories
+92ba99a,2022-06-24 18:56:12 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added IRoleRepository and refactored methods for RoleRepository
+85bc239,2022-06-24 18:47:59 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added IUserRepository and refactored methods for UserRepository
+1598af1,2022-06-24 18:28:52 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored User Aggregate and Role VO
+4cfce45,2022-06-24 17:35:53 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified 2 Category tests
+5464bd0,2022-06-24 17:20:33 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted hasIdentitu methods from AgreggateRoots
+1fea0b9,2022-06-24 16:54:49 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed toString and Equals methods from DTOs
+7e87806,2022-06-24 16:46:47 +0100,DanielVMachado,danielmachado96@hotmail.com,Added TaskDomainDTOAssembler test
+b2db9cb,2022-06-24 16:26:18 +0100,DanielVMachado,danielmachado96@hotmail.com,Added more tests to TaskService
+1d249e8,2022-06-24 16:13:15 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted test class as it isn't necessary
+8160154,2022-06-24 15:53:36 +0100,DanielVMachado,danielmachado96@hotmail.com,Added CategoryService tests
+9c341f1,2022-06-24 15:40:09 +0100,DanielVMachado,danielmachado96@hotmail.com,Added two more tests to BlackListService
+403d635,2022-06-24 15:28:17 +0100,DanielVMachado,danielmachado96@hotmail.com,Added TaskManagementService tests
+0b6e1a5,2022-06-24 02:24:30 +0100,DanielVMachado,danielmachado96@hotmail.com,Added RoleRepository tests
+7f2871a,2022-06-24 02:19:39 +0100,DanielVMachado,danielmachado96@hotmail.com,Added UserRepository tests
+d3711dc,2022-06-24 02:07:52 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed unnecessary methods from UserRepository class
+95c5e66,2022-06-24 02:02:49 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed exception thrown in InputUrlTest class
+e6e748a,2022-06-24 01:51:52 +0100,DanielVMachado,danielmachado96@hotmail.com,Added CategoryManagementService tests
+7aa7c12,2022-06-24 01:16:01 +0100,DanielVMachado,danielmachado96@hotmail.com,Added BlackListManagementService tests
+0f5abb9,2022-06-24 00:24:40 +0100,DanielVMachado,danielmachado96@hotmail.com,Added BlackListRepository delete method tests
+4ed81fb,2022-06-24 00:09:54 +0100,DanielVMachado,danielmachado96@hotmail.com,Added BlackListRepository tests
+297b3a7,2022-06-23 23:51:06 +0100,DanielVMachado,danielmachado96@hotmail.com,Added TaskRepository tests
+deeaf9f,2022-06-23 21:43:04 +0100,DanielVMachado,danielmachado96@hotmail.com,Added CategoryRepository tests
+4aa137b,2022-06-23 21:05:48 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted unnecessary Util class
+35803c2,2022-06-23 21:05:24 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed TaskFactory tests
+628b912,2022-06-23 18:08:41 +0100,DanielVMachado,danielmachado96@hotmail.com,Revert commit to 57ce184
+57ce184,2022-06-23 17:51:30 +0100,DanielVMachado,danielmachado96@hotmail.com,Changed paths of indexedFiles folder
+a6522fe,2022-06-23 17:48:16 +0100,DanielVMachado,danielmachado96@hotmail.com,Moved UserDetailsImpl to DomainService
+652706b,2022-06-23 17:38:38 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - rearrangement of the drpdown selects
+5b789f3,2022-06-23 17:36:09 +0100,Daniel Machado,danielmachado96@hotmail.com,Deleted unnecessary indexedFiles
+fc1e2ae,2022-06-23 15:29:22 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - refactor homePage
+d290024,2022-06-23 15:28:58 +0100,Inês Clavel,inesclavel@gmail.com,updated git ignore - path changed
+6c68716,2022-06-23 15:25:42 +0100,Inês Clavel,inesclavel@gmail.com,Packages Refactor - Controllers changed to Infrastructure
+a0cca64,2022-06-23 12:42:21 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed Text size limit
+8a7d7cf,2022-06-23 11:13:04 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - corrected method to cancel tasks
+9a29a70,2022-06-23 11:11:35 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - refactor of disposition in canceltask
+cf43863,2022-06-23 10:47:00 +0100,Inês Clavel,inesclavel@gmail.com,conflicts management
+7f103cd,2022-06-23 10:44:57 +0100,Inês Clavel,inesclavel@gmail.com,conflict management
+4eedca0,2022-06-23 10:37:25 +0100,DanielVMachado,danielmachado96@hotmail.com,Added BlackListController tests
+ae1f479,2022-06-23 10:35:32 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - created method to show tasks in processing
+0de015e,2022-06-23 10:28:50 +0100,Inês Clavel,inesclavel@gmail.com,refactor
+5affefe,2022-06-23 10:28:21 +0100,Inês Clavel,inesclavel@gmail.com,Frntend - canceltask method in js and refactors in html
+425d874,2022-06-23 10:09:33 +0100,DanielVMachado,danielmachado96@hotmail.com,Added CategoryController tests
+c799a3b,2022-06-23 09:26:12 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added method to consult all tasks without categories or status
+9a50abc,2022-06-22 23:27:07 +0100,DanielVMachado,danielmachado96@hotmail.com,Added getAllTaskFilter test method from TaskController class
+e8a5197,2022-06-22 23:17:39 +0100,DanielVMachado,danielmachado96@hotmail.com,Fixed tests of TaskController
+5a1c03d,2022-06-22 23:11:53 +0100,DanielVMachado,danielmachado96@hotmail.com,TaskService test that was not concluded
+c595f83,2022-06-22 22:03:24 +0100,DanielVMachado,danielmachado96@hotmail.com,Add tests to isBlackListed method from BlackListService class
+545dc3f,2022-06-22 21:51:44 +0100,DanielVMachado,danielmachado96@hotmail.com,Added tests to BlackListService
+b31320c,2022-06-22 20:19:29 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - add table formate in cancelTask
+dcd1e99,2022-06-22 17:34:00 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - table updated with hover in consultTasks
+0434482,2022-06-22 17:14:17 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - modified corrected method to show tasks correctly in search
+b2b6ecd,2022-06-22 17:10:27 +0100,DanielVMachado,danielmachado96@hotmail.com,Changed Date format in TaskDTO
+cf92f1b,2022-06-22 16:29:53 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Removed email property from User
+3c2c448,2022-06-22 16:28:20 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - Table in consult task updated
+eee3c7c,2022-06-22 16:18:38 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - updated method to show tasks in consultTasks
+18ba87e,2022-06-22 16:17:32 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Removed user registry functionality from the System
+0a8df25,2022-06-22 16:02:18 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Renamed AsyncClass to AnalysisHelper
+189c735,2022-06-22 15:50:07 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed unnecessary BlackListUrl methods
+3b7db4c,2022-06-22 15:46:38 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added isBeingAnalyzed() to TaskService
+f29023f,2022-06-22 15:45:36 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed unnecessary methods from InputUrl class
+fd72931,2022-06-22 15:34:37 +0100,DanielVMachado,danielmachado96@hotmail.com,Added UserTest class
+8b4cd7f,2022-06-22 15:06:54 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - added logout option in the home pages
+2a436a4,2022-06-22 15:04:43 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added method filterTaskCategory to be finished
+3f5ab5b,2022-06-22 12:36:52 +0100,DanielVMachado,danielmachado96@hotmail.com,Removed unnecessary Autowired notations and imports
+f78c7f2,2022-06-22 12:35:50 +0100,DanielVMachado,danielmachado96@hotmail.com,Moved methods from TaskManagementService to TaskService
+b881f5a,2022-06-22 12:33:18 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - table created in consultTasks & elimination of tasksTable page
+f4f0d28,2022-06-22 12:21:19 +0100,DanielVMachado,danielmachado96@hotmail.com,Moved createAndSaveTask method to TaskService
+f064a4b,2022-06-22 12:19:26 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored TaskManagementService to include TaskStatus V.O.
+bf953ed,2022-06-22 12:16:47 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Removed TaskStatus from task and Created a TaskStatus V.O.
+4d79f34,2022-06-22 12:14:49 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - creation of delete a blacklist item function with JavaScript
+79ae9f4,2022-06-22 12:04:29 +0100,DanielVMachado,danielmachado96@hotmail.com,Added Domain Service for Task
+15b1a74,2022-06-22 09:58:13 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - admin_blacklist (delete html layout)
+3a3ca14,2022-06-22 09:43:59 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted unnecessary toString methods
+eb398c2,2022-06-22 09:43:00 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted unnecessary toString methods
+1041580,2022-06-21 23:18:52 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added method to allow blacklist add and blacklist to be shown in table when returned
+c9143be,2022-06-21 21:44:22 +0100,DanielVMachado,danielmachado96@hotmail.com,Delete notation autowired inside Task class
+1783e3f,2022-06-21 21:05:27 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added setter for User roles
+3cabb62,2022-06-21 20:48:13 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added Category related Javadoc
+3ae3082,2022-06-21 19:18:19 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted some unnecessary methods from BusinessValidation class
+e3e792c,2022-06-21 19:15:01 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted unnecessary set methods from User class
+0f58684,2022-06-21 19:08:31 +0100,DanielVMachado,danielmachado96@hotmail.com,Add Task and TaskFactory tests
+af07ec9,2022-06-21 17:16:48 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - small changes
+b91e2b2,2022-06-21 17:15:29 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - created method exlude categories in admin
+1ccbecf,2022-06-21 16:56:21 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - created method deleteCategory for admin in js
+1121465,2022-06-21 16:19:45 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - design updates
+38119cf,2022-06-21 16:18:12 +0100,Thales Lemos,thalesflemos@gmail.com,frontEnd - corrected method createTask in js
+4ed9235,2022-06-21 16:07:48 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix cancelTask and concludeTask logic
+454e229,2022-06-21 15:41:59 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - Design updates
+0ee62ca,2022-06-21 15:37:19 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - add category method created in admin area
+8311de7,2022-06-21 15:20:08 +0100,DanielVMachado,danielmachado96@hotmail.com,Add Role tests
+3a53855,2022-06-21 15:07:44 +0100,DanielVMachado,danielmachado96@hotmail.com,Added BlackListItem tests
+bc630cd,2022-06-21 15:05:51 +0100,DanielVMachado,danielmachado96@hotmail.com,Added BlackListItem tests
+4efd002,2022-06-21 15:01:33 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Fixed findAllByCategoryNameContaining
+dc21e46,2022-06-21 14:44:05 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - refactor status completed to concluded
+c79e33c,2022-06-21 14:42:37 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - Design changes
+c4df19d,2022-06-21 12:06:12 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added BlackList related Javadoc
+ac6b81e,2022-06-21 11:58:13 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix one TimeOut test
+5e29a78,2022-06-21 11:50:55 +0100,DanielVMachado,danielmachado96@hotmail.com,Add TaskResult tests
+38c423e,2022-06-21 11:41:22 +0100,Inês Clavel,inesclavel@gmail.com,admin username and password alteration
+d8ea12b,2022-06-21 11:37:44 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - home_admin class created
+5a7661c,2022-06-21 11:35:05 +0100,DanielVMachado,danielmachado96@hotmail.com,Add Text Tests
+765fc22,2022-06-21 10:54:46 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - updates in home_user, consultTask and knowTheTeam
+fa6afd7,2022-06-21 10:40:17 +0100,Thales Lemos,thalesflemos@gmail.com,frontend - added method to open in same window for login
+b7dd8c5,2022-06-21 10:35:00 +0100,DanielVMachado,danielmachado96@hotmail.com,Add CategoryName class tests
+188ca07,2022-06-21 10:26:42 +0100,Thales Lemos,thalesflemos@gmail.com,frondend - added method to verify if it's user of admin and redirect to correct html
+22eb122,2022-06-21 09:52:34 +0100,Thales Lemos,thalesflemos@gmail.com,frondend - added credentions to fetch methods
+78bd5bd,2022-06-20 19:44:08 +0100,Inês Clavel,inesclavel@gmail.com,Authorization updates in backend to enable browser coockies
+5c2c602,2022-06-20 18:38:08 +0100,Thales Lemos,thalesflemos@gmail.com,Frontend - added method logIn() to allow sessions
+424441d,2022-06-20 17:26:12 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - update on knowTheTeam class
+8e8f074,2022-06-20 17:23:46 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added validation for creating a child BlackListItem
+e6339d5,2022-06-20 16:17:10 +0100,DanielVMachado,danielmachado96@hotmail.com,Add association Tasks with Users
+1165039,2022-06-20 16:16:43 +0100,Thales Lemos,thalesflemos@gmail.com,FrontEnd - created method to post login
+e973e2f,2022-06-20 16:08:02 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added base users to bootstrap.
+05224db,2022-06-20 15:57:14 +0100,Thales Lemos,thalesflemos@gmail.com,FrondEnd - added filterTasksStatusCategory to frontend
+6218c02,2022-06-20 14:52:52 +0100,Inês Clavel,inesclavel@gmail.com,Frontend and Backend - Conflict Management
+dab0325,2022-06-20 14:30:01 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Refactored Login Related Entities and dependencies
+85e522a,2022-06-20 14:08:46 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - Home_User and knowTheTeam classes created
+75d0a6b,2022-06-20 13:53:19 +0100,Thales Lemos,thalesflemos@gmail.com,FrontEnd -  added class consultTask.js
+cef411c,2022-06-20 10:39:19 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - changing select button in consultTask
+ec4541e,2022-06-19 23:26:47 +0100,Thales Lemos,thalesflemos@gmail.com,changed order of creation for Philosophy category in backend, it's now the first one to be created
+ca3b207,2022-06-19 23:22:34 +0100,Thales Lemos,thalesflemos@gmail.com,created method to add categories from DB to dropDown menu in create a category frontEnd
+80d460e,2022-06-19 20:58:20 +0100,Paulo Proença,prp@isep.ipp.pt,Repository Analysis
+ebafb1f,2022-06-19 19:55:32 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added Authorization per roles
+ed6bd61,2022-06-19 19:36:14 +0100,Thales Lemos,thalesflemos@gmail.com,fixed method to send json to backend
+b2405bd,2022-06-19 19:18:37 +0100,Thales Lemos,thalesflemos@gmail.com,fix conflicts
+fe44a5a,2022-06-19 19:14:36 +0100,Inês Clavel,inesclavel@gmail.com,Added Frontend authorization
+53245af,2022-06-19 16:58:30 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - conflict management
+f71c920,2022-06-19 16:47:23 +0100,Thales Lemos,thalesflemos@gmail.com,added method to createTask in frontEnd
+f4f14c2,2022-06-19 16:35:14 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - creation of Admin content
+b9ced64,2022-06-18 23:27:11 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - visual changes
+4a962b1,2022-06-18 23:06:14 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - Table Consult Tasks layout possibility
+00e3588,2022-06-18 18:55:15 +0100,Inês Clavel,inesclavel@gmail.com,Frontend - First draft of some of the API's layouts - user interface
+e776834,2022-06-18 18:53:29 +0100,Inês Clavel,inesclavel@gmail.com,Frontend Creation - upload of Node, popper and bootstrap dependencies
+7796f4f,2022-06-18 18:11:37 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified method name to be more descriptive
+9b7b3ae,2022-06-18 18:07:36 +0100,DanielLimaUpskill,daniel.lima-t15@upskill.pt,Added registry and login functionalities
+71d4be2,2022-06-18 18:05:37 +0100,DanielVMachado,danielmachado96@hotmail.com,Refactor of packages and some clean up
+70d23e1,2022-06-18 16:12:47 +0100,Thales Lemos,thalesflemos@gmail.com,removed comments from methods that were moved to class Text
+4e09d61,2022-06-18 15:42:00 +0100,Thales Lemos,thalesflemos@gmail.com,modified method findCategoryById to findCategoryByCategoryName
+d645876,2022-06-18 15:18:30 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified method parseContentOfUrlToString to be faster
+0039a6b,2022-06-18 13:20:23 +0100,Thales Lemos,thalesflemos@gmail.com,added validations to Text VO and removed from LanguageDetectionService
+50710be,2022-06-18 11:41:03 +0100,Thales Lemos,thalesflemos@gmail.com,fix conflict
+5cabccd,2022-06-17 19:49:15 +0100,DanielVMachado,danielmachado96@hotmail.com,Add Text class
+28b599a,2022-06-17 19:19:30 +0100,DanielVMachado,danielmachado96@hotmail.com,Moved LanguageDetectionService class to Infrastructure
+ea11e2e,2022-06-17 16:13:02 +0100,Thales Lemos,thalesflemos@gmail.com,changed instances of TaskRepository in LanguageDetectionService to ITaskRepository
+8435fbc,2022-06-17 15:46:37 +0100,DanielVMachado,danielmachado96@hotmail.com,Modified isBlackListed method to block child paths
+3023259,2022-06-17 13:09:37 +0100,DanielVMachado,danielmachado96@hotmail.com,Changed Language Detection to Domain
+7e28ff5,2022-06-17 11:44:57 +0100,Thales Lemos,thalesflemos@gmail.com,removed method getUrl from InputUrl as it's identical to toString method
+ca4604a,2022-06-17 11:39:35 +0100,Thales Lemos,thalesflemos@gmail.com,modified TaskFactory return statement
+d4011ee,2022-06-16 22:36:05 +0100,DanielVMachado,danielmachado96@hotmail.com,Added CategoryService class
+e3c73a1,2022-06-16 21:13:25 +0100,Thales Lemos,thalesflemos@gmail.com,modified TaskFactory to create VO of Task inside the Factory.
+d4699db,2022-06-16 21:06:07 +0100,DanielVMachado,danielmachado96@hotmail.com,Modify deleteCategory method to send CategoryName instead of String
+d37d7d5,2022-06-16 17:28:20 +0100,Thales Lemos,thalesflemos@gmail.com,added NullPointerException to try catch in createAndSaveTask to avoid error 500 if method receives a null to create an InputUrl
+a117be6,2022-06-16 16:56:36 +0100,DanielVMachado,danielmachado96@hotmail.com,Deleted unnecessary method from TaskService class
+f28fc2b,2022-06-16 16:54:33 +0100,DanielVMachado,danielmachado96@hotmail.com,Update createAndSaveCategory to be more specific
+b797724,2022-06-16 16:16:19 +0100,DanielVMachado,danielmachado96@hotmail.com,Cleaned unnecessary lines on createAndSaveBlackListItem
+bffcccc,2022-06-16 15:58:25 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix exception handling in Controllers
+73cc181,2022-06-16 15:11:05 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix method to delete Category
+3b42673,2022-06-16 14:15:53 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix exception handling on timeOut execution
+10ad20b,2022-06-16 01:35:23 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix delete BlackListUrl with information to user
+ac60714,2022-06-16 00:27:47 +0100,DanielVMachado,danielmachado96@hotmail.com,Added validation of LanguageAnalyzer
+462ca85,2022-06-15 23:45:21 +0100,DanielVMachado,danielmachado96@hotmail.com,Refactor of Controllers to send JSON instead of Strings
+ff372e8,2022-06-15 23:32:51 +0100,DanielVMachado,danielmachado96@hotmail.com,Refactor of Controllers to send JSON instead of Strings
+701538e,2022-06-15 22:30:43 +0100,DanielVMachado,danielmachado96@hotmail.com,Fix method to cancel language task analysis
+cb4754a,2022-06-15 18:04:04 +0100,Inês Clavel,inesclavel@gmail.com,Refactor of bootstrap createAndSaveBlackListItem()
+a788cf9,2022-06-15 11:05:21 +0100,Inês Clavel,inesclavel@gmail.com,refactor of baseCategory setter
